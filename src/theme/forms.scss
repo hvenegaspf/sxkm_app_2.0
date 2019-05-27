@@ -1,0 +1,33 @@
+.form {
+
+  &--simple {
+    width: 100%;
+    padding: 20vh 1rem 1rem 1rem;
+    div {
+      margin: 0.5rem 0;
+      text-align: center;
+    }
+    ion-item {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    ion-text {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+    }
+    ion-button {
+      margin: 1rem 0;
+      color: white;
+    }
+    ion-icon {
+      position: absolute;
+      right: 0.5rem;
+      bottom: 0.5rem;
+      padding: 0 0.5rem;
+      z-index: 9;
+    }
+  }
+
+}

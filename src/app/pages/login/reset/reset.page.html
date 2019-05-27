@@ -1,0 +1,50 @@
+<ion-content>
+
+  <div class="reset">
+  
+    <div class="header--simple">
+      <ion-button routerLink="/password" routerDirection="back" mode="ios" expand="block" fill="clear">
+        <ion-icon name="arrow-back" text="" color="dark"></ion-icon>
+      </ion-button>
+      <p>Recupera tu contraseña</p>
+    </div>
+  
+    <form #reset="ngForm" (ngSubmit)="onSubmit(password)" class="form--simple">
+      <div>
+        <ion-item mode="ios">
+          <ion-label position="floating" mode="ios">Correo electrónico</ion-label>
+          <ion-input
+            type="email"
+            name="email"
+            ngModel
+            email
+            required
+            #reset="ngModel">
+          </ion-input>
+        </ion-item>
+      </div>
+      <div>
+        <ion-text *ngIf="reset.touched && !reset.valid" color="danger">Por favor verifica tu correo</ion-text>
+      </div>
+      <div>
+        <ion-button *ngIf="!reset.valid" fill="solid" expand="full" shape="round" mode="ios" disabled>Enviar</ion-button>
+        <ion-button *ngIf="reset.valid" type="submit" fill="solid" expand="full" shape="round" mode="ios">Enviar</ion-button>
+      </div>
+    </form>
+
+    <div *ngIf="showAlert" class="reset--alert">
+      <div class="reset--alert-content">
+        <header>
+          <ion-icon name="checkmark-circle" color="primary"></ion-icon>
+          <p>Correo enviado</p>
+        </header>
+        <ion-text>Te enviamos un enlace para recuperar tu contraseña</ion-text>
+        <div>
+          <ion-button fill="solid" expand="full" shape="round" mode="ios" routerLink="/" routerDirection="back">OK</ion-button>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+</ion-content>

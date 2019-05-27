@@ -1,0 +1,31 @@
+<ion-content>
+
+  <div class="login">
+
+    <div class="header--simple">
+      <ion-button routerLink="/" routerDirection="back" mode="ios" expand="block" fill="clear">
+        <ion-icon name="close" text="" color="dark"></ion-icon>
+      </ion-button>
+      <p>inicia sesión</p>
+    </div>
+    
+    <form #login="ngForm" (ngSubmit)="onSubmit(login)" class="form--simple">
+      <div>
+        <ion-item mode="ios">
+          <ion-label position="floating" mode="ios">Correo electrónico</ion-label>
+          <ion-input type="email" name="email" ngModel email required #email="ngModel">
+          </ion-input>
+        </ion-item>
+      </div>
+      <div>
+        <ion-text *ngIf="email.touched && !email.valid" color="danger">Por favor verifica tu correo</ion-text>
+      </div>
+      <div>
+        <ion-button *ngIf="!email.valid"fill="solid" expand="full" shape="round" mode="ios" disabled>Siguiente</ion-button>
+        <ion-button *ngIf="email.valid" fill="solid" expand="full" shape="round" mode="ios" routerLink="/password">Siguiente</ion-button>
+      </div>
+    </form>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,47 @@
+.initial {
+
+  &--container {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('../../../assets/ui/background-initial.png');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+  }
+
+  &--logo {
+    display: inline-block;
+    width: 26%;
+    img { width: 100%; }
+  }
+
+  &--action {
+    text-align: center;
+    p {
+      color: white;
+      margin: 0.25rem 0;
+    }
+    a {
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+  }
+
+  &--start {
+    width: 100%;
+    text-align: center;
+    p {
+      color: white;
+    }
+    ion-button {
+      color: white;
+    }
+  }
+
+}

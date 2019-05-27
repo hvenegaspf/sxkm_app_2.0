@@ -1,0 +1,58 @@
+<ion-header mode="ios">
+  <!-- menu toggle -->
+  <ion-menu-toggle auto-hide="false">
+    <div class="header--avatar">
+      <ion-icon name="md-contact"></ion-icon>
+    </div>
+  </ion-menu-toggle>
+
+  <!-- car selector -->
+  <div class="header--selector">
+    <ion-button fill="clear" expand="block" size="small">car model</ion-button>
+  </div>
+
+  <!-- status tracker -->
+  <div class="header--tracker">
+    <ion-icon name="md-wifi"></ion-icon>
+  </div>
+
+</ion-header>
+
+<ion-content>
+  <!-- floating action -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button mode="ios">
+      <ion-text>SOS</ion-text>
+    </ion-fab-button>
+  </ion-fab>
+  <!-- tabs -->
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="welcome">
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-label>General</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="trips">
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-label>Viajes</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="habits">
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-label>Hábitos</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="rewards">
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-label>Rewards</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="policy">
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-label>Póliza</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+  <!-- - -->
+</ion-content>
