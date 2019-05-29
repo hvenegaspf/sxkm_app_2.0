@@ -45,6 +45,8 @@ const routes: Routes = [
     redirectTo: 'tabs/welcome',
     pathMatch: 'full'
   },
+  { path: 'detail', loadChildren: './trips/detail/detail.module#DetailPageModule' },
+  { path: 'levels', loadChildren: './rewards/levels/levels.module#LevelsPageModule' },
 ];
 
 @NgModule({

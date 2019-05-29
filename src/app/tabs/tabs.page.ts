@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tabs',
@@ -7,9 +8,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsPage implements OnInit {
 
-  constructor() { }
+  constructor( private actionSheetController: ActionSheetController ) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  async onClickSelector() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Selecciona tu auto',
+      cssClass: 'actionsheet',
+      buttons: [
+        {
+          text: 'Mini Cooper',
+          handler: () => {
+            console.log('actionsheet');
+          }
+        },
+        {
+          text: 'Tesla Model 3',
+          handler: () => {
+            console.log('actionsheet');
+          }
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        },
+      ],
+    });
+    await actionSheet.present();
   }
 
 }

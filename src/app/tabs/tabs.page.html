@@ -2,18 +2,21 @@
   <!-- menu toggle -->
   <ion-menu-toggle auto-hide="false">
     <div class="header--avatar">
-      <ion-icon name="md-contact"></ion-icon>
+      <img src="../../assets/demo/avatar.jpg" />
     </div>
   </ion-menu-toggle>
 
   <!-- car selector -->
   <div class="header--selector">
-    <ion-button fill="clear" expand="block" size="small">car model</ion-button>
+    <a>
+      <span (click)="onClickSelector()">Mini Cooper</span>
+      <ion-icon name="arrow-down"></ion-icon>
+    </a>
   </div>
 
-  <!-- status tracker -->
-  <div class="header--tracker">
-    <ion-icon name="md-wifi"></ion-icon>
+  <!-- car status -->
+  <div class="header--status">
+    <img src="../../assets/demo/circle.png" />
   </div>
 
 </ion-header>
