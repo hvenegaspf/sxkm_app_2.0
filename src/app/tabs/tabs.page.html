@@ -10,7 +10,7 @@
   <div class="header--selector">
     <a>
       <span (click)="onClickSelector()">Mini Cooper</span>
-      <ion-icon name="arrow-down"></ion-icon>
+      <ion-icon name="ios-arrow-down"></ion-icon>
     </a>
   </div>
 
@@ -24,13 +24,13 @@
 <ion-content>
   <!-- floating action -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button mode="ios">
-      <ion-text>SOS</ion-text>
+    <ion-fab-button color="transparent" mode="ios">
+      <img src="../../assets/ui/SOS.png" />
     </ion-fab-button>
   </ion-fab>
   <!-- tabs -->
   <ion-tabs>
-    <ion-tab-bar slot="bottom">
+    <ion-tab-bar slot="bottom" mode="ios">
       <ion-tab-button tab="welcome">
         <ion-icon name="star-outline"></ion-icon>
         <ion-label>General</ion-label>

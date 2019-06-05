@@ -1,9 +1,12 @@
 // floating action
 ion-fab {
-  bottom: 10vh;
+  bottom: 4rem;
   right: 16px;
-  font-family: var(--ion-font-headline);
-  font-weight: 600;
+}
+ion-fab-button {
+  background-color: transparent !important;
+  --box-shadow: none !important;
+  img { box-shadow: var(--ion-box-shadow); }
 }
 
 ion-header {
@@ -14,6 +17,15 @@ ion-header {
   align-items: center;
   padding: 1rem;
   background-color: var(--ion-color-secondary);
+}
+
+ion-tab-bar {
+  --background: var(--ion-color-secondary);
+  --color: white;
+}
+ion-tab-button {
+  --color-selected: rgba( 255,255,255, 0.2);
+  transition: all 0.3s linear;
 }
 
 .header {
