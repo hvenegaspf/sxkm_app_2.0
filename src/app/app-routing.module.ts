@@ -4,20 +4,27 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'initial', pathMatch: 'full' },
   { path: 'initial', loadChildren: './pages/initial/initial.module#InitialPageModule' },
+  // login pages
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'password', loadChildren: './pages/login/password/password.module#PasswordPageModule' },
   { path: 'reset', loadChildren: './pages/login/reset/reset.module#ResetPageModule' },
-  // from menu pages
+  // menu pages
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   { path: 'address', loadChildren: './pages/address/address.module#AddressPageModule' },
   { path: 'payment', loadChildren: './pages/payment/payment.module#PaymentPageModule' },
   { path: 'orders', loadChildren: './pages/orders/orders.module#OrdersPageModule' },
   { path: 'credentials', loadChildren: './pages/credentials/credentials.module#CredentialsPageModule' },
   { path: 'sxkm', loadChildren: './pages/sxkm/sxkm.module#SxkmPageModule' },
-  // from tabs
+  // car pages
+  { path: 'cars', loadChildren: './pages/cars/cars.module#CarsPageModule' },
+  { path: 'car-detail', loadChildren: './pages/cars/car-detail/car-detail.module#CarDetailPageModule' },
+  { path: 'add-driver', loadChildren: './pages/cars/add-driver/add-driver.module#AddDriverPageModule' },
+  // tabs
   { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },
-  { path: 'detail', loadChildren: './tabs/trips/detail/detail.module#DetailPageModule' },
+  // tab pages
+  { path: 'trip-detail', loadChildren: './tabs/trips/trip-detail/trip-detail.module#TripDetailPageModule' },
   { path: 'levels', loadChildren: './tabs/rewards/levels/levels.module#LevelsPageModule' },
+  { path: 'conditions', loadChildren: './tabs/policy/conditions/conditions.module#ConditionsPageModule' },
 ];
 
 @NgModule({

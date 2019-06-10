@@ -1,0 +1,51 @@
+.habits {
+
+  &--header {
+    width: 100%;
+    padding: 1rem 1rem 1rem 1rem;
+    text-align: center;
+    div {
+      width: auto;
+      display: inline-block;
+      background-color: white;
+      border-radius: var(--ion-radius-card);
+      box-shadow: var(--ion-box-shadow);
+      padding: 1rem;
+      h1 {
+        font-family: var(--ion-font-headline);
+        font-size: 1rem;
+        font-weight: 700;
+        margin: 0;
+      }
+    }
+  }
+
+  &--content {
+    width: 100%;
+    padding: 1rem;
+    &-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1rem;
+      div {
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0.5rem;
+        // border: 1px solid var(--ion-color-secondary);
+        box-shadow: var(--ion-box-shadow);
+        img {
+          width: 50%;
+          display: inline-block;
+        }
+        p, b {
+          margin: 0.5rem;
+        }
+        p {
+          font-size: 0.9rem;
+          color: var(--ion-color-medium);
+        }
+      }
+    }
+  }
+
+}

@@ -1,44 +1,50 @@
 <ion-content>
 
-  <div class="trips--header">
-    <div class="trips--header-box">
-      <div class="trips--header-km">
-        <b>RECORRIDOS</b>
-        <p>1,487 km</p>
-      </div>
-      <div class="trips--header-filter">
-        <ion-select cancelText="Cerrar" interface="action-sheet">
-          <ion-select-option value="today" selected>Hoy</ion-select-option>
-          <ion-select-option value="this-week">Esta semana</ion-select-option>
-          <ion-select-option value="this-month">Este mes</ion-select-option>
-          <ion-select-option value="previous-month">Mes anterior</ion-select-option>
-        </ion-select>
+  <div class="tabs--bg"></div>
+  <div class="tabs--translate">
+
+    <div class="trips--header">
+      <div class="trips--header-content">
+        <div class="trips--header-km">
+          <b>RECORRIDOS</b>
+          <p>1,487 km</p>
+        </div>
+        <div class="trips--header-filter">
+          <ion-select cancelText="Cerrar" interface="action-sheet">
+            <ion-select-option value="today" selected>Hoy</ion-select-option>
+            <ion-select-option value="this-week">Esta semana</ion-select-option>
+            <ion-select-option value="this-month">Este mes</ion-select-option>
+            <ion-select-option value="previous-month">Mes anterior</ion-select-option>
+          </ion-select>
+        </div>
       </div>
     </div>
+    
+    <div class="trips--content">
+      <div class="trips--title">Viajes de Hoy</div>
+    
+      <ion-list class="trips--list">
+    
+        <ion-item class="trips--list-item" lines="none" mode="ios" routerLink="/trip-detail">
+          <div class="trips--list-map"></div>
+          <div class="trips--list-info">
+            <b>9.23 km</b>
+            <p>02/06/19 - 06:11 pm</p>
+          </div>
+        </ion-item>
+    
+        <ion-item class="trips--list-item" lines="none" mode="ios" routerLink="/trip-detail">
+          <div class="trips--list-map"></div>
+          <div class="trips--list-info">
+            <b>9.23 km</b>
+            <p>02/06/19 - 06:11 pm</p>
+          </div>
+        </ion-item>
+    
+      </ion-list>
+    </div>
+    
   </div>
 
-  <div class="trips--content">
-    <div class="trips--title">Viajes de Hoy</div>
-
-    <ion-list class="trips--list">
-
-      <ion-item class="trips--list-item" lines="none" mode="ios" routerLink="/detail">
-        <div class="trips--list-map"></div>
-        <div class="trips--list-info">
-          <b>9.23 km</b>
-          <p>02/06/19 - 06:11 pm</p>
-        </div>
-      </ion-item>
-
-      <ion-item class="trips--list-item" lines="none" mode="ios" routerLink="/detail">
-        <div class="trips--list-map"></div>
-        <div class="trips--list-info">
-          <b>9.23 km</b>
-          <p>02/06/19 - 06:11 pm</p>
-        </div>
-      </ion-item>
-
-    </ion-list>
-  </div>
 
 </ion-content>

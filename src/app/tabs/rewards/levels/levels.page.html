@@ -1,14 +1,77 @@
-<ion-header>
-  <ion-header>
-    <div class="header--simple">
-      <ion-button routerLink="/tabs/tabs/rewards" routerDirection="back" mode="ios" expand="block" fill="clear">
-        <ion-icon name="close" text="" color="dark"></ion-icon>
-      </ion-button>
-      <p>levels</p>
-    </div>
-  </ion-header>
+<ion-header mode="ios">
+  <div class="header--page" [style.backgroundColor]="uiColor">
+    <a routerLink="/tabs/tabs/rewards" routerDirection="back">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </a>
+  </div>
 </ion-header>
 
 <ion-content>
+
+  <ion-segment mode="md" [style.backgroundColor]="uiColor">
+    <ion-segment-button value="Novato" mode="md" (click)="uiSky()">
+      Novato
+    </ion-segment-button>
+    <ion-segment-button checked value="Guerrero" mode="md" (click)="uiYellow()">
+      Guerrero
+    </ion-segment-button>
+    <ion-segment-button value="Rockstar" mode="md" (click)="uiGreen()">
+      Rockstar
+    </ion-segment-button>
+    <ion-segment-button value="Leyenda" mode="md" (click)="uiBlue()">
+      Leyenda
+    </ion-segment-button>
+  </ion-segment>
+  <div class="levels--segment_overflow" [style.backgroundColor]="uiColor"></div>
+
+  <div class="levels--header">
+    <img src="../../../../assets/demo/level-icon.png" />
+    <b [style.color]="uiColor">Nivel</b>
+    <p>7000 - 15000 Puntos</p>
+  </div>
+
+  <div class="levels--benefits">
+
+    <div>
+      <div>
+        <span [style.backgroundColor]="uiColor"></span>
+      </div>
+      <div>
+        <b>Conductor designado</b>
+        <p>En caso de ebriedad</p>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <span [style.backgroundColor]="uiColor"></span>
+      </div>
+      <div>
+        <b>0% deducible</b>
+        <p>En caso de robo</p>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <span [style.backgroundColor]="uiColor"></span>
+      </div>
+      <div>
+        <b>Acelerador de pérdida total</b>
+        <p>50% en lugar del típico 70%</p>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <span [style.backgroundColor]="uiColor"></span>
+      </div>
+      <div>
+        <b>Acelerador de pérdida total</b>
+        <p>50% en lugar del típico 70%</p>
+      </div>
+    </div>
+
+  </div>
 
 </ion-content>

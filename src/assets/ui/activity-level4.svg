@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="208px" viewBox="0 0 64 208" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 12</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-12" transform="translate(4.000000, 2.000000)">
+            <g id="Group-7" transform="translate(9.000000, 0.000000)">
+                <path d="M19,41 L19,202" id="Line-4" stroke="#25BC36" stroke-width="8" stroke-linecap="square"></path>
+                <circle id="Oval" fill="#25BC36" cx="19" cy="19" r="19"></circle>
+            </g>
+            <g id="Group-8" transform="translate(0.000000, 2.000000)">
+                <ellipse id="indicator" stroke="#5285CD" stroke-width="8" fill="#5285CD" cx="28" cy="27" rx="28" ry="27"></ellipse>
+                <path d="M28,54 C12.536027,54 0,41.9116882 0,27 C0,12.0883118 12.536027,0 28,0 C43.463973,0 56,12.0883118 56,27 C56,41.9116882 43.463973,54 28,54 Z M35.4886593,30.1538558 L35.4886593,10.8462702 L29.0496472,10.8462702 L15.6644405,31.2383128 L15.9511089,35.1083354 L29.1158014,35.1083354 L29.1158014,41.8064516 L35.4886593,41.8064516 L35.4886593,35.1083354 L39.1271421,35.1083354 L39.1271421,30.1538558 L35.4886593,30.1538558 Z M22.015247,30.1538558 L28.6968246,19.9259388 L29.1158014,19.2242314 L29.1158014,30.1538558 L22.015247,30.1538558 Z" id="Combined-Shape" fill="#E6F0FD"></path>
+            </g>
+        </g>
+    </g>
+</svg>

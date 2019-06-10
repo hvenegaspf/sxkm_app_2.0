@@ -1,0 +1,57 @@
+<ion-header mode="ios">
+  <div class="header--modal">
+    <ion-icon name="ios-arrow-back" routerLink="/cars" routerDirection="back"></ion-icon>
+    <p>Agregar conductor</p>
+  </div>
+</ion-header>
+
+<ion-content>
+
+  <div class="invite">
+
+    <form #invite="ngForm" (ngSubmit)="onSubmit(invite)" class="form--simple">
+      <div>
+        <ion-item mode="ios">
+          <ion-label position="floating" mode="ios">Nombre</ion-label>
+          <ion-input type="text" name="inviteName" ngModel required #inviteName="ngModel">
+          </ion-input>
+        </ion-item>
+      </div>
+      <div>
+        <ion-text *ngIf="inviteName.touched && !inviteName.valid" color="danger">Por favor ingresa el nombre</ion-text>
+      </div>
+      <div>
+        <ion-item mode="ios">
+          <ion-label position="floating" mode="ios">Correo electrónico</ion-label>
+          <ion-input type="email" name="inviteEmail" ngModel email required #inviteEmail="ngModel">
+          </ion-input>
+        </ion-item>
+      </div>
+      <div>
+        <ion-text *ngIf="inviteEmail.touched && !inviteEmail.valid" color="danger">Por favor verifica el correo</ion-text>
+      </div>
+      <div>
+        <ion-button *ngIf="!invite.valid" fill="solid" expand="full" shape="round" mode="ios" disabled>Enviar
+        </ion-button>
+        <ion-button *ngIf="invite.valid" type="submit" fill="solid" expand="full" shape="round" mode="ios">Enviar
+        </ion-button>
+      </div>
+    </form>
+
+    <div *ngIf="showAlert" class="invite--alert">
+      <div class="invite--alert-content">
+        <header>
+          <img src="../../../../assets/ui/check-green.png" />
+          <p>Invitación enviada</p>
+        </header>
+        <ion-text>Se envió al correo electrónico user@domain.com</ion-text>
+        <div>
+          <ion-button fill="solid" expand="full" shape="round" mode="ios" routerLink="/cars" routerDirection="back">OK
+          </ion-button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>

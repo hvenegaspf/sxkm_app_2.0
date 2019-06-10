@@ -1,3 +1,187 @@
 <ion-content>
-  <h1>rewards</h1>
+
+  <div class="tabs--bg"></div>
+  <div class="tabs--translate">
+    
+    <div class="rewards--header">
+      <div class="rewards--header-icon">
+        <img src="../../../assets/demo/level-icon.png" />
+      </div>
+      <div class="rewards--header-content">
+
+        <!-- asignar color con clase color-[color] -->
+        <h2 class="color--yellow">Guerrero</h2>
+
+        <div class="rewards--header-info">
+          <div class="rewards--header-points">
+            <div class="rewards--header-points_svg">
+
+              <!-- colocar los colores correspondientes dependiendo del nivel del usuario -->
+              <!--
+                sky: #0cc1f9 #DAF2FC
+                blue: #5387d1 #E6F0FD
+                yellow: #ffbb01 #FFEFC3
+                green: #2ec23b #E6FDE8
+              -->
+              <circle-progress [percent]="73" [title]="2" [titleColor]="'#ffbb01'" [outerStrokeColor]="'#ffbb01'" [backgroundColor]="'#FFEFC3'"></circle-progress>
+            </div>
+            <p>7,250 Puntos</p>
+          </div>
+          <a routerLink="/levels"><span>BENEFICIOS</span><ion-icon name="ios-arrow-forward" color="medium"></ion-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="rewards--levels">
+      <div>
+        <img src="../../../assets/demo/level-icon.png" />
+        <!-- asignar color con clase color-[color] -->
+        <p class="color--sky">Novato</p>
+      </div>
+      <div>
+        <img src="../../../assets/demo/level-icon.png" />
+        <!-- asignar color con clase color-[color] -->
+        <p class="color--yellow">Guerrero</p>
+      </div>
+      <div>
+        <img src="../../../assets/demo/level-icon.png" />
+        <!-- asignar color con clase color-[color] -->
+        <p class="color--grey">Rockstar</p>
+      </div>
+      <div>
+        <img src="../../../assets/demo/level-icon.png" />
+        <!-- asignar color con clase color-[color] -->
+        <p class="color--grey">Leyenda</p>
+      </div>
+    </div>
+    
+    <div class="rewards--activity">
+      
+      <div class="rewards--activity-list">
+      
+        <!-- si es un puntaje negativo se agrega la classe 'negative' -->
+        <div class="rewards--activity-row negative">
+          <div>
+            <img src="../../../assets/ui/activity-yellow.svg" />
+          </div>
+          <div>
+            <p>-20 pts.</p>
+          </div>
+          <div>
+            <p>Frenado brusco</p>
+            <span>15 junio 2019</span>
+          </div>
+        </div>
+      
+        <div class="rewards--activity-row">
+          <div>
+            <img src="../../../assets/ui/activity-yellow.svg" />
+          </div>
+          <div>
+            <p>30 pts.</p>
+          </div>
+          <div>
+            <p>Una semana sin vueltas bruscas</p>
+            <span>9 junio 2019</span>
+          </div>
+        </div>
+      
+        <div class="rewards--activity-row">
+          <div>
+            <img src="../../../assets/ui/activity-yellow.svg" />
+          </div>
+          <div>
+            <p>60 pts.</p>
+          </div>
+          <div>
+            <p>Una semana sin velocidad excesiva</p>
+            <span>3 junio 2019</span>
+          </div>
+        </div>
+      
+        <div class="rewards--activity-row">
+          <div>
+            <img src="../../../assets/ui/activity-level2.svg" />
+          </div>
+          <div>
+            <p></p>
+          </div>
+          <div>
+            <p>Subiste a nivel Guerrero</p>
+            <span>22 mayo 2019</span>
+          </div>
+        </div>
+      
+        <div class="rewards--activity-row negative">
+          <div>
+            <img src="../../../assets/ui/activity-sky.svg" />
+          </div>
+          <div>
+            <p>-20 pts.</p>
+          </div>
+          <div>
+            <p>Acelerado brusco</p>
+            <span>11 mayo 2019</span>
+          </div>
+        </div>
+      
+        <div class="rewards--activity-row positive">
+          <div>
+            <img src="../../../assets/ui/activity-sky.svg" />
+          </div>
+          <div>
+            <p>30 pts.</p>
+          </div>
+          <div>
+            <p>Una semana sin vueltas bruscas</p>
+            <span>8 mayo 2019</span>
+          </div>
+        </div>
+      
+        <div class="rewards--activity-row negative">
+          <div>
+            <img src="../../../assets/ui/activity-sky.svg" />
+          </div>
+          <div>
+            <p>-15 pts.</p>
+          </div>
+          <div>
+            <p>Velocidad excesiva</p>
+            <span>2 mayo 2019</span>
+          </div>
+        </div>
+
+        <div class="rewards--activity-row">
+          <div>
+            <img src="../../../assets/ui/activity-level1.svg" />
+          </div>
+          <div>
+            <p></p>
+          </div>
+          <div>
+            <p>Subiste a nivel Novato</p>
+            <span>21 abril 2019</span>
+          </div>
+        </div>
+
+        <div class="rewards--activity-row">
+          <div>
+            <img src="../../../assets/ui/activity-grey.svg" />
+          </div>
+          <div>
+            <p>1000 pts.</p>
+          </div>
+          <div>
+            <p>Completaste tu perfil</p>
+            <span>21 abril 2019</span>
+          </div>
+        </div>
+      
+      </div>
+
+    </div>
+
+  </div>
+
 </ion-content>

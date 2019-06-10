@@ -1,0 +1,80 @@
+ion-content { position: relative; }
+
+.cars {
+
+  &--links {
+    width: 100%;
+    a {
+      width: 100%;
+      padding: 1rem;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--ion-color-dark);
+      border-bottom: 1px solid var(--ion-color-light-shade);
+      div {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(--ion-font-headline);
+        ion-icon {
+          margin-right: 0.5rem;
+        }
+      }
+      ion-icon {
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  &--new {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    width: 100%;
+    padding: 1rem;
+    color: white;
+    text-align: center;
+    background-color: var(--ion-color-secondary);
+    font-family: var(--ion-font-headline);
+    height: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    div {
+      position: relative;
+      width: 100%;
+    }
+    b {
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.25rem;
+      display: block;
+    }
+    i {
+      width: auto;
+      height: 2px;
+      display: inline-block; 
+      background-color: var(--ion-color-green);
+      position: absolute;
+      left: 45%;
+      right: 45%;
+      bottom: 0;
+    }
+    p {
+      font-size: 0.8rem;
+      display: inline-block;
+      width: 70%;
+    }
+    button, ion-button, a {
+      color: var(--ion-color-green);
+      margin: 1rem 0;
+    }
+  }
+
+}

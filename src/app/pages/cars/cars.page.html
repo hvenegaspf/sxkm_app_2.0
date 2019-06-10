@@ -1,0 +1,36 @@
+<ion-header mode="ios">
+  <div class="header--modal">
+    <ion-icon name="close" routerLink="/tabs/tabs/welcome" routerDirection="back"></ion-icon>
+    <p>Mis Autos</p>
+  </div>
+</ion-header>
+
+<ion-content>
+
+  <div class="cars--links">
+    <a routerLink="/car-detail" routerDirection="forward">
+      <div>
+        <ion-icon name="ios-car"></ion-icon>
+        <span>Mini Cooper</span>
+      </div>
+      <ion-icon name="ios-arrow-forward"></ion-icon>
+    </a>
+    <a routerLink="/car-detail" routerDirection="forward">
+      <div>
+        <ion-icon name="ios-car"></ion-icon>
+        <span>Tesla Model 3</span>
+      </div>
+      <ion-icon name="ios-arrow-forward"></ion-icon>
+    </a>
+  </div>
+
+  <div class="cars--new">
+    <div>
+      <b>¿Tienes otro auto?</b>
+      <i></i>
+    </div>
+    <p>Asegúralo con una tarifa preferencial por ser cliente de SXKM</p>
+    <ion-button color="green" expand="full" shape="round" fill="outline" mode="ios">Cotizar un nuevo auto</ion-button>
+  </div>
+
+</ion-content>

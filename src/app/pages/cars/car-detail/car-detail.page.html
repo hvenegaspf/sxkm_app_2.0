@@ -1,0 +1,55 @@
+<ion-header mode="ios">
+  <div class="header--modal">
+    <ion-icon name="ios-arrow-back" routerLink="/cars" routerDirection="back"></ion-icon>
+    <p>Mini Cooper</p>
+  </div>
+</ion-header>
+
+<ion-content>
+  <form class="form--disabled">
+
+    <div>
+      <ion-item mode="ios">
+        <ion-label position="floating" mode="ios">Marca</ion-label>
+        <ion-input value="Mini Cooper" disabled>
+        </ion-input>
+      </ion-item>
+    </div>
+
+    <div>
+      <ion-item mode="ios">
+        <ion-label position="floating" mode="ios">Año</ion-label>
+        <ion-input value="2016" disabled>
+        </ion-input>
+      </ion-item>
+    </div>
+
+    <div>
+      <ion-item mode="ios">
+        <ion-label position="floating" mode="ios">Model</ion-label>
+        <ion-input value="Countryman" disabled>
+        </ion-input>
+      </ion-item>
+    </div>
+
+    <div>
+      <ion-item mode="ios">
+        <ion-label position="floating" mode="ios">Versión</ion-label>
+        <ion-input value="Automático 4 puertas" disabled>
+        </ion-input>
+      </ion-item>
+    </div>
+
+    <div class="form--disabled-selector">
+      <b>Conductor</b>
+      <a (click)="onAddDriver()">
+        <div>
+          <ion-icon name="md-person"></ion-icon>
+          <span>Asignar conductor</span>
+        </div>
+        <ion-icon name="ios-arrow-down"></ion-icon>
+      </a>
+    </div>
+
+  </form>
+</ion-content>

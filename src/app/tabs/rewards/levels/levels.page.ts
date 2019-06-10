@@ -7,9 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LevelsPage implements OnInit {
 
+  uiColor: string = '#ffbb01';
+
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  // novato
+  uiSky() {
+    this.uiColor = '#0cc1f9';
+  }
+  // guerrero
+  uiYellow() {
+    this.uiColor = '#ffbb01';
+  }
+  // rockstar
+  uiGreen() {
+    this.uiColor = '#2ec23b';
+  }
+  // leyenda
+  uiBlue() {
+    this.uiColor = '#5387d1';
   }
 
 }

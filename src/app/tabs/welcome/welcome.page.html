@@ -1,3 +1,65 @@
 <ion-content>
-  <h1>welcome</h1>
+  <div class="tabs--bg"></div>
+  <div class="tabs--translate">
+
+    <div class="welcome--header">
+      <div class="welcome--header-content">
+        <div class="welcome--header-status">
+          <img src="../../../assets/demo/circle-status-ok.svg" />
+        </div>
+        <div class="welcome--header-label">
+          <p class="color--green">Activado</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="welcome--widgets">
+
+      <!-- Availability widget -->
+      <div class="widget widget--available">
+        <div class="widget--available-header">
+          <div>
+            <p>Disponibles</p>
+            <b>232 km</b>
+          </div>
+          <a>
+            <span>Renovar</span>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+          </a>
+        </div>
+        <div class="widget--available-indicator">
+          <span style="width: 33%;"></span>
+        </div>
+        <div class="widget--available-footer">
+          <b>Recorrido</b>
+          <b>786 km</b>
+        </div>
+      </div>
+
+      <!-- Subscription widget -->
+      <div class="widget widget--subscribe">
+        <div>
+          <b>Suscripción</b>
+          <a>
+            <span>Renovar</span>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+          </a>
+        </div>
+        <p>Vigencia 76 días - 28/08/19</p>
+      </div>
+
+      <!-- LevelUp widget -->
+      <div class="widget widget--level">
+        <a routerLink="/tabs/tabs/rewards">
+          <div>
+            <img src="../../../assets/demo/level-icon.png" />
+            <span>Subiste a nivel Guerrero</span>
+          </div>
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
 </ion-content>
