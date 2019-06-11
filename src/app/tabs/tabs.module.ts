@@ -6,7 +6,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { TabsRoutingModule } from './tabs-routing.module';
 import { TabsPage } from './tabs.page';
-import { CarSelectorComponent } from '../modals/car-selector/car-selector.component'
+import { CarSelectorComponent } from '../modals/car-selector/car-selector.component';
+import { SosModalComponent } from '../modals/sos-modal/sos-modal.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { CarSelectorComponent } from '../modals/car-selector/car-selector.compon
     IonicModule,
     TabsRoutingModule,
   ],
-  declarations: [TabsPage, CarSelectorComponent],
-  entryComponents: [CarSelectorComponent]
+  declarations: [TabsPage, SosModalComponent, CarSelectorComponent],
+  entryComponents: [SosModalComponent, CarSelectorComponent]
 })
 export class TabsPageModule {}

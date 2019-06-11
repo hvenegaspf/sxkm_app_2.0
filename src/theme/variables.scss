@@ -177,9 +177,12 @@ img { display: block; }
   &--grey { color: var(--ion-color-medium) !important; }
 }
 .actionsheet {
-  --color: var(--ion-color-sky);
+  --color: var(--ion-color-green);
   text-align: left !important;
 }
 .action-sheet-title {
   color: var(--ion-color-medium) !important;
+}
+.action-sheet-cancel {
+  color: var(--ion-color-dark) !important;
 }

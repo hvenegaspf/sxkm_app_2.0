@@ -1,13 +1,13 @@
+<ion-header mode="ios">
+  <div class="header--clean">
+    <ion-icon name="close" routerLink="/password" routerDirection="back"></ion-icon>
+    <p>Recupera tu contraseña</p>
+  </div>
+</ion-header>
+
 <ion-content>
 
   <div class="reset">
-  
-    <div class="header--simple">
-      <ion-button routerLink="/password" routerDirection="back" mode="ios" expand="block" fill="clear">
-        <ion-icon name="arrow-back" text="" color="dark"></ion-icon>
-      </ion-button>
-      <p>Recupera tu contraseña</p>
-    </div>
   
     <form #reset="ngForm" (ngSubmit)="onSubmit(password)" class="form--simple">
       <div>

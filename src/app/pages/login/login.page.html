@@ -1,13 +1,14 @@
+<ion-header mode="ios">
+  <div class="header--clean">
+    <ion-icon name="close" routerLink="/" routerDirection="back"></ion-icon>
+    <p>Inicia sesión</p>
+  </div>
+</ion-header>
+
+
 <ion-content>
 
   <div class="login">
-
-    <div class="header--simple">
-      <ion-button routerLink="/" routerDirection="back" mode="ios" expand="block" fill="clear">
-        <ion-icon name="close" text="" color="dark"></ion-icon>
-      </ion-button>
-      <p>inicia sesión</p>
-    </div>
     
     <form #login="ngForm" (ngSubmit)="onSubmit(login)" class="form--simple">
       <div>

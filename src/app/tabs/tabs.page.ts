@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
-import { SosModalComponent } from './sos/sos-modal/sos-modal.component';
+import { SosModalComponent } from '../modals/sos-modal/sos-modal.component';
 
 @Component({
   selector: 'app-tabs',
@@ -19,7 +19,7 @@ export class TabsPage implements OnInit {
 
   ngOnInit() { }
 
-  openModal() {
+  onClickSos() {
     this.modalCtlr.create({ component: SosModalComponent }).then(modal => { modal.present(); });
   }
 
