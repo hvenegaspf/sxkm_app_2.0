@@ -5,7 +5,7 @@
 :root {
   --ion-color-primary: #2ec23b;
   --ion-color-primary-rgb: 46,194,59;
-  --ion-color-primary-contrast: #111111;
+  --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 17,17,17;
   --ion-color-primary-shade: #28ab34;
   --ion-color-primary-tint: #43c84f;
@@ -168,13 +168,17 @@ img { display: block; }
   &--yellow { color: var(--ion-color-yellow) !important; }
   &--green { color: var(--ion-color-green) !important; }
   &--grey { color: var(--ion-color-medium) !important; }
+  &--white { color: white !important; }
+  &--dark { color: var(--ion-color-secondary) !important; }
 }
 .bg {
   &--sky { background-color: var(--ion-color-sky) !important; }
   &--blue { background-color: var(--ion-color-blue) !important; }
   &--yellow { background-color: var(--ion-color-yellow) !important; }
   &--green { background-color: var(--ion-color-green) !important; }
-  &--grey { color: var(--ion-color-medium) !important; }
+  &--grey { background-color: var(--ion-color-medium) !important; }
+  &--white { background-color: white !important; }
+  &--dark { background-color: var(--ion-color-secondary) !important; }
 }
 .actionsheet {
   --color: var(--ion-color-green);

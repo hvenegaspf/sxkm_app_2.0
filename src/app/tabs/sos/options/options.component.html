@@ -1,0 +1,48 @@
+<ion-header mode="ios">
+  <div class="header--clean bg--dark color--white">
+    <ion-icon name="close" (click)="closeModal()"></ion-icon>
+    <p>¿Qué necesitas?</p>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="sos--options">
+
+    <div class="sos--list">
+
+      <a class="sos--list-item" (click)="closeModal()" routerLink="/confirm-phone" routerDirection="forward">
+        <div><img src="../../../assets/ui/sos-battery.png" /></div>
+        <p>Batería baja</p>
+      </a>
+      <a class="sos--list-item" (click)="closeModal()" routerLink="/confirm-phone" routerDirection="forward">
+        <div><img src="../../../assets/ui/sos-tire.png" /></div>
+        <p>Cambio de llanta</p>
+      </a>
+      <a class="sos--list-item" (click)="closeModal()" routerLink="/confirm-phone" routerDirection="forward">
+        <div><img src="../../../assets/ui/sos-fuel.png" /></div>
+        <p>Combustible</p>
+      </a>
+      <a class="sos--list-item" (click)="closeModal()" routerLink="/confirm-phone" routerDirection="forward">
+        <div><img src="../../../assets/ui/sos-driver.png" /></div>
+        <p>Conductor</p>
+      </a>
+      <a class="sos--list-item" (click)="closeModal()" routerLink="/confirm-phone" routerDirection="forward">
+        <div><img src="../../../assets/ui/sos-crane.png" /></div>
+        <p>Solicitar grúa</p>
+      </a>
+      <a class="sos--list-item" (click)="closeModal()" routerLink="/confirm-phone" routerDirection="forward">
+        <div><img src="../../../assets/ui/sos-call.png" /></div>
+        <p>Llamar a SXKM</p>
+      </a>
+
+    </div>
+
+    <div class="sos--bottom">
+      <a class="sos--list-item" (click)="closeModal()" routerLink="/confirm-phone" routerDirection="forward">
+        <div><img src="../../../assets/ui/sos-crash.png" /></div>
+        <p>Robo o accidente</p>
+      </a>
+    </div>
+
+  </div>
+</ion-content>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
-import { SosModalComponent } from '../modals/sos-modal/sos-modal.component';
+import { OptionsComponent } from '../tabs/sos/options/options.component';
 
 @Component({
   selector: 'app-tabs',
@@ -20,7 +20,7 @@ export class TabsPage implements OnInit {
   ngOnInit() { }
 
   onClickSos() {
-    this.modalCtlr.create({ component: SosModalComponent }).then(modal => { modal.present(); });
+    this.modalCtlr.create({ component: OptionsComponent }).then(modal => { modal.present(); });
   }
 
   async onClickSelector() {
@@ -57,6 +57,5 @@ export class TabsPage implements OnInit {
     });
     await actionSheet.present();
   }
-
 
 }

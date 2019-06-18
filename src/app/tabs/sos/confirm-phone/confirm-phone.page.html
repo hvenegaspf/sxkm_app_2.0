@@ -1,0 +1,33 @@
+<ion-header mode="ios">
+  <div class="header--clean">
+    <ion-icon name="close" routerLink="/tabs/tabs/" routerDirection="back"></ion-icon>
+    <p>Solicitar [servicio]</p>
+  </div>
+</ion-header>
+
+
+<ion-content>
+
+  <div class="confirm">
+
+    <form #confirm="ngForm" (ngSubmit)="onSubmit(confirm)" class="form--simple">
+      <p>Confirma tu teléfono para poder contactarte</p>
+      <div>
+        <ion-item mode="ios">
+          <ion-label position="floating" mode="ios">Número móvil</ion-label>
+          <ion-input type="text" name="phone" ngModel required #confirm="ngModel">
+          </ion-input>
+        </ion-item>
+      </div>
+      <div>
+        <ion-text *ngIf="confirm.touched && !confirm.valid" color="danger">Por favor verifica tu número telefónico</ion-text>
+      </div>
+      <div>
+        <ion-button *ngIf="!confirm.valid" fill="solid" expand="full" shape="round" mode="ios" disabled>Siguiente</ion-button>
+        <ion-button *ngIf="confirm.valid" fill="solid" expand="full" shape="round" mode="ios" routerLink="/report-success">Siguiente</ion-button>
+      </div>
+    </form>
+
+  </div>
+
+</ion-content>

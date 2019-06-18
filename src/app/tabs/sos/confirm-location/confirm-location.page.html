@@ -1,0 +1,19 @@
+<ion-content>
+
+  <div class="confirm--map"></div>
+
+  <div class="confirm--button">
+    <ion-button (click)="showAlertModal()" color="primary" expand="full" shape="round" mode="ios">Confirmar</ion-button>
+  </div>
+
+  <div *ngIf="showAlert" class="confirm--alert">
+    <div class="confirm--alert-content">
+      <ion-text>Asegúrate que tu ubicación sea correcta</ion-text>
+      <div>
+        <ion-button (click)="closeAlertModal()" fill="clear" color="white" expand="block" shape="round" mode="ios">Cancelar</ion-button>
+        <ion-button routerLink="/tabs/tabs/welcome" routerDirection="back" fill="solid" color="primary" expand="block" shape="round" mode="ios">Confirmar</ion-button>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

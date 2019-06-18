@@ -5,14 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { WelcomePage } from './welcome.page';
-import { TrackingComponent } from '../sos/tracking/tracking.component';
-
+import { ConfirmLocationPage } from './confirm-location.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: WelcomePage
+    component: ConfirmLocationPage
   }
 ];
 
@@ -23,7 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [WelcomePage, TrackingComponent],
-  entryComponents: [TrackingComponent]
+  declarations: [ConfirmLocationPage]
 })
-export class WelcomePageModule {}
+export class ConfirmLocationPageModule {}

@@ -15,16 +15,20 @@ const routes: Routes = [
   { path: 'orders', loadChildren: './pages/orders/orders.module#OrdersPageModule' },
   { path: 'credentials', loadChildren: './pages/credentials/credentials.module#CredentialsPageModule' },
   { path: 'sxkm', loadChildren: './pages/sxkm/sxkm.module#SxkmPageModule' },
-  // car pages
-  { path: 'cars', loadChildren: './pages/cars/cars.module#CarsPageModule' },
-  { path: 'car-detail', loadChildren: './pages/cars/car-detail/car-detail.module#CarDetailPageModule' },
-  { path: 'add-driver', loadChildren: './pages/cars/add-driver/add-driver.module#AddDriverPageModule' },
   // tabs
   { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },
   // tab pages
   { path: 'trip-detail', loadChildren: './tabs/trips/trip-detail/trip-detail.module#TripDetailPageModule' },
   { path: 'levels', loadChildren: './tabs/rewards/levels/levels.module#LevelsPageModule' },
   { path: 'conditions', loadChildren: './tabs/policy/conditions/conditions.module#ConditionsPageModule' },
+  // sos pages
+  { path: 'confirm-phone', loadChildren: './tabs/sos/confirm-phone/confirm-phone.module#ConfirmPhonePageModule' },
+  { path: 'report-success', loadChildren: './tabs/sos/report-success/report-success.module#ReportSuccessPageModule' },
+  { path: 'confirm-location', loadChildren: './tabs/sos/confirm-location/confirm-location.module#ConfirmLocationPageModule' },
+  // car pages
+  { path: 'cars', loadChildren: './tabs/cars/cars.module#CarsPageModule' },
+  { path: 'car-detail', loadChildren: './tabs/cars/car-detail/car-detail.module#CarDetailPageModule' },
+  { path: 'add-driver', loadChildren: './tabs/cars/add-driver/add-driver.module#AddDriverPageModule' },
 ];
 
 @NgModule({

@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CarSelectorComponent } from './car-selector.component';
+import { ConfirmLocationPage } from './confirm-location.page';
 
-describe('CarSelectorComponent', () => {
-  let component: CarSelectorComponent;
-  let fixture: ComponentFixture<CarSelectorComponent>;
+describe('ConfirmLocationPage', () => {
+  let component: ConfirmLocationPage;
+  let fixture: ComponentFixture<ConfirmLocationPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CarSelectorComponent ],
+      declarations: [ ConfirmLocationPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CarSelectorComponent);
+    fixture = TestBed.createComponent(ConfirmLocationPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
