@@ -47,6 +47,8 @@
 
   &--available {
     width: 100%;
+    display: inline-block;
+    margin: 0.5rem 0;
     &-header {
       width: 100%;
       display: flex;
@@ -113,6 +115,8 @@
 
   &--subscribe {
     width: 100%;
+    display: inline-block;
+    margin: 0.5rem 0;
     div {
       width: 100%;
       display: flex;
@@ -143,6 +147,8 @@
 
   &--level {
     width: 100%;
+    display: inline-block;
+    margin: 0.5rem 0;
     a {
       width: 100%;
       display: flex;
@@ -169,8 +175,8 @@
 
   &--help {
     width: 100%;
-    display: block;
-    margin: 1rem 0;
+    display: inline-block;
+    margin: 0.5rem 0;
     &-content {
       width: 100%;
       border-radius: var(--ion-radius-card);
@@ -224,6 +230,38 @@
         ion-icon {
           display: block;
         }
+      }
+    }
+  }
+
+  &--alert {
+    width: 100%;
+    display: inline-block;
+    margin: 0.5rem 0;
+    &-content {
+      width: 100%;
+      padding: 1rem;
+      background-color: var(--ion-color-red-tint);
+      border: 1px solid var(--ion-color-red);
+      border-radius: var(--ion-radius-card);
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      div {
+        b {
+          font-size: 0.8rem;
+          color: var(--ion-color-red);
+          margin-bottom: 0.3rem;
+        }
+        p {
+          font-family: var(--ion-font-headline);
+          margin: 0;
+        }
+      }
+      ion-icon {
+        font-size: 1.3rem;
+        color: var(--ion-color-dark);
       }
     }
   }

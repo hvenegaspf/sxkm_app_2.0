@@ -21,16 +21,26 @@
 
 </ion-header>
 
+<!-- <ion-footer class="sos--button">
+  <div class="sos--button-container" (click)="onClickSos()">
+    <img src="../../assets/ui/SOS.png" />
+  </div>
+  <div class="sos--button-bg"></div>
+</ion-footer> -->
+
 <ion-content>
-  <!-- floating action -->
+  
+<!-- floating action -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="transparent" mode="ios" (click)="onClickSos()">
       <img src="../../assets/ui/SOS.png" />
     </ion-fab-button>
   </ion-fab>
+
   <!-- tabs -->
   <ion-tabs>
     <ion-tab-bar slot="bottom" mode="ios">
+
       <ion-tab-button tab="welcome">
         <ion-icon name="star-outline"></ion-icon>
         <ion-label>Status</ion-label>
@@ -55,6 +65,7 @@
         <ion-icon name="star-outline"></ion-icon>
         <ion-label>Póliza</ion-label>
       </ion-tab-button>
+
     </ion-tab-bar>
   </ion-tabs>
   <!-- - -->

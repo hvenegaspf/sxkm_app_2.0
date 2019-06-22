@@ -1,7 +1,7 @@
 // floating action
 ion-fab {
-  bottom: 4rem;
-  right: 16px;
+  bottom: 3rem;
+  right: 1.3rem;
 }
 ion-fab-button {
   background-color: transparent !important;
@@ -19,9 +19,11 @@ ion-header {
   background-color: var(--ion-color-secondary);
 }
 
+
 ion-tab-bar {
   --background: var(--ion-color-secondary);
   --color: white;
+  border-top: 1rem solid var(--ion-color-secondary);
 }
 ion-tab-button {
   --color-selected: rgba( 255,255,255, 0.2);
@@ -59,3 +61,26 @@ ion-tab-button {
   }
 
 }
+
+// .sos {
+//   &--button {
+//     // position: absolute;
+//     // left: 0;
+//     // right: 0;
+//     // bottom: 0;
+//     // z-index: 10;
+//     width: 100%;
+//     text-align: right;
+//     display: block;
+//     &-container {
+//       width: 18%;
+//       transform: translateY(-1rem);
+//       margin-right: 2rem;
+//     }
+//     &-bg {
+//       width: 100%;
+//       height: 6rem;
+//       background-color: var(--ion-color-secondary-tint);
+//     }
+//   }
+// }
