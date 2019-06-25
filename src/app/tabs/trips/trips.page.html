@@ -21,8 +21,17 @@
     </div>
     
     <div class="trips--content">
+
+      <!-- si la lista está vacía -->
+      <div class="trips--empty">
+        <div>
+          <img src="../../../assets/ui/icon-car-green.png" />
+        </div>
+        <p>Sin viajes realizados</p>
+      </div>
+
+      <!-- si existen viajes -->
       <div class="trips--title">Viajes de Hoy</div>
-    
       <ion-list class="trips--list">
     
         <ion-item class="trips--list-item" lines="none" mode="ios" routerLink="/trip-detail">
@@ -42,6 +51,7 @@
         </ion-item>
     
       </ion-list>
+
     </div>
     
   </div>

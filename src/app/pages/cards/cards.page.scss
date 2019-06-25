@@ -1,0 +1,53 @@
+
+.cards {
+
+  &--list {
+    width: 100%;
+    display: block;
+  }
+
+  &--add {
+    width: 100%;
+    margin: 0.5rem 0;
+    display: inline-block;
+    text-align: center;
+    ion-icon {
+      margin-right: 4px;
+    }
+    a {
+      width: auto;
+      padding: 1rem;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+}
+
+// ion-content {
+//   padding: 1rem;
+// }
+// .cards {
+
+//   &--test {
+//     width: 100%;
+//     display: block;
+//     padding: 1rem;
+//     margin: 1rem 0;
+//   }
+
+//   &--add {
+//     width: 100%;
+//     color: red;
+//   }
+
+//   &--list {
+//     width: 100%;
+//     display: block;
+//     padding: 1rem;
+//     margin: 1rem 0;
+//   }
+
+// }

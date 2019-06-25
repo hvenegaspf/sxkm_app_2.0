@@ -11,10 +11,13 @@ const routes: Routes = [
   // menu pages
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   { path: 'address', loadChildren: './pages/address/address.module#AddressPageModule' },
-  { path: 'payment', loadChildren: './pages/payment/payment.module#PaymentPageModule' },
   { path: 'orders', loadChildren: './pages/orders/orders.module#OrdersPageModule' },
   { path: 'credentials', loadChildren: './pages/credentials/credentials.module#CredentialsPageModule' },
   { path: 'sxkm', loadChildren: './pages/sxkm/sxkm.module#SxkmPageModule' },
+  // payment method pages
+  { path: 'cards', loadChildren: './pages/cards/cards.module#CardsPageModule' },
+  { path: 'add-card', loadChildren: './pages/cards/add-card/add-card.module#AddCardPageModule' },
+  { path: 'edit-card', loadChildren: './pages/cards/edit-card/edit-card.module#EditCardPageModule' },
   // tabs
   { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },
   // tab pages

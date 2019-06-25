@@ -92,4 +92,19 @@
     }
   }
 
+  &--empty {
+    width: 100%;
+    text-align: center;
+    margin: 1rem 0;
+    div {
+      width: 20%;
+      display: inline-block;
+      img { width: 100%; }
+    }
+    p {
+      font-family: var(--ion-font-headline);
+      color: var(--ion-color-medium);
+    }
+  }
+
 }

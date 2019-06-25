@@ -74,4 +74,29 @@
     }
   }
 
+  &--habits {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    margin: 1rem 0;
+    &-item {
+      padding: 0.5rem;
+      text-align: center;
+      img {
+        display: inline-block;
+        width: 50%;
+      }
+      p {
+        margin: 0.5rem 0;
+        font-size: 0.8rem;
+        color: var(--ion-color-medium);
+      }
+      b {
+        font-family: var(--ion-font-headline);
+        font-size: 0.9rem;
+      }
+    }
+  }
+
 }

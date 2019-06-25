@@ -1,0 +1,47 @@
+<ion-header mode="ios">
+  <div class="header--clean">
+    <ion-icon name="close" routerLink="/tabs/tabs/welcome" routerDirection="back"></ion-icon>
+    <p>Métodos de pago</p>
+  </div>
+</ion-header>
+
+<ion-content>
+
+  <div class="cards--empty"></div>
+
+  <div class="cards--list">
+
+    <div class="simple-block" routerLink="/edit-card">
+      <div>
+        <img src="../../../assets/payment/card-master.png" />
+        <p>Bancomer ***8756</p>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </div>
+    </div>
+
+    <div class="simple-block" routerLink="/edit-card">
+      <div>
+        <img src="../../../assets/payment/card-amex.png" />
+        <p>American Express ***9283</p>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </div>
+    </div>
+
+    <div class="simple-block" routerLink="/edit-card">
+      <div>
+        <img src="../../../assets/payment/card-visa.png" />
+        <p>Santander ***1243</p>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cards--add">
+    <a routerLink="/add-card">
+      <ion-icon name="md-add"></ion-icon>
+      <span>Agregar tarjeta</span>
+    </a>
+  </div>
+
+</ion-content>
