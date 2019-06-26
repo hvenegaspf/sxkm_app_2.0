@@ -35,4 +35,28 @@
     }
   }
 
+  &--double_icon {
+    width: 100%;
+    padding: 1rem;
+    background-color: white;
+    text-align: center;
+    position: relative;
+    ion-icon {
+      position: absolute;
+      top: 0;
+      font-size: 1.3rem;
+      padding: 1rem;
+      z-index: 1;
+      &:first-of-type { left: 0; }
+      &:last-of-type { right: 0; }
+    }
+    p {
+      margin: 0;
+      display: inline-block;
+      font-family: var(--ion-font-headline);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+  }
+
 }

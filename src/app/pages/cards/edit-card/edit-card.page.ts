@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActionSheetController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-card',
@@ -7,9 +9,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditCardPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private actionSheetController: ActionSheetController,
+  ) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  async onClickOptions() {
+    const actionSheet = await this.actionSheetController.create({
+      cssClass: 'actionsheet',
+      buttons: [
+        {
+          text: 'Eliminar',
+          role: 'destructive',
+          handler: () => {
+            console.log('Remove card');
+          }
+        },
+        {
+          text: 'Editar',
+          handler: () => {
+            console.log('Edit card');
+          }
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        },
+      ],
+    });
+    await actionSheet.present();
   }
 
 }
