@@ -1,0 +1,62 @@
+<ion-header mode="ios">
+  <div class="header--clean">
+    <ion-icon name="ios-arrow-back" routerLink="/purchase/purchase-options" routerDirection="back"></ion-icon>
+    <p>Agregar tarjeta</p>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="add--card">
+      <form class="add--form">
+      
+        <div class="add--full">
+          <ion-item class="add--input" mode="ios">
+            <ion-label position="floating" mode="ios">Nombre del titular</ion-label>
+            <ion-input type="text" name="card-holder" placeholder="Nombre en tarjeta" required></ion-input>
+          </ion-item>
+        </div>
+      
+        <div class="add--full">
+          <ion-item class="add--input" mode="ios">
+            <ion-label position="floating" mode="ios">Número de tarjeta</ion-label>
+            <ion-input type="text" name="card-number" placeholder="**** **** **** ****" required></ion-input>
+            <img src="../../../../assets/payment/card-master.png" />
+          </ion-item>
+        </div>
+      
+        <div class="add--half">
+          <ion-item class="add--input" mode="ios">
+            <ion-label position="floating" mode="ios">Expiración</ion-label>
+            <ion-datetime displayFormat="MM YY" pickerFormat="MM YY" min="2019" max="2024" placeholder="12 / 21">
+            </ion-datetime>
+          </ion-item>
+        </div>
+      
+        <div class="add--half">
+          <ion-item class="add--input" mode="ios">
+            <ion-label position="floating" mode="ios">CVV</ion-label>
+            <ion-input type="password" name="card-cvv" placeholder="***" required></ion-input>
+          </ion-item>
+          <ion-icon name="md-help-circle-outline" (click)="onClickHelp()"></ion-icon>
+        </div>
+      
+        <div class="add--button add--full">
+          <ion-button color="primary" shape="round" fill="solid" routerLink="/cards" routerDirection="back">Guardar</ion-button>
+        </div>
+      
+      </form>
+
+      <div *ngIf="showMessage" class="add--notification">
+        <div class="add--notification-content">
+          <div class="add--notification-bg" (click)="onCloseHelp()"></div>
+          <div class="add--notification-message">
+            <h4>CVV</h4>
+            <p>Es el código de 3 dígitos ubicado al reverso de tu tarjeta</p>
+            <img src="../../../../assets/ui/icon-cvv.png" />
+            <ion-button color="primary" shape="round" fill="solid" size="full" (click)="onCloseHelp()">Ok</ion-button>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</ion-content>

@@ -18,6 +18,14 @@ const routes: Routes = [
   { path: 'cards', loadChildren: './pages/cards/cards.module#CardsPageModule' },
   { path: 'add-card', loadChildren: './pages/cards/add-card/add-card.module#AddCardPageModule' },
   { path: 'edit-card', loadChildren: './pages/cards/edit-card/edit-card.module#EditCardPageModule' },
+  // purchase pages
+  { path: 'recharge', loadChildren: './pages/purchase/recharge/recharge.module#RechargePageModule' },
+  { path: 'add-payment', loadChildren: './pages/purchase/add-payment/add-payment.module#AddPaymentPageModule' },
+  { path: 'purchase-cash', loadChildren: './pages/purchase/purchase-cash/purchase-cash.module#PurchaseCashPageModule' },
+  { path: 'purchase-confirm', loadChildren: './pages/purchase/purchase-confirm/purchase-confirm.module#PurchaseConfirmPageModule' },
+  { path: 'purchase-options', loadChildren: './pages/purchase/purchase-options/purchase-options.module#PurchaseOptionsPageModule' },
+  { path: 'purchase-reference', loadChildren: './pages/purchase/purchase-reference/purchase-reference.module#PurchaseReferencePageModule' },
+  { path: 'purchase-success', loadChildren: './pages/purchase/purchase-success/purchase-success.module#PurchaseSuccessPageModule' },
   // tabs
   { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },
   // tab pages

@@ -1,0 +1,73 @@
+<ion-header mode="ios">
+    <div class="header--clean">
+      <ion-icon name="ios-arrow-back" routerLink="/purchase-options" routerDirection="back"></ion-icon>
+      <p>Selecciona tu lugar de pago</p>
+    </div>
+  </ion-header>
+  
+  <ion-content>
+  
+    
+    <div class="padding">
+      <div class="purchase-block">
+        <div class="purchase-block-content">
+          <div class="purchase-block-main">
+            <div>
+              <b class="color--green">5,000 km</b>
+              <p>6 meses de vigencia</p>
+            </div>
+            <div>
+              <b>$490</b>
+              <p>$0.49 / km</p>
+            </div>
+          </div>
+          <div class="purchase-block-method">
+            <div>
+              <img src="../../../assets/payment/card-master.png" />
+              <p>Efectivo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="options--empty">
+      <p>No tienes tarjetas registradas</p>
+    </div>
+  
+    <div class="options--list">
+  
+      <div class="simple-block" routerLink="/purchase-confirm">
+        <div>
+          <img src="../../../assets/payment/card-master.png" />
+          <p>Bancomer ***8756</p>
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </div>
+      </div>
+  
+      <div class="simple-block" routerLink="/purchase-confirm">
+        <div>
+          <img src="../../../assets/payment/card-amex.png" />
+          <p>American Express ***9283</p>
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </div>
+      </div>
+  
+      <div class="simple-block" routerLink="/purchase-confirm">
+        <div>
+          <img src="../../../assets/payment/card-visa.png" />
+          <p>Santander ***1243</p>
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="options--add">
+      <a routerLink="/add-card">
+        <ion-icon name="md-add"></ion-icon>
+        <span>Agregar tarjeta</span>
+      </a>
+    </div>
+  
+  </ion-content>

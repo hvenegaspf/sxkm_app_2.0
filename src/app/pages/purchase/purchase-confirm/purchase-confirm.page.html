@@ -1,0 +1,67 @@
+<ion-header mode="ios">
+  <div class="header--clean">
+    <ion-icon name="ios-arrow-back" routerLink="/tabs/tabs/welcome" routerDirection="back"></ion-icon>
+    <p>Confirma tu pago</p>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="add--card">
+      <form class="add--form">
+      
+        <div class="add--full">
+
+          <div class="purchase-block">
+            <div class="purchase-block-content">
+              <div class="purchase-block-main">
+                <div>
+                  <b class="color--green">5,000 km</b>
+                  <p>6 meses de vigencia</p>
+                </div>
+                <div>
+                  <b>$490</b>
+                  <p>$0.49 / km</p>
+                </div>
+              </div>
+              <div class="purchase-block-method">
+                <div>
+                  <img src="../../../assets/payment/card-master.png" />
+                  <p>Bancomer ***8756</p>
+                </div>
+              </div>
+              <div class="purchase-block-cash">
+                <img src="../../../assets/payment/7eleven.png" />
+              </div>
+            </div>
+          </div>
+          
+          <div class="purchase-block-checkbox">
+            <label>
+              <input type="checkbox" />
+              <ion-icon name="ios-checkbox-outline"></ion-icon>
+              <b>Leyenda de renovación correspondiente al paquete seleccionado</b>
+            </label>
+          </div>
+
+        </div>
+      
+        <div class="add--button add--full">
+          <ion-button color="primary" shape="round" fill="solid" routerLink="/purchase-success" routerDirection="back">Pagar</ion-button>
+        </div>
+      
+      </form>
+
+      <!-- <div *ngIf="showMessage" class="add--notification">
+        <div class="add--notification-content">
+          <div class="add--notification-bg" (click)="onCloseHelp()"></div>
+          <div class="add--notification-message">
+            <h4>CVV</h4>
+            <p>Es el código de 3 dígitos ubicado al reverso de tu tarjeta</p>
+            <img src="../../../../assets/ui/icon-cvv.png" />
+            <ion-button color="primary" shape="round" fill="solid" size="full" (click)="onCloseHelp()">Ok</ion-button>
+          </div>
+        </div>
+      </div> -->
+
+  </div>
+</ion-content>

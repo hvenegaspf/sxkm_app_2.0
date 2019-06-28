@@ -1,19 +1,37 @@
 <ion-header mode="ios">
   <div class="header--clean">
     <ion-icon name="close" routerLink="/tabs/tabs/welcome" routerDirection="back"></ion-icon>
-    <p>Métodos de pago</p>
+    <p>¿Como prefieres pagar?</p>
   </div>
 </ion-header>
 
 <ion-content>
 
+  
+  <div class="padding">
+    <div class="purchase-block">
+      <div class="purchase-block-content">
+          <div class="purchase-block-main">
+            <div>
+              <b class="color--green">5,000 km</b>
+              <p>6 meses de vigencia</p>
+            </div>
+            <div>
+              <b>$490</b>
+              <p>$0.49 / km</p>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  
   <div class="options--empty">
     <p>No tienes tarjetas registradas</p>
   </div>
 
   <div class="options--list">
 
-    <div class="simple-block" routerLink="/edit-card">
+    <div class="simple-block" routerLink="/purchase-confirm">
       <div>
         <img src="../../../assets/payment/card-master.png" />
         <p>Bancomer ***8756</p>
@@ -21,7 +39,7 @@
       </div>
     </div>
 
-    <div class="simple-block" routerLink="/edit-card">
+    <div class="simple-block" routerLink="/purchase-confirm">
       <div>
         <img src="../../../assets/payment/card-amex.png" />
         <p>American Express ***9283</p>
@@ -29,7 +47,7 @@
       </div>
     </div>
 
-    <div class="simple-block" routerLink="/edit-card">
+    <div class="simple-block" routerLink="/purchase-confirm">
       <div>
         <img src="../../../assets/payment/card-visa.png" />
         <p>Santander ***1243</p>
