@@ -7,8 +7,9 @@
 
 <ion-content>
 
-  
-  <div class="padding">
+  <!-- recharge -->
+  <div class="options--info">
+
     <div class="purchase-block">
       <div class="purchase-block-content">
           <div class="purchase-block-main">
@@ -23,8 +24,23 @@
           </div>
       </div>
     </div>
+
+    <div class="purchase-block">
+      <div class="purchase-block-content">
+          <div class="purchase-block-main">
+            <div>
+              <b class="color--green">Suscripción</b>
+              <p>1 mes</p>
+            </div>
+            <div>
+              <b>$299</b>
+            </div>
+          </div>
+      </div>
+    </div>
+
   </div>
-  
+
   <div class="options--empty">
     <p>No tienes tarjetas registradas</p>
   </div>
@@ -55,10 +71,26 @@
       </div>
     </div>
 
+    <div class="simple-block" routerLink="/purchase-cash">
+      <div>
+        <img src="../../../assets/payment/cash-icon.svg" />
+        <p>Efectivo</p>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </div>
+    </div>
+
+    <div class="simple-block" routerLink="/purchase-cash">
+      <div>
+        <img src="../../../assets/payment/spei.png" />
+        <p>Transferencia</p>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </div>
+    </div>
+
   </div>
 
   <div class="options--add">
-    <a routerLink="/add-card">
+    <a routerLink="/add-payment">
       <ion-icon name="md-add"></ion-icon>
       <span>Agregar tarjeta</span>
     </a>

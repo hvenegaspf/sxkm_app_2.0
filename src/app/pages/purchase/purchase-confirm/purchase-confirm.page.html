@@ -7,9 +7,29 @@
 
 <ion-content>
   <div class="add--card">
-      <form class="add--form">
-      
-        <div class="add--full">
+    <form class="add--form">
+
+      <div class="add--full">
+
+        <div class="purchase-block">
+            <div class="purchase-block-content">
+              <div class="purchase-block-main">
+                <div>
+                  <b class="color--green">Suscripción</b>
+                  <p>1 mes</p>
+                </div>
+                <div>
+                  <b>$299</b>
+                </div>
+              </div>
+              <div class="purchase-block-method">
+                <div>
+                  <img src="../../../assets/payment/card-master.png" />
+                  <p>Bancomer ***8756</p>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div class="purchase-block">
             <div class="purchase-block-content">
@@ -25,8 +45,8 @@
               </div>
               <div class="purchase-block-method">
                 <div>
-                  <img src="../../../assets/payment/card-master.png" />
-                  <p>Bancomer ***8756</p>
+                  <img src="../../../assets/payment/cash-icon.svg" />
+                  <p>Efectivo</p>
                 </div>
               </div>
               <div class="purchase-block-cash">
@@ -34,34 +54,37 @@
               </div>
             </div>
           </div>
-          
+
+
           <div class="purchase-block-checkbox">
-            <label>
+            <label (click)="onAutoRenew()">
               <input type="checkbox" />
-              <ion-icon name="ios-checkbox-outline"></ion-icon>
+              <ion-icon [name]="!this.autoRenew ? 'ios-square-outline' : 'ios-checkbox-outline'"></ion-icon>
               <b>Leyenda de renovación correspondiente al paquete seleccionado</b>
             </label>
           </div>
 
         </div>
-      
+
         <div class="add--button add--full">
           <ion-button color="primary" shape="round" fill="solid" routerLink="/purchase-success" routerDirection="back">Pagar</ion-button>
         </div>
-      
+
       </form>
 
-      <!-- <div *ngIf="showMessage" class="add--notification">
-        <div class="add--notification-content">
-          <div class="add--notification-bg" (click)="onCloseHelp()"></div>
-          <div class="add--notification-message">
-            <h4>CVV</h4>
-            <p>Es el código de 3 dígitos ubicado al reverso de tu tarjeta</p>
-            <img src="../../../../assets/ui/icon-cvv.png" />
-            <ion-button color="primary" shape="round" fill="solid" size="full" (click)="onCloseHelp()">Ok</ion-button>
+      <!-- payment rejected alert -->
+      <div *ngIf="showAlert" class="reset--alert">
+        <div class="reset--alert-content">
+          <header>
+            <img src="../../../../assets/ui/icon-error-red.png" />
+            <p>Pago rechazado</p>
+          </header>
+          <ion-text>Tu transacción no pudo ser procesada. intenta de nuevo.</ion-text>
+          <div>
+            <ion-button fill="solid" expand="full" shape="round" mode="ios" (click)="onCloseAlert()">OK</ion-button>
           </div>
         </div>
-      </div> -->
+      </div>
 
   </div>
 </ion-content>

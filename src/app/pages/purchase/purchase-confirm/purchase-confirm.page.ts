@@ -7,18 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PurchaseConfirmPage implements OnInit {
 
-  showMessage: boolean = false;
+  autoRenew: boolean = false;
+  showAlert: boolean = false;
 
   constructor() { }
 
   ngOnInit() { }
 
-  onClickHelp() {
-    this.showMessage = true;
+  onAutoRenew() {
+    this.autoRenew = !this.autoRenew;
   }
 
-  onCloseHelp() {
-    this.showMessage = false;
+  onPaymentFailed() {
+    this.showAlert = true;
+  }
+
+  onCloseAlert() {
+    this.showAlert = false;
   }
 
 }

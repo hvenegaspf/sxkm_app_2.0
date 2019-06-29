@@ -1,6 +1,6 @@
 <ion-header mode="ios">
   <div class="header--clean">
-    <ion-icon name="ios-arrow-back" routerLink="/purchase/purchase-options" routerDirection="back"></ion-icon>
+    <ion-icon name="ios-arrow-back" routerLink="/purchase-options" routerDirection="back"></ion-icon>
     <p>Agregar tarjeta</p>
   </div>
 </ion-header>
@@ -8,14 +8,14 @@
 <ion-content>
   <div class="add--card">
       <form class="add--form">
-      
+
         <div class="add--full">
           <ion-item class="add--input" mode="ios">
             <ion-label position="floating" mode="ios">Nombre del titular</ion-label>
             <ion-input type="text" name="card-holder" placeholder="Nombre en tarjeta" required></ion-input>
           </ion-item>
         </div>
-      
+
         <div class="add--full">
           <ion-item class="add--input" mode="ios">
             <ion-label position="floating" mode="ios">Número de tarjeta</ion-label>
@@ -23,7 +23,7 @@
             <img src="../../../../assets/payment/card-master.png" />
           </ion-item>
         </div>
-      
+
         <div class="add--half">
           <ion-item class="add--input" mode="ios">
             <ion-label position="floating" mode="ios">Expiración</ion-label>
@@ -31,7 +31,7 @@
             </ion-datetime>
           </ion-item>
         </div>
-      
+
         <div class="add--half">
           <ion-item class="add--input" mode="ios">
             <ion-label position="floating" mode="ios">CVV</ion-label>
@@ -39,11 +39,11 @@
           </ion-item>
           <ion-icon name="md-help-circle-outline" (click)="onClickHelp()"></ion-icon>
         </div>
-      
+
         <div class="add--button add--full">
-          <ion-button color="primary" shape="round" fill="solid" routerLink="/cards" routerDirection="back">Guardar</ion-button>
+          <ion-button color="primary" shape="round" fill="solid" routerLink="/purchase-options" routerDirection="back">Guardar</ion-button>
         </div>
-      
+
       </form>
 
       <div *ngIf="showMessage" class="add--notification">
