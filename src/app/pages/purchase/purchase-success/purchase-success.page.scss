@@ -1,0 +1,135 @@
+ion-content { background-color: var(--ion-color-secondary); }
+.success {
+
+  &--layout {
+    width: 100%;
+    padding: 1.6rem;
+    background-color: var(--ion-color-secondary);
+    font-family: var(--ion-font-headline);
+    overflow: hidden;
+  }
+
+  &--container {
+    width: 100%;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 12px 12px 0 0;
+  }
+
+  &--header {
+    width: 100%;
+    text-align: center;
+    b {
+      display: block;
+      color: var(--ion-color-green);
+    }
+    p {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+    }
+    img {
+      width: 40%;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &--validity {
+    width: 100%;
+    display: inline-block;
+    margin: 1rem 0;
+    .green-block {
+      text-align: left;
+      padding: 0.5rem 1rem;
+      b {
+        color: var(--ion-color-medium);
+        font-size: 0.8rem;
+        font-weight: 400;
+      }
+      p {
+        margin: 0.25rem 0;
+        font-weight: 700;
+      }
+    }
+    .yellow-block {
+      text-align: center;
+      padding: 0.5rem 1rem;
+      p {
+        margin: 0;
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+    }
+  }
+
+  &--info {
+    width: 100%;
+    padding: 0.5rem 0;
+    div {
+      width: 100%;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      img {
+        display: inline-block;
+        height: 1rem;
+        margin-right: 0.5rem;
+      }
+      b { font-size: 0.85rem; }
+    }
+    &-reference {
+      width: 100%;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      div {
+        width: 48%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        img {
+          display: inline-block;
+          height: 1rem;
+          margin-right: 0.5rem;
+          & + img { height: 2rem; }
+        }
+        b { font-size: 0.9rem; }
+      }
+    }
+  }
+
+  &--footer {
+    width: 100%;
+    display: block;
+    padding: 1rem 0;
+    border-top: 1px solid var(--ion-color-medium);
+    p {
+      font-size: 0.8rem;
+      color: var(--ion-color-grey);
+      margin: 0.5rem 0;
+    }
+  }
+
+  &--close {
+    width: 100%;
+    height: 0;
+    overflow: visible;
+    text-align: center;
+    transform: translateY(-0.6rem);
+    ion-icon {
+      padding: 1rem;
+      color: white;
+      background-color: var(--ion-color-secondary);
+      font-size: 2rem;
+      border-radius: 99px;
+    }
+  }
+
+}

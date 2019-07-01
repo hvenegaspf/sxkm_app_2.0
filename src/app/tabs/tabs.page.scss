@@ -19,7 +19,6 @@ ion-header {
   background-color: var(--ion-color-secondary);
 }
 
-
 ion-tab-bar {
   --background: var(--ion-color-secondary);
   --color: white;
@@ -30,57 +29,15 @@ ion-tab-button {
   transition: all 0.3s linear;
 }
 
-.header {
-
-  &--avatar {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 99px;
-    border: 1px solid white;
-    overflow: hidden;
-    img { width: 100%; }
+.tabs {
+  &--bg {
+    height: 2.6rem;
+    background-color: var(--ion-color-secondary);
   }
-
-  &--selector {
-    a { color: white; }
-    ion-icon {
-      margin-left: 8px;
-      vertical-align: bottom;
-    }
+  &--translate {
+    animation: fadeInFromBottom 0.3s ease;
+    transform: translateY(-2.6rem);
   }
-
-  &--status {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 99px;
-    // border: 1px solid white;
-    overflow: hidden;
-    img {
-      width: 100%;
-    }
-  }
-
 }
 
-// .sos {
-//   &--button {
-//     // position: absolute;
-//     // left: 0;
-//     // right: 0;
-//     // bottom: 0;
-//     // z-index: 10;
-//     width: 100%;
-//     text-align: right;
-//     display: block;
-//     &-container {
-//       width: 18%;
-//       transform: translateY(-1rem);
-//       margin-right: 2rem;
-//     }
-//     &-bg {
-//       width: 100%;
-//       height: 6rem;
-//       background-color: var(--ion-color-secondary-tint);
-//     }
-//   }
-// }
+
