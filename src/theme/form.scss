@@ -1,5 +1,10 @@
 .form {
 
+  &--container {
+    width: 100%;
+    position: relative;
+  }
+
   &--simple {
     width: 100%;
     padding: 20vh 1rem 1rem 1rem;
@@ -42,7 +47,6 @@
         font-size: 13px;
         font-weight: 400;
         color: var(--ion-color-dark);
-        // opacity: 0.8;
         margin: 1rem 0 0.5rem 0;
       }
       a {
@@ -64,6 +68,24 @@
         }
       }
     }
+  }
+
+  &--validation {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    padding: 0.5rem;
+    background-color: var(--ion-color-red);
+    color: white;
+    font-family: var(--ion-font-headline);
+    animation: slideFromBottom 0.3s ease;
+    margin: 0 !important;
+    ion-text, p { margin: 0; }
   }
 
 }

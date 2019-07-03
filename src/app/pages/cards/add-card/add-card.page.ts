@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-card',
@@ -19,6 +20,10 @@ export class AddCardPage implements OnInit {
 
   onCloseHelp() {
     this.showMessage = false;
+  }
+
+  onSubmit(form: NgForm) {
+    console.log('submit add-card: ', form);
   }
 
 }

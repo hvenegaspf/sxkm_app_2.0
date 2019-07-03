@@ -7,8 +7,8 @@
 
 <ion-content>
 
-  <div class="reset">
-  
+  <div class="form--container reset">
+
     <form #reset="ngForm" (ngSubmit)="onSubmit(password)" class="form--simple">
       <div>
         <ion-item mode="ios">
@@ -23,8 +23,8 @@
           </ion-input>
         </ion-item>
       </div>
-      <div>
-        <ion-text *ngIf="reset.touched && !reset.valid" color="danger">Por favor verifica tu correo</ion-text>
+      <div class="form--validation" *ngIf="reset.touched && !reset.valid">
+        <ion-text>Por favor verifica tu correo</ion-text>
       </div>
       <div>
         <ion-button *ngIf="!reset.valid" fill="solid" expand="full" shape="round" mode="ios" disabled>Enviar</ion-button>
@@ -44,7 +44,7 @@
         </div>
       </div>
     </div>
-  
+
   </div>
 
 </ion-content>

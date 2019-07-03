@@ -30,7 +30,7 @@ export class EditCardPage implements OnInit {
         {
           text: 'Editar',
           handler: () => {
-            console.log('Edit card');
+            console.log('Edit card // remover el atributo *disabled* de los campos del form');
           }
         },
         {

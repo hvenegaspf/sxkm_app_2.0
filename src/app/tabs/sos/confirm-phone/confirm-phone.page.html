@@ -8,7 +8,7 @@
 
 <ion-content>
 
-  <div class="confirm">
+  <div class="form--container confirm">
 
     <form #confirm="ngForm" (ngSubmit)="onSubmit(confirm)" class="form--simple">
       <p>Confirma tu teléfono para poder contactarte</p>
@@ -19,8 +19,8 @@
           </ion-input>
         </ion-item>
       </div>
-      <div>
-        <ion-text *ngIf="confirm.touched && !confirm.valid" color="danger">Por favor verifica tu número telefónico</ion-text>
+      <div class="form--validation" *ngIf="confirm.touched && !confirm.valid">
+        <ion-text>Por favor verifica tu número telefónico</ion-text>
       </div>
       <div>
         <ion-button *ngIf="!confirm.valid" fill="solid" expand="full" shape="round" mode="ios" disabled>Siguiente</ion-button>

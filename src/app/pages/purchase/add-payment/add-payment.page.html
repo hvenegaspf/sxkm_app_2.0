@@ -7,19 +7,19 @@
 
 <ion-content>
   <div class="add--card">
-      <form class="add--form">
+      <form class="add--form" #addCard="ngForm" (ngSubmit)="onSubmit(addCard)">
 
         <div class="add--full">
           <ion-item class="add--input" mode="ios">
             <ion-label position="floating" mode="ios">Nombre del titular</ion-label>
-            <ion-input type="text" name="card-holder" placeholder="Nombre en tarjeta" required></ion-input>
+            <ion-input type="text" name="cardHolder" placeholder="Nombre en tarjeta" ngModel required #cardHolder="ngModel"></ion-input>
           </ion-item>
         </div>
 
         <div class="add--full">
           <ion-item class="add--input" mode="ios">
             <ion-label position="floating" mode="ios">Número de tarjeta</ion-label>
-            <ion-input type="text" name="card-number" placeholder="**** **** **** ****" required></ion-input>
+            <ion-input type="text" name="cardNumber" placeholder="**** **** **** ****" ngModel required #cardNumber="ngModel"></ion-input>
             <img src="../../../../assets/payment/card-master.png" />
           </ion-item>
         </div>
@@ -27,7 +27,7 @@
         <div class="add--half">
           <ion-item class="add--input" mode="ios">
             <ion-label position="floating" mode="ios">Expiración</ion-label>
-            <ion-datetime displayFormat="MM YY" pickerFormat="MM YY" min="2019" max="2024" placeholder="12 / 21">
+            <ion-datetime name="cardDate" displayFormat="MM YY" pickerFormat="MM YY" min="2019" max="2024" placeholder="12 / 21" ngModel required #cardDate="ngModel">
             </ion-datetime>
           </ion-item>
         </div>
@@ -35,13 +35,17 @@
         <div class="add--half">
           <ion-item class="add--input" mode="ios">
             <ion-label position="floating" mode="ios">CVV</ion-label>
-            <ion-input type="password" name="card-cvv" placeholder="***" required></ion-input>
+            <ion-input type="password" name="cardCvv" placeholder="***" ngModel required #cardCvv="ngModel"></ion-input>
           </ion-item>
           <ion-icon name="md-help-circle-outline" (click)="onClickHelp()"></ion-icon>
         </div>
 
         <div class="add--button add--full">
-          <ion-button color="primary" shape="round" fill="solid" routerLink="/purchase-options" routerDirection="back">Guardar</ion-button>
+          <ion-button color="primary" shape="round" fill="solid" routerLink="/cards" routerDirection="back">Guardar</ion-button>
+        </div>
+
+        <div class="form--validation" *ngIf="cardHolder.touched && !cardHolder.valid">
+          <ion-text>Mensaje de error correspondiente</ion-text>
         </div>
 
       </form>
