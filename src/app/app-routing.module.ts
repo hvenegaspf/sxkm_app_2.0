@@ -12,8 +12,13 @@ const routes: Routes = [
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   { path: 'address', loadChildren: './pages/address/address.module#AddressPageModule' },
   { path: 'orders', loadChildren: './pages/orders/orders.module#OrdersPageModule' },
-  { path: 'credentials', loadChildren: './pages/credentials/credentials.module#CredentialsPageModule' },
   { path: 'sxkm', loadChildren: './pages/sxkm/sxkm.module#SxkmPageModule' },
+  // credentials pages
+  { path: 'credentials', loadChildren: './pages/credentials/credentials.module#CredentialsPageModule' },
+  { path: 'nip-reset', loadChildren: './pages/credentials/nip-reset/nip-reset.module#NipResetPageModule' },
+  { path: 'nip-edit', loadChildren: './pages/credentials/nip-edit/nip-edit.module#NipEditPageModule' },
+  { path: 'password-edit', loadChildren: './pages/credentials/password-edit/password-edit.module#PasswordEditPageModule' },
+  { path: 'password-reset', loadChildren: './pages/credentials/password-reset/password-reset.module#PasswordResetPageModule' },
   // payment method pages
   { path: 'cards', loadChildren: './pages/cards/cards.module#CardsPageModule' },
   { path: 'add-card', loadChildren: './pages/cards/add-card/add-card.module#AddCardPageModule' },

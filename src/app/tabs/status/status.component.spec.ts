@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NitSetupComponent } from './nit-setup.component';
+import { StatusComponent } from './status.component';
 
-describe('NitSetupComponent', () => {
-  let component: NitSetupComponent;
-  let fixture: ComponentFixture<NitSetupComponent>;
+describe('StatusComponent', () => {
+  let component: StatusComponent;
+  let fixture: ComponentFixture<StatusComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NitSetupComponent ],
+      declarations: [ StatusComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NitSetupComponent);
+    fixture = TestBed.createComponent(StatusComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
