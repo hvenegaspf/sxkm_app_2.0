@@ -1,10 +1,67 @@
 <ion-header mode="ios">
-  <div class="header--clean">
-    <ion-icon name="close" routerLink="/tabs/tabs/welcome" routerDirection="back"></ion-icon>
-    <p>Profile</p>
+  <div class="header--page">
+    <a routerLink="/tabs/tabs/" routerDirection="back">
+      <ion-icon name="close"></ion-icon>
+    </a>
   </div>
 </ion-header>
 
 <ion-content>
+
+  <div class="profile--header">
+    <div class="profile--avatar">
+      <div class="profile--avatar-img">
+        <img src="../../../assets/demo/avatar.jpg" />
+      </div>
+      <label class="profile--upload">
+        <input type="file" accept="image/png, image/jpeg" />
+        <div>
+          <ion-icon name="ios-camera"></ion-icon>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <div class="profile--content">
+
+    <div class="profile--field" routerLink="/profile-edit">
+      <b>Nombre(s)</b>
+      <div>
+        <p>Jennifer</p>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </div>
+    </div>
+
+    <div class="profile--field" routerLink="/profile-edit">
+      <b>Apellido paterno</b>
+      <div>
+        <p>López</p>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </div>
+    </div>
+
+    <div class="profile--field" routerLink="/profile-edit">
+      <b>Apellido materno</b>
+      <div>
+        <p>López</p>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </div>
+    </div>
+
+    <div class="profile--field disabled">
+      <b>Teléfono</b>
+      <div>
+        <p>55 4433 2211</p>
+      </div>
+    </div>
+
+    <div class="profile--field disabled">
+      <b>Correo electrónico</b>
+      <div>
+        <p>jlo@email.com</p>
+      </div>
+    </div>
+
+  </div>
 
 </ion-content>

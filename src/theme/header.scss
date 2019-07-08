@@ -21,6 +21,16 @@
       font-size: 0.8rem;
       font-weight: 700;
     }
+    a {
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: var(--ion-color-green);
+      font-family: var(--ion-font-headline);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 1rem;
+    }
   }
 
   &--page {
