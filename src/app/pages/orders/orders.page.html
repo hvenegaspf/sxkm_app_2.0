@@ -1,10 +1,38 @@
 <ion-header mode="ios">
   <div class="header--clean">
     <ion-icon name="close" routerLink="/tabs/tabs/welcome" routerDirection="back"></ion-icon>
-    <p>Orders</p>
+    <p>Historial de pagos</p>
   </div>
 </ion-header>
 
 <ion-content>
+  <div class="order--list">
 
+    <ion-item class="order--item" lines="none" mode="ios" routerLink="/order-detail">
+      <div class="order--item-start">
+        <img src="../../../assets/ui/order-recharge.png" />
+        <div>
+          <b>Recarga 250 Kms</b>
+          <p>21/06/2019</p>
+        </div>
+      </div>
+      <div class="order--item-end">
+        <b>$140</b>
+      </div>
+    </ion-item>
+
+    <ion-item class="order--item" lines="none" mode="ios" routerLink="/order-detail">
+      <div class="order--item-start">
+        <img src="../../../assets/ui/order-subscription.png" />
+        <div>
+          <b>Suscripción</b>
+          <p>04/07/2019</p>
+        </div>
+      </div>
+      <div class="order--item-end">
+        <b>$299</b>
+      </div>
+    </ion-item>
+
+  </div>
 </ion-content>

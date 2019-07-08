@@ -1,9 +1,53 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>order-detail</ion-title>
-  </ion-toolbar>
+<ion-header mode="ios">
+  <div class="header--page">
+    <a routerLink="/orders" routerDirection="back">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </a>
+  </div>
 </ion-header>
 
 <ion-content>
+
+  <div class="order_detail--header">
+    <div>
+      <ion-icon name="ios-checkmark-circle-outline"></ion-icon>
+      <b>Pago procesado</b>
+    </div>
+    <p>Suscripción</p>
+    <img src="../../../../assets/ui/icon-shield-grey.png" />
+  </div>
+
+  <div class="order_detail--container">
+
+      <div class="order_detail--validity">
+        <div class="green-block">
+          <b>VIGENCIA</b>
+          <p>29 días - 30/07/2019</p>
+        </div>
+      </div>
+      <div class="order_detail--info">
+        <div>
+          <img src="../../../../assets/ui/purchase-money.png" />
+          <b>490.00</b>
+        </div>
+        <div>
+          <img src="../../../../assets/ui/purchase-card.png" />
+          <b>VISA **** **** **** 3424</b>
+        </div>
+        <div>
+          <img src="../../../../assets/ui/purchase-renovation.png" />
+          <b>Sin renovación</b>
+        </div>
+        <div>
+          <img src="../../../../assets/ui/purchase-calendar.png" />
+          <b>21/07/2019</b>
+        </div>
+      </div>
+
+      <div class="order_detail--footer">
+        <p>La renovación del paquete la puedes suspender desde tu perfil en cualquiewr momento.</p>
+      </div>
+
+  </div>
 
 </ion-content>
