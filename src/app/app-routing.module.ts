@@ -8,12 +8,19 @@ const routes: Routes = [
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'password', loadChildren: './pages/login/password/password.module#PasswordPageModule' },
   { path: 'reset', loadChildren: './pages/login/reset/reset.module#ResetPageModule' },
-  // menu pages
+  // profile pages
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
+  { path: 'profile-edit', loadChildren: './pages/profile/profile-edit/profile-edit.module#ProfileEditPageModule' },
   { path: 'address', loadChildren: './pages/address/address.module#AddressPageModule' },
+  // order pages
   { path: 'orders', loadChildren: './pages/orders/orders.module#OrdersPageModule' },
+  { path: 'order-detail', loadChildren: './pages/orders/order-detail/order-detail.module#OrderDetailPageModule' },
+  // credentials pages
   { path: 'credentials', loadChildren: './pages/credentials/credentials.module#CredentialsPageModule' },
-  { path: 'sxkm', loadChildren: './pages/sxkm/sxkm.module#SxkmPageModule' },
+  { path: 'nip-reset', loadChildren: './pages/credentials/nip-reset/nip-reset.module#NipResetPageModule' },
+  { path: 'nip-edit', loadChildren: './pages/credentials/nip-edit/nip-edit.module#NipEditPageModule' },
+  { path: 'password-edit', loadChildren: './pages/credentials/password-edit/password-edit.module#PasswordEditPageModule' },
+  { path: 'password-reset', loadChildren: './pages/credentials/password-reset/password-reset.module#PasswordResetPageModule' },
   // payment method pages
   { path: 'cards', loadChildren: './pages/cards/cards.module#CardsPageModule' },
   { path: 'add-card', loadChildren: './pages/cards/add-card/add-card.module#AddCardPageModule' },
@@ -26,6 +33,10 @@ const routes: Routes = [
   { path: 'purchase-options', loadChildren: './pages/purchase/purchase-options/purchase-options.module#PurchaseOptionsPageModule' },
   { path: 'purchase-reference', loadChildren: './pages/purchase/purchase-reference/purchase-reference.module#PurchaseReferencePageModule' },
   { path: 'purchase-success', loadChildren: './pages/purchase/purchase-success/purchase-success.module#PurchaseSuccessPageModule' },
+  // sxkm pages
+  { path: 'sxkm', loadChildren: './pages/sxkm/sxkm.module#SxkmPageModule' },
+  { path: 'privacy', loadChildren: './pages/sxkm/privacy/privacy.module#PrivacyPageModule' },
+  { path: 'terms', loadChildren: './pages/sxkm/terms/terms.module#TermsPageModule' },
   // tabs
   { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },
   // tab pages

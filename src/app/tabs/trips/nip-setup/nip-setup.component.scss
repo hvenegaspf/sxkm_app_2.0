@@ -1,0 +1,48 @@
+.nip {
+
+  &--container {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  &--header {
+    width: 100%;
+    text-align: center;
+  }
+
+  &--dismiss {
+    width: 100%;
+    text-align: right;
+    font-family: var(--ion-font-headline);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin: 1rem 0;
+    a, button {
+      color: var(--ion-color-medium);
+      font-weight: 700;
+    }
+  }
+
+  &--icon {
+    width: 100%;
+    text-align: center;
+    margin: 1rem 0;
+    div {
+      width: 40%;
+      display: inline-block;
+      img { width: 100%; }
+    }
+    p {
+      font-family: var(--ion-font-headline);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ion-color-medium);
+    }
+  }
+
+  &--form {
+    width: 100%;
+    ion-button { margin: 2rem 0; }
+  }
+
+}
