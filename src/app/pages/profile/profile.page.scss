@@ -1,0 +1,71 @@
+.profile {
+
+  &--header {
+    width: 100%;
+    text-align: center;
+    background: var(--ion-tab-bg);
+  }
+
+  &--avatar {
+    width: auto;
+    display: inline-block;
+    position: relative;
+    &-img {
+      width: 6rem;
+      height: 6rem;
+      border-radius: 999px;
+      border: 1px solid white;
+      overflow: hidden;
+      img { width: 100%; }
+    }
+  }
+
+  &--upload {
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    input { display: none; }
+    div {
+      width: 2rem;
+      height: 2rem;
+      display: inline-block;
+      border-radius: 99px;
+      text-align: center;
+      background-color: var(--ion-color-green);
+    }
+    ion-icon {
+      font-size: 1.4rem;
+      padding-top: 4px;
+      color: white;
+    }
+  }
+
+  &--content {
+    width: 100%;
+  }
+
+  &--field {
+    width: 100%;
+    padding: 1rem;
+    border-bottom: 1px solid var(--ion-color-light-shade);
+    &.disabled { opacity: 0.4; }
+    b {
+      display: block;
+      font-size: 0.8rem;
+      margin-bottom: 0.25rem;
+      color: var(--ion-color-medium);
+    }
+    div {
+      width: 100%;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+}

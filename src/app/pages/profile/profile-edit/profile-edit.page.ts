@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-edit',
@@ -9,7 +10,10 @@ export class ProfileEditPage implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  onSubmit(form: NgForm) {
+    console.log('submit profile-edit: ', form);
   }
 
 }
