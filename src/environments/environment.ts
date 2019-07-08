@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  devPath: 'http://loadbalancernode-2032994895.us-west-2.elb.amazonaws.com/api/v1/'
 };
 
 /*
