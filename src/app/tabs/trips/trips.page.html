@@ -22,35 +22,35 @@
 
     <div class="trips--content">
 
+      <ion-refresher slot="fixed" (ionRefresh)="refreshTrips($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
       <!-- si la lista está vacía -->
-      <div class="trips--empty">
+      <div class="trips--empty" *ngIf="this.arrayTrips.length === 0">
         <div>
           <img src="../../../assets/ui/icon-car-with_background.png" />
         </div>
         <p>Sin viajes realizados</p>
       </div>
 
-      <!-- si existen viajes -->
-      <div class="trips--title">Viajes de Hoy</div>
-      <ion-list class="trips--list">
-
-        <ion-item class="trips--list-item" lines="none" mode="ios" routerLink="/trip-detail">
-          <div class="trips--list-map">map</div>
-          <div class="trips--list-info">
-            <b>9.23 km</b>
-            <p>02/06/19 - 06:11 pm</p>
-          </div>
-        </ion-item>
-
-        <ion-item class="trips--list-item" lines="none" mode="ios" routerLink="/trip-detail">
-          <div class="trips--list-map">map</div>
-          <div class="trips--list-info">
-            <b>9.23 km</b>
-            <p>02/06/19 - 06:11 pm</p>
-          </div>
-        </ion-item>
-
-      </ion-list>
+       <!-- si existen viajes -->
+       <!-- <div class="trips--title">Viajes de Hoy</div> -->
+       <ion-list class="trips--list" *ngIf="this.arrayTrips.length !== 0">
+         <ion-item class="trips--list-item" lines="none" mode="ios" *ngFor="let trip of arrayTrips; let i = index">
+           <div class="trips--list-map">map</div>
+           <div class="trips--list-info">
+             <b>9.23 km</b>
+             <p>02/06/19 - 06:11 pm</p>
+           </div>
+         </ion-item>
+       </ion-list>
+    
+      <ion-infinite-scroll [disabled]="!enabled" threshold="50px"
+      (ionInfinite)="loadTrips(false, $event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando viajes...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
 
     </div>
 
