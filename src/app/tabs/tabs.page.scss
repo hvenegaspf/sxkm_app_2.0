@@ -1,7 +1,7 @@
 // floating action
 ion-fab {
-  bottom: 3rem;
-  right: 1.3rem;
+  bottom: 3.6rem;
+  right: 1.4rem;
 }
 ion-fab-button {
   background-color: transparent !important;
@@ -22,10 +22,16 @@ ion-header {
 ion-tab-bar {
   --background: var(--ion-color-secondary);
   --color: white;
-  border-top: 1rem solid var(--ion-color-secondary);
+  border-top: 1.25rem solid var(--ion-color-secondary);
+  border-bottom: 6px solid var(--ion-color-secondary);
 }
 ion-tab-button {
-  --color-selected: rgba( 255,255,255, 0.2);
+  // --color-selected: rgba( 255,255,255, 0.2);
+  transition: all 0.3s linear;
+  img { width: 2rem; }
+}
+.tab-selected {
+  opacity: 0.3;
   transition: all 0.3s linear;
 }
 
