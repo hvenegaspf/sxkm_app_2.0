@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {}
 
-  onSubmit(form: NgForm) {
+  Submit(form: NgForm) {
     const data = form.value
     this.user.email = data['email']
     console.log(this.user)

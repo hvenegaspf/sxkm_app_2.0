@@ -30,11 +30,10 @@ export class PasswordPage implements OnInit {
     const valid = await this.authService.login(this.user);
 
     if (valid) {
-      /* await this.getCars(); */
-      this.navCtrl.navigateRoot('/tabs/tabs/general', { animated: true });
-      this.loading.dismiss();
+      this.navCtrl.navigateRoot('/tabs', { animated: true });
+      /* this.loading.dismiss(); */
     } else {
-      this.loading.dismiss();
+      /* this.loading.dismiss(); */
       this.uiService.templateAlert('El usuario o contraseña no son válidos.')
     }
   }

@@ -8,6 +8,7 @@ const URL = environment.devPath;
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   HEADERS = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -20,8 +21,9 @@ export class AuthService {
     this.user = data
     this.user.entry_point = 'sxmk_app'
     return new Promise(resolve => {
-      this.http.post(`${URL}login`, this.user, this.HEADERS).subscribe(
+      this.http.post(`${URL}sessions/login `, this.user, this.HEADERS).subscribe(
         (response:any) => {
+          console.log(response)
           if (response.code === 200) {
             this.setStorage('auth_token', response.data.token);
             this.setStorage('user_id', JSON.stringify(response.data.user_id));
