@@ -12,9 +12,11 @@ ion-content { background-color: var(--ion-color-secondary); }
 
   &--container {
     width: 100%;
+    min-height: 88vh;
     padding: 1rem;
     background-color: white;
     border-radius: 12px 12px 0 0;
+    position: relative;
   }
 
   &--header {
@@ -120,10 +122,15 @@ ion-content { background-color: var(--ion-color-secondary); }
 
   &--close {
     width: 100%;
-    height: 0;
+    // height: 0;
+    display: block;
     overflow: visible;
     text-align: center;
-    transform: translateY(-0.6rem);
+    // transform: translateY(-0.6rem);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2.6rem;
     ion-icon {
       padding: 1rem;
       color: white;
