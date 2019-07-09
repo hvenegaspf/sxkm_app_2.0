@@ -1,10 +1,39 @@
 <ion-header mode="ios">
-  <div class="header--clean">
+  <div class="header--clean bg--secondary color--white">
     <ion-icon name="close" routerLink="/tabs/tabs/welcome" routerDirection="back"></ion-icon>
-    <p>SXKM</p>
+    <p></p>
   </div>
 </ion-header>
 
 <ion-content>
+
+  <div class="sxkm--header">
+    <img src="../../../assets/ui/logo-white.png" />
+  </div>
+
+  <div class="options--links">
+    <a href="https://sxkm.mx/">
+      <div>
+        <span>Sitio web de SXKM</span>
+      </div>
+      <ion-icon name="ios-arrow-forward"></ion-icon>
+    </a>
+    <a routerLink="/terms" routerDirection="forward">
+      <div>
+        <span>Términos y condiciones</span>
+      </div>
+      <ion-icon name="ios-arrow-forward"></ion-icon>
+    </a>
+    <a routerLink="/privacy" routerDirection="forward">
+      <div>
+        <span>Política de privacidad</span>
+      </div>
+      <ion-icon name="ios-arrow-forward"></ion-icon>
+    </a>
+  </div>
+
+  <div class="sxkm--version">
+    <b>©SXKM Versión 2.0 (2031)</b>
+  </div>
 
 </ion-content>

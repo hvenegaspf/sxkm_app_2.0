@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import Leaflet from 'leaflet';
+
 
 @Component({
   selector: 'app-trips',

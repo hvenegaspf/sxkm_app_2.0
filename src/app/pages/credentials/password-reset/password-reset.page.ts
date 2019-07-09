@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-password-reset',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PasswordResetPage implements OnInit {
 
+  showPassword = false;
+
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  onSubmit(form: NgForm) {
+    console.log('submit password-reset: ', form);
+  }
+
+  passwordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 
 }

@@ -46,6 +46,33 @@
       align-items: center;
     }
   }
+
+  &--links {
+    width: 100%;
+    a {
+      width: 100%;
+      padding: 1rem;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--ion-color-dark);
+      border-bottom: 1px solid var(--ion-color-light-shade);
+      div {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(--ion-font-headline);
+        ion-icon {
+          margin-right: 0.5rem;
+        }
+      }
+      ion-icon {
+        font-size: 1.3rem;
+      }
+    }
+  }
 }
 
 // bottom button

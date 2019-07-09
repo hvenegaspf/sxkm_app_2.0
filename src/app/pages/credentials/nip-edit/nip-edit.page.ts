@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-nip-edit',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NipEditPage implements OnInit {
 
+  showPassword = false;
+
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  onSubmit(form: NgForm) {
+    console.log('submit nip-edit: ', form);
+  }
+
+  passwordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 
 }

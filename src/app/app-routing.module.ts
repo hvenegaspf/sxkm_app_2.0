@@ -8,11 +8,13 @@ const routes: Routes = [
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'password', loadChildren: './pages/login/password/password.module#PasswordPageModule' },
   { path: 'reset', loadChildren: './pages/login/reset/reset.module#ResetPageModule' },
-  // menu pages
+  // profile pages
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
+  { path: 'profile-edit', loadChildren: './pages/profile/profile-edit/profile-edit.module#ProfileEditPageModule' },
   { path: 'address', loadChildren: './pages/address/address.module#AddressPageModule' },
+  // order pages
   { path: 'orders', loadChildren: './pages/orders/orders.module#OrdersPageModule' },
-  { path: 'sxkm', loadChildren: './pages/sxkm/sxkm.module#SxkmPageModule' },
+  { path: 'order-detail', loadChildren: './pages/orders/order-detail/order-detail.module#OrderDetailPageModule' },
   // credentials pages
   { path: 'credentials', loadChildren: './pages/credentials/credentials.module#CredentialsPageModule' },
   { path: 'nip-reset', loadChildren: './pages/credentials/nip-reset/nip-reset.module#NipResetPageModule' },
@@ -31,6 +33,10 @@ const routes: Routes = [
   { path: 'purchase-options', loadChildren: './pages/purchase/purchase-options/purchase-options.module#PurchaseOptionsPageModule' },
   { path: 'purchase-reference', loadChildren: './pages/purchase/purchase-reference/purchase-reference.module#PurchaseReferencePageModule' },
   { path: 'purchase-success', loadChildren: './pages/purchase/purchase-success/purchase-success.module#PurchaseSuccessPageModule' },
+  // sxkm pages
+  { path: 'sxkm', loadChildren: './pages/sxkm/sxkm.module#SxkmPageModule' },
+  { path: 'privacy', loadChildren: './pages/sxkm/privacy/privacy.module#PrivacyPageModule' },
+  { path: 'terms', loadChildren: './pages/sxkm/terms/terms.module#TermsPageModule' },
   // tabs
   { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },
   // tab pages
@@ -45,6 +51,7 @@ const routes: Routes = [
   { path: 'cars', loadChildren: './tabs/cars/cars.module#CarsPageModule' },
   { path: 'car-detail', loadChildren: './tabs/cars/car-detail/car-detail.module#CarDetailPageModule' },
   { path: 'add-driver', loadChildren: './tabs/cars/add-driver/add-driver.module#AddDriverPageModule' },
+  { path: 'address-edit', loadChildren: './pages/address/address-edit/address-edit.module#AddressEditPageModule' },
 ];
 
 @NgModule({

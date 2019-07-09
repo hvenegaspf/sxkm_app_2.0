@@ -36,6 +36,37 @@
     }
   }
 
+  &--clean {
+    width: 100%;
+    padding: 1rem;
+    div {
+      margin: 0.5rem 0;
+      text-align: center;
+    }
+    ion-item {
+      position: relative;
+      margin-bottom: 1rem;
+      --padding-start: 0;
+    }
+    ion-text {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+    }
+    ion-button {
+      margin: 2rem 0;
+      color: white;
+    }
+    ion-icon {
+      position: absolute;
+      right: 0.5rem;
+      bottom: 0.5rem;
+      padding: 0 0.5rem;
+      z-index: 9;
+    }
+  }
+
   &--disabled {
     width: 100%;
     padding: 1rem;
