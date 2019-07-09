@@ -34,7 +34,7 @@
     width: 100%;
     padding: 1rem;
   }
-  
+
 }
 
 .widget {
@@ -173,7 +173,7 @@
     }
   }
 
-  &--help {
+  &--green {
     width: 100%;
     display: inline-block;
     margin: 0.5rem 0;
@@ -199,8 +199,12 @@
       > p {
         margin: 0;
       }
+      img {
+        width: 40%;
+        display: inline-block;
+      }
     }
-    &-call {
+    &-info {
       width: 80%;
       padding: 1rem;
       color: var(--ion-color-dark);
