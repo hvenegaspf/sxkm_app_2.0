@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, Events, LoadingController } from '@ionic/angular';
 import { TripsService } from '../../providers/trips.service';
+import { Map, latLng, tileLayer, Layer, marker } from 'leaflet';
 import { Storage } from '@ionic/storage';
+import { CarService } from 'src/app/providers/car.service';
 import Leaflet from 'leaflet';
 import { GlobalService } from 'src/app/providers/global.service';
-import { CarService } from 'src/app/providers/car.service';
 
 
 @Component({
@@ -115,7 +116,7 @@ export class TripsPage implements OnInit {
 
     this.arrayTrips = this.arrayTrips.filter(trip => 'init_trip' in trip && 'end_trip' in trip);
     for (let i = 0; this.arrayTrips.length > i; i++) {
-      /* setTimeout(() => {
+      setTimeout(() => {
         this.map = new Map(`map-trip-${i + 1}`, { zoomControl: false }).setView([this.arrayTrips[i]['init_trip']['latitude'], this.arrayTrips[i]['init_trip']['longitude']], 13);
 
         Leaflet.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -145,7 +146,7 @@ export class TripsPage implements OnInit {
         Start_icon.addTo(this.map);
         End_icon.addTo(this.map);
         this.map.invalidateSize();
-      }, 50); */
+      }, 50);
     }
   }
 
