@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  path: 'http://loadbalancernode-2032994895.us-west-2.elb.amazonaws.com/api/v1/'
+  devPath: 'http://loadbalancernode-2032994895.us-west-2.elb.amazonaws.com/api/v1/'
 };
 
 /*

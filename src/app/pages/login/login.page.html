@@ -10,7 +10,7 @@
 
   <div class="form--container login">
 
-    <form #login="ngForm" (ngSubmit)="onSubmit(login)" class="form--simple">
+    <form #login="ngForm" (ngSubmit)="Submit(login)" class="form--simple">
       <div>
         <ion-item mode="ios">
           <ion-label position="floating" mode="ios">Correo electrónico</ion-label>
@@ -22,8 +22,8 @@
         <ion-text>Por favor verifica tu correo</ion-text>
       </div>
       <div>
-        <ion-button *ngIf="!email.valid" fill="solid" expand="full" shape="round" mode="ios" disabled>Siguiente</ion-button>
-        <ion-button *ngIf="email.valid" fill="solid" expand="full" shape="round" mode="ios" routerLink="/password">Siguiente</ion-button>
+        <ion-button *ngIf="!email.valid" type="button" fill="solid" expand="full" shape="round" mode="ios" disabled>Siguiente</ion-button>
+        <ion-button *ngIf="email.valid" type="submit" fill="solid" expand="full" shape="round" mode="ios" routerLink="/password">Siguiente</ion-button>
       </div>
     </form>
 
