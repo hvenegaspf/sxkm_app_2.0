@@ -82,12 +82,14 @@
       padding: 0.5rem;
       b {
         font-family: var(--ion-font-headline);
+        display: block;
       }
       p {
         color: var(--ion-color-medium-shade);
         font-size: 14px;
         font-weight: 400;
         margin: 0 0 0.5rem 0;
+        display: inline;
       }
     }
   }
