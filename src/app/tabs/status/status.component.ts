@@ -1,9 +1,9 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Platform } from '@ionic/angular';
-declare var TweenMax;
-declare var TweenLite;
-declare var Power2;
-declare var $;
+// declare var TweenMax;
+// declare var TweenLite;
+// declare var Power2;
+// declare var $;
 
 
 /**
@@ -13,10 +13,11 @@ declare var $;
  * Components.
  */
 @Component({
-  selector: 'pages-pia',
-  templateUrl: 'pages-pia.html'
+  selector: 'status-pia',
+  templateUrl: './status.component.html',
+  styleUrls: ['./status.component.scss'],
 })
-export class PagesPiaComponent {
+export class StatusComponent {
   @ViewChild('canvas') canvasEl: ElementRef;
   private _CANVAS: any;
   dtc: any = {};
@@ -63,7 +64,7 @@ export class PagesPiaComponent {
     this._CANVAS.width = 200;
     this._CANVAS.height = 200;
     this.init_dtc();
-    // this.init_app();
+    // this.init_App();
   }
 
   init_dtc() {
@@ -98,6 +99,6 @@ export class PagesPiaComponent {
     };
     this.dtc.points.push(this.dtc.points[0]);
     this.dtc.points.push(this.dtc.points[1]);
-    // this.points.push(this.points[2]);
+    this.dtc.points.push(this.dtc.points[2]);
   }
 }
