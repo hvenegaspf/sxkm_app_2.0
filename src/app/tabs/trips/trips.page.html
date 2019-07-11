@@ -39,7 +39,7 @@
        <ion-list class="trips--list" *ngIf="this.arrayTrips.length !== 0">
          <ion-item class="trips--list-item" lines="none" mode="ios" *ngFor="let trip of arrayTrips; let i = index">
 
-           <div class="trips--list-map"><div id="map-t  rip-{{i+1}}" style="width:100%; height: 5rem;"></div></div>
+           <div class="trips--list-map"><div id="map" style="height: 100%; width: 100%;"></div></div>
            
            <div class="trips--list-info">
               <b>{{ trip['distance'] | number : '1.2-2' }} km</b>

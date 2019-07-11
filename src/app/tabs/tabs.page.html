@@ -9,8 +9,15 @@
   <!-- car selector -->
   <div class="header--selector">
     <a>
-      <span (click)="onClickSelector()">Mini Cooper</span>
-      <ion-icon name="ios-arrow-down"></ion-icon>
+      <!-- <span (click)="onClickSelector()">Mini Cooper</span>
+      <ion-icon name="ios-arrow-down"></ion-icon> -->
+
+      <ion-select placeholder="Seleccciona un auto" cancelText="Cerrar" interface="action-sheet"
+        [(ngModel)]="car_select" (ionChange)="changeCar()">
+        <ion-select-option *ngFor="let car of cars" [value]="car">{{car?.car.details.maker_name}}
+          {{car?.car.details.description}}</ion-select-option>
+      </ion-select>
+
     </a>
   </div>
 

@@ -10,8 +10,9 @@
         </span>
         <div>
           <h2>PÓLIZA</h2>
-          <b>170-131-1-0</b>
-          <p>Vigencia 28/09/19</p>
+          <b>{{ car_policy?.carrier_policy_id }}
+          </b>
+          <p>Vigencia {{ car_policy?.expires_at | date:'shortDate' }}</p>
         </div>
       </div>
     </div>
