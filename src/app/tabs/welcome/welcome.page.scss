@@ -15,6 +15,13 @@
     &-status {
       width: 44vw;
       display: inline-block;
+      overflow: hidden;
+      // for demo purposes
+      img, video {
+        width: 100%;
+        display: block;
+        margin: auto;
+      }
     }
     &-label {
       width: auto;
