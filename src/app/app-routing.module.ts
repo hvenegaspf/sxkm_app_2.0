@@ -29,8 +29,8 @@ const routes: Routes = [
   { path: 'recharge', loadChildren: './pages/purchase/recharge/recharge.module#RechargePageModule' },
   { path: 'add-payment', loadChildren: './pages/purchase/add-payment/add-payment.module#AddPaymentPageModule' },
   { path: 'purchase-cash', loadChildren: './pages/purchase/purchase-cash/purchase-cash.module#PurchaseCashPageModule' },
-  { path: 'purchase-confirm', loadChildren: './pages/purchase/purchase-confirm/purchase-confirm.module#PurchaseConfirmPageModule' },
-  { path: 'purchase-options', loadChildren: './pages/purchase/purchase-options/purchase-options.module#PurchaseOptionsPageModule' },
+  { path: 'purchase-confirm/:type', loadChildren: './pages/purchase/purchase-confirm/purchase-confirm.module#PurchaseConfirmPageModule' },
+  { path: 'purchase-options/:type', loadChildren: './pages/purchase/purchase-options/purchase-options.module#PurchaseOptionsPageModule' },
   { path: 'purchase-reference', loadChildren: './pages/purchase/purchase-reference/purchase-reference.module#PurchaseReferencePageModule' },
   { path: 'purchase-success', loadChildren: './pages/purchase/purchase-success/purchase-success.module#PurchaseSuccessPageModule' },
   // sxkm pages
@@ -41,7 +41,7 @@ const routes: Routes = [
   { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },
   // tab pages
   { path: 'trip-detail', loadChildren: './tabs/trips/trip-detail/trip-detail.module#TripDetailPageModule' },
-  { path: 'levels', loadChildren: './tabs/rewards/levels/levels.module#LevelsPageModule' },
+  { path: 'levels/:level', loadChildren: './tabs/rewards/levels/levels.module#LevelsPageModule' },
   { path: 'conditions', loadChildren: './tabs/policy/conditions/conditions.module#ConditionsPageModule' },
   // sos pages
   { path: 'confirm-phone', loadChildren: './tabs/sos/confirm-phone/confirm-phone.module#ConfirmPhonePageModule' },

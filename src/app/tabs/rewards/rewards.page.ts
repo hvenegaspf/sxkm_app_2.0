@@ -13,6 +13,9 @@ export class RewardsPage implements OnInit {
   car_id: any;
   token: any;
   enabled: boolean = true;
+  reward_points;
+  reward_percent;
+  car_select: any
   levels = [{
     "end": 10000,
     "init": 0,
@@ -36,7 +39,24 @@ export class RewardsPage implements OnInit {
   constructor(private points: PointsTransactionService, private storage: Storage) {}
 
   ngOnInit() {
-    this.getPointsTransaction()
+    this.getCars();
+    this.getPointsTransaction();
+  }
+
+  async getCars() {
+    await this.getStorage('car').then((res) => {
+      this.car_select = JSON.parse(res)
+      this.reward_points = this.car_select['car']['details']['reward_points']
+      this.fillProgressBar();
+    })
+  }
+
+  fillProgressBar(){
+    this.levels.forEach((lvl) =>{
+      if(this.reward_points >= lvl.init && this.reward_points <= lvl.end){
+        this.reward_percent = (this.reward_points * 100) / lvl.end;
+      }
+    })
   }
 
   async getPointsTransaction(pull: boolean = false, event?){
