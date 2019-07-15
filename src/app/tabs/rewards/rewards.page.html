@@ -5,7 +5,7 @@
     
     <div class="rewards--header">
       <div class="rewards--header-icon">
-        <img src="../../../assets/demo/level-icon.png" />
+        <img  src="../../../assets/demo/level-icon.png" />
       </div>
       <div class="rewards--header-content">
 
@@ -57,11 +57,47 @@
     </div>
     
     <div class="rewards--activity">
-      
-      <div class="rewards--activity-list">
+
+      <ion-refresher slot="fixed" (ionRefresh)="refreshPointsTransactions($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
+      <div class="rewards--activity-list" *ngFor="let points of arrayPointsTransactions">
       
         <!-- si es un puntaje negativo se agrega la classe 'negative' -->
-        <div class="rewards--activity-row negative">
+        <div *ngIf="points.points < 0"  class="rewards--activity-row negative">
+          <div>
+            <img *ngIf="points.level_name == 'Starter'" src="../../../assets/ui/activity-sky.svg"/>
+            <img *ngIf="points.level_name == 'Tecnico'" src="../../../assets/ui/activity-yellow.svg"/>
+            <img *ngIf="points.level_name == 'Jack Man'" src="../../../assets/ui/activity-green.svg"/>
+            <img *ngIf="points.level_name == 'Piloto'" src="../../../assets/ui/activity-blue.svg"/>
+          </div>
+          <div>
+            <p>{{points.points}}.</p>
+          </div>
+          <div>
+            <p>{{points.event_reference}}</p>
+            <span>{{points.created_at}}</span>
+          </div>
+        </div>
+
+        <div *ngIf="points.points > 0"  class="rewards--activity-row positive">
+          <div>
+            <img *ngIf="points.level_name == 'Starter'" src="../../../assets/ui/activity-sky.svg"/>
+            <img *ngIf="points.level_name == 'Tecnico'" src="../../../assets/ui/activity-yellow.svg"/>
+            <img *ngIf="points.level_name == 'Jack Man'" src="../../../assets/ui/activity-green.svg"/>
+            <img *ngIf="points.level_name == 'Piloto'" src="../../../assets/ui/activity-blue.svg"/>
+          </div>
+          <div>
+            <p>{{points.points}}</p>
+          </div>
+          <div>
+            <p>{{points.event_reference}}</p>
+            <span>{{points.created_at}}</span>
+          </div>
+        </div>
+
+        <!-- <div class="rewards--activity-row negative">
           <div>
             <img src="../../../assets/ui/activity-yellow.svg" />
           </div>
@@ -176,12 +212,15 @@
             <p>Completaste tu perfil</p>
             <span>21 abril 2019</span>
           </div>
-        </div>
+        </div>-->
       
       </div>
-
-    </div>
-
+    </div>  
   </div>
+
+  <ion-infinite-scroll [disabled]="!enabled" threshold="50px" (ionInfinite)="getPointsTransaction(false, $event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando puntos...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>
