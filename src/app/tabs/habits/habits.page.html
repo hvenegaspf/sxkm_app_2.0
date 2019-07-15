@@ -12,40 +12,40 @@
         <div>
           <img src="../../../assets/ui/habits-tiempo.svg" />
           <p>Tiempo de uso</p>
-          <b>54.00 min</b>
+          <b>{{ use_time_hrs | number : '1.2-2' }} {{ unit_use_time }}</b>
         </div>
         <div>
           <img src="../../../assets/ui/habits-aceleracion.svg" />
           <p>Aceleración</p>
-          <b>0.00 km/hr</b>
+          <b>{{ dataDrivingHabits?.hard_acceleration | number : '1.2-2' }} km/hr</b>
         </div>
         <div>
           <img src="../../../assets/ui/habits-frenado.svg" />
           <p>Frenado brusco</p>
-          <b>1</b>
+          <b>{{ dataDrivingHabits?.hard_brakes }}</b>
         </div>
         <div>
           <img src="../../../assets/ui/habits-vuelta.svg" />
           <p>Vuelta brusca</p>
-          <b>2</b>
+          <b>{{ dataDrivingHabits?.hard_turn }}</b>
         </div>
         <div>
           <img src="../../../assets/ui/habits-tope.svg" />
           <p>Número de</p>
           <p>Topes/Baches/Bados</p>
-          <b>0</b>
+          <b>{{ dataDrivingHabits?.hard_turn }}</b>
         </div>
         <div>
           <img src="../../../assets/ui/habits-distancia.svg" />
           <p>Distancia manejada</p>
-          <b>14.65 km</b>
+          <b>{{ dataDrivingHabits?.distance | number : '1.2-2' }} km</b>
         </div>
         <div>
           <img src="../../../assets/ui/habits-velocidad.svg" />
           <p>Velocidad promedio</p>
-          <b>13.38 km/hr</b>
+          <b>{{ dataDrivingHabits?.avg_drive_speed | number : '1.2-2' }} km/hr</b>
         </div>
-        <div>
+        <!-- <div>
           <img src="../../../assets/ui/habits-manejo.svg" />
           <p>manejo</p>
           <b>?</b>
@@ -59,7 +59,7 @@
           <img src="../../../assets/ui/habits-rutas.svg" />
           <p>rutas</p>
           <b>?</b>
-        </div>
+        </div> -->
       </div>
     </div>
 

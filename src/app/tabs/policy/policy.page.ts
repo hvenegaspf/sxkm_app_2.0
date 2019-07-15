@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-policy',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PolicyPage implements OnInit {
 
-  constructor() { }
+  car_policy;
 
-  ngOnInit() {
+  constructor( private storage: Storage ) { }
+
+  async ngOnInit() {
+    await this.getStorage('car').then((res) => {
+      this.car_policy = JSON.parse(res)
+    })
+  }
+
+  async getStorage(key: string) {
+    let valueStorage = await this.storage.get(key);
+    return valueStorage;
   }
 
 }
+
+

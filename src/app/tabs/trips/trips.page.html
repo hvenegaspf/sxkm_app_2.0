@@ -7,10 +7,10 @@
       <div class="trips--header-content">
         <div class="trips--header-km">
           <b>RECORRIDOS</b>
-          <p>1,487 km</p>
+          <p>{{totalKms | number : '1.2-2'}} km</p>
         </div>
         <div class="trips--header-filter">
-          <ion-select cancelText="Cerrar" interface="action-sheet">
+          <ion-select [(ngModel)]="typeFilter" cancelText="Cerrar" interface="action-sheet" (ionChange)="selectFilter()">
             <ion-select-option value="today" selected>Hoy</ion-select-option>
             <ion-select-option value="this-week">Esta semana</ion-select-option>
             <ion-select-option value="this-month">Este mes</ion-select-option>
@@ -38,10 +38,14 @@
        <!-- <div class="trips--title">Viajes de Hoy</div> -->
        <ion-list class="trips--list" *ngIf="this.arrayTrips.length !== 0">
          <ion-item class="trips--list-item" lines="none" mode="ios" *ngFor="let trip of arrayTrips; let i = index">
-           <div class="trips--list-map">map</div>
+
+           <div class="trips--list-map"><div id="map" style="height: 100%; width: 100%;"></div></div>
+           
            <div class="trips--list-info">
-             <b>9.23 km</b>
-             <p>02/06/19 - 06:11 pm</p>
+              <b>{{ trip['distance'] | number : '1.2-2' }} km</b>
+              <p>{{ (trip['finished_at'] !== null && trip['finished_at'] !== undefined) ? (trip['finished_at'] | date:'shortDate') : "" }}</p>
+              <p> - </p>
+              <p>{{ (trip['finished_at'] !== null && trip['finished_at'] !== undefined ) ? (trip['finished_at'] | date:'shortTime') : "" }}</p>
            </div>
          </ion-item>
        </ion-list>
