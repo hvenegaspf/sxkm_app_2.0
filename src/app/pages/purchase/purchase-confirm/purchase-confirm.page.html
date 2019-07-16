@@ -1,8 +1,15 @@
 <ion-header mode="ios">
-  <div class="header--clean">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Regresar">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align:center">Confirma tu pago</ion-title>
+  </ion-toolbar>
+  <!-- <div class="header--clean">
     <ion-icon name="ios-arrow-back" routerLink="/purchase-options" routerDirection="back"></ion-icon>
     <p>Confirma tu pago</p>
-  </div>
+  </div> -->
 </ion-header>
 
 <ion-content>
@@ -67,7 +74,7 @@
         </div>
 
         <div class="add--button add--full">
-          <ion-button color="primary" shape="round" fill="solid" routerLink="/purchase-success">Pagar</ion-button>
+          <ion-button color="primary" shape="round" fill="solid" (click)="payment()">Pagar</ion-button>
         </div>
 
       </form>

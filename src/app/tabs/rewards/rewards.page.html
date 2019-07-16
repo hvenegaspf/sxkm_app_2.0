@@ -5,12 +5,15 @@
     
     <div class="rewards--header">
       <div class="rewards--header-icon">
-        <img src="../../../assets/demo/level-icon.png" />
+        <img *ngIf="car_select?.car.details.level_gamification == 'Starter'" src="../../../assets/demo/level-icon.png" />
+        <img *ngIf="car_select?.car.details.level_gamification == 'Técnico'" src="../../../assets/demo/level-icon.png" />
+        <img *ngIf="car_select?.car.details.level_gamification == 'Jack Man'" src="../../../assets/demo/level-icon.png" />
+        <img *ngIf="car_select?.car.details.level_gamification == 'Piloto'" src="../../../assets/demo/level-icon.png" />
       </div>
       <div class="rewards--header-content">
 
         <!-- asignar color con clase color-[color] -->
-        <h2 class="color--yellow">Guerrero</h2>
+        <h2 class="color--yellow">{{car_select?.car.details.level_gamification}}</h2>
 
         <div class="rewards--header-info">
           <div class="rewards--header-points">
@@ -23,11 +26,11 @@
                 yellow: #ffbb01 #FFEFC3
                 green: #2ec23b #E6FDE8
               -->
-              <circle-progress [percent]="73" [title]="2" [titleColor]="'#ffbb01'" [outerStrokeColor]="'#ffbb01'" [backgroundColor]="'#FFEFC3'"></circle-progress>
+              <circle-progress [percent]="100" [title]="3" [titleColor]="'#ffbb01'" [outerStrokeColor]="'#ffbb01'" [backgroundColor]="'#FFEFC3'"></circle-progress>
             </div>
-            <p>7,250 Puntos</p>
+            <p>{{car_select?.car.details.reward_points}} Puntos</p>
           </div>
-          <a routerLink="/levels"><span>BENEFICIOS</span><ion-icon name="ios-arrow-forward" color="medium"></ion-icon>
+          <a routerLink="/levels/{{car_select?.car.details.level_gamification}}"><span>BENEFICIOS</span><ion-icon name="ios-arrow-forward" color="medium"></ion-icon>
           </a>
         </div>
       </div>
@@ -35,33 +38,69 @@
     
     <div class="rewards--levels">
       <div>
-        <img src="../../../assets/demo/level-icon.png" />
+        <img class="{{car_select?.car.details.level_gamification == 'Starter' ? '' : 'disabled'}}" src="../../../assets/demo/level-icon.png" />
         <!-- asignar color con clase color-[color] -->
-        <p class="color--sky">Novato</p>
+        <p class="{{car_select?.car.details.level_gamification == 'Starter' ? 'color--sky' : 'color--grey'">Novato</p>
       </div>
       <div>
-        <img src="../../../assets/demo/level-icon.png" />
+        <img class="{{car_select?.car.details.level_gamification == 'Técnico' ? '' : 'disabled'}}" src="../../../assets/demo/level-icon.png" />
         <!-- asignar color con clase color-[color] -->
-        <p class="color--yellow">Guerrero</p>
+        <p class="{{car_select?.car.details.level_gamification == 'Técnico' ? 'color--yellow' : 'color--grey'">Guerrero</p>
       </div>
       <div>
-        <img src="../../../assets/demo/level-icon.png" />
+        <img class="{{car_select?.car.details.level_gamification == 'Jack Man' ? '' : 'disabled'}}" src="../../../assets/demo/level-icon.png" />
         <!-- asignar color con clase color-[color] -->
-        <p class="color--grey">Rockstar</p>
+        <p class="{{car_select?.car.details.level_gamification == 'Jack Man' ? 'color--green' : 'color--grey'">Rockstar</p>
       </div>
       <div>
-        <img src="../../../assets/demo/level-icon.png" />
+        <img class="{{car_select?.car.details.level_gamification == 'Piloto' ? '' : 'disabled'}}" src="../../../assets/demo/level-icon.png" />
         <!-- asignar color con clase color-[color] -->
-        <p class="color--grey">Leyenda</p>
+        <p class="{{car_select?.car.details.level_gamification == 'Piloto' ? 'color--blue' : 'color--grey'">Leyenda</p>
       </div>
     </div>
     
     <div class="rewards--activity">
-      
-      <div class="rewards--activity-list">
+
+      <ion-refresher slot="fixed" (ionRefresh)="refreshPointsTransactions($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
+      <div class="rewards--activity-list" *ngFor="let points of arrayPointsTransactions">
       
         <!-- si es un puntaje negativo se agrega la classe 'negative' -->
-        <div class="rewards--activity-row negative">
+        <div *ngIf="points.points < 0"  class="rewards--activity-row negative">
+          <div>
+            <img *ngIf="points.level_name == 'Starter'" src="../../../assets/ui/activity-sky.svg"/>
+            <img *ngIf="points.level_name == 'Tecnico'" src="../../../assets/ui/activity-yellow.svg"/>
+            <img *ngIf="points.level_name == 'Jack Man'" src="../../../assets/ui/activity-green.svg"/>
+            <img *ngIf="points.level_name == 'Piloto'" src="../../../assets/ui/activity-blue.svg"/>
+          </div>
+          <div>
+            <p>{{points.points}}.</p>
+          </div>
+          <div>
+            <p>{{points.event_reference}}</p>
+            <span>{{points.created_at}}</span>
+          </div>
+        </div>
+
+        <div *ngIf="points.points > 0"  class="rewards--activity-row positive">
+          <div>
+            <img *ngIf="points.level_name == 'Starter'" src="../../../assets/ui/activity-sky.svg"/>
+            <img *ngIf="points.level_name == 'Tecnico'" src="../../../assets/ui/activity-yellow.svg"/>
+            <img *ngIf="points.level_name == 'Jack Man'" src="../../../assets/ui/activity-green.svg"/>
+            <img *ngIf="points.level_name == 'Piloto'" src="../../../assets/ui/activity-blue.svg"/>
+          </div>
+          <div>
+            <p>{{points.points}}</p>
+          </div>
+          <div>
+            <p>{{points.event_reference}}</p>
+            <span>{{points.created_at}}</span>
+          </div>
+        </div>
+
+        <!-- <div class="rewards--activity-row negative">
           <div>
             <img src="../../../assets/ui/activity-yellow.svg" />
           </div>
@@ -176,12 +215,15 @@
             <p>Completaste tu perfil</p>
             <span>21 abril 2019</span>
           </div>
-        </div>
+        </div>-->
       
       </div>
-
-    </div>
-
+    </div>  
   </div>
+
+  <ion-infinite-scroll [disabled]="!enabled" threshold="50px" (ionInfinite)="getPointsTransaction(false, $event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando puntos...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>

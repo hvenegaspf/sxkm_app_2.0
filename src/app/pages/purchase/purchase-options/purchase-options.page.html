@@ -1,16 +1,22 @@
 <ion-header mode="ios">
-  <div class="header--clean">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Regresar">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align:center">¿Comó prefieres pagar?</ion-title>
+  </ion-toolbar>
+  <!-- <div class="header--clean">
     <ion-icon name="close" routerLink="/tabs/tabs/welcome" routerDirection="back"></ion-icon>
     <p>¿Como prefieres pagar?</p>
-  </div>
+  </div> -->
 </ion-header>
 
 <ion-content>
 
   <!-- recharge -->
   <div class="options--info">
-
-    <div class="purchase-block">
+    <div *ngIf="type_purchases == 'recharge'" class="purchase-block">
       <div class="purchase-block-content">
           <div class="purchase-block-main">
             <div>
@@ -25,7 +31,7 @@
       </div>
     </div>
 
-    <div class="purchase-block">
+    <div *ngIf="type_purchases == 'subscription'" class="purchase-block">
       <div class="purchase-block-content">
           <div class="purchase-block-main">
             <div>
@@ -47,7 +53,7 @@
 
   <div class="options--list">
 
-    <div class="simple-block" routerLink="/purchase-confirm">
+    <div class="simple-block" routerLink="/purchase-confirm/{{type_purchases}}">
       <div>
         <img src="../../../assets/payment/card-master.png" />
         <p>Bancomer ***8756</p>
