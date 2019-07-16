@@ -1,6 +1,6 @@
 .habits {
 
-  &--header {
+  /* &--header {
     width: 100%;
     padding: 1rem 1rem 1rem 1rem;
     text-align: center;
@@ -17,6 +17,39 @@
         font-weight: 700;
         margin: 0;
       }
+    }
+  } */
+
+  &--header {
+    width: 100%;
+    padding: 1rem;
+
+    &-content {
+      width: 100%;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      border-radius: var(--ion-radius-card);
+      padding: 1rem;
+      box-shadow: var(--ion-box-shadow);
+      margin: auto;
+    }
+
+    &-km {
+      width: 50%;
+      h1 {
+        font-family: var(--ion-font-headline);
+        font-size: 1rem;
+        font-weight: 700;
+        margin: 0;
+      }
+    }
+
+    &-filter {
+      width: 50%;
+      ion-select { text-align: right; }
     }
   }
 

@@ -4,7 +4,7 @@ import { TripsService } from '../../providers/trips.service';
 import { Map, latLng, tileLayer, Layer, marker } from 'leaflet';
 import { Storage } from '@ionic/storage';
 import { CarService } from 'src/app/providers/car.service';
-import L from 'leaflet';
+import Leaflet from 'leaflet';
 import { GlobalService } from 'src/app/providers/global.service';
 
 
@@ -98,7 +98,7 @@ export class TripsPage implements OnInit {
       if (response.data.total) {
         this.totalKms = response.data.total;
       }
-      this.loadMaps();
+      /* this.loadMaps(); */
       if (event) {
         event.target.complete();
         if (response.data.trips.length === 0) {
@@ -114,41 +114,21 @@ export class TripsPage implements OnInit {
 
   loadMaps() {
     let map;
-    var key = '5b99eaac5fa24f';
 
     this.arrayTrips = this.arrayTrips.filter(trip => 'init_trip' in trip && 'end_trip' in trip);
     for (let i = 0; this.arrayTrips.length > i; i++) {
       setTimeout(() => {
-/*         this.map = new Map(`map-trip-${i + 1}`, { zoomControl: false }).setView([this.arrayTrips[i]['init_trip']['latitude'], this.arrayTrips[i]['init_trip']['longitude']], 13);
- */
-        /* Leaflet.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        this.map = new Map(`map-trip-${i + 1}`, { zoomControl: false }).setView([this.arrayTrips[i]['init_trip']['latitude'], this.arrayTrips[i]['init_trip']['longitude']], 13);
+
+        Leaflet.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
           attribution: '',
           maxZoom: 18,
           center: [this.arrayTrips[i]['init_trip']['latitude'], this.arrayTrips[i]['init_trip']['longitude']],
           id: 'mapbox.streets',
           accessToken: 'pk.eyJ1IjoicG9wdWx1c21hcHMiLCJhIjoiY2p2ODZ0bWxpMGV6NjQzbjMxd3RyZXczMCJ9.uUIweNXgj2PVTlEcm4GClg'
-        }).addTo(this.map); */
+        }).addTo(this.map);
 
-        // API token goes here
-
-        // Add layers that we need to the map
-        var streets = L.tileLayer.Unwired({key: key, scheme: "streets"});
-
-        // Initialize the map
-        var map = L.map('map', {
-                center: [39.73, -104.99], //map loads with this location as center
-                zoom: 14,
-                layers: [streets] // Show 'streets' by default
-        });
-
-        // Add the 'scale' control
-        L.control.scale().addTo(map);
-        // Add the 'layers' control
-        L.control.layers({
-            "Streets": streets
-        }).addTo(map);
-
-        /* var Start_icon = Leaflet.marker([this.arrayTrips[i]['init_trip']['latitude'], this.arrayTrips[i]['init_trip']['longitude']], {
+        var Start_icon = Leaflet.marker([this.arrayTrips[i]['init_trip']['latitude'], this.arrayTrips[i]['init_trip']['longitude']], {
           icon: Leaflet.icon({
             iconUrl: "assets/ui/map-start-point.svg",
             iconSize: [20, 25],
@@ -162,10 +142,10 @@ export class TripsPage implements OnInit {
             iconSize: [20, 25],
             iconAnchor: [20, 46]
           })
-        }) */
+        })
 
-        /* Start_icon.addTo(this.map);
-        End_icon.addTo(this.map); */
+        Start_icon.addTo(this.map);
+        End_icon.addTo(this.map);
         this.map.invalidateSize();
       }, 50);
     }
