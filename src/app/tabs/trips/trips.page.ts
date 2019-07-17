@@ -34,6 +34,7 @@ export class TripsPage implements OnInit {
   token: any;
   loading: any;
   text_trips: boolean = true;
+  access_token = '5b99eaac5fa24f';
 
   constructor(private modalCtlr: ModalController, private tripsService: TripsService,
     public events: Events, private carService: CarService,
@@ -98,7 +99,7 @@ export class TripsPage implements OnInit {
       if (response.data.total) {
         this.totalKms = response.data.total;
       }
-      /* this.loadMaps(); */
+      this.loadMaps();
       if (event) {
         event.target.complete();
         if (response.data.trips.length === 0) {
@@ -113,12 +114,11 @@ export class TripsPage implements OnInit {
   }
 
   loadMaps() {
-    let map;
-
     this.arrayTrips = this.arrayTrips.filter(trip => 'init_trip' in trip && 'end_trip' in trip);
+    console.log('arrayTrips', this.arrayTrips)
     for (let i = 0; this.arrayTrips.length > i; i++) {
       setTimeout(() => {
-        this.map = new Map(`map-trip-${i + 1}`, { zoomControl: false }).setView([this.arrayTrips[i]['init_trip']['latitude'], this.arrayTrips[i]['init_trip']['longitude']], 13);
+        this.map = new Map(`map-trip-${i + 1}`, { zoomControl: false }).setView([this.arrayTrips[i]['init_trip']['latitude'], this.arrayTrips[i]['init_trip']['longitude']], 10);
 
         Leaflet.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
           attribution: '',
