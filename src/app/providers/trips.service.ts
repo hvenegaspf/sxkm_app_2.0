@@ -48,7 +48,7 @@ export class TripsService {
       'company_id': '2'
     });
     return new Promise(resolve => {
-      /* console.log(`${URL}driving_habits?from=${from}&to=${to}&car_id=${car_id}`) */
+      console.log(`${URL}driving_habits?from=${from}&to=${to}&car_id=${car_id}`)
       this.http.get<responseDrivingHabits>(`${this.url_santander}driving_habits?from=${from}&to=${to}&car_id=${car_id}`, {headers:headers}).subscribe(
         (response) => {
           if (response.code === 200) {
