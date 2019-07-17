@@ -22,8 +22,8 @@ export class ProfileEditPage implements OnInit {
           'name': [ this.data['name'] ],
           'lastname_one': [ this.data['lastname_one'] ],  
           'lastname_two': [ this.data['lastname_two'] ],
-          'telephone': [ this.data['acl_role']['company']['telephone'] ],
-          'email': [ this.data['email'] ]
+          'telephone': [ {value:  this.data['acl_role']['company']['telephone'], disabled: true} ],
+          'email': [ {value:  this.data['email'], disabled: true} ]
         })
         /* this.userForm.setValue( this.data ) */
       }

@@ -59,7 +59,7 @@ export class HabitsPage implements OnInit {
       this.use_time_hrs = this.use_time_hrs * 60;
       this.unit_use_time = 'min';
     }
-    this.loading.dismiss();
+    /* this.loading.dismiss(); */
   }
 
   async getCars() {
