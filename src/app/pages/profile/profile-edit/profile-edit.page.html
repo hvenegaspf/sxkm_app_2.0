@@ -1,28 +1,63 @@
 <ion-header mode="ios">
-    <div class="header--clean">
-      <ion-icon name="ios-arrow-back" routerLink="/profile" routerDirection="back"></ion-icon>
-      <p>Editar [campo seleccionado]</p>
-    </div>
-  </ion-header>
+  <div class="header--clean">
+    <ion-icon name="ios-arrow-back" routerLink="/profile" routerDirection="back"></ion-icon>
+    <p>Editar usuario</p>
+  </div>
+</ion-header>
 
 <ion-content>
-  <form class="form--clean">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="form--clean">
 
     <div>
       <ion-item mode="ios">
-        <ion-label position="floating" mode="ios">[Campo seleccionado]</ion-label>
-        <ion-input type="text" name="text" ngModel required #text="ngModel"></ion-input>
+        <ion-label position="floating" mode="ios">Nombre</ion-label>
+        <ion-input type="text" formControlName="name">
+        </ion-input>
       </ion-item>
     </div>
 
     <div>
-      <ion-button *ngIf="!text.valid" fill="solid" expand="full" shape="round" mode="ios" disabled>Guardar</ion-button>
-      <ion-button *ngIf="text.valid" fill="solid" expand="full" shape="round" mode="ios" routerLink="/password">Guardar</ion-button>
+      <ion-item mode="ios">
+        <ion-label position="floating" mode="ios">Apellido paterno</ion-label>
+        <ion-input type="text" formControlName="lastname_one">
+        </ion-input>
+      </ion-item>
     </div>
 
-    <div class="form--validation" *ngIf="text.touched && !text.valid">
-      <ion-text>Mensaje de validación correspondiente</ion-text>
+    <div>
+      <ion-item mode="ios">
+        <ion-label position="floating" mode="ios">Apellido materno</ion-label>
+        <ion-input type="text" formControlName="lastname_two">
+        </ion-input>
+      </ion-item>
     </div>
+
+    <div>
+      <ion-item mode="ios">
+        <ion-label position="floating" mode="ios">Teléfono</ion-label>
+        <ion-input type="text" formControlName="telephone">
+        </ion-input>
+      </ion-item>
+    </div>
+
+    <div>
+      <ion-item mode="ios">
+        <ion-label position="floating" mode="ios">Correo electrónico</ion-label>
+        <ion-input type="text" formControlName="email">
+        </ion-input>
+      </ion-item>
+    </div>
+
+    <div>
+      <!-- <ion-button *ngIf="!country.valid" fill="solid" expand="full" shape="round" mode="ios" disabled>Guardar
+      </ion-button> -->
+      <ion-button *ngIf="true" fill="solid" expand="full" shape="round" mode="ios" type="submit">
+        Guardar</ion-button>
+    </div>
+
+    <!-- <div class="form--validation" *ngIf="street.touched && !street.valid">
+      <ion-text>Mensaje de validación correspondiente</ion-text>
+    </div> -->
 
   </form>
 </ion-content>

@@ -6,12 +6,12 @@
 </ion-header>
 
 <ion-content>
-  <form #address="ngForm" (ngSubmit)="onSubmit(address)" class="form--clean">
+  <form [formGroup]="addressForm" (ngSubmit)="onSubmit()" class="form--clean">
 
     <div>
       <ion-item mode="ios">
         <ion-label position="floating" mode="ios">Calle</ion-label>
-        <ion-input type="text" name="street" ngModel required #street="ngModel" placeholder="Oaxaca">
+        <ion-input type="text" formControlName="street">
         </ion-input>
       </ion-item>
     </div>
@@ -19,7 +19,7 @@
     <div>
       <ion-item mode="ios">
         <ion-label position="floating" mode="ios">Número exterior</ion-label>
-        <ion-input type="text" name="numberExt" ngModel required #numberExt="ngModel" placeholder="284">
+        <ion-input type="text" formControlName="external_number">
         </ion-input>
       </ion-item>
     </div>
@@ -27,7 +27,7 @@
     <div>
       <ion-item mode="ios">
         <ion-label position="floating" mode="ios">Número interior</ion-label>
-        <ion-input type="text" name="numberInt" ngModel required #numberInt="ngModel" placeholder="8">
+        <ion-input type="text" formControlName="internal_number">
         </ion-input>
       </ion-item>
     </div>
@@ -35,7 +35,7 @@
     <div>
       <ion-item mode="ios">
         <ion-label position="floating" mode="ios">Código postal</ion-label>
-        <ion-input type="text" name="zipCode" ngModel required #zipCode="ngModel" placeholder="03400">
+        <ion-input type="text" formControlName="postal_code">
         </ion-input>
       </ion-item>
     </div>
@@ -43,7 +43,7 @@
     <div>
       <ion-item mode="ios">
         <ion-label position="floating" mode="ios">Colonia</ion-label>
-        <ion-input type="text" name="suburb" ngModel required #suburb="ngModel" placeholder="San Ramón">
+        <ion-input type="text" formControlName="colony">
         </ion-input>
       </ion-item>
     </div>
@@ -51,7 +51,7 @@
     <div>
       <ion-item mode="ios">
         <ion-label position="floating" mode="ios">Municipio/Delegación</ion-label>
-        <ion-input type="text" name="city" ngModel required #city="ngModel" placeholder="Benito Juárez">
+        <ion-input type="text" formControlName="city">
         </ion-input>
       </ion-item>
     </div>
@@ -59,7 +59,7 @@
     <div>
       <ion-item mode="ios">
         <ion-label position="floating" mode="ios">Estado</ion-label>
-        <ion-input type="text" name="state" ngModel required #state="ngModel" placeholder="CDMX">
+        <ion-input type="text" formControlName="state">
         </ion-input>
       </ion-item>
     </div>
@@ -67,19 +67,19 @@
     <div>
       <ion-item mode="ios">
         <ion-label position="floating" mode="ios">País</ion-label>
-        <ion-input type="text" name="country" ngModel required #country="ngModel" placeholder="México">
+        <ion-input type="text" formControlName="country">
         </ion-input>
       </ion-item>
     </div>
 
     <div>
-      <ion-button *ngIf="!country.valid" fill="solid" expand="full" shape="round" mode="ios" disabled>Guardar</ion-button>
-      <ion-button *ngIf="country.valid" fill="solid" expand="full" shape="round" mode="ios" routerLink="/password">Guardar</ion-button>
+      <ion-button *ngIf="false" fill="solid" expand="full" shape="round" mode="ios" disabled>Guardar</ion-button>
+      <ion-button *ngIf="true" fill="solid" expand="full" shape="round" mode="ios" type="submit">Guardar</ion-button>
     </div>
 
-    <div class="form--validation" *ngIf="street.touched && !street.valid">
+    <!-- <div class="form--validation" *ngIf="street.touched && !street.valid">
       <ion-text>Mensaje de validación correspondiente</ion-text>
-    </div>
+    </div> -->
 
   </form>
 </ion-content>

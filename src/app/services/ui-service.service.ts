@@ -19,10 +19,10 @@ export class UiService {
     await alert.present();
   }
 
-  async templateToast( message: string ) {
+  async templateToast( message: string , time ) {
     const toast = await this.toastController.create({
       message: message,
-      duration: 2000
+      duration: time
     });
     toast.present();
   }

@@ -1,6 +1,6 @@
 <ion-header mode="ios">
   <div class="header--page">
-    <a routerLink="/tabs/tabs/" routerDirection="back">
+    <a routerLink="/tabs/tabs/welcome" routerDirection="back">
       <ion-icon name="close"></ion-icon>
     </a>
   </div>
@@ -21,44 +21,42 @@
       </label>
     </div>
   </div>
-
+  
   <div class="profile--content">
-
-    <div class="profile--field" routerLink="/profile-edit">
+     
+    <a (click)="profileEdit()">EDITAR</a>
+    <div class="profile--field">
       <b>Nombre(s)</b>
       <div>
-        <p>Jennifer</p>
-        <ion-icon name="ios-arrow-forward"></ion-icon>
+        <p>{{ user?.name}}</p>
       </div>
     </div>
 
-    <div class="profile--field" routerLink="/profile-edit">
+    <div class="profile--field">
       <b>Apellido paterno</b>
       <div>
-        <p>López</p>
-        <ion-icon name="ios-arrow-forward"></ion-icon>
+        <p>{{ user?.lastname_one }}</p>
       </div>
     </div>
 
-    <div class="profile--field" routerLink="/profile-edit">
+    <div class="profile--field">
       <b>Apellido materno</b>
       <div>
-        <p>López</p>
-        <ion-icon name="ios-arrow-forward"></ion-icon>
+        <p>{{ user?.lastname_two }}</p>
       </div>
     </div>
 
-    <div class="profile--field disabled">
+    <div class="profile--field">
       <b>Teléfono</b>
       <div>
-        <p>55 4433 2211</p>
+        <p>{{ user?.acl_role.company.telephone}}</p>
       </div>
     </div>
 
-    <div class="profile--field disabled">
+    <div class="profile--field">
       <b>Correo electrónico</b>
       <div>
-        <p>jlo@email.com</p>
+        <p>{{ user?.email }}</p>
       </div>
     </div>
 

@@ -1,19 +1,18 @@
 <ion-header mode="ios">
   <div class="header--clean">
-    <ion-icon name="close" routerLink="/tabs/tabs/" routerDirection="back"></ion-icon>
+    <ion-icon name="close" routerLink="/tabs/tabs/welcome" routerDirection="back"></ion-icon>
     <p>Domicilio</p>
-    <a routerLink="/address-edit">EDITAR</a>
+    <a (click)="editAddress()">EDITAR</a>
   </div>
 </ion-header>
 
 <ion-content>
-
   <form class="form--disabled">
 
     <div>
       <ion-item mode="ios">
         <ion-label position="floating" mode="ios">Calle</ion-label>
-        <ion-input value="Oaxaca" disabled>
+        <ion-input value="{{ address?.street }}" disabled>
         </ion-input>
       </ion-item>
     </div>
@@ -21,7 +20,7 @@
     <div>
       <ion-item mode="ios">
         <ion-label position="floating" mode="ios">Número exterior</ion-label>
-        <ion-input value="284" disabled>
+        <ion-input value="{{ address?.external_number }}" disabled>
         </ion-input>
       </ion-item>
     </div>
@@ -29,7 +28,7 @@
     <div>
       <ion-item mode="ios">
         <ion-label position="floating" mode="ios">Número interior</ion-label>
-        <ion-input value="8" disabled>
+        <ion-input value="{{ address?.internal_number }}" disabled>
         </ion-input>
       </ion-item>
     </div>
@@ -37,7 +36,7 @@
     <div>
       <ion-item mode="ios">
         <ion-label position="floating" mode="ios">Código postal</ion-label>
-        <ion-input value="03400" disabled>
+        <ion-input value="{{ address?.postal_code }}" disabled>
         </ion-input>
       </ion-item>
     </div>
@@ -45,7 +44,7 @@
     <div>
       <ion-item mode="ios">
         <ion-label position="floating" mode="ios">Colonia</ion-label>
-        <ion-input value="San Ramón" disabled>
+        <ion-input value="{{ address?.colony }}" disabled>
         </ion-input>
       </ion-item>
     </div>
@@ -53,7 +52,7 @@
     <div>
       <ion-item mode="ios">
         <ion-label position="floating" mode="ios">Municipio/Delegación</ion-label>
-        <ion-input value="Benito Juárez" disabled>
+        <ion-input value="{{ address?.location }}" disabled>
         </ion-input>
       </ion-item>
     </div>
@@ -61,7 +60,7 @@
     <div>
       <ion-item mode="ios">
         <ion-label position="floating" mode="ios">Estado</ion-label>
-        <ion-input value="CDMX" disabled>
+        <ion-input value="{{ address?.state }}" disabled>
         </ion-input>
       </ion-item>
     </div>
@@ -69,7 +68,7 @@
     <div>
       <ion-item mode="ios">
         <ion-label position="floating" mode="ios">País</ion-label>
-        <ion-input value="México" disabled>
+        <ion-input value="{{ address?.country }}" disabled>
         </ion-input>
       </ion-item>
     </div>

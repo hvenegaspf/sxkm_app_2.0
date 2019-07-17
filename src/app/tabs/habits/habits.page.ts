@@ -41,6 +41,11 @@ export class HabitsPage implements OnInit {
   }
 
   ngOnInit() {
+    this.getCars();
+    this.getStorage('car').then((res) => {
+      this.car_select = JSON.parse(res)
+    })
+    this.loadDrivingHabits();
   }
 
   async loadDrivingHabits() {
@@ -59,7 +64,6 @@ export class HabitsPage implements OnInit {
       this.use_time_hrs = this.use_time_hrs * 60;
       this.unit_use_time = 'min';
     }
-    this.loading.dismiss();
   }
 
   async getCars() {
@@ -105,6 +109,22 @@ export class HabitsPage implements OnInit {
         break;
     }
   }
+
+  selectFilter() {
+    this.presentLoading('Cargando');
+    this.loadDrivingHabits().then(() => {
+      this.loading.dismiss();
+
+    })
+  }
+
+  calcTime(offset, date) {
+    let d = new Date(date)
+    let utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+    let nd = new Date(utc + (3600000 * offset));
+    return nd.toLocaleString()
+  }
+
 
   formatDate(date) {
     let month = '' + (date.getMonth() + 1),

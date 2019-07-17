@@ -3,9 +3,26 @@
   <div class="tabs--bg"></div>
   <div class="tabs--translate">
 
-    <div class="habits--header">
+    <!-- <div class="habits--header">
       <div><h1>Hábitos de manejo</h1></div>
+    </div> -->
+
+    <div class="habits--header">
+      <div class="habits--header-content">
+        <div class="habits--header-km">
+          <div><h1>Hábitos de manejo</h1></div>
+        </div>
+        <div class="habits--header-filter">
+          <ion-select [(ngModel)]="typeFilter" cancelText="Cerrar" interface="action-sheet" (ionChange)="selectFilter()">
+            <ion-select-option value="today" selected>Hoy</ion-select-option>
+            <ion-select-option value="this-week">Esta semana</ion-select-option>
+            <ion-select-option value="this-month">Este mes</ion-select-option>
+            <ion-select-option value="previous-month">Mes anterior</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
     </div>
+
 
     <div class="habits--content">
       <div class="habits--content-grid">
