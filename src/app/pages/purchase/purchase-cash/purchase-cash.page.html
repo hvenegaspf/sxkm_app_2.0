@@ -1,169 +1,45 @@
 <ion-header mode="ios">
-    <div class="header--clean">
-      <ion-icon name="ios-arrow-back" routerLink="/purchase-options" routerDirection="back"></ion-icon>
-      <p>Selecciona tu lugar de pago</p>
-    </div>
-  </ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="dark" (click)="goBack()">
+          <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Confirma tu pago</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-content>
+<ion-content>
 
-    <div class="options--info">
-      <div class="purchase-block">
-        <div class="purchase-block-content">
-          <div class="purchase-block-main">
-            <div>
-              <b class="color--green">5,000 km</b>
-              <p>6 meses de vigencia</p>
-            </div>
-            <div>
-              <b>$490</b>
-              <p>$0.49 / km</p>
-            </div>
+  <div class="options--info">
+    <div class="purchase-block">
+      <div class="purchase-block-content">
+        <div class="purchase-block-main">
+          <div>
+            <b class="color--green">5,000 km</b>
+            <p>6 meses de vigencia</p>
           </div>
-          <div class="purchase-block-method">
-            <div>
-              <img src="../../../assets/payment/cash-icon.svg" />
-              <p>Efectivo</p>
-            </div>
+          <div>
+            <b>$490</b>
+            <p>$0.49 / km</p>
           </div>
         </div>
+        <div class="purchase-block-method">
+          <div>
+            <img src="../../../assets/payment/cash-icon.svg" />
+            <p>Efectivo</p>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="cash--list">
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/7eleven.png" />
-        </div>
+  <div class="cash--list">
+    <div *ngFor="let store of stores" class="half-block" (click)="chooseStore(store)">
+      <div>
+        <img src="{{store.image}}" />
       </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/ahorro.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/airpak.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/al-super.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/asturiano.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/aurrera.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/benavides.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/circlek.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/extra.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/gestopago.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/guadalajara.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/kiosko.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/maxilana.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/multi-recargas.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/oxxo.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/prendamex.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/red-efectiva.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/sams.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/superama.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/te-creemos.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/waldos.png" />
-        </div>
-      </div>
-
-      <div class="half-block" routerLink="/purchase-confirm">
-        <div>
-          <img src="../../../assets/payment/walmart.png" />
-        </div>
-      </div>
-
     </div>
+  </div>
 
-  </ion-content>
+</ion-content>

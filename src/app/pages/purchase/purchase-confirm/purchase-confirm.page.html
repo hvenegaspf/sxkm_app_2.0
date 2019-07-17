@@ -1,11 +1,12 @@
 <ion-header mode="ios">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button text="Regresar">
-      </ion-back-button>
-    </ion-buttons>
-    <ion-title style="text-align:center">Confirma tu pago</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button color="dark" (click)="goBack()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>Confirma tu pago</ion-title>
+    </ion-toolbar>
   <!-- <div class="header--clean">
     <ion-icon name="ios-arrow-back" routerLink="/purchase-options" routerDirection="back"></ion-icon>
     <p>Confirma tu pago</p>
@@ -19,37 +20,35 @@
       <div class="add--full">
 
         <div class="purchase-block">
-            <div class="purchase-block-content">
-              <div class="purchase-block-main">
-                <div>
-                  <b class="color--green">Suscripción</b>
-                  <p>1 mes</p>
-                </div>
-                <div>
-                  <b>$299</b>
-                </div>
+          <div class="purchase-block-content">
+            <div class="purchase-block-main" *ngIf="params.type_payment == 'recharge'">
+              <div>
+                <b class="color--green">5,000 km</b>
+                <p>6 meses de vigencia</p>
               </div>
-              <div class="purchase-block-method">
-                <div>
-                  <img src="../../../assets/payment/card-master.png" />
-                  <p>Bancomer ***8756</p>
-                </div>
+              <div>
+                <b>$490</b>
+                <p>$0.49 / km</p>
               </div>
             </div>
-          </div>
-
-          <div class="purchase-block">
-            <div class="purchase-block-content">
-              <div class="purchase-block-main">
-                <div>
-                  <b class="color--green">5,000 km</b>
-                  <p>6 meses de vigencia</p>
-                </div>
-                <div>
-                  <b>$490</b>
-                  <p>$0.49 / km</p>
-                </div>
+            <div class="purchase-block-main" *ngIf="params.type_payment == 'memberships'">
+              <div>
+                <b class="color--green">Suscripción</b>
+                <p>1 mes</p>
               </div>
+              <div>
+                <b>$299</b>
+              </div>
+            </div>
+            <div class="purchase-block-method" *ngIf="params.pay_method == 'card'">
+              <div>
+                <img *ngIf="params.card.brand == 'mastercard'" src="../../../assets/payment/card-master.png" />
+                <img *ngIf="params.card.brand == 'visa'" src="../../../assets/payment/card-visa.png" />
+                <img *ngIf="params.card.brand == 'american_express'" src="../../../assets/payment/card-amex.png" />
+                <p>{{params.card.card_number}}</p>
+              </div>
+            </div>
+            <div class="purchase-block-content" *ngIf="params.pay_method == 'cash'">
               <div class="purchase-block-method">
                 <div>
                   <img src="../../../assets/payment/cash-icon.svg" />
@@ -60,38 +59,58 @@
                 <img src="../../../assets/payment/7eleven.png" />
               </div>
             </div>
+            <div class="purchase-block-method" *ngIf="params.pay_method == 'spei'">
+              <div>
+                <img src="../../../assets/payment/card-master.png" />
+                <p>Bancomer ***8756</p>
+              </div>
+            </div>
           </div>
-
-
-          <div class="purchase-block-checkbox">
-            <label (click)="onAutoRenew()">
-              <input type="checkbox" />
-              <ion-icon [name]="!this.autoRenew ? 'ios-square-outline' : 'ios-checkbox-outline'"></ion-icon>
-              <b>Leyenda de renovación correspondiente al paquete seleccionado</b>
-            </label>
-          </div>
-
         </div>
 
-        <div class="add--button add--full">
-          <ion-button color="primary" shape="round" fill="solid" (click)="payment()">Pagar</ion-button>
+        <!-- <div class="purchase-block" *ngIf="params.type_payment == 'recharge'">
+          <div class="purchase-block-content">
+            <div class="purchase-block-method">
+              <div>
+                <img src="../../../assets/payment/cash-icon.svg" />
+                <p>Efectivo</p>
+              </div>
+            </div>
+            <div class="purchase-block-cash">
+              <img src="../../../assets/payment/7eleven.png" />
+            </div>
+          </div>
+        </div> -->
+
+        <div class="purchase-block-checkbox">
+          <label (click)="onAutoRenew()">
+            <input type="checkbox" />
+            <ion-icon [name]="!this.autoRenew ? 'ios-square-outline' : 'ios-checkbox-outline'"></ion-icon>
+            <b>Leyenda de renovación correspondiente al paquete seleccionado</b>
+          </label>
         </div>
 
-      </form>
+      </div>
 
-      <!-- payment rejected alert -->
-      <div *ngIf="showAlert" class="reset--alert">
-        <div class="reset--alert-content">
-          <header>
-            <img src="../../../../assets/ui/icon-error-red.png" />
-            <p>Pago rechazado</p>
-          </header>
-          <ion-text>Tu transacción no pudo ser procesada. intenta de nuevo.</ion-text>
-          <div>
-            <ion-button fill="solid" expand="full" shape="round" mode="ios" (click)="onCloseAlert()">OK</ion-button>
-          </div>
+      <div class="add--button add--full">
+        <ion-button color="primary" shape="round" fill="solid" (click)="payment(params.pay_method)">Pagar</ion-button>
+      </div>
+
+    </form>
+
+    <!-- payment rejected alert -->
+    <div *ngIf="showAlert" class="reset--alert">
+      <div class="reset--alert-content">
+        <header>
+          <img src="../../../../assets/ui/icon-error-red.png" />
+          <p>Pago rechazado</p>
+        </header>
+        <ion-text>Tu transacción no pudo ser procesada. intenta de nuevo.</ion-text>
+        <div>
+          <ion-button fill="solid" expand="full" shape="round" mode="ios" (click)="onCloseAlert()">OK</ion-button>
         </div>
       </div>
+    </div>
 
   </div>
 </ion-content>
