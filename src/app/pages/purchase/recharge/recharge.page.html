@@ -1,8 +1,16 @@
 <ion-header mode="ios">
-    <div class="header--clean">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="dark" (click)="goBack()">
+          <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>¿Cuantos kilómetros necesitas?</ion-title>
+  </ion-toolbar>
+    <!-- <div class="header--clean">
       <ion-icon name="close" routerLink="/tabs/tabs/welcome" routerDirection="back"></ion-icon>
       <p>¿Cuantos kilómetros necesitas?</p>
-    </div>
+    </div> -->
   </ion-header>
 
 <ion-content>
@@ -10,7 +18,7 @@
     <div class="recharge--content">
 
       <div class="recharge--block">
-          <div class="recharge--block-container" routerLink="/purchase-options/recharge">
+          <div class="recharge--block-container" (click)="choosePackage()">
             <div class="recharge--block-left">
               <b>250 Km</b>
               <p>1 MES DE VIGENCIA</p>
@@ -22,7 +30,7 @@
           </div>
       </div>
       
-      <div class="recharge--block">
+      <!-- <div class="recharge--block">
           <div class="recharge--block-container" routerLink="/purchase-options/recharge">
             <div class="recharge--block-left">
               <b>250 Km</b>
@@ -46,7 +54,7 @@
               <p>$0.58 / km</p>
             </div>
           </div>
-      </div>
+      </div> -->
 
     </div>
 

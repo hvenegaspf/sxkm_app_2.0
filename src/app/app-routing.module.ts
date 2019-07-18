@@ -29,8 +29,8 @@ const routes: Routes = [
   { path: 'recharge', loadChildren: './pages/purchase/recharge/recharge.module#RechargePageModule' },
   { path: 'add-payment', loadChildren: './pages/purchase/add-payment/add-payment.module#AddPaymentPageModule' },
   { path: 'purchase-cash', loadChildren: './pages/purchase/purchase-cash/purchase-cash.module#PurchaseCashPageModule' },
-  { path: 'purchase-confirm/:type', loadChildren: './pages/purchase/purchase-confirm/purchase-confirm.module#PurchaseConfirmPageModule' },
-  { path: 'purchase-options/:type', loadChildren: './pages/purchase/purchase-options/purchase-options.module#PurchaseOptionsPageModule' },
+  { path: 'purchase-confirm', loadChildren: './pages/purchase/purchase-confirm/purchase-confirm.module#PurchaseConfirmPageModule' },
+  { path: 'purchase-options', loadChildren: './pages/purchase/purchase-options/purchase-options.module#PurchaseOptionsPageModule' },
   { path: 'purchase-reference', loadChildren: './pages/purchase/purchase-reference/purchase-reference.module#PurchaseReferencePageModule' },
   { path: 'purchase-success', loadChildren: './pages/purchase/purchase-success/purchase-success.module#PurchaseSuccessPageModule' },
   // sxkm pages

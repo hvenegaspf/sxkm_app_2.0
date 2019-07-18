@@ -50,9 +50,9 @@
         <div class="widget--recharge-header">
           <div>
             <p>Disponibles</p>
-            <b>232 km</b>
+            <b>{{kms_status?.km_left}} km</b>
           </div>
-          <a routerLink="/recharge">
+          <a (click)="Recharge()">
             <span>Recargar</span>
             <ion-icon name="ios-arrow-forward"></ion-icon>
           </a>
@@ -62,7 +62,7 @@
         </div>
         <div class="widget--recharge-footer">
           <b>Recorrido</b>
-          <b>786 km</b>
+          <b>{{kms_status?.used_km}} km</b>
         </div>
       </div>
 
@@ -70,7 +70,7 @@
       <div class="widget widget--subscribe">
         <div>
           <b>Suscripción</b>
-          <a routerLink="/purchase-options/subscription">
+          <a (click)="paySubscription()">
             <span>Renovar</span>
             <ion-icon name="ios-arrow-forward"></ion-icon>
           </a>

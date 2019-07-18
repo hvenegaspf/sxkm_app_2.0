@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, ModalController, NavParams, LoadingController,ToastController, Platform} from '@ionic/angular';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-recharge',
@@ -8,8 +9,22 @@ import { NavController, ModalController, NavParams, LoadingController,ToastContr
 })
 export class RechargePage implements OnInit {
 
-  constructor(private navctrl: NavController) { }
+  constructor(private navCtrl: NavController, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  goBack(){
+    this.navCtrl.back()
+  }
+
+  choosePackage(){
+    let navigationExtras: NavigationExtras = {
+      state: {
+        package: 1,
+        type_payment: 'recharge'
+      }
+    };
+    this.router.navigate(['purchase-options'], navigationExtras);
   }
 }
