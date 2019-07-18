@@ -10,7 +10,8 @@
           <p>{{totalKms | number : '1.2-2'}} km</p>
         </div>
         <div class="trips--header-filter">
-          <ion-select [(ngModel)]="typeFilter" cancelText="Cerrar" interface="action-sheet" (ionChange)="selectFilter()">
+          <ion-select [(ngModel)]="typeFilter" cancelText="Cerrar" interface="action-sheet"
+            (ionChange)="selectFilter()">
             <ion-select-option value="today" selected>Hoy</ion-select-option>
             <ion-select-option value="this-week">Esta semana</ion-select-option>
             <ion-select-option value="this-month">Este mes</ion-select-option>
@@ -34,24 +35,30 @@
         <p>Sin viajes realizados</p>
       </div>
 
-       <!-- si existen viajes -->
-       <!-- <div class="trips--title">Viajes de Hoy</div> -->
-       <ion-list class="trips--list" *ngIf="this.arrayTrips.length !== 0">
-         <ion-item class="trips--list-item" lines="none" mode="ios" *ngFor="let trip of arrayTrips; let i = index">
-
-           <div class="trips--list-map"><div id="map" style="height: 100%; width: 100%;"></div></div>
-           
-           <div class="trips--list-info">
+      <!-- si existen viajes -->
+      <!-- <div class="trips--title">Viajes de Hoy</div> -->
+      <ion-list class="trips--list" *ngIf="this.arrayTrips.length !== 0">
+        <ion-item class="trips--list-item" lines="none" mode="ios" *ngFor="let trip of arrayTrips; let i = index">
+          <div class="trips--list-link" [routerLink]="['/trip-detail',trip.id]">
+            <div class="trips--list-map">
+              <div id="map-trip-{{i+1}}" style="height: 100%; width: 100%;"></div>
+            </div>
+  
+            <div class="trips--list-info">
               <b>{{ trip['distance'] | number : '1.2-2' }} km</b>
-              <p>{{ (trip['finished_at'] !== null && trip['finished_at'] !== undefined) ? (trip['finished_at'] | date:'shortDate') : "" }}</p>
+              <p>
+                {{ (trip['finished_at'] !== null && trip['finished_at'] !== undefined) ? (trip['finished_at'] | date:'shortDate') : "" }}
+              </p>
               <p> - </p>
-              <p>{{ (trip['finished_at'] !== null && trip['finished_at'] !== undefined ) ? (trip['finished_at'] | date:'shortTime') : "" }}</p>
-           </div>
-         </ion-item>
-       </ion-list>
-    
-      <ion-infinite-scroll [disabled]="!enabled" threshold="50px"
-      (ionInfinite)="loadTrips(false, $event)">
+              <p>
+                {{ (trip['finished_at'] !== null && trip['finished_at'] !== undefined ) ? (trip['finished_at'] | date:'shortTime') : "" }}
+              </p>
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+
+      <ion-infinite-scroll [disabled]="!enabled" threshold="50px" (ionInfinite)="loadTrips(false, $event)">
         <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando viajes...">
         </ion-infinite-scroll-content>
       </ion-infinite-scroll>

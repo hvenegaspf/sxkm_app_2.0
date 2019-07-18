@@ -74,6 +74,37 @@
     }
   }
 
+  &--labels{
+    .indicator{
+      font-size: 12px;
+      display: block;
+      margin: 2px;
+      &::before{
+        content: "speed";
+        margin: 0 10px;
+        font-size: 6px;
+      }
+    }
+    .low{
+      &::before{
+        color: green;
+        background-color: green;
+      }
+    }
+    .medium{
+      &::before{
+        color: blue;
+        background-color: blue;
+      }
+    }
+    .high{
+      &::before{
+        color: red;
+        background-color: red;
+      }
+    }
+  }
+
   &--habits {
     width: 100%;
     display: grid;
