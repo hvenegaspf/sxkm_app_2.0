@@ -11,6 +11,7 @@ import { PaymentsService } from '../../../providers/payments.service';
 export class PurchaseOptionsPage implements OnInit {
   params:any;
   cards:any = [];
+  gate_ways:any = [];
   constructor(private route: ActivatedRoute, private router: Router, private navCtrl: NavController,
               private paymentService: PaymentsService) { 
     this.route.queryParams.subscribe(params => {
@@ -28,7 +29,13 @@ export class PurchaseOptionsPage implements OnInit {
     this.cards = await this.paymentService.getCards()
   }
 
-  paymentCard(pay_method, card){
+  async paymentCard(pay_method, card){
+    this.gate_ways = await this.paymentService.getGateWay()
+    this.gate_ways.forEach(element => {
+      if(element.name == pay_method){
+       this.params.gateway = element 
+      }
+    });
     this.params.pay_method = pay_method
     this.params.card = card
     console.log(this.params)
@@ -38,7 +45,7 @@ export class PurchaseOptionsPage implements OnInit {
     this.router.navigate(['purchase-confirm'], navigationExtras);
   }
 
-  paymentCash(pay_method){
+  async paymentCash(pay_method){
     this.params.pay_method = pay_method
     let navigationExtras: NavigationExtras = {
       state: this.params
@@ -46,7 +53,13 @@ export class PurchaseOptionsPage implements OnInit {
     this.router.navigate(['purchase-cash'], navigationExtras);
   }
 
-  paymentSpei(pay_method){
+  async paymentSpei(pay_method){
+    this.gate_ways = await this.paymentService.getGateWay()
+    this.gate_ways.forEach(element => {
+      if(element.name == pay_method){
+       this.params.gateway = element 
+      }
+    });
     this.params.pay_method = pay_method
     console.log(this.params)
     let navigationExtras: NavigationExtras = {
