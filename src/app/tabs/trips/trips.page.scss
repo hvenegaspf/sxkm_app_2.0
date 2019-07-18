@@ -71,6 +71,10 @@
       box-shadow: var(--ion-box-shadow);
     }
 
+    &-link{
+      display: inherit;
+    }
+
     &-map {
       width: 100%;
       height: 5rem;

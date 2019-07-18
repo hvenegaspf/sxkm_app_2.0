@@ -39,20 +39,21 @@
       <!-- <div class="trips--title">Viajes de Hoy</div> -->
       <ion-list class="trips--list" *ngIf="this.arrayTrips.length !== 0">
         <ion-item class="trips--list-item" lines="none" mode="ios" *ngFor="let trip of arrayTrips; let i = index">
-
-          <div class="trips--list-map">
-            <div id="map-trip-{{i+1}}" style="height: 100%; width: 100%;"></div>
-          </div>
-
-          <div class="trips--list-info">
-            <b>{{ trip['distance'] | number : '1.2-2' }} km</b>
-            <p>
-              {{ (trip['finished_at'] !== null && trip['finished_at'] !== undefined) ? (trip['finished_at'] | date:'shortDate') : "" }}
-            </p>
-            <p> - </p>
-            <p>
-              {{ (trip['finished_at'] !== null && trip['finished_at'] !== undefined ) ? (trip['finished_at'] | date:'shortTime') : "" }}
-            </p>
+          <div class="trips--list-link" [routerLink]="['/trip-detail',trip.id]">
+            <div class="trips--list-map">
+              <div id="map-trip-{{i+1}}" style="height: 100%; width: 100%;"></div>
+            </div>
+  
+            <div class="trips--list-info">
+              <b>{{ trip['distance'] | number : '1.2-2' }} km</b>
+              <p>
+                {{ (trip['finished_at'] !== null && trip['finished_at'] !== undefined) ? (trip['finished_at'] | date:'shortDate') : "" }}
+              </p>
+              <p> - </p>
+              <p>
+                {{ (trip['finished_at'] !== null && trip['finished_at'] !== undefined ) ? (trip['finished_at'] | date:'shortTime') : "" }}
+              </p>
+            </div>
           </div>
         </ion-item>
       </ion-list>

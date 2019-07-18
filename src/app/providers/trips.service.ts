@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { responseListTrips } from '../interfaces/list-trips-interface';
 import { responseDrivingHabits } from '../interfaces/driving-habits-interface';
 import { Storage } from '@ionic/storage';
+import { responseLastTrip } from '../interfaces/last-trip-interface';
 
 
 const URL = environment.devPath;
@@ -20,7 +21,7 @@ export class TripsService {
   token: any;
   header: any;
   user_id;
-  url_santander = 'https://redtec.populusinsurtech.technology/api/v1/';
+  url_autocompara = 'https://redtec.populusinsurtech.technology/api/v1/';
 
 
   constructor(private http: HttpClient, private navCtrl: NavController, private storage: Storage) { }
@@ -37,7 +38,28 @@ export class TripsService {
     }
     this.trip_page++;
     /* console.log(`${URL}trips?from=${from}&to=${to}&car_id=${car_id}&page=${this.trip_page}`) */
-    return this.http.get<responseListTrips>(`${this.url_santander}trips?from=2019-03-26&to=2019-03-27&car_id=3&page=${this.trip_page}`, { headers: headers })
+    return this.http.get<responseListTrips>(`${this.url_autocompara}trips?from=2019-03-26&to=2019-03-27&car_id=3&page=${this.trip_page}`, { headers: headers })
+  }
+
+  async getTripDetails (id_details) {
+    await this.getStorage('auth_token').then((res)=>{
+      this.token = res
+    })
+    let headers = new HttpHeaders({ 
+      'Content-Type': 'application/json' ,
+      'Authorization': this.token,
+      'company_id': '2'
+    });
+    return new Promise(resolve => {
+      /* console.log(`${URL}trip/details/${id_details}`) */
+      this.http.get<responseLastTrip>(`${this.url_autocompara}trip/details/${id_details}`, {headers:headers}).subscribe(
+        (response) => {
+          if (response.code === 200) {
+            resolve(response.data)
+          }
+        }
+      );
+    })
   }
 
   getDrivingHabits(from, to, token, car_id) {
@@ -49,7 +71,7 @@ export class TripsService {
     });
     return new Promise(resolve => {
       /* console.log(`${URL}driving_habits?from=${from}&to=${to}&car_id=${car_id}`) */
-      this.http.get<responseDrivingHabits>(`${this.url_santander}driving_habits?from=${from}&to=${to}&car_id=${car_id}`, {headers:headers}).subscribe(
+      this.http.get<responseDrivingHabits>(`${this.url_autocompara}driving_habits?from=${from}&to=${to}&car_id=${car_id}`, {headers:headers}).subscribe(
         (response) => {
           if (response.code === 200) {
             resolve(response.data)

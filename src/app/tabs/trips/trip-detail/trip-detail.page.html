@@ -9,8 +9,8 @@
 <ion-content>
 
   <div class="detail--header">
-    <p>Martes 7 de Junio 2018</p>
-    <b>11.23 km</b>
+    <p>{{ today | date: 'dd/MM/yyyy' }}</p>
+    <b>{{ dataTripDetails?.distance | number : '1.2-2' }} Km</b>
   </div>
 
   <div class="detail--content" padding>
@@ -18,35 +18,50 @@
     <div class="detail--highlights">
       <div>
         <p>Tiempo detenido</p>
-        <b>4.7 minutos</b>
+        <b>{{ (dataTripDetails?.idling_time !== null && dataTripDetails?.idling_time !== undefined ) ? (dataTripDetails?.idling_time | number : '1.2-2') : 0 }}
+          minutos</b>
       </div>
       <div>
         <p>Velocidad promedio</p>
-        <b>28.4 km/h</b>
+        <b>{{ (dataTripDetails?.avg_drive_speed !== null && dataTripDetails?.avg_drive_speed !== undefined ) ? (dataTripDetails?.avg_drive_speed | number : '1.2-2') : 0 }}
+          km/h</b>
       </div>
       <div>
         <p>Velocidad máxima</p>
-        <b>65.3 km/h</b>
+        <b>{{ (dataTripDetails?.max_speed !== null && dataTripDetails?.max_speed !== undefined ) ? (dataTripDetails?.max_speed | number : '1.2-2') : 0 }}
+          km/h</b>
       </div>
     </div>
 
-    <div class="detail--map">map</div>
+    <div class="detail--map">
+      <div id="map-details" style="width: 100%; height: 100%;"></div>
+    </div>
 
     <div class="detail--info">
       <div class="detail--info-block">
         <img src="/assets/ui/trip-start.svg" />
         <div>
-          <b>7:23 am</b>
-          <p>Av. Oaxaca 134, Roma Nte., 06700, CDMX, México</p>
+          <b>{{ (dataTripDetails?.started_at !== null && dataTripDetails?.started_at !== undefined ) ? (dataTripDetails?.started_at | date:'shortTime') : "" }}</b>
+          <p>
+            {{ (dataTripDetails?.init_trip?.street !== null) ? (dataTripDetails?.init_trip?.street) : " No existe dirección del punto inicial." }}
+          </p>
         </div>
       </div>
       <div class="detail--info-block end">
         <img src="/assets/ui/trip-end.svg" />
         <div>
-          <b>7:54 pm</b>
-          <p>Calle de Aguascalientes 165, Hipódromo, 06100, CDMX, México</p>
+          <b>{{ (dataTripDetails?.finished_at !== null && dataTripDetails?.finished_at !== undefined) ? (dataTripDetails?.finished_at | date:'shortTime') : "" }}</b>
+          <p>
+            {{ (dataTripDetails?.end_trip?.street !== null) ? (dataTripDetails?.end_trip?.street) : " No existe dirección del punto final." }}
+          </p>
         </div>
       </div>
+    </div>
+
+    <div class="detail--labels">
+      <p class="indicator low">Velocidad menor a 40 kms/hr.</p>
+      <p class="indicator medium">Velocidad mayor a 40 kms/hr y menor a 70 kms/hr.</p>
+      <p class="indicator high">Velocidad mayor a 70 kms/hr.</p>
     </div>
 
     <div class="detail--habits">

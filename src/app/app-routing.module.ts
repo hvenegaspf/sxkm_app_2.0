@@ -40,7 +40,7 @@ const routes: Routes = [
   // tabs
   { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },
   // tab pages
-  { path: 'trip-detail', loadChildren: './tabs/trips/trip-detail/trip-detail.module#TripDetailPageModule' },
+  { path: 'trip-detail/:id', loadChildren: './tabs/trips/trip-detail/trip-detail.module#TripDetailPageModule' },
   { path: 'levels/:level', loadChildren: './tabs/rewards/levels/levels.module#LevelsPageModule' },
   { path: 'conditions', loadChildren: './tabs/policy/conditions/conditions.module#ConditionsPageModule' },
   // sos pages
