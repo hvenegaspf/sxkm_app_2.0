@@ -118,7 +118,7 @@ export class TripsPage implements OnInit {
     console.log('arrayTrips', this.arrayTrips)
     for (let i = 0; this.arrayTrips.length > i; i++) {
       setTimeout(() => {
-        this.map = new Map(`map-trip-${i + 1}`, { zoomControl: false }).setView([this.arrayTrips[i]['init_trip']['latitude'], this.arrayTrips[i]['init_trip']['longitude']], 10);
+        this.map = new Map(`map-trip-${i + 1}`, { zoomControl: false }).setView([this.arrayTrips[i]['init_trip']['latitude'], this.arrayTrips[i]['init_trip']['longitude']], 13);
 
         Leaflet.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
           attribution: '',
