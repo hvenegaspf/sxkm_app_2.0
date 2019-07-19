@@ -60,6 +60,7 @@ export class TabsPage implements OnInit {
         /* this.dataLastTrip() */
       }
     }
+    console.log(this.car_select)
   }
 
   /* async onClickSelector() {

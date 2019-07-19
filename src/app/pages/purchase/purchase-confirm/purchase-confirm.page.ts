@@ -97,8 +97,9 @@ export class PurchaseConfirmPage implements OnInit {
     this.presentLoading('Procesando');
     this.pay = await this.paymentService.payMembership(json)
     if(this.pay.code == 200){
+      this.pay.method_payment = this.params.pay_method
       let navigationExtras: NavigationExtras = {
-        state: this.params
+        state: this.pay
       };
       this.router.navigate(['purchase-success'], navigationExtras);
       this.loading.dismiss()
@@ -129,8 +130,9 @@ export class PurchaseConfirmPage implements OnInit {
     this.presentLoading('Procesando');
     this.pay = await this.paymentService.payMembership(json)
     if(this.pay.code == 200){
+      this.pay.method_payment = this.params.pay_method
       let navigationExtras: NavigationExtras = {
-        state: this.params
+        state: this.pay
       };
       this.router.navigate(['purchase-success'], navigationExtras);
       this.loading.dismiss()
@@ -160,6 +162,7 @@ export class PurchaseConfirmPage implements OnInit {
     this.presentLoading('Procesando');
     this.pay = await this.paymentService.payMembership(json)
     if(this.pay.code == 200){
+      this.pay.method_payment = this.params.pay_method
       let navigationExtras: NavigationExtras = {
         state: this.pay
       };
