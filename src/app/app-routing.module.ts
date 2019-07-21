@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   { path: 'profile-edit', loadChildren: './pages/profile/profile-edit/profile-edit.module#ProfileEditPageModule' },
   { path: 'address', loadChildren: './pages/address/address.module#AddressPageModule' },
+  { path: 'address-edit', loadChildren: './pages/address/address-edit/address-edit.module#AddressEditPageModule' },
   // order pages
   { path: 'orders', loadChildren: './pages/orders/orders.module#OrdersPageModule' },
   { path: 'order-detail', loadChildren: './pages/orders/order-detail/order-detail.module#OrderDetailPageModule' },
@@ -53,7 +54,6 @@ const routes: Routes = [
   { path: 'cars', loadChildren: './tabs/cars/cars.module#CarsPageModule' },
   { path: 'car-detail', loadChildren: './tabs/cars/car-detail/car-detail.module#CarDetailPageModule' },
   { path: 'add-driver', loadChildren: './tabs/cars/add-driver/add-driver.module#AddDriverPageModule' },
-  { path: 'address-edit', loadChildren: './pages/address/address-edit/address-edit.module#AddressEditPageModule' },
 ];
 
 @NgModule({
