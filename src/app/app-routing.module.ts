@@ -43,6 +43,8 @@ const routes: Routes = [
   { path: 'trip-detail', loadChildren: './tabs/trips/trip-detail/trip-detail.module#TripDetailPageModule' },
   { path: 'levels', loadChildren: './tabs/rewards/levels/levels.module#LevelsPageModule' },
   { path: 'conditions', loadChildren: './tabs/policy/conditions/conditions.module#ConditionsPageModule' },
+  // status pages
+  { path: 'status', loadChildren: './tabs/status/status.module#StatusPageModule' },
   // sos pages
   { path: 'confirm-phone', loadChildren: './tabs/sos/confirm-phone/confirm-phone.module#ConfirmPhonePageModule' },
   { path: 'report-success', loadChildren: './tabs/sos/report-success/report-success.module#ReportSuccessPageModule' },

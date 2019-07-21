@@ -10,6 +10,8 @@ import Leaflet from 'leaflet';
 })
 export class TripsPage implements OnInit {
 
+  arrayTrips = [1,2];
+
   constructor() { }
 
   ngOnInit() {

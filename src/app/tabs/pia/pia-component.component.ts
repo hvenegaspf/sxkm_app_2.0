@@ -7,17 +7,17 @@ import { Platform } from '@ionic/angular';
 
 
 /**
- * Generated class for the PagesPiaComponent component.
  *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
+ * Original
+ * https://losrodriguez.studio/sxkm/
+ * .
  */
 @Component({
-  selector: 'status-pia',
-  templateUrl: './status.component.html',
-  styleUrls: ['./status.component.scss'],
+  selector: 'pia-component',
+  templateUrl: './pia-component.component.html',
+  styleUrls: ['./pia-component.component.scss'],
 })
-export class StatusComponent {
+export class PiaComponent {
   @ViewChild('canvas') canvasEl: ElementRef;
   private _CANVAS: any;
   dtc: any = {};
