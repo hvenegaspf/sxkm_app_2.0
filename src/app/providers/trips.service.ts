@@ -13,7 +13,7 @@ const URL = environment.devPath;
 @Injectable({
   providedIn: 'root'
 })
-
+  
 export class TripsService {
   car_id: any;
   details_id = '';
