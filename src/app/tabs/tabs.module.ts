@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { TabsRoutingModule } from './tabs-routing.module';
 import { TabsPage } from './tabs.page';
 import { OptionsComponent } from '../tabs/sos/options/options.component';
+import { PiaComponent } from './pia/pia-component.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { OptionsComponent } from '../tabs/sos/options/options.component';
     IonicModule,
     TabsRoutingModule,
   ],
-  declarations: [TabsPage, OptionsComponent],
-  entryComponents: [OptionsComponent]
+  declarations: [TabsPage, OptionsComponent, PiaComponent],
+  entryComponents: [OptionsComponent, PiaComponent]
 })
 export class TabsPageModule {}
