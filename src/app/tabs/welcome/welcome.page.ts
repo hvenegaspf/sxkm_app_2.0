@@ -25,7 +25,7 @@ export class WelcomePage implements OnInit {
   paySubscription(){
     let navigationExtras: NavigationExtras = {
       state: {
-        type_payment: 'memberships'
+        type_payment: 'membership'
       }
     };
     this.router.navigate(['purchase-options'], navigationExtras);

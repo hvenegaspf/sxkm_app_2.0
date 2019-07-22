@@ -12,7 +12,7 @@ const URL = environment.devPath;
   providedIn: 'root'
 })
 export class GlobalService {
-  car:any;
+  policy_id:any;
   token:any;
   constructor(private http: HttpClient, private storage: Storage) { }
 
@@ -23,12 +23,11 @@ export class GlobalService {
   async getKmStatus(){
    
     await this.getStorage('car').then((res) => {
-      this.car = JSON.parse(res)
+      this.policy_id = JSON.parse(res)
     })
-    console.log(this.car.policy_id)
     
     return new Promise(resolve => {
-      this.http.get(`${URL}acquisitions/${this.car.policy_id}/km_status`).subscribe(
+      this.http.get(`${URL}acquisitions/${this.policy_id.car.details.policy_id}/km_status`).subscribe(
         (response:any) => {
           resolve(response.data)
         });

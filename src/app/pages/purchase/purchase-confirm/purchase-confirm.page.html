@@ -31,7 +31,7 @@
                 <p>$0.49 / km</p>
               </div>
             </div>
-            <div class="purchase-block-main" *ngIf="params.type_payment == 'memberships'">
+            <div class="purchase-block-main" *ngIf="params.type_payment == 'membership'">
               <div>
                 <b class="color--green">Suscripción</b>
                 <p>1 mes</p>
@@ -40,7 +40,7 @@
                 <b>$299</b>
               </div>
             </div>
-            <div class="purchase-block-method" *ngIf="params.pay_method == 'card'">
+            <div class="purchase-block-method" *ngIf="params.pay_method == 'Card'">
               <div>
                 <img *ngIf="params.card.brand == 'mastercard'" src="../../../assets/payment/card-master.png" />
                 <img *ngIf="params.card.brand == 'visa'" src="../../../assets/payment/card-visa.png" />
@@ -48,7 +48,7 @@
                 <p>{{params.card.card_number}}</p>
               </div>
             </div>
-            <div class="purchase-block-content" *ngIf="params.pay_method == 'cash'">
+            <div class="purchase-block-content" *ngIf="params.pay_method == 'Cash'">
               <div class="purchase-block-method">
                 <div>
                   <img src="../../../assets/payment/cash-icon.svg" />
@@ -56,13 +56,12 @@
                 </div>
               </div>
               <div class="purchase-block-cash">
-                <img src="../../../assets/payment/7eleven.png" />
+                <img src="{{params.store.image}}" />
               </div>
             </div>
-            <div class="purchase-block-method" *ngIf="params.pay_method == 'spei'">
+            <div class="purchase-block-method" *ngIf="params.pay_method == 'Spei'">
               <div>
-                <img src="../../../assets/payment/card-master.png" />
-                <p>Bancomer ***8756</p>
+                <img src="../../../assets/payment/spei.png" />
               </div>
             </div>
           </div>
@@ -82,7 +81,7 @@
           </div>
         </div> -->
 
-        <div class="purchase-block-checkbox">
+        <div class="purchase-block-checkbox" *ngIf="params.type_payment == 'membership' && params.pay_method == 'Card'">
           <label (click)="onAutoRenew()">
             <input type="checkbox" />
             <ion-icon [name]="!this.autoRenew ? 'ios-square-outline' : 'ios-checkbox-outline'"></ion-icon>

@@ -11,6 +11,9 @@ const URL = environment.devPath;
   providedIn: 'root'
 })
 export class PaymentsService {
+  HEADERS = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+  };
   user_id:any;
   constructor(public loadingCtrl: LoadingController, private http: HttpClient, private storage: Storage) { }
 
@@ -28,13 +31,33 @@ export class PaymentsService {
     })
   }
 
-  setStorage(key: string, value: string) {
-    this.storage.set(key, value);
+  async getGateWay(){
+    return new Promise(resolve => {
+      this.http.get(`${URL}payment_gateways`).subscribe(
+        (res: any) => {
+          console.log('policy', res.data)
+          resolve(res.data)
+        });
+    })
   }
-  
+
+  async payMembership(json){
+    console.log(json)
+    return new Promise(resolve => {
+      this.http.post(`${URL}payments`, json, this.HEADERS).subscribe(
+        (res: any) => {
+          resolve(res)
+        });
+    })
+  }
+
   async getStorage(key: string) {
     let valueStorage = await this.storage.get(key);
     return valueStorage;
   }
 
+  setStorage(key: string, value: string) {
+    this.storage.set(key, value);
+  }
+  
 }

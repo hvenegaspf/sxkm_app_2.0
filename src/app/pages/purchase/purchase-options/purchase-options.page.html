@@ -54,7 +54,7 @@
 
   <div class="options--list">
 
-    <div class="simple-block" *ngFor="let card of cards" (click)="paymentCard('card', card)">
+    <div class="simple-block" *ngFor="let card of cards" (click)="paymentCard('Card', card)">
       <div>
         <img *ngIf="card.brand == 'mastercard'" src="../../../assets/payment/card-master.png" />
         <img *ngIf="card.brand == 'visa'" src="../../../assets/payment/card-visa.png" />
@@ -80,7 +80,7 @@
       </div>
     </div> -->
 
-    <div class="simple-block" (click)="paymentCash('cash')">
+    <div class="simple-block" (click)="paymentCash('Cash')">
       <div>
         <img src="../../../assets/payment/cash-icon.svg" />
         <p>Efectivo</p>
@@ -88,7 +88,7 @@
       </div>
     </div>
 
-    <div class="simple-block" (click)="paymentSpei('spei')">
+    <div class="simple-block" (click)="paymentSpei('Spei')">
       <div>
         <img src="../../../assets/payment/spei.png" />
         <p>Transferencia</p>
