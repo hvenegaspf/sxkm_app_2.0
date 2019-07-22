@@ -10,6 +10,7 @@ import { Router, NavigationExtras } from '@angular/router';
   templateUrl: './address.page.html',
   styleUrls: ['./address.page.scss'],
 })
+
 export class AddressPage implements OnInit {
   
   address;

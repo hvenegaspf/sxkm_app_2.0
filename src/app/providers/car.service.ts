@@ -39,6 +39,17 @@ export class CarService {
     })
   }
 
+  createSinister(data, token) {
+    console.log(data)
+    this.token = token
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.token,
+      'company_id': '1'
+    });
+    return this.http.post(`${URL}claim`, data, { headers: headers })
+  }
+
   setStorage(key: string, value: string) {
     this.storage.set(key, value);
   }

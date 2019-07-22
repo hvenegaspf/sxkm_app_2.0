@@ -1,7 +1,7 @@
 <ion-header mode="ios">
   <div class="header--clean">
     <ion-icon name="close" routerLink="/tabs/tabs/" routerDirection="back"></ion-icon>
-    <p>Solicitar [servicio]</p>
+    <p>Solicitar servicio</p>
   </div>
 </ion-header>
 
@@ -24,7 +24,7 @@
       </div>
       <div>
         <ion-button *ngIf="!confirm.valid" fill="solid" expand="full" shape="round" mode="ios" disabled>Siguiente</ion-button>
-        <ion-button *ngIf="confirm.valid" fill="solid" expand="full" shape="round" mode="ios" routerLink="/report-success">Siguiente</ion-button>
+        <ion-button *ngIf="confirm.valid" fill="solid" expand="full" shape="round" mode="ios" type="submit" routerLink="/report-success">Siguiente</ion-button>
       </div>
     </form>
 

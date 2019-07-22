@@ -10,27 +10,27 @@
 
     <div class="sos--list">
 
-      <a class="sos--list-item" (click)="closeModal()" routerLink="/confirm-phone" routerDirection="forward">
+      <a class="sos--list-item" (click)="confirmPhone('Batery')">
         <div><img src="../../../assets/ui/sos-battery.png" /></div>
         <p>Batería baja</p>
       </a>
-      <a class="sos--list-item" (click)="closeModal()" routerLink="/confirm-phone" routerDirection="forward">
+      <a class="sos--list-item" (click)="confirmPhone('Change_wheel')">
         <div><img src="../../../assets/ui/sos-tire.png" /></div>
         <p>Cambio de llanta</p>
       </a>
-      <a class="sos--list-item" (click)="closeModal()" routerLink="/confirm-phone" routerDirection="forward">
+      <a class="sos--list-item" (click)="confirmPhone('Gas')">
         <div><img src="../../../assets/ui/sos-fuel.png" /></div>
         <p>Combustible</p>
       </a>
-      <a class="sos--list-item" (click)="closeModal()" routerLink="/confirm-phone" routerDirection="forward">
+      <a class="sos--list-item" (click)="confirmPhone('Driver')">
         <div><img src="../../../assets/ui/sos-driver.png" /></div>
         <p>Conductor</p>
       </a>
-      <a class="sos--list-item" (click)="closeModal()" routerLink="/confirm-phone" routerDirection="forward">
+      <a class="sos--list-item" (click)="confirmPhone('Crane')">
         <div><img src="../../../assets/ui/sos-crane.png" /></div>
         <p>Solicitar grúa</p>
       </a>
-      <a class="sos--list-item" (click)="closeModal()" routerLink="/confirm-phone" routerDirection="forward">
+      <a class="sos--list-item" href="tel:5551694308">
         <div><img src="../../../assets/ui/sos-call.png" /></div>
         <p>Llamar a SXKM</p>
       </a>
@@ -38,7 +38,7 @@
     </div>
 
     <div class="sos--bottom">
-      <a class="sos--list-item" (click)="closeModal()" routerLink="/confirm-phone" routerDirection="forward">
+      <a class="sos--list-item" (click)="confirmPhone('Clash')">
         <div><img src="../../../assets/ui/sos-crash.png" /></div>
         <p>Robo o accidente</p>
       </a>
