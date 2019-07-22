@@ -1,0 +1,35 @@
+.dtcs {
+  
+    &--dtc_details {
+      width: 100%;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--ion-box-shadow);
+      // color: var(--ion-color-secondary);
+      margin: 1rem 0;
+      padding: 0.5rem;
+      box-sizing: border-box;
+      ion-img {
+        width: 26%;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+      &-info {
+        width: 74%;
+        padding: 0 8px;
+        box-sizing: border-box;
+        p {
+          font-size: 13px;
+          margin: 4px 0;
+        }
+      }
+    }
+
+  }
+  
+
+  .container-dtcs{
+    min-height: 20vh;
+  }
