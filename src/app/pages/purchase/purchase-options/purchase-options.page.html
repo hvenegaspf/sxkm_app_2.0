@@ -17,16 +17,16 @@
 
   <!-- recharge -->
   <div class="options--info">
-    <div *ngIf="params.type_payment == 'recharge'" class="purchase-block">
+    <div *ngIf="params.type_payment == 'acquisition'" class="purchase-block">
       <div class="purchase-block-content">
           <div class="purchase-block-main">
             <div>
-              <b class="color--green">5,000 km</b>
-              <p>6 meses de vigencia</p>
+              <b class="color--green">{{params.package.package}} km</b>
+              <p>{{params.package.vigency}} {{params.package.vigency==1?'mes':'meses'}} de vigencia</p>
             </div>
             <div>
-              <b>$490</b>
-              <p>$0.49 / km</p>
+              <b>{{params.package.cost_by_package | currency}}</b>
+              <p>{{params.package.cost_by_km | currency }} / km</p>
             </div>
           </div>
       </div>
@@ -48,19 +48,20 @@
 
   </div>
 
-  <div class="options--empty">
+  <div *ngIf="cards.length == 0" class="options--empty">
     <p>No tienes tarjetas registradas</p>
   </div>
 
   <div class="options--list">
-
-    <div class="simple-block" *ngFor="let card of cards" (click)="paymentCard('Card', card)">
-      <div>
-        <img *ngIf="card.brand == 'mastercard'" src="../../../assets/payment/card-master.png" />
-        <img *ngIf="card.brand == 'visa'" src="../../../assets/payment/card-visa.png" />
-        <img *ngIf="card.brand == 'american_express'" src="../../../assets/payment/card-amex.png" />
-        <p>{{card.card_number}}</p>
-        <ion-icon name="ios-arrow-forward"></ion-icon>
+    <div *ngIf="cards.length > 0">
+      <div class="simple-block" *ngFor="let card of cards" (click)="paymentCard('Card', card)">
+        <div>
+          <img *ngIf="card.brand == 'mastercard'" src="../../../assets/payment/card-master.png" />
+          <img *ngIf="card.brand == 'visa'" src="../../../assets/payment/card-visa.png" />
+          <img *ngIf="card.brand == 'american_express'" src="../../../assets/payment/card-amex.png" />
+          <p>{{card.card_number}}</p>
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </div>
       </div>
     </div>
 

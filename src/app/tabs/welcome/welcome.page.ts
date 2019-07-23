@@ -12,10 +12,17 @@ import { GlobalService } from '../../providers/global.service';
 })
 export class WelcomePage implements OnInit {
   kms_status:any;
+  dueDate:any
   constructor(private modalCtlr: ModalController, private router: Router, private globlaService: GlobalService, ) { }
 
   ngOnInit() {
     this.getKmStatus()
+    this.getNextDueDate()
+  }
+
+  async getNextDueDate(){
+    this.dueDate = await this.globlaService.getNextDueDate();
+    console.log(this.dueDate)
   }
 
   async getKmStatus(){
@@ -32,7 +39,13 @@ export class WelcomePage implements OnInit {
   }
 
   Recharge(){
-    this.router.navigate(['recharge']);
+    /* this.router.navigate(['recharge']); */
+    let navigationExtras: NavigationExtras = {
+      state: {
+        type_payment: 'acquisition'
+      }
+    };
+    this.router.navigate(['recharge'], navigationExtras);
   }
 
   onClickHelpWidget() {

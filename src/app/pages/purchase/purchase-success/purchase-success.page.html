@@ -47,7 +47,7 @@
       <div class="success--info-reference" *ngIf="params.method_payment == 'Cash'">
         <div *ngIf="params.charge_type == 'acquisition'">
           <img src="../../../../assets/ui/purchase-kilometers.png" />
-          <b>5,000 kms</b>
+          <b>{{params.package.package}} kms</b>
         </div>
         <div>
           <img src="../../../../assets/ui/purchase-store.png" />
@@ -55,7 +55,7 @@
         </div>
         <div>
           <img src="../../../../assets/ui/purchase-money.png" />
-          <b>490.00</b>
+          <b>{{params.package.cost_by_package | currency}}</b>
         </div>
       </div>
 

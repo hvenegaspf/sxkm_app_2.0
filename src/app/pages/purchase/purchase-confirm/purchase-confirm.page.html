@@ -21,14 +21,14 @@
 
         <div class="purchase-block">
           <div class="purchase-block-content">
-            <div class="purchase-block-main" *ngIf="params.type_payment == 'recharge'">
+            <div class="purchase-block-main" *ngIf="params.type_payment == 'acquisition'">
               <div>
-                <b class="color--green">5,000 km</b>
-                <p>6 meses de vigencia</p>
+                <b class="color--green">{{params.package.package}} km</b>
+                <p>{{params.package.vigency}} {{params.package.vigency==1?'mes':'meses'}} de vigencia</p>
               </div>
               <div>
-                <b>$490</b>
-                <p>$0.49 / km</p>
+                <b>{{params.package.cost_by_package | currency}}</b>
+                <p>{{params.package.cost_by_km | currency }} / km</p>
               </div>
             </div>
             <div class="purchase-block-main" *ngIf="params.type_payment == 'membership'">
@@ -92,7 +92,8 @@
       </div>
 
       <div class="add--button add--full">
-        <ion-button color="primary" shape="round" fill="solid" (click)="payment(params.pay_method)">Pagar</ion-button>
+        <ion-button *ngIf="params.type_payment == 'membership'" color="primary" shape="round" fill="solid" (click)="payment(params.pay_method, params.type_payment)">Pagar</ion-button>
+        <ion-button *ngIf="params.type_payment == 'acquisition'" color="primary" shape="round" fill="solid" (click)="payment(params.pay_method, params.type_payment)">Recargar Kilometros</ion-button>
       </div>
 
     </form>

@@ -53,11 +53,11 @@ export class PurchaseConfirmPage implements OnInit {
     this.navCtrl.back()
   }
 
-  payment(type_payment){
-    console.log(type_payment)
+  payment(pay_method, type_payment){
+    console.log(pay_method, type_payment)
     let ionic_this = this
     this.loading = true
-    if(type_payment != 'Cash' && type_payment != 'Spei'){
+    if(pay_method != 'Cash' && pay_method != 'Spei'){
       // OpenPay.setId('mtpac6zng162oah2h67h');
       // ​OpenPay.setApiKey('pk_42af74150db6413692eb47624a1e903a');
       // OpenPay.setSandboxMode(false);}
@@ -65,38 +65,42 @@ export class PurchaseConfirmPage implements OnInit {
     ​    OpenPay.setApiKey('pk_3670bc7e899241ad87ceffb49757979c');
         OpenPay.setSandboxMode(true);
        this.deviceIdHiddenFieldName = OpenPay.deviceData.setup();
-       ionic_this.openpayCardPaySaved()
-    } else if( type_payment == 'Spei'){
-      this.payWithSpei()
-    } else if( type_payment == 'Cash'){
-      this.payWithOxxo()
+       ionic_this.openpayCardPaySaved(type_payment)
+    } else if( pay_method == 'Spei' ||  pay_method == 'Cash'){
+      this.payWithCash(type_payment)
     }
   }
 
-  async openpayCardPaySaved(){
+  async openpayCardPaySaved(type_payment){
     let json = {
+      "user": {
+        "id": this.user.id,
+        "name": this.user.name,
+        "last_name": this.user.lastname_one,
+        "email": this.user.email,
+        "phone": "5555555555"
+      },
       "payment": {
         "policy_id": this.policy_id.policy_id,
         "gateway_id": this.params.gateway.id,
         "card_id": this.params.card.id,
         "device_session_id": this.deviceIdHiddenFieldName,
         "charge_type": this.params.type_payment,
-        "membership_cost": 299,
-        "amount": 299,
         "requires_billing": true,
-        "plan_id": 3
-      },
-      "user": {
-        "id": this.user.id,
-        "name": this.user.name,
-        "last_name": this.user.lastname_one,
-        "email": this.user.email,
-        "phone": "5555555555"
       }
     }
+    if(type_payment == 'membership'){
+      json['payment']['membership_cost'] = 299;
+      json['payment']['amount'] = 299;
+      json['payment']['plan_id'] = 3;
+    }else if(type_payment == 'acquisition'){
+      json['payment']['package_id'] = this.params.package.id;
+      json['payment']['package_cost'] = this.params.package.cost_by_package;
+      json['payment']['amount'] = this.params.package.cost_by_package;
+    }
     this.presentLoading('Procesando');
-    this.pay = await this.paymentService.payMembership(json)
-    if(this.pay.code == 200){
+    this.pay = await this.paymentService.payments(json)
+    if(this.pay){
       this.pay.method_payment = this.params.pay_method
       let navigationExtras: NavigationExtras = {
         state: this.pay
@@ -104,12 +108,13 @@ export class PurchaseConfirmPage implements OnInit {
       this.router.navigate(['purchase-success'], navigationExtras);
       this.loading.dismiss()
     }else{
-      this.onPaymentFailed
+      this.loading.dismiss()
+      this.onPaymentFailed()
     }
     /* console.log(this.deviceIdHiddenFieldName) */
   }
 
-  async payWithSpei(){
+  async payWithCash(type_payment){
     let json = {
       "user": {
         "id": this.user.id,
@@ -122,45 +127,21 @@ export class PurchaseConfirmPage implements OnInit {
         "policy_id": this.policy_id.policy_id,
         "gateway_id": this.params.gateway.id,
         "charge_type": this.params.type_payment,
-        "membership_cost": 299,
-        "amount": 299,
         "requires_billing": true
       }
     }
-    this.presentLoading('Procesando');
-    this.pay = await this.paymentService.payMembership(json)
-    if(this.pay.code == 200){
-      this.pay.method_payment = this.params.pay_method
-      let navigationExtras: NavigationExtras = {
-        state: this.pay
-      };
-      this.router.navigate(['purchase-success'], navigationExtras);
-      this.loading.dismiss()
+    
+    if(type_payment == 'membership'){
+      json['payment']['membership_cost'] = 299;
+      json['payment']['amount'] = 299;
     }else{
-      this.onPaymentFailed
+      json['payment']['package_id'] = this.params.package.id;
+      json['payment']['package_cost'] = this.params.package.cost_by_package;
+      json['payment']['amount'] = this.params.package.cost_by_package;
     }
-  }
 
-  async payWithOxxo(){
-    let json = {
-      "user": {
-        "id": this.user.id,
-        "name": this.user.name,
-        "last_name": this.user.lastname_one,
-        "email": this.user.email,
-        "phone": "5555555555"
-      },
-      "payment": {
-        "policy_id": this.policy_id.policy_id,
-        "gateway_id": this.params.gateway.id,
-        "charge_type": this.params.type_payment,
-        "membership_cost": 299,
-        "amount": 299,
-        "requires_billing": true
-      }
-    }
     this.presentLoading('Procesando');
-    this.pay = await this.paymentService.payMembership(json)
+    this.pay = await this.paymentService.payments(json)
     if(this.pay.code == 200){
       this.pay.method_payment = this.params.pay_method
       let navigationExtras: NavigationExtras = {
@@ -169,6 +150,7 @@ export class PurchaseConfirmPage implements OnInit {
       this.router.navigate(['purchase-success'], navigationExtras);
       this.loading.dismiss()
     }else{
+      this.loading.dismiss()
       this.onPaymentFailed
     }
   }

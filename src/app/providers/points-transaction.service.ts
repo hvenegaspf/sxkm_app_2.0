@@ -26,7 +26,7 @@ export class PointsTransactionService {
       this.page_transaction = 1;
     }
     this.page_transaction++;
-    console.log(`${URL}points_transactions/865/${this.page_transaction}`)
-    return this.http.get(`${URL}points_transactions/3/${this.page_transaction}`, {headers:headers})
+    console.log(`${URL}points_transactions/${car_id}/${this.page_transaction}`)
+    return this.http.get(`${URL}points_transactions/1/${this.page_transaction}`, {headers:headers})
   }
 }

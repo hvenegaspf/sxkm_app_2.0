@@ -1,19 +1,38 @@
 <ion-header mode="ios">
-  <div class="header--clean">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="dark" (click)="goBack()">
+          <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Métodos de pago</ion-title>
+  </ion-toolbar>
+  <!-- <div class="header--clean">
     <ion-icon name="close" routerLink="/tabs/tabs/welcome" routerDirection="back"></ion-icon>
     <p>Métodos de pago</p>
-  </div>
+  </div> -->
 </ion-header>
 
 <ion-content>
 
-  <div class="options--empty">
+  <div *ngIf="cards.length == 0" class="options--empty">
     <p>No tienes tarjetas registradas</p>
   </div>
 
   <div class="options--list">
+    <div *ngIf="cards.length > 0">
+      <div class="simple-block" *ngFor="let card of cards">
+        <div>
+          <img *ngIf="card.brand == 'mastercard'" src="../../../assets/payment/card-master.png" />
+          <img *ngIf="card.brand == 'visa'" src="../../../assets/payment/card-visa.png" />
+          <img *ngIf="card.brand == 'american_express'" src="../../../assets/payment/card-amex.png" />
+          <p>{{card.card_number}}</p>
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </div>
+      </div>
+    </div>
 
-    <div class="simple-block" routerLink="/edit-card">
+    <!-- <div class="simple-block" routerLink="/edit-card">
       <div>
         <img src="../../../assets/payment/card-master.png" />
         <p>Bancomer ***8756</p>
@@ -35,7 +54,7 @@
         <p>Santander ***1243</p>
         <ion-icon name="ios-arrow-forward"></ion-icon>
       </div>
-    </div>
+    </div> -->
 
   </div>
 

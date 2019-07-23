@@ -17,15 +17,15 @@
 
     <div class="recharge--content">
 
-      <div class="recharge--block">
-          <div class="recharge--block-container" (click)="choosePackage()">
+      <div class="recharge--block" *ngFor="let package of packages" (click)="choosePackage(package)">
+          <div class="recharge--block-container">
             <div class="recharge--block-left">
-              <b>250 Km</b>
-              <p>1 MES DE VIGENCIA</p>
+              <b>{{package.package}} Km</b>
+              <p>Vigencia de {{package.vigency}} {{package.vigency==1?'mes':'meses'}}</p>
             </div>
             <div class="recharge--block-right">
-              <b>$145</b>
-              <p>$0.58 / km</p>
+              <b>{{package.cost_by_package | currency}}</b>
+              <p>{{package.cost_by_km | currency }} / km</p>
             </div>
           </div>
       </div>

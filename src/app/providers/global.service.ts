@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { Storage } from '@ionic/storage';
 import { Store } from '../interfaces/store';
 import { STORES } from '../interfaces/stores';
+import { UsersService } from './users.service';
 
 const URL = environment.devPath;
 
@@ -14,23 +15,48 @@ const URL = environment.devPath;
 export class GlobalService {
   policy_id:any;
   token:any;
-  constructor(private http: HttpClient, private storage: Storage) { }
+  id_user:any
+  user:any;
+  constructor(private http: HttpClient, private storage: Storage, private userService: UsersService) { }
 
   getStores(): Observable<Store[]> {
 	  return of(STORES);
   }
 
   async getKmStatus(){
-   
     await this.getStorage('car').then((res) => {
       this.policy_id = JSON.parse(res)
     })
     
     return new Promise(resolve => {
-      this.http.get(`${URL}acquisitions/${this.policy_id.car.details.policy_id}/km_status`).subscribe(
+      this.http.get(`${URL}acquisitions/${this.policy_id.policy_id}/km_status`).subscribe(
         (response:any) => {
           resolve(response.data)
         });
+    })
+  }
+
+  async getNextDueDate(){
+    await this.getStorage('user_id').then((res) => {
+      this.id_user = Number(res)
+    })
+    
+    return new Promise(resolve => {
+      this.http.get(`${URL}memberships/${this.id_user}/next_due_date`).subscribe(
+        (response:any) => {
+          resolve(response.data)
+        });
+    })
+  }
+
+  //Add card for payments
+  async addCard(data){
+    return new Promise(resolve =>{
+      this.http.post(`${URL}cards`,data).subscribe(
+        (res:any)=>{
+          resolve(res)
+        }
+      )
     })
   }
 

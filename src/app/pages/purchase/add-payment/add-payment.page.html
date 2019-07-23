@@ -1,8 +1,12 @@
 <ion-header mode="ios">
-  <div class="header--clean">
-    <ion-icon name="ios-arrow-back" routerLink="/purchase-options" routerDirection="back"></ion-icon>
-    <p>Agregar tarjeta</p>
-  </div>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="dark" (click)="goBack()">
+          <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="text-align: center">Agregar tarjeta</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -27,7 +31,7 @@
         <div class="add--half">
           <ion-item class="add--input" mode="ios">
             <ion-label position="floating" mode="ios">Expiración</ion-label>
-            <ion-datetime name="cardDate" displayFormat="MM YY" pickerFormat="MM YY" min="2019" max="2024" placeholder="12 / 21" ngModel required #cardDate="ngModel">
+            <ion-datetime name="cardDate" displayFormat="MM/YY" pickerFormat="YYYY-MM" min="2019" max="2034" placeholder="12 / 21" ngModel required #cardDate="ngModel">
             </ion-datetime>
           </ion-item>
         </div>
@@ -41,7 +45,7 @@
         </div>
 
         <div class="add--button add--full">
-          <ion-button color="primary" shape="round" fill="solid" routerLink="/cards" routerDirection="back">Guardar</ion-button>
+          <ion-button color="primary" shape="round" fill="solid" type="submit">Guardar</ion-button>
         </div>
 
         <div class="form--validation" *ngIf="cardHolder.touched && !cardHolder.valid">

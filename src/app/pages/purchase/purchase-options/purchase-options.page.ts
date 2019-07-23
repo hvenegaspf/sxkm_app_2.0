@@ -21,8 +21,11 @@ export class PurchaseOptionsPage implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.getCards() 
+  ionViewWillEnter(){
+    this.getCards()
+  }
+  
+  ngOnInit() { 
   }
 
   async getCards(){
