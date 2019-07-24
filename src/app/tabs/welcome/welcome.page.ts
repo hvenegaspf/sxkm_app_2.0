@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { TrackingComponent } from '../sos/tracking/tracking.component';
 import { ModalController } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';

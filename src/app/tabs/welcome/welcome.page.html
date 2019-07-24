@@ -4,8 +4,13 @@
 
     <div class="welcome--header">
       <div class="welcome--header-content">
-        <div class="welcome--header-status">
-          <img src="../../../assets/demo/circle-status-ok.svg" />
+        <div class="welcome--header-status" routerLink="/status">
+          <!-- insertar componente de status -->
+          <!-- <pia-component></pia-component> -->
+          <video autoplay muted loop>
+            <source src="../../../assets/demo/status-widget-ok.mp4" type="video/mp4">
+          </video>
+          <!-- -->
         </div>
         <div class="welcome--header-label">
           <p class="color--green">Activado</p>
@@ -13,11 +18,19 @@
       </div>
     </div>
 
+    <!--
+    <div class="welcome--header">
+      <div class="welcome--header-content">
+        <pia-component></pia-component>
+      </div>
+    </div>
+    -->
+
     <div class="welcome--widgets">
 
       <!-- Alert widget -->
       <div class="widget--alert">
-        <div class="widget--alert-content">
+        <div class="widget--alert-content" routerLink="/status">
           <div>
             <b>FALLA ENCONTRADA</b>
             <p>Sistema de encendido</p>
@@ -26,14 +39,14 @@
         </div>
       </div>
 
-      <!-- Help widget -->
-      <div class="widget--help">
-        <div (click)="onClickHelpWidget()" class="widget--help-content">
-          <div class="widget--help-time">
+      <!-- Green widget - Help -->
+      <div class="widget--green">
+        <div class="widget--green-content" (click)="onClickHelpWidget()">
+          <div class="widget--green-time">
             <p>26</p>
             <p>MIN</p>
           </div>
-          <div class="widget--help-call">
+          <div class="widget--green-info">
             <div>
               <b>Tu ajustador</b>
               <p>Carlos Duran</p>
@@ -41,6 +54,23 @@
             <a href="tel:5544332211">
               <ion-icon name="md-call"></ion-icon>
             </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Green widget - Payment reference -->
+      <div class="widget--green">
+        <div class="widget--green-content" routerLink="/purchase-reference">
+          <div class="widget--green-time">
+            <img src="../../../assets/ui/icon-kms.png" />
+            <p>250 Km</p>
+          </div>
+          <div class="widget--green-info">
+            <div>
+              <b>Vigencia - 09/09/2019</b>
+              <p>Referencia de pago</p>
+            </div>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
           </div>
         </div>
       </div>

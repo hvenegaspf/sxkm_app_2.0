@@ -8,7 +8,9 @@ import { ModalController } from '@ionic/angular';
 })
 export class TrackingComponent implements OnInit {
 
-  constructor(private modalCtlr: ModalController) { }
+  constructor(private modalCtlr: ModalController) {
+    
+   }
 
   ngOnInit() { }
 

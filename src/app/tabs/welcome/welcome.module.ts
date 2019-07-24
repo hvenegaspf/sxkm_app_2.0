@@ -8,7 +8,6 @@ import { IonicModule } from '@ionic/angular';
 import { WelcomePage } from './welcome.page';
 import { TrackingComponent } from '../sos/tracking/tracking.component';
 
-
 const routes: Routes = [
   {
     path: '',

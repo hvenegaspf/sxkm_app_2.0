@@ -35,6 +35,7 @@ export class TripsPage implements OnInit {
   loading: any;
   text_trips: boolean = true;
   access_token = '5b99eaac5fa24f';
+  
 
   constructor(private modalCtlr: ModalController, private tripsService: TripsService,
     public events: Events, private carService: CarService,

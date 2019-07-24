@@ -1,22 +1,23 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Platform } from '@ionic/angular';
-declare var TweenMax;
-declare var TweenLite;
-declare var Power2;
-declare var $;
+// declare var TweenMax;
+// declare var TweenLite;
+// declare var Power2;
+// declare var $;
 
 
 /**
- * Generated class for the PagesPiaComponent component.
  *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
+ * Original
+ * https://losrodriguez.studio/sxkm/
+ * .
  */
 @Component({
-  selector: 'pages-pia',
-  templateUrl: 'pages-pia.html'
+  selector: 'pia-component',
+  templateUrl: './pia-component.component.html',
+  styleUrls: ['./pia-component.component.scss'],
 })
-export class PagesPiaComponent {
+export class PiaComponent {
   @ViewChild('canvas') canvasEl: ElementRef;
   private _CANVAS: any;
   dtc: any = {};
@@ -63,7 +64,7 @@ export class PagesPiaComponent {
     this._CANVAS.width = 200;
     this._CANVAS.height = 200;
     this.init_dtc();
-    // this.init_app();
+    // this.init_App();
   }
 
   init_dtc() {
@@ -98,6 +99,6 @@ export class PagesPiaComponent {
     };
     this.dtc.points.push(this.dtc.points[0]);
     this.dtc.points.push(this.dtc.points[1]);
-    // this.points.push(this.points[2]);
+    this.dtc.points.push(this.dtc.points[2]);
   }
 }
