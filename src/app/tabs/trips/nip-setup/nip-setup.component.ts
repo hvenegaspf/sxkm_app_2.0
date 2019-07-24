@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-nip-setup',
@@ -7,8 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NipSetupComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalCtlr: ModalController) { }
 
   ngOnInit() {}
+
+  onCancel() {
+    this.modalCtlr.dismiss();
+  }
 
 }

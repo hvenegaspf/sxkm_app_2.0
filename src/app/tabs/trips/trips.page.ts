@@ -6,6 +6,8 @@ import { Storage } from '@ionic/storage';
 import { CarService } from 'src/app/providers/car.service';
 import Leaflet from 'leaflet';
 import { GlobalService } from 'src/app/providers/global.service';
+import { NipSetupComponent } from './nip-setup/nip-setup.component';
+import { NipRequestComponent } from './nip-request/nip-request.component';
 
 
 @Component({
@@ -16,7 +18,7 @@ import { GlobalService } from 'src/app/providers/global.service';
 
 export class TripsPage implements OnInit {
 
-  registeredNIP;
+  registeredNIP = true;
   validNip;
   nipTrips = null;
   askNIP = true;
@@ -33,9 +35,7 @@ export class TripsPage implements OnInit {
   car_id: any;
   token: any;
   loading: any;
-  text_trips: boolean = true;
-  access_token = '5b99eaac5fa24f';
-  
+  text_trips: boolean = true;  
 
   constructor(private modalCtlr: ModalController, private tripsService: TripsService,
     public events: Events, private carService: CarService,
@@ -48,6 +48,23 @@ export class TripsPage implements OnInit {
       this.arrayTrips = [];
       this.loadTrips(true);
     });
+  }
+
+  async ionViewDidEnter() {
+    // si no hay NIP registrado, llamar modal para registro de NIP
+    /* this.registeredNIP = await this.tripsService.hasNip(); */
+    if (!this.registeredNIP) {
+      this.modalCtlr.create({ component: NipSetupComponent }).then(NipSetupComponent => { NipSetupComponent.present(); });
+      // si hay NIP registrado y no se ha ingresado en la sesión actual, llamar modal para ingreso de NIP
+    } else if (this.registeredNIP) {
+      await this.getStorage('nip_trips').then((res) => {
+        this.nipTrips = JSON.parse(res)
+        if (this.nipTrips === null) {
+          this.modalCtlr.create({ component: NipRequestComponent }).then(NipRequestComponent => { NipRequestComponent.present(); });
+        }
+      })
+      // si ya existe un NIP registrado y ya ha sido ingresado en la sesión actual, mostrar lista de viajes directamente
+    }
   }
 
   ngOnInit() {
