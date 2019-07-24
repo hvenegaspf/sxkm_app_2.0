@@ -9,18 +9,19 @@ import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  user:any={}
+  email:string;
   params:any;
   constructor(private storage: Storage, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {}
 
-  Submit(form: NgForm) {
+  onSubmit(form: NgForm) {
     const data = form.value
-    this.user.email = data['email']
-    console.log(this.user)
+    this.email = data['email']
     let navigationExtras: NavigationExtras = {
-      state: this.user.email
+      state: {
+        email: this.email
+      }
     };
     this.router.navigate(['password'], navigationExtras);
   }

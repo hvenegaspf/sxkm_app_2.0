@@ -11,25 +11,31 @@ import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
   styleUrls: ['./password.page.scss'],
 })
 export class PasswordPage implements OnInit {
-
   showPassword = false;
-  user:any;
+  email:any;
   loading: any;
+  password:string;
+  user:any;
 
   constructor(private storage: Storage, private authService: AuthService, private uiService: UiService,
               private navCtrl: NavController, public loadingCtlr: LoadingController,private route: ActivatedRoute, private router: Router){
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
-        this.user = this.router.getCurrentNavigation().extras.state;
+        this.email = this.router.getCurrentNavigation().extras.state.email;
       }
-    });      
+    });   
   }
-
-  ngOnInit() { }
-
+  
+  ngOnInit(){
+  }
+  
   async onSubmit(form: NgForm) {
-    const data = form.value
-    this.user.password = data
+    console.log(this.email)
+    this.password = form.value
+    this.user = {
+      email: this.email,
+      password: this.password
+    }
     const valid = await this.authService.login(this.user);
 
     if (valid) {
