@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-nip-request',
@@ -10,12 +12,22 @@ export class NipRequestComponent implements OnInit {
   autoRenew: boolean = false;
   showAlert: boolean = false;
 
-  constructor() { }
+  constructor(private modalCtlr: ModalController) { }
 
   ngOnInit() {}
 
   onAutoRenew() {
     this.autoRenew = !this.autoRenew;
+  }
+
+  closeModal(){
+    console.log('close modal')
+    this.onCancel();
+  }
+
+  // cerrar modal
+  onCancel() {
+    this.modalCtlr.dismiss();
   }
 
 }
