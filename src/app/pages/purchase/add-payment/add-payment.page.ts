@@ -16,7 +16,7 @@ export class AddPaymentPage implements OnInit {
   card:any;
   user:any;
   loading:any;
-  showAlert: boolean = false;
+  showAlert = false;
   token_openpay:any = "";
   showMessage = false;
 
@@ -25,6 +25,10 @@ export class AddPaymentPage implements OnInit {
 
   ngOnInit() {
     this.getUser()
+  }
+
+  ionViewWillEnter(){
+    this.onPaymentFailed()
   }
 
   async getUser(){
@@ -63,13 +67,16 @@ export class AddPaymentPage implements OnInit {
       angular_this.token_openpay = response.data.id;
       angular_this.addCard();
     }
+    var errorCallback = function (){
+      angular_this.error();
+    }
     OpenPay.token.create({
       "card_number": this.card.cardNumber,
       "holder_name": this.card.cardHolder,
       "expiration_year": this.card.cardExpiration_year,
       "expiration_month": this.card.cardExpiration_month,
       "cvv2": this.card.cardCvv
-    },sucess_callbak, this.errorCallback);
+    },sucess_callbak, errorCallback);
   }
 
   async addCard(){
@@ -93,10 +100,10 @@ export class AddPaymentPage implements OnInit {
     this.loading.dismiss()
   }
 
-  errorCallback(){
+  error(){
     console.log('error')
-    this.onPaymentFailed()
     this.loading.dismiss()
+    this.onPaymentFailed()
   }
 
   onPaymentFailed() {

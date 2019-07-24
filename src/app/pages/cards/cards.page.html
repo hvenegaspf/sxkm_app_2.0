@@ -21,7 +21,7 @@
 
   <div class="options--list">
     <div *ngIf="cards.length > 0">
-      <div class="simple-block" *ngFor="let card of cards">
+      <div class="simple-block" *ngFor="let card of cards" (click)="editCard(card)">
         <div>
           <img *ngIf="card.brand == 'mastercard'" src="../../../assets/payment/card-master.png" />
           <img *ngIf="card.brand == 'visa'" src="../../../assets/payment/card-visa.png" />

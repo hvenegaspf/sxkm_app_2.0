@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PaymentsService } from '../../providers/payments.service';
 import { LoadingController, ToastController, Platform, NavController } from '@ionic/angular';
+import { EditCardPage } from './edit-card/edit-card.page';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-cards',
@@ -9,7 +11,8 @@ import { LoadingController, ToastController, Platform, NavController } from '@io
 })
 export class CardsPage implements OnInit {
   cards:any = [];
-  constructor(private paymentService: PaymentsService, private navCtrl: NavController) { }
+  constructor(private paymentService: PaymentsService, private navCtrl: NavController, private route: ActivatedRoute, 
+              private router: Router) { }
 
   ionViewWillEnter(){
     this.getCards()
@@ -20,6 +23,13 @@ export class CardsPage implements OnInit {
 
   async getCards(){
     this.cards = await this.paymentService.getCards()
+  }
+
+  editCard(card){
+    let navigationExtras: NavigationExtras = {
+      state: card
+    };
+    this.router.navigate(['edit-card'], navigationExtras);
   }
 
   goBack(){

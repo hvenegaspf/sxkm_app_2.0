@@ -60,6 +60,17 @@ export class GlobalService {
     })
   }
 
+  async deleteCard(id_card){
+    return new Promise(resolve =>{
+      this.http.delete(`${URL}cards/${id_card}`).subscribe(
+        (res:any)=>{
+          console.log(res)
+          resolve(res)
+        }
+      )
+    })
+  }
+
   setStorage(key: string, value: string) {
     this.storage.set(key, value);
   }

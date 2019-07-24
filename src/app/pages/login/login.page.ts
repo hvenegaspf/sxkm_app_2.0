@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { PasswordPage } from './password/password.page';
-
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -10,7 +10,8 @@ import { PasswordPage } from './password/password.page';
 })
 export class LoginPage implements OnInit {
   user:any={}
-  constructor(private storage: Storage) {}
+  params:any;
+  constructor(private storage: Storage, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {}
 
@@ -18,7 +19,10 @@ export class LoginPage implements OnInit {
     const data = form.value
     this.user.email = data['email']
     console.log(this.user)
-    this.setStorage('user', this.user) 
+    let navigationExtras: NavigationExtras = {
+      state: this.user.email
+    };
+    this.router.navigate(['password'], navigationExtras);
   }
 
   setStorage(key: string, value: string) {

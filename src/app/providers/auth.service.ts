@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { environment } from 'src/environments/environment';
-
+import { NavController } from '@ionic/angular';
 const URL = environment.devPath;
 
 @Injectable({
@@ -15,7 +15,7 @@ export class AuthService {
   };
   user:any;
   token:any;
-  constructor(private http: HttpClient, private storage: Storage) { }
+  constructor(private http: HttpClient, private storage: Storage, private navCtrl: NavController) { }
 
   async login(data){
     this.user = data
@@ -40,6 +40,11 @@ export class AuthService {
         }
       );
     })
+  }
+
+  logout() {
+    this.storage.clear();
+    this.navCtrl.navigateRoot('/', { animated: true });
   }
 
   setStorage(key: string, value: string) {

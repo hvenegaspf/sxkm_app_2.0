@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { AuthService } from './providers/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ import { Storage } from '@ionic/storage';
 })
 export class AppComponent {
   constructor(
+    private auth: AuthService,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
@@ -44,6 +46,10 @@ export class AppComponent {
       }); */
       
     });
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
   setStorage(key: string, value: string) {
