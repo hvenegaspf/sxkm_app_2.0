@@ -69,6 +69,17 @@
     }
   }
 
+  &--fixed {
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9;
+  }
+
   // tabs header
   &--tabs {
     display: inline-block;
