@@ -4,24 +4,27 @@
   </div>
 </ion-header>
 
-
 <ion-content>
-    <div class="nip--container">
+  <div class="nip--container">
 
-      <div class="nip--header">
-        <div class="nip--icon">
-          <div>
-            <img src="../../../../assets/ui/icon-lock-with_background.png" />
-          </div>
-          <p>Ingresa tu NIP para ver tus viajes</p>
+    <div class="nip--header">
+      <div class="nip--icon">
+        <div>
+          <img src="../../../../assets/ui/icon-lock-with_background.png" />
         </div>
+        <p>Ingresa tu NIP para ver tus viajes</p>
       </div>
+    </div>
 
-      <div class="nip--form">
+    <div class="nip--form">
+      <form #enterNIP="ngForm" (ngSubmit)="onSubmit(enterNIP)">
         <div>
           <ion-item mode="ios">
             <ion-label position="floating" mode="ios">NIP</ion-label>
-            <ion-input type="password" name="nip" required></ion-input>
+            <ion-input [type]="!this.showPassword ? 'password' : 'text'" name="enterNIP" ngModel enterNIP minlength="4"
+              maxlength="4" required #enterNip="ngModel">
+            </ion-input>
+            <ion-icon [name]="this.icon" color="dark" (click)="passwordVisibility()"></ion-icon>
           </ion-item>
         </div>
 
@@ -36,10 +39,20 @@
           <a routerLink="/nip-reset">RECUPERAR NIP</a>
         </div>
 
-        <div>
+        <!-- <div>
           <ion-button fill="solid" expand="full" shape="round" mode="ios">Ver viajes</ion-button>
-        </div>
-      </div>
+        </div> -->
 
+        <!-- si el formulario es inválido, se renderiza el botón deshabilitado -->
+        <ion-button *ngIf="!enterNIP.valid" fill="solid" expand="full" shape="round" mode="ios" disabled>
+          Ver viajes
+        </ion-button>
+        <!-- si el formulario es válido, se renderiza el botón activo -->
+        <ion-button *ngIf="enterNIP.valid" type="submit" fill="solid" expand="full" shape="round" mode="ios">
+          Ver viajes
+        </ion-button>
+      </form>
     </div>
-  </ion-content>
+
+  </div>
+</ion-content>

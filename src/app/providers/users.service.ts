@@ -64,6 +64,28 @@ export class UsersService {
     )
   }
 
+  async updateUser(body){
+    await this.getStorage('user_id').then((res) => {
+      this.user_id = Number(res)
+    })
+    await this.getStorage('auth_token').then((res)=>{
+      this.token = res
+    })
+    let headers = new HttpHeaders({ 
+      'Content-Type': 'application/json' ,
+      'Authorization': this.token
+    });
+    return new Promise(
+      resolve=>{
+        this.http.put(`${URL}users/${this.user_id}`, body, {headers:headers}).subscribe(
+          (response: any)=>{
+            resolve(response)
+          }
+        )
+      }
+    )
+  }
+
   async updateAddress(body){
     await this.getStorage('user_id').then((res) => {
       this.user_id = Number(res)

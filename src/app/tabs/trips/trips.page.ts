@@ -18,7 +18,7 @@ import { NipRequestComponent } from './nip-request/nip-request.component';
 
 export class TripsPage implements OnInit {
 
-  registeredNIP = true;
+  registeredNIP;
   validNip;
   nipTrips = null;
   askNIP = true;
@@ -52,7 +52,8 @@ export class TripsPage implements OnInit {
 
   async ionViewDidEnter() {
     // si no hay NIP registrado, llamar modal para registro de NIP
-    /* this.registeredNIP = await this.tripsService.hasNip(); */
+    this.registeredNIP = await this.tripsService.hasNip();
+    console.log('registeredNIP', this.registeredNIP)
     if (!this.registeredNIP) {
       this.modalCtlr.create({ component: NipSetupComponent }).then(NipSetupComponent => { NipSetupComponent.present(); });
       // si hay NIP registrado y no se ha ingresado en la sesión actual, llamar modal para ingreso de NIP

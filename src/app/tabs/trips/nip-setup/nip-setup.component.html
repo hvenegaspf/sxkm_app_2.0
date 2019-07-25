@@ -5,37 +5,53 @@
 </ion-header>
 
 <ion-content>
-    <div class="nip--container">
+  <div class="nip--container">
 
-      <div class="nip--header">
-        <div class="nip--dismiss">
-          <a>DESPUÉS</a>
-        </div>
-        <div class="nip--icon">
-          <div>
-            <img src="../../../../assets/ui/icon-lock-with_background.png" />
-          </div>
-          <p>Crea tu NIP para proteger tus viajes</p>
-        </div>
+    <div class="nip--header">
+      <div class="nip--dismiss" (click)="onCancel()">
+        <a>DESPUÉS</a>
       </div>
+      <div class="nip--icon">
+        <div>
+          <img src="../../../../assets/ui/icon-lock-with_background.png" />
+        </div>
+        <p>Crea tu NIP para proteger tus viajes</p>
+      </div>
+    </div>
 
-      <div class="nip--form">
+
+    <div class="nip--form">
+      <form #registerNIP="ngForm" (ngSubmit)="onSubmit(registerNIP)">
         <div>
           <ion-item mode="ios">
             <ion-label position="floating" mode="ios">NIP</ion-label>
-            <ion-input type="password" name="nip" required></ion-input>
+            <ion-input [type]="!this.showPassword ? 'password' : 'text'" name="setNIP" ngModel minlength="4"
+              maxlength="4" required #setNIP="ngModel"></ion-input>
           </ion-item>
         </div>
         <div>
           <ion-item mode="ios">
             <ion-label position="floating" mode="ios">Confirmar NIP</ion-label>
-            <ion-input type="password" name="nip" required></ion-input>
+            <ion-input [type]="!this.showPassword ? 'password' : 'text'" name="confirmNIP" ngModel minlength="4"
+              maxlength="4" required #confirmNIP="ngModel">
+            </ion-input>
+            <ion-icon [name]="this.icon" color="dark" (click)="passwordVisibility()"></ion-icon>
           </ion-item>
         </div>
         <div>
-          <ion-button fill="solid" expand="full" shape="round" mode="ios">Crear</ion-button>
-        </div>
-      </div>
+          <!-- <ion-button fill="solid" expand="full" shape="round" mode="ios">Crear</ion-button> -->
 
+          <!-- si el formulario es inválido, se renderiza el botón deshabilitado -->
+          <ion-button *ngIf="!registerNIP.valid" fill="solid" expand="full" shape="round" mode="ios" disabled>
+            Crear
+          </ion-button>
+          <!-- si el formulario es válido, se renderiza el botón activo -->
+          <ion-button *ngIf="registerNIP.valid" color="primary" fill="outline" shape="round" mode="ios" type="submit">
+            Crear
+          </ion-button>
+        </div>
+      </form>
     </div>
-  </ion-content>
+
+  </div>
+</ion-content>
