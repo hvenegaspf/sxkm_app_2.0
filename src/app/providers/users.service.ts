@@ -71,7 +71,7 @@ export class UsersService {
     await this.getStorage('auth_token').then((res)=>{
       this.token = res
     })
-    let headers = new HttpHeaders({ 
+    let headers = new HttpHeaders({
       'Content-Type': 'application/json' ,
       'Authorization': this.token
     });
@@ -79,6 +79,7 @@ export class UsersService {
       resolve=>{
         this.http.put(`${URL}users/${this.user_id}`, body, {headers:headers}).subscribe(
           (response: any)=>{
+            console.log('updateUser', response)
             resolve(response)
           }
         )
@@ -86,20 +87,20 @@ export class UsersService {
     )
   }
 
-  async updateAddress(body){
+  async updateAddress(body, address_id){
     await this.getStorage('user_id').then((res) => {
       this.user_id = Number(res)
     })
     await this.getStorage('auth_token').then((res)=>{
       this.token = res
     })
-    let headers = new HttpHeaders({ 
+    let headers = new HttpHeaders({
       'Content-Type': 'application/json' ,
       'Authorization': this.token
     });
     return new Promise(
       resolve=>{
-        this.http.put(`${URL}users/${this.user_id}/update_address`, body, {headers:headers}).subscribe(
+        this.http.put(`${URL}/addresses/${address_id}`, body, {headers:headers}).subscribe(
           (response: any)=>{
             console.log('updateAddress', response)
             resolve(response)
