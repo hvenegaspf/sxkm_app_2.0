@@ -21,7 +21,7 @@
 
         <div class="purchase-block">
           <div class="purchase-block-content">
-            <div class="purchase-block-main" *ngIf="params.type_payment == 'acquisition'">
+            <div class="purchase-block-main" *ngIf="params?.type_payment == 'acquisition'">
               <div>
                 <b class="color--green">{{params.package.package}} km</b>
                 <p>{{params.package.vigency}} {{params.package.vigency==1?'mes':'meses'}} de vigencia</p>
@@ -31,7 +31,7 @@
                 <p>{{params.package.cost_by_km | currency }} / km</p>
               </div>
             </div>
-            <div class="purchase-block-main" *ngIf="params.type_payment == 'membership'">
+            <div class="purchase-block-main" *ngIf="params?.type_payment == 'membership'">
               <div>
                 <b class="color--green">Suscripción</b>
                 <p>1 mes</p>
@@ -40,7 +40,7 @@
                 <b>$299</b>
               </div>
             </div>
-            <div class="purchase-block-method" *ngIf="params.pay_method == 'Card'">
+            <div class="purchase-block-method" *ngIf="params?.pay_method == 'Card'">
               <div>
                 <img *ngIf="params.card.brand == 'mastercard'" src="../../../assets/payment/card-master.png" />
                 <img *ngIf="params.card.brand == 'visa'" src="../../../assets/payment/card-visa.png" />
@@ -48,7 +48,7 @@
                 <p>{{params.card.card_number}}</p>
               </div>
             </div>
-            <div class="purchase-block-content" *ngIf="params.pay_method == 'Cash'">
+            <div class="purchase-block-content" *ngIf="params?.pay_method == 'Cash'">
               <div class="purchase-block-method">
                 <div>
                   <img src="../../../assets/payment/cash-icon.svg" />
@@ -59,7 +59,7 @@
                 <img src="{{params.store.image}}" />
               </div>
             </div>
-            <div class="purchase-block-method" *ngIf="params.pay_method == 'Spei'">
+            <div class="purchase-block-method" *ngIf="params?.pay_method == 'Spei'">
               <div>
                 <img src="../../../assets/payment/spei.png" />
               </div>
@@ -81,7 +81,7 @@
           </div>
         </div> -->
 
-        <div class="purchase-block-checkbox" *ngIf="params.type_payment == 'membership' && params.pay_method == 'Card'">
+        <div class="purchase-block-checkbox" *ngIf="params?.type_payment == 'membership' && params?.pay_method == 'Card'">
           <label (click)="onAutoRenew()">
             <input type="checkbox" />
             <ion-icon [name]="!this.autoRenew ? 'ios-square-outline' : 'ios-checkbox-outline'"></ion-icon>
@@ -92,8 +92,8 @@
       </div>
 
       <div class="add--button add--full">
-        <ion-button *ngIf="params.type_payment == 'membership'" color="primary" shape="round" fill="solid" (click)="payment(params.pay_method, params.type_payment)">Pagar</ion-button>
-        <ion-button *ngIf="params.type_payment == 'acquisition'" color="primary" shape="round" fill="solid" (click)="payment(params.pay_method, params.type_payment)">Recargar Kilometros</ion-button>
+        <ion-button *ngIf="params?.type_payment == 'membership'" color="primary" shape="round" fill="solid" (click)="payment(params?.pay_method, params?.type_payment)">Pagar</ion-button>
+        <ion-button *ngIf="params?.type_payment == 'acquisition'" color="primary" shape="round" fill="solid" (click)="payment(params?.pay_method, params?.type_payment)">Recargar Kilometros</ion-button>
       </div>
 
     </form>

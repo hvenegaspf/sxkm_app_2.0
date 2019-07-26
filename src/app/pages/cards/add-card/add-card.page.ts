@@ -4,6 +4,7 @@ import { GlobalService } from '../../../providers/global.service';
 import { UsersService } from '../../../providers/users.service';
 import { LoadingController, ToastController, Platform, NavController } from '@ionic/angular';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
+import { CardIO } from '@ionic-native/card-io/ngx';
 declare var OpenPay;
 
 @Component({
@@ -21,10 +22,30 @@ export class AddCardPage implements OnInit {
   token_openpay:any = "";
 
   constructor(private gobalService: GlobalService, private userService: UsersService, private navCtrl: NavController, 
-              private loadingCtrl: LoadingController, private route: ActivatedRoute, private router: Router) { }
+              private loadingCtrl: LoadingController, private route: ActivatedRoute, private router: Router, private cardIO: CardIO) { }
 
   ngOnInit() { 
     this.getUser()
+    this.camara()
+  }
+
+  camara(){
+    this.cardIO.canScan()
+    .then(
+      (res: boolean) => {
+        if(res){
+          let options = {
+            requireExpiry: true,
+            requireCVV: true,
+            requirePostalCode: false,
+            requireCardholderName: true,
+            scanExpiry:true,
+            useCardIOLogo:true
+          };
+          this.cardIO.scan(options);
+        }
+      }
+    );
   }
 
   async getUser(){

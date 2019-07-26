@@ -13,19 +13,20 @@ export class PurchaseOptionsPage implements OnInit {
   cards:any = [];
   gate_ways:any = [];
   constructor(private route: ActivatedRoute, private router: Router, private navCtrl: NavController,
-              private paymentService: PaymentsService) { 
+              private paymentService: PaymentsService) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.params = this.router.getCurrentNavigation().extras.state;
+        console.log(this.params)
       }
     });
   }
-
+              
   ionViewWillEnter(){
     this.getCards()
   }
   
-  ngOnInit() { 
+  ngOnInit() {
   }
 
   async getCards(){
@@ -41,10 +42,10 @@ export class PurchaseOptionsPage implements OnInit {
     });
     this.params.pay_method = pay_method
     this.params.card = card
-    console.log(this.params)
     let navigationExtras: NavigationExtras = {
       state: this.params
     };
+    console.log('extras', navigationExtras)
     this.router.navigate(['purchase-confirm'], navigationExtras);
   }
 
