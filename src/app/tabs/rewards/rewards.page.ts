@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PointsTransactionService } from '../../providers/points-transaction.service';
 import { Storage } from '@ionic/storage';
+import { ModalController, Events, LoadingController } from '@ionic/angular';
 import { element } from '@angular/core/src/render3';
+import { CarService } from 'src/app/providers/car.service';
 
 @Component({
   selector: 'app-rewards',
@@ -16,6 +18,8 @@ export class RewardsPage implements OnInit {
   reward_points;
   reward_percent;
   car_select: any
+  car:any;
+  cars: any [] = [];
   levels = [{
     "end": 10000,
     "init": 0,
@@ -36,7 +40,12 @@ export class RewardsPage implements OnInit {
     "init": 50001,
     "level": "Piloto"
   }]
-  constructor(private points: PointsTransactionService, private storage: Storage) {}
+  constructor(private points: PointsTransactionService, private storage: Storage, public events: Events, private carService: CarService) {
+    events.subscribe('car:selected', (car_selected) => {
+      this.car_select = car_selected
+      this.getCars()
+    });
+  }
 
   ngOnInit() {
     this.getCars();
@@ -44,11 +53,30 @@ export class RewardsPage implements OnInit {
   }
 
   async getCars() {
-    await this.getStorage('car').then((res) => {
-      this.car_select = JSON.parse(res)
-      this.reward_points = this.car_select['car']['details']['reward_points']
-      this.fillProgressBar();
-    })
+    this.car = await this.carService.getCars()
+    if (this.car.length != 0) {
+      for (let cars of this.car) {
+        this.cars.push(cars)
+      }
+      if (this.car_select) {
+        for (let element of this.cars) {
+          if (element.car.details.id == this.car_select.car.details.id) {
+            this.car_select = element
+            /* this.setStorage('car', JSON.stringify(this.car_select))
+            this.setStorage('car_id', JSON.stringify(this.car_select.car.details.id)) */
+            break;
+          }
+        }
+      } else {
+        this.car_select = this.cars[0]
+        console.log(this.car_select)
+        /* this.setStorage('car', JSON.stringify(this.car_select))
+        this.setStorage('car_id', JSON.stringify(this.car_select.car.details.id)) */
+      }
+    } else {
+    }
+    this.reward_points = this.car_select['car']['details']['reward_points']
+    this.fillProgressBar();
   }
 
   fillProgressBar(){

@@ -5,21 +5,21 @@
 
       <div class="success--header">
         <img src="../../../../assets/ui/icon-check-green.png" />
-        <b *ngIf="params.method_payment == 'Card'">Pago exitoso</b>
-        <b *ngIf="params.method_payment == 'Cash' || params.method_payment == 'Spei'">Referencia</b>
+        <b *ngIf="params?.method_payment == 'Card'">Pago exitoso</b>
+        <b *ngIf="params?.method_payment == 'Cash' || params?.method_payment == 'Spei'">Referencia</b>
         <!-- <p>+ 5,000 kms</p> -->
-        <p *ngIf="params.method_payment == 'Spei'">{{params.data.gateway_response.payment_method.clabe}}</p>
-        <p *ngIf="params.method_payment == 'Cash'">{{params.data.gateway_response.payment_method.reference}}</p>
+        <p *ngIf="params?.method_payment == 'Spei'">{{params.data.gateway_response.payment_method.clabe}}</p>
+        <p *ngIf="params?.method_payment == 'Cash'">{{params.data.gateway_response.payment_method.reference}}</p>
       </div>
 
       <!-- para pago completado -->
-      <div class="success--validity" *ngIf="params.method_payment == 'Card'">
+      <div class="success--validity" *ngIf="params?.method_payment == 'Card'">
         <div class="green-block">
           <b>VIGENCIA</b>
           <p>29 días - 30/07/2019</p>
         </div>
       </div>
-      <div class="success--info" *ngIf="params.method_payment == 'Card'">
+      <div class="success--info" *ngIf="params?.method_payment == 'Card'">
         <div>
           <img src="../../../../assets/ui/purchase-money.png" />
           <b>{{params.data.gateway_response.amount}}</b>
@@ -39,13 +39,13 @@
       </div>
 
       <!-- para referencia de pago -->
-      <div class="success--validity" *ngIf="params.method_payment == 'Cash'">
+      <div class="success--validity" *ngIf="params?.method_payment == 'Cash'">
           <div class="yellow-block">
             <p>Vigencia: 24 horas - 30/07/2019</p>
           </div>
       </div>
-      <div class="success--info-reference" *ngIf="params.method_payment == 'Cash'">
-        <div *ngIf="params.charge_type == 'acquisition'">
+      <div class="success--info-reference" *ngIf="params?.method_payment == 'Cash'">
+        <div *ngIf="params?.charge_type == 'acquisition'">
           <img src="../../../../assets/ui/purchase-kilometers.png" />
           <b>{{params.package.package}} kms</b>
         </div>
@@ -61,8 +61,8 @@
 
       <div class="success--footer">
         <p>Activa la renovación automática para mantenerte siempre protegido</p>
-        <p *ngIf="params.method_payment == 'Cash'">Realiza el depósito en cualquier tienda [7-Eleven] usando el número de referencia.</p>
-        <p *ngIf="params.method_payment == 'Cash'">[7-Eleven] cobra una comisión de $10 pesos por recibir tu pago.</p>
+        <p *ngIf="params?.method_payment == 'Cash'">Realiza el depósito en cualquier tienda [7-Eleven] usando el número de referencia.</p>
+        <p *ngIf="params?.method_payment == 'Cash'">[7-Eleven] cobra una comisión de $10 pesos por recibir tu pago.</p>
       </div>
 
       <div class="success--close">

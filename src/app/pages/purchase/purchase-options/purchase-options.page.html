@@ -7,17 +7,13 @@
     </ion-buttons>
     <ion-title>¿Comó prefieres pagar?</ion-title>
   </ion-toolbar>
-  <!-- <div class="header--clean">
-    <ion-icon name="close" routerLink="/tabs/tabs/welcome" routerDirection="back"></ion-icon>
-    <p>¿Como prefieres pagar?</p>
-  </div> -->
 </ion-header>
 
 <ion-content>
 
   <!-- recharge -->
   <div class="options--info">
-    <div *ngIf="params.type_payment == 'acquisition'" class="purchase-block">
+    <div *ngIf="params?.type_payment == 'acquisition'" class="purchase-block">
       <div class="purchase-block-content">
           <div class="purchase-block-main">
             <div>
@@ -31,8 +27,8 @@
           </div>
       </div>
     </div>
-
-    <div *ngIf="params.type_payment == 'membership'" class="purchase-block">
+  
+    <div *ngIf="params?.type_payment == 'membership'" class="purchase-block">
       <div class="purchase-block-content">
           <div class="purchase-block-main">
             <div>
@@ -64,22 +60,6 @@
         </div>
       </div>
     </div>
-
-    <!-- <div class="simple-block" routerLink="/purchase-confirm">
-      <div>
-        <img src="../../../assets/payment/card-amex.png" />
-        <p>American Express ***9283</p>
-        <ion-icon name="ios-arrow-forward"></ion-icon>
-      </div>
-    </div>
-
-    <div class="simple-block" routerLink="/purchase-confirm">
-      <div>
-        <img src="../../../assets/payment/card-visa.png" />
-        <p>Santander ***1243</p>
-        <ion-icon name="ios-arrow-forward"></ion-icon>
-      </div>
-    </div> -->
 
     <div class="simple-block" (click)="paymentCash('Cash')">
       <div>

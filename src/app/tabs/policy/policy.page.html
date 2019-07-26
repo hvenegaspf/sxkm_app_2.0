@@ -10,9 +10,9 @@
         </span>
         <div>
           <h2>PÓLIZA</h2>
-          <b>{{ car_policy?.carrier_policy_id }}
+          <b>{{car_select?.policy_id }}
           </b>
-          <p>Vigencia {{ car_policy?.expires_at | date:'shortDate' }}</p>
+          <p>Vigencia {{ car_select?.expires_at | date:'shortDate' }}</p>
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@
         </a>
       </div>
       <div>
-        <a>
+        <a href="{{url}}policies/{{ car_select?.policy_id}}/certificate" target="_blank">
           <span>Descargar Póliza</span>
           <ion-icon name="ios-arrow-forward"></ion-icon>
         </a>

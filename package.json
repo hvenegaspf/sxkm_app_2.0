@@ -20,6 +20,7 @@
     "@angular/platform-browser": "^7.2.2",
     "@angular/platform-browser-dynamic": "^7.2.2",
     "@angular/router": "^7.2.2",
+    "@ionic-native/card-io": "^5.10.0",
     "@ionic-native/core": "^5.10.0",
     "@ionic-native/fcm": "^5.10.0",
     "@ionic-native/geolocation": "^5.10.0",
@@ -27,9 +28,10 @@
     "@ionic-native/status-bar": "^5.10.0",
     "@ionic/angular": "^4.6.2",
     "@ionic/storage": "^2.2.0",
+    "card.io.cordova.mobilesdk": "2.1.0",
     "cordova-android": "8.0.0",
-    "cordova-plugin-fcm-with-dependecy-updated": "^2.4.0",
     "cordova-plugin-device": "^2.0.3",
+    "cordova-plugin-fcm-with-dependecy-updated": "^2.4.0",
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-ionic-keyboard": "^2.1.3",
     "cordova-plugin-ionic-webview": "^4.1.1",
@@ -82,7 +84,8 @@
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-geolocation": {}
+      "cordova-plugin-geolocation": {},
+      "card.io.cordova.mobilesdk": {}
     },
     "platforms": [
       "android"

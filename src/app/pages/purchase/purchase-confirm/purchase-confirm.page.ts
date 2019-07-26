@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { UsersService } from '../../../providers/users.service';
 import { PaymentsService } from '../../../providers/payments.service';
+import { async } from '@angular/core/testing';
 declare var OpenPay;
 
 @Component({
@@ -32,13 +33,13 @@ export class PurchaseConfirmPage implements OnInit {
               private navCtrl: NavController, private storage: Storage, private usersService: UsersService, private paymentService: PaymentsService) { 
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
-        this.params = this.router.getCurrentNavigation().extras.state;
+        this.params =  this.router.getCurrentNavigation().extras.state;
+        console.log('confirm', this.params)
       }
     });
   }
 
   async ngOnInit(){
-    console.log(this.params)
     await this.getStorage('car').then((res) => {
       this.policy_id = JSON.parse(res)
     })
