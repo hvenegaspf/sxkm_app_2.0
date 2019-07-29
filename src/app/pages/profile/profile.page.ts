@@ -16,11 +16,11 @@ export class ProfilePage implements OnInit {
   user;
   car_select;
 
-  constructor( private userService: UsersService, private storage: Storage, private globalService: GlobalService,
-    private router: Router ) {
+  constructor(private userService: UsersService, private storage: Storage, private globalService: GlobalService,
+    private router: Router) {
     this.getUser();
     this.getCars();
-   }
+  }
 
   ngOnInit() {
   }
@@ -28,10 +28,10 @@ export class ProfilePage implements OnInit {
   async getUser() {
     this.user = await this.userService.getUserById();
     console.log(this.user)
-  } 
+  }
 
-  getCars(){
-    this.getStorage('car').then((res)=>{
+  getCars() {
+    this.getStorage('car').then((res) => {
       this.car_select = JSON.parse(res)
     })
   }
@@ -53,6 +53,5 @@ export class ProfilePage implements OnInit {
     let valueStorage = await this.storage.get(key);
     return valueStorage;
   }
-  
 
 }

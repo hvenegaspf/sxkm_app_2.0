@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './nip-reset.page.html',
   styleUrls: ['./nip-reset.page.scss'],
 })
+
 export class NipResetPage implements OnInit {
 
   showPassword = false;

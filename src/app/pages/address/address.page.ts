@@ -12,21 +12,21 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 
 export class AddressPage implements OnInit {
-  
+
   address;
 
-  constructor( private userService: UsersService, private storage: Storage, private globalService: GlobalService,
-    private router: Router ) {
-      this.getAddress();
-     }
+  constructor(private userService: UsersService, private storage: Storage, private globalService: GlobalService,
+    private router: Router) {
+    this.getAddress();
+  }
 
   ngOnInit() { }
 
   async getAddress() {
     this.address = await this.userService.getUserAddressById();
     this.address = this.address[0]
-    /* console.log('getAddress', this.address) */
-  } 
+    this.setStorage('address_id', this.address['id'].toString())
+  }
 
   editAddress() {
     let navigationExtras: NavigationExtras = {
@@ -35,6 +35,10 @@ export class AddressPage implements OnInit {
       }
     };
     this.router.navigate(['/address-edit'], navigationExtras);
+  }
+
+  setStorage(key: string, value: string) {
+    this.storage.set(key, value);
   }
 
 }
