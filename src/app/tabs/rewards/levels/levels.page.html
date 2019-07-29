@@ -9,10 +9,10 @@
 <ion-content>
 
   <ion-segment mode="md" [style.backgroundColor]="uiColor">
-    <ion-segment-button value="Novato" mode="md" (click)="uiSky()">
-      Novato
+    <ion-segment-button [checked]="check" *ngFor="let level of levels" value="level.level" mode="md" (click)="changeLevel(level.level)">
+      {{level.level}}
     </ion-segment-button>
-    <ion-segment-button checked value="Guerrero" mode="md" (click)="uiYellow()">
+    <!-- <ion-segment-button checked value="Guerrero" mode="md" (click)="uiYellow()">
       Guerrero
     </ion-segment-button>
     <ion-segment-button value="Rockstar" mode="md" (click)="uiGreen()">
@@ -20,8 +20,9 @@
     </ion-segment-button>
     <ion-segment-button value="Leyenda" mode="md" (click)="uiBlue()">
       Leyenda
-    </ion-segment-button>
+    </ion-segment-button> -->
   </ion-segment>
+
   <div class="levels--segment_overflow" [style.backgroundColor]="uiColor"></div>
 
   <div class="levels--header">

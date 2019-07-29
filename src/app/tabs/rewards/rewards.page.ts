@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { ModalController, Events, LoadingController } from '@ionic/angular';
 import { element } from '@angular/core/src/render3';
 import { CarService } from 'src/app/providers/car.service';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-rewards',
@@ -19,37 +20,41 @@ export class RewardsPage implements OnInit {
   reward_percent;
   car_select: any
   car:any;
-  cars: any [] = [];
-  levels = [{
-    "end": 10000,
-    "init": 0,
-    "level": "Starter"
-  },
-  {
-    "end": 25000,
-    "init": 10001,
-    "level": "Técnico"
-  },
-  {
-    "end": 50000,
-    "init": 25001,
-    "level": "Jack Man"
-  },
-  {
-    "end": 100000,
-    "init": 50001,
-    "level": "Piloto"
-  }]
-  constructor(private points: PointsTransactionService, private storage: Storage, public events: Events, private carService: CarService) {
+  cars = [];
+  levels: any;
+  constructor(private points: PointsTransactionService, private storage: Storage, public events: Events, private carService: CarService, private router: Router) {
     events.subscribe('car:selected', (car_selected) => {
       this.car_select = car_selected
-      this.getCars()
+      this.getCars();
+      this.getPointsTransaction(true)
     });
   }
 
+  ionViewWillEnter(){
+  }
+  
   ngOnInit() {
     this.getCars();
+    this.getLevels();
     this.getPointsTransaction();
+  }
+
+  async getLevels(){
+    await this.getStorage('auth_token').then((res) => {
+      this.token = res
+    })
+    this.levels = await this.points.getLevels(this.token)
+    console.log(this.levels)
+  }
+
+  showLevel(level){
+    console.log(level)
+    let navigationExtras: NavigationExtras = {
+      state: {
+        level_current: level
+      }
+    };
+    this.router.navigate(['levels'], navigationExtras);
   }
 
   async getCars() {

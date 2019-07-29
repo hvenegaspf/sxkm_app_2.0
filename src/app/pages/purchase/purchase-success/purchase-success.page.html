@@ -16,17 +16,17 @@
       <div class="success--validity" *ngIf="params?.method_payment == 'Card'">
         <div class="green-block">
           <b>VIGENCIA</b>
-          <p>29 días - 30/07/2019</p>
+          <p>{{params.data.package_expiration_date | date: 'shortDate'}}</p>
         </div>
       </div>
       <div class="success--info" *ngIf="params?.method_payment == 'Card'">
         <div>
           <img src="../../../../assets/ui/purchase-money.png" />
-          <b>{{params.data.gateway_response.amount}}</b>
+          <b>{{params.data.amount}}</b>
         </div>
         <div>
           <img src="../../../../assets/ui/purchase-card.png" />
-          <b>{{params.data.gateway_response.card.brand}} {{params.data.gateway_response.card.card_number}}</b>
+          <b>{{params.data.reference}}</b>
         </div>
         <div>
           <img src="../../../../assets/ui/purchase-renovation.png" />
@@ -34,14 +34,14 @@
         </div>
         <div>
           <img src="../../../../assets/ui/purchase-calendar.png" />
-          <b> {{params.data.gateway_response.card.creation_date}}</b>
+          <b> {{params.data.date}}</b>
         </div>
       </div>
 
       <!-- para referencia de pago -->
       <div class="success--validity" *ngIf="params?.method_payment == 'Cash'">
           <div class="yellow-block">
-            <p>Vigencia: 24 horas - 30/07/2019</p>
+            <p>{{params.data.package_expiration_date | date: 'shortDate'}}</p>
           </div>
       </div>
       <div class="success--info-reference" *ngIf="params?.method_payment == 'Cash'">
@@ -61,7 +61,7 @@
 
       <div class="success--footer">
         <p>Activa la renovación automática para mantenerte siempre protegido</p>
-        <p *ngIf="params?.method_payment == 'Cash'">Realiza el depósito en cualquier tienda [7-Eleven] usando el número de referencia.</p>
+        <p *ngIf="params?.method_payment == 'Cash'">Realiza el depósito en cualquier tienda [{{params.store.uri}}] usando el número de referencia.</p>
         <p *ngIf="params?.method_payment == 'Cash'">[7-Eleven] cobra una comisión de $10 pesos por recibir tu pago.</p>
       </div>
 
