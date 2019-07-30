@@ -5,10 +5,10 @@
     
     <div class="rewards--header">
       <div class="rewards--header-icon">
-        <img *ngIf="car_select?.car.details.level_gamification == 'Starter'" src="../../../assets/demo/level-icon.png" />
-        <img *ngIf="car_select?.car.details.level_gamification == 'Técnico'" src="../../../assets/demo/level-icon.png" />
-        <img *ngIf="car_select?.car.details.level_gamification == 'Jack Man'" src="../../../assets/demo/level-icon.png" />
-        <img *ngIf="car_select?.car.details.level_gamification == 'Piloto'" src="../../../assets/demo/level-icon.png" />
+        <img *ngIf="car_select?.car.details.level_gamification == 'Novato'" src="../../../assets/demo/level-icon.png" />
+        <img *ngIf="car_select?.car.details.level_gamification == 'Guerrero'" src="../../../assets/demo/level-icon.png" />
+        <img *ngIf="car_select?.car.details.level_gamification == 'Rockstar'" src="../../../assets/demo/level-icon.png" />
+        <img *ngIf="car_select?.car.details.level_gamification == 'Leyenda'" src="../../../assets/demo/level-icon.png" />
       </div>
       <div class="rewards--header-content">
 
@@ -30,7 +30,7 @@
             </div>
             <p>{{car_select?.car.details.reward_points}} Puntos</p>
           </div>
-          <a routerLink="/levels/{{car_select?.car.details.level_gamification}}"><span>BENEFICIOS</span><ion-icon name="ios-arrow-forward" color="medium"></ion-icon>
+          <a (click)="showLevel(car_select?.car.details.level_gamification)"><span>BENEFICIOS</span><ion-icon name="ios-arrow-forward" color="medium"></ion-icon>
           </a>
         </div>
       </div>
@@ -38,24 +38,24 @@
     
     <div class="rewards--levels">
       <div>
-        <img class="{{car_select?.car.details.level_gamification == 'Starter' ? '' : 'disabled'}}" src="../../../assets/demo/level-icon.png" />
+        <img class="{{car_select?.car.details.level_gamification == 'Novato' ? '' : 'disabled'}}" src="../../../assets/demo/level-icon.png" />
         <!-- asignar color con clase color-[color] -->
-        <p class="{{car_select?.car.details.level_gamification == 'Starter' ? 'color--sky' : 'color--grey'">Novato</p>
+        <p class="{{car_select?.car.details.level_gamification == 'Novato' ? 'color--sky' : 'color--grey'">Novato</p>
       </div>
       <div>
-        <img class="{{car_select?.car.details.level_gamification == 'Técnico' ? '' : 'disabled'}}" src="../../../assets/demo/level-icon.png" />
+        <img class="{{car_select?.car.details.level_gamification == 'Guerrero' ? '' : 'disabled'}}" src="../../../assets/demo/level-icon.png" />
         <!-- asignar color con clase color-[color] -->
-        <p class="{{car_select?.car.details.level_gamification == 'Técnico' ? 'color--yellow' : 'color--grey'">Guerrero</p>
+        <p class="{{car_select?.car.details.level_gamification == 'Guerrero' ? 'color--yellow' : 'color--grey'">Guerrero</p>
       </div>
       <div>
-        <img class="{{car_select?.car.details.level_gamification == 'Jack Man' ? '' : 'disabled'}}" src="../../../assets/demo/level-icon.png" />
+        <img class="{{car_select?.car.details.level_gamification == 'Rockstar' ? '' : 'disabled'}}" src="../../../assets/demo/level-icon.png" />
         <!-- asignar color con clase color-[color] -->
-        <p class="{{car_select?.car.details.level_gamification == 'Jack Man' ? 'color--green' : 'color--grey'">Rockstar</p>
+        <p class="{{car_select?.car.details.level_gamification == 'Rockstar' ? 'color--green' : 'color--grey'">Rockstar</p>
       </div>
       <div>
-        <img class="{{car_select?.car.details.level_gamification == 'Piloto' ? '' : 'disabled'}}" src="../../../assets/demo/level-icon.png" />
+        <img class="{{car_select?.car.details.level_gamification == 'Leyenda' ? '' : 'disabled'}}" src="../../../assets/demo/level-icon.png" />
         <!-- asignar color con clase color-[color] -->
-        <p class="{{car_select?.car.details.level_gamification == 'Piloto' ? 'color--blue' : 'color--grey'">Leyenda</p>
+        <p class="{{car_select?.car.details.level_gamification == 'Leyenda' ? 'color--blue' : 'color--grey'">Leyenda</p>
       </div>
     </div>
     
@@ -70,10 +70,10 @@
         <!-- si es un puntaje negativo se agrega la classe 'negative' -->
         <div *ngIf="points.points < 0"  class="rewards--activity-row negative">
           <div>
-            <img *ngIf="points.level_name == 'Starter'" src="../../../assets/ui/activity-sky.svg"/>
-            <img *ngIf="points.level_name == 'Tecnico'" src="../../../assets/ui/activity-yellow.svg"/>
-            <img *ngIf="points.level_name == 'Jack Man'" src="../../../assets/ui/activity-green.svg"/>
-            <img *ngIf="points.level_name == 'Piloto'" src="../../../assets/ui/activity-blue.svg"/>
+            <img *ngIf="points.level_name == 'Novato'" src="../../../assets/ui/activity-sky.svg"/>
+            <img *ngIf="points.level_name == 'Guerrero'" src="../../../assets/ui/activity-yellow.svg"/>
+            <img *ngIf="points.level_name == 'Rockstar'" src="../../../assets/ui/activity-green.svg"/>
+            <img *ngIf="points.level_name == 'Leyenda'" src="../../../assets/ui/activity-blue.svg"/>
           </div>
           <div>
             <p>{{points.points}}.</p>
@@ -86,10 +86,10 @@
 
         <div *ngIf="points.points > 0"  class="rewards--activity-row positive">
           <div>
-            <img *ngIf="points.level_name == 'Starter'" src="../../../assets/ui/activity-sky.svg"/>
-            <img *ngIf="points.level_name == 'Tecnico'" src="../../../assets/ui/activity-yellow.svg"/>
-            <img *ngIf="points.level_name == 'Jack Man'" src="../../../assets/ui/activity-green.svg"/>
-            <img *ngIf="points.level_name == 'Piloto'" src="../../../assets/ui/activity-blue.svg"/>
+            <img *ngIf="points.level_name == 'Novato'" src="../../../assets/ui/activity-sky.svg"/>
+            <img *ngIf="points.level_name == 'Guerrero'" src="../../../assets/ui/activity-yellow.svg"/>
+            <img *ngIf="points.level_name == 'Rockstar'" src="../../../assets/ui/activity-green.svg"/>
+            <img *ngIf="points.level_name == 'Leyenda'" src="../../../assets/ui/activity-blue.svg"/>
           </div>
           <div>
             <p>{{points.points}}</p>
@@ -97,6 +97,22 @@
           <div>
             <p>{{points.event_reference}}</p>
             <span>{{points.created_at}}</span>
+          </div>
+        </div>
+
+        <div *ngIf="points?.level_gamification" class="rewards--activity-row">
+          <div>
+            <img *ngIf="points.level_gamification == 'Novato'" src="../../../assets/ui/activity-level1.svg" />
+            <img *ngIf="points.level_gamification == 'Guerrero'" src="../../../assets/ui/activity-level2.svg" />
+            <img *ngIf="points.level_gamification == 'Rockstar'" src="../../../assets/ui/activity-level3.svg" />
+            <img *ngIf="points.level_gamification == 'Leyenda'" src="../../../assets/ui/activity-level4.svg" />
+          </div>
+          <div>
+            <p></p>
+          </div>
+          <div>
+            <p>Subiste a nivel Guerrero</p>
+            <span>22 mayo 2019</span>
           </div>
         </div>
 

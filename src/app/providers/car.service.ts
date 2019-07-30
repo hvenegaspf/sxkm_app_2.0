@@ -35,7 +35,6 @@ export class CarService {
     return new Promise(resolve => {
       this.http.get(`${URL}policy/${this.user_id}`, { headers: headers }).subscribe(
         (res: any) => {
-          /* console.log('policy', res.response.data) */
           resolve( res.response.data)
         });
     })
@@ -75,7 +74,7 @@ export class CarService {
   }
 
   createSinister(data, token) {
-    console.log(data)
+    /* console.log(data) */
     this.token = token
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
