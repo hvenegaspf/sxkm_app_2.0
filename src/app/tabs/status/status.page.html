@@ -1,6 +1,6 @@
 <ion-header mode="ios">
   <div class="header--page">
-    <a routerLink="/tabs/tabs/" routerDirection="back">
+    <a routerLink="/tabs/tabs/welcome" routerDirection="back">
       <ion-icon name="ios-arrow-back"></ion-icon>
     </a>
   </div>
@@ -11,12 +11,23 @@
 
     <div class="status--header">
       <div>
-        <img src="../../../assets/makers/MINI.png" />
+        <img src="/assets/makers/{{ car_select?.car.details.maker_name | uppercase }}.png" />
       </div>
     </div>
 
     <div class="status--message">
-      <p>Todo en orden</p>
+      <!-- mensaje de status dinámico -->
+      <div *ngIf="dataCarDtcs?.length == 0 && car_select?.car.device " class="auto--status-message">
+        <ion-icon name="checkmark-circle-outline" class="ok"></ion-icon>
+        <ion-text>Tu auto está en orden</ion-text>
+      </div>
+      <div *ngIf="dataCarDtcs?.length != 0 && car_select?.car.device " class="auto--status-message" padding>
+        <ion-icon name="alert" color="warning"></ion-icon>
+        <ion-text>Tu auto presenta fallas</ion-text>
+      </div>
+      <div *ngIf="!car_select?.car.device" class="auto--status-message">
+        <ion-text>Conecta tu dispositivo</ion-text>
+      </div>
     </div>
 
     <div class="status--images">
@@ -24,14 +35,22 @@
     </div>
 
     <div class="status--options">
-      <a>Sistema eléctrico</a>
-      <a>Combustible y aire</a>
-      <a>Inyectores</a>
-      <a>Sistema de encendido</a>
-      <a>Control de emisiones</a>
-      <a>Control de velocidad</a>
-      <a>ECU entradas y salidas</a>
-      <a>Transmisión</a>
+      <a *ngIf="fail_buttons['sistema_electrico']['status']"
+        (click)="openModalDtcs([0],'/assets/indicadores/sistema_electrico.png')">Sistema eléctrico</a>
+      <a *ngIf="fail_buttons['cumbustible']['status']"
+        (click)="openModalDtcs([1],'/assets/indicadores/combustible.png')">Combustible y aire</a>
+      <a *ngIf="fail_buttons['inyectores']['status']"
+        (click)="openModalDtcs([2],'/assets/indicadores/inyectores.png')">Inyectores</a>
+      <a *ngIf="fail_buttons['sistema_encendido']['status']"
+        (click)="openModalDtcs([3],'/assets/indicadores/sistema_encendido.png')">Sistema de encendido</a>
+      <a *ngIf="fail_buttons['control_emisiones']['status']"
+        (click)="openModalDtcs([4],'/assets/indicadores/control_emisiones.png')">Control de emisiones</a>
+      <a *ngIf="fail_buttons['control_velocidad']['status']"
+        (click)="openModalDtcs([5],'/assets/indicadores/control_velocidad.png')">Control de velocidad</a>
+      <a *ngIf="fail_buttons['ecu']['status']" (click)="openModalDtcs([6],'/assets/indicadores/ecu.png')">ECU
+        entradas y salidas</a>
+      <a *ngIf="fail_buttons['transmision']['status']"
+        (click)="openModalDtcs([7,8,9],'/assets/indicadores/transmision.png')">Transmisión</a>
     </div>
 
   </div>

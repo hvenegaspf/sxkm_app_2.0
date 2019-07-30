@@ -35,7 +35,7 @@ export class CarService {
     return new Promise(resolve => {
       this.http.get(`${URL}policy/${this.user_id}`, { headers: headers }).subscribe(
         (res: any) => {
-          resolve( res.response.data)
+          resolve( res.data)
         });
     })
   }
@@ -49,13 +49,11 @@ export class CarService {
     })
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': this.token,
-      'company_id': '2'
+      'Authorization': this.token
     });
     return new Promise(resolve => {
-      this.http.get<responseCarDtcs>(`${URL}trip_dtc/last_report/${this.car_id}`, { headers: headers }).subscribe(
+      this.http.get<responseCarDtcs>(`${URL}trip_dtcs/last_report/${this.car_id}`, { headers: headers }).subscribe(
         (response) => {
-          /* console.log(response) */
           if (response.code === 200) {
             resolve(response.data.dtc_codes_detected)
           }
@@ -66,9 +64,10 @@ export class CarService {
 
   getDtc(code, vin) {
     return new Promise(resolve => {
-      /* console.log(`${this.url_dtc}&code_id=${code}&language=EN&vin=${vin}`) */
+      console.log(`${this.url_dtc}&code_id=${code}&language=EN&vin=${vin}`)
       this.http.get<any>(`${this.url_dtc}&code_id=${code}&language=EN&vin=${vin}`).subscribe(
         (response) => {
+          console.log('dtcs detail', response)
           resolve(response.dtc_data)
         }
       );
@@ -94,4 +93,5 @@ export class CarService {
     let valueStorage = await this.storage.get(key);
     return valueStorage;
   }
+
 }

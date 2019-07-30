@@ -21,8 +21,6 @@ export class TripsService {
   token: any;
   header: any;
   user_id;
-  url_autocompara = 'https://redtec.populusinsurtech.technology/api/v1/';
-
 
   constructor(private http: HttpClient, private navCtrl: NavController, private storage: Storage) { }
 
@@ -37,7 +35,8 @@ export class TripsService {
     }
     this.trip_page++;
     /* console.log(`${URL}trips?from=${from}&to=${to}&car_id=${car_id}&page=${this.trip_page}`) */
-    return this.http.get<responseListTrips>(`${URL}trips?from=2019-03-26&to=2019-03-27&car_id=3&page=${this.trip_page}`, { headers: headers })
+    console.log(`${URL}trips?from=2019-07-23&to=2019-07-29&car_id=${car_id}&page=${this.trip_page}`)
+    return this.http.get<responseListTrips>(`${URL}trips?from=2019-07-23&to=2019-07-29&car_id=${car_id}&page=${this.trip_page}`, { headers: headers })
   }
 
   async getTripDetails (id_details) {
@@ -52,6 +51,7 @@ export class TripsService {
       /* console.log(`${URL}trip/details/${id_details}`) */
       this.http.get<responseLastTrip>(`${URL}trip/details/${id_details}`, {headers:headers}).subscribe(
         (response) => {
+          console.log('getTripDetails', response)
           if (response.code === 200) {
             resolve(response.data)
           }
@@ -68,7 +68,8 @@ export class TripsService {
     });
     return new Promise(resolve => {
       /* console.log(`${URL}driving_habits?from=${from}&to=${to}&car_id=${car_id}`) */
-      this.http.get<responseDrivingHabits>(`${URL}driving_habits?from=${from}&to=${to}&car_id=${car_id}`, {headers:headers}).subscribe(
+      console.log(`${URL}trips?from=2019-07-23&to=2019-07-29&car_id=${car_id}&page=${this.trip_page}`)
+      this.http.get<responseDrivingHabits>(`${URL}driving_habits?from=2019-07-23&to=2019-07-29&car_id=${car_id}`, {headers:headers}).subscribe(
         (response) => {
           if (response.code === 200) {
             resolve(response.data)

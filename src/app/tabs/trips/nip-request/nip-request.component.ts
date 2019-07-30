@@ -19,18 +19,25 @@ export class NipRequestComponent implements OnInit {
   validNip;
   showPassword = false;
   icon = 'md-eye';
+  iconCheck = 'ios-square-outline';
+
+
 
   constructor(private modalCtlr: ModalController, private tripService:TripsService,
     private storage: Storage, private uiService: UiService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+   
+  }
 
   async onSubmit(nip: NgForm) {
     let nipValue = nip.form.value['enterNIP'];
     nipValue = nipValue.toString();
     this.validNip = await this.tripService.validateNip(nipValue);
     if(this.validNip){
-      this.setStorage('nip_trips', nipValue)
+      if(this.autoRenew){
+        this.setStorage('nip_trips', nipValue)
+      }
       this.onCancel();
     }else{
       this.uiService.templateAlert('Nip no válido.')
@@ -48,11 +55,7 @@ export class NipRequestComponent implements OnInit {
 
   onAutoRenew() {
     this.autoRenew = !this.autoRenew;
-  }
-
-  closeModal(){
-    console.log('close modal')
-    this.onCancel();
+    !this.autoRenew ? this.iconCheck = 'ios-square-outline' : this.iconCheck = 'ios-checkbox-outline';
   }
 
   // cerrar modal

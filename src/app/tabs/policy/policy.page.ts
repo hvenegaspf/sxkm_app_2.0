@@ -3,6 +3,7 @@ import { Storage } from '@ionic/storage';
 import { ModalController, Events, LoadingController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import { CarService } from 'src/app/providers/car.service';
+
 const URL = environment.devPath;
 
 @Component({
@@ -10,12 +11,14 @@ const URL = environment.devPath;
   templateUrl: './policy.page.html',
   styleUrls: ['./policy.page.scss'],
 })
+
 export class PolicyPage implements OnInit {
   car_select:any;
   car: any;
   cars: any [] = []
   car_policy;
   url
+
   constructor( private storage: Storage, public events: Events, private carService: CarService){
     events.subscribe('car:selected', (car_selected) => {
       this.car_select = car_selected

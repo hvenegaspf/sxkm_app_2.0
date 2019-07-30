@@ -46,3 +46,14 @@
   }
 
 }
+
+ion-item{
+  position: relative;
+  ion-icon{
+    position: absolute;
+    top: 36px;
+    right: 0;
+    z-index: 99;
+  }  
+}
+

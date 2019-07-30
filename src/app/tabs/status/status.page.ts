@@ -3,8 +3,8 @@ import { Storage } from '@ionic/storage';
 import { UsersService } from 'src/app/providers/users.service';
 import { CarService } from '../../providers/car.service';
 import { ModalController, Events } from '@ionic/angular';
-import { GlobalService } from '../../providers/global.service';
 import { StatusDetailComponent } from './status-detail/status-detail.component';
+import { GlobalService } from '../../providers/global.service';
 
 @Component({
   selector: 'app-status',
@@ -23,53 +23,53 @@ export class StatusPage implements OnInit {
   code: any;
   vin: any;
   fail_buttons = {
-    sistema_electrico : {
-      third_digit : [0],
+    sistema_electrico: {
+      third_digit: [0],
       status: false
     },
-    cumbustible : {
-      third_digit : [1],
+    cumbustible: {
+      third_digit: [1],
       status: false
     },
     inyectores: {
-      third_digit : [2],
+      third_digit: [2],
       status: false
     },
     sistema_encendido: {
-      third_digit : [3],
+      third_digit: [3],
       status: false
     },
     control_emisiones: {
-      third_digit : [4],
+      third_digit: [4],
       status: false
     },
     control_velocidad: {
-      third_digit : [5],
+      third_digit: [5],
       status: false
     },
     ecu: {
-      third_digit : [6],
+      third_digit: [6],
       status: false
     },
     transmision: {
-      third_digit : [7,8,9],
+      third_digit: [7, 8, 9],
       status: false
     }
   }
 
   constructor(private modalCtlr: ModalController, private userService: UsersService,
     private storage: Storage, private carService: CarService, public events: Events,
-    private globalService: GlobalService) { 
-      /* this.globalService.setActivity('car', 'Mi auto'); */
-      /* events.subscribe('car:selected', (car_selected) => {
-        this.car_select = car_selected
-        this.vin = this.car_select.car.details.vin.substring(0, 11)
-        this.cleanFails();
-        this.dataCarDtcs = [];
-        this.thrid_digit = [];
-        this.loadcarDtcs();
-      }); */
-    }
+    private globalService: GlobalService) {
+    /* this.globalService.setActivity('car', 'Mi auto'); */
+    events.subscribe('car:selected', (car_selected) => {
+      this.car_select = car_selected
+      this.vin = this.car_select.car.details.vin.substring(0, 11)
+      this.cleanFails();
+      this.dataCarDtcs = [];
+      this.thrid_digit = [];
+      this.loadCarDtcs();
+    });
+  }
 
   ngOnInit() {
     this.getCars();
@@ -77,7 +77,7 @@ export class StatusPage implements OnInit {
       this.car_select = JSON.parse(res)
       this.vin = this.car_select.car.details.vin.substring(0, 11)
     })
-    this.loadcarDtcs();
+    this.loadCarDtcs();
   }
 
   async getCars() {
@@ -99,7 +99,7 @@ export class StatusPage implements OnInit {
     }
   }
 
-  async loadcarDtcs() {
+  async loadCarDtcs() {
     this.dataCarDtcs = await this.carService.getCarDtcs();
     for (let code of this.dataCarDtcs) {
       this.thrid_digit.push(Number(code[2]))
@@ -118,7 +118,7 @@ export class StatusPage implements OnInit {
     this.fail_buttons.transmision.status = this.validate(this.fail_buttons.transmision.third_digit)
   }
 
-  validate(array_value){
+  validate(array_value) {
     if (array_value.length === 1) {
       return this.thrid_digit.includes(array_value[0])
     } else {
@@ -141,7 +141,6 @@ export class StatusPage implements OnInit {
     }).then(ErrorModal => { ErrorModal.present(); });
   }
 
-
   setStorage(key: string, value: string) {
     this.storage.set(key, value);
   }
@@ -151,7 +150,7 @@ export class StatusPage implements OnInit {
     return valueStorage;
   }
 
-  cleanFails(){
+  cleanFails() {
     this.fail_buttons['sistema_electrico']['status'] = false
     this.fail_buttons['cumbustible']['status'] = false
     this.fail_buttons['inyectores']['status'] = false
