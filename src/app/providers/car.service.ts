@@ -64,9 +64,10 @@ export class CarService {
 
   getDtc(code, vin) {
     return new Promise(resolve => {
-      /* console.log(`${this.url_dtc}&code_id=${code}&language=EN&vin=${vin}`) */
+      console.log(`${this.url_dtc}&code_id=${code}&language=EN&vin=${vin}`)
       this.http.get<any>(`${this.url_dtc}&code_id=${code}&language=EN&vin=${vin}`).subscribe(
         (response) => {
+          console.log('dtcs detail', response)
           resolve(response.dtc_data)
         }
       );

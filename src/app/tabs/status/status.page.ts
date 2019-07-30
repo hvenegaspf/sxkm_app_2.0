@@ -101,6 +101,7 @@ export class StatusPage implements OnInit {
 
   async loadCarDtcs() {
     this.dataCarDtcs = await this.carService.getCarDtcs();
+    console.log('dataCarDtcs', this.dataCarDtcs)
     for (let code of this.dataCarDtcs) {
       this.thrid_digit.push(Number(code[2]))
     }
