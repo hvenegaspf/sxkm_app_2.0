@@ -1,8 +1,3 @@
-<!-- <ion-header class="page--header" mode="ios">
-  <ion-back-button mode="ios" icon="ios-arrow-back" text="" (click)="onCancel()" defaultHref="/status">
-  </ion-back-button>
-</ion-header> -->
-
 <ion-header mode="ios">
   <div class="header--page">
     <a routerLink="/status" routerDirection="back" (click)="onCancel()">
@@ -11,7 +6,7 @@
   </div>
 </ion-header>
 
-<ion-content padding class="sos">
+<ion-content padding>
 
   <h2>Descripción de falla(s)</h2>
 
@@ -26,14 +21,6 @@
 
   <div class="dtcs--status-image" padding>
     <ion-img src={{urlImage}}></ion-img>
-    <!-- <ion-img src="/assets/ui/indicadores/sistema_electrico.png" *ngIf="validateCode([0])"></ion-img>
-    <ion-img src="/assets/ui/indicadores/combustible.png" *ngIf="validateCode([1])"></ion-img>
-    <ion-img src="/assets/ui/indicadores/inyectores.png" *ngIf="validateCode([2])"></ion-img>
-    <ion-img src="/assets/ui/indicadores/sistema_encendido.png" *ngIf="validateCode([3])"></ion-img>
-    <ion-img src="/assets/ui/indicadores/control_emisiones.png" *ngIf="validateCode([4])"></ion-img>
-    <ion-img src="/assets/ui/indicadores/control_velocidad.png" *ngIf="validateCode([5])"></ion-img>
-    <ion-img src="/assets/ui/indicadores/ecu.png" *ngIf="validateCode([6])"></ion-img>
-    <ion-img src="/assets/ui/indicadores/transmision.png" *ngIf="validateCode([7,8,9])"></ion-img> -->
   </div>
 
 </ion-content>
