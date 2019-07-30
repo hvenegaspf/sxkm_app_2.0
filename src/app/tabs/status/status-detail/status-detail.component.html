@@ -1,6 +1,14 @@
-<ion-header class="page--header" mode="ios">
-  <ion-back-button mode="ios" icon="ios-arrow-back" text="" (click)="onCancel()" defaultHref="/tabs/tabs/auto">
+<!-- <ion-header class="page--header" mode="ios">
+  <ion-back-button mode="ios" icon="ios-arrow-back" text="" (click)="onCancel()" defaultHref="/status">
   </ion-back-button>
+</ion-header> -->
+
+<ion-header mode="ios">
+  <div class="header--page">
+    <a routerLink="/status" routerDirection="back" (click)="onCancel()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </a>
+  </div>
 </ion-header>
 
 <ion-content padding class="sos">

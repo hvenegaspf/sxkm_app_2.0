@@ -79,6 +79,4 @@ export class StatusDetailComponent implements OnInit {
     this.modalCtlr.dismiss();
   }
 
-
-
 }

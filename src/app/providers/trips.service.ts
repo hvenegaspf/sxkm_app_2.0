@@ -21,8 +21,6 @@ export class TripsService {
   token: any;
   header: any;
   user_id;
-  url_autocompara = 'https://redtec.populusinsurtech.technology/api/v1/';
-
 
   constructor(private http: HttpClient, private navCtrl: NavController, private storage: Storage) { }
 

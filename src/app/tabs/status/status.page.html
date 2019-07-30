@@ -1,6 +1,6 @@
 <ion-header mode="ios">
   <div class="header--page">
-    <a routerLink="/tabs/tabs/" routerDirection="back">
+    <a routerLink="/tabs/tabs/welcome" routerDirection="back">
       <ion-icon name="ios-arrow-back"></ion-icon>
     </a>
   </div>
@@ -24,14 +24,22 @@
     </div>
 
     <div class="status--options">
-      <a>Sistema eléctrico</a>
-      <a>Combustible y aire</a>
-      <a>Inyectores</a>
-      <a>Sistema de encendido</a>
-      <a>Control de emisiones</a>
-      <a>Control de velocidad</a>
-      <a>ECU entradas y salidas</a>
-      <a>Transmisión</a>
+      <a *ngIf="fail_buttons['sistema_electrico']['status']"
+        (click)="openModalDtcs([0],'/assets/ui/indicadores/sistema_electrico.png')">Sistema eléctrico</a>
+      <a *ngIf="fail_buttons['cumbustible']['status']"
+        (click)="openModalDtcs([1],'/assets/ui/indicadores/combustible.png')">Combustible y aire</a>
+      <a *ngIf="fail_buttons['inyectores']['status']"
+        (click)="openModalDtcs([2],'/assets/ui/indicadores/inyectores.png')">Inyectores</a>
+      <a *ngIf="fail_buttons['sistema_encendido']['status']"
+        (click)="openModalDtcs([3],'/assets/ui/indicadores/sistema_encendido.png')">Sistema de encendido</a>
+      <a *ngIf="fail_buttons['control_emisiones']['status']"
+        (click)="openModalDtcs([4],'/assets/ui/indicadores/control_emisiones.png')">Control de emisiones</a>
+      <a *ngIf="fail_buttons['control_velocidad']['status']"
+        (click)="openModalDtcs([5],'/assets/ui/indicadores/control_velocidad.png')">Control de velocidad</a>
+      <a *ngIf="fail_buttons['ecu']['status']" (click)="openModalDtcs([6],'/assets/ui/indicadores/ecu.png')">ECU
+        entradas y salidas</a>
+      <a *ngIf="fail_buttons['transmision']['status']"
+        (click)="openModalDtcs([7,8,9],'/assets/ui/indicadores/transmision.png')">Transmisión</a>
     </div>
 
   </div>
