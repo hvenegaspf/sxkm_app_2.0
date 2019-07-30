@@ -39,7 +39,7 @@ export class PasswordPage implements OnInit {
     const valid = await this.authService.login(this.user);
 
     if (valid) {
-      this.navCtrl.navigateRoot('/tabs', { animated: true });
+      this.router.navigate(['tabs']);
       /* this.loading.dismiss(); */
     } else {
       /* this.loading.dismiss(); */

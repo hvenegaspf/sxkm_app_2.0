@@ -10,9 +10,9 @@
           <ion-icon name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title style="text-align: center">{{card.brand}}</ion-title>
+    <ion-title style="text-align: center">{{card?.brand}}</ion-title>
     <ion-buttons slot="end">
-      <ion-icon src="../../../../assets/ui/icon-dots.svg" (click)="onClickOptions(card.id)"></ion-icon>
+      <ion-icon src="../../../../assets/ui/icon-dots.svg" (click)="onClickOptions(card?.id)"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -23,7 +23,7 @@
     <div>
       <ion-item mode="ios">
         <ion-label position="floating" mode="ios">Número de la tarjeta</ion-label>
-        <ion-input value="{{card.card_number}}" disabled></ion-input>
+        <ion-input value="{{card?.card_number}}" disabled></ion-input>
       </ion-item>
     </div>
 

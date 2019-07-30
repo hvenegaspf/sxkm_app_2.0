@@ -5,6 +5,7 @@ import { UsersService } from '../../../providers/users.service';
 import { LoadingController, ToastController, Platform, NavController } from '@ionic/angular';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { CardIO } from '@ionic-native/card-io/ngx';
+import { async } from '@angular/core/testing';
 declare var OpenPay;
 
 @Component({
@@ -21,10 +22,13 @@ export class AddCardPage implements OnInit {
   showAlert: boolean = false;
   token_openpay:any = "";
 
-  constructor(private gobalService: GlobalService, private userService: UsersService, private navCtrl: NavController, 
+  constructor(private gobalService: GlobalService, private userService: UsersService, private navCtrl: NavController, private toastCtrl: ToastController,
               private loadingCtrl: LoadingController, private route: ActivatedRoute, private router: Router, private cardIO: CardIO) { }
 
   ngOnInit() { 
+  }
+  
+  ionViewWillEnter(){
     this.getUser()
     this.camara()
   }
@@ -42,7 +46,18 @@ export class AddCardPage implements OnInit {
             scanExpiry:true,
             useCardIOLogo:true
           };
-          this.cardIO.scan(options);
+          return new Promise(resolve => {
+            this.cardIO.scan(options)
+              .then(data => {
+                console.log(data)
+                /* this.card_number_re = data.cardNumber
+                this.exp_date_re = data.expiryYear + "-" + data.expiryMonth
+                this.cvc_re = data.cvv
+                this.card_name_re =  data.cardholderName
+                this.logForm() */
+              })
+            })
+        }else{
         }
       }
     );

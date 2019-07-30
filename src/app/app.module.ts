@@ -12,8 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { IonicStorageModule } from '@ionic/storage';
 import { FormsModule } from '@angular/forms';
 import { FCM } from '@ionic-native/fcm/ngx';
-
-
+import { CardIO } from '@ionic-native/card-io/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +29,8 @@ import { FCM } from '@ionic-native/fcm/ngx';
     StatusBar,
     SplashScreen,
     FCM,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    CardIO,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent]
 })

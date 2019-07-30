@@ -15,6 +15,9 @@ export class WelcomePage implements OnInit {
   constructor(private modalCtlr: ModalController, private router: Router, private globlaService: GlobalService, ) { }
 
   ngOnInit() {
+  }
+  
+  ionViewWillEnter(){
     this.getKmStatus()
     this.getNextDueDate()
   }

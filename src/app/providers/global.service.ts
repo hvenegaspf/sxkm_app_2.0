@@ -31,6 +31,7 @@ export class GlobalService {
     return new Promise(resolve => {
       this.http.get(`${URL}acquisitions/${this.policy_id.policy_id}/km_status`).subscribe(
         (response:any) => {
+          console.log(response)
           resolve(response.data)
         });
     })
@@ -44,7 +45,8 @@ export class GlobalService {
     return new Promise(resolve => {
       this.http.get(`${URL}memberships/${this.id_user}/next_due_date`).subscribe(
         (response:any) => {
-          resolve(response.data)
+          console.log(response)
+          resolve(response)
         });
     })
   }
