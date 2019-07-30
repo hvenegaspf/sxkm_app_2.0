@@ -21,18 +21,18 @@
         <div>
           <ion-item mode="ios">
             <ion-label position="floating" mode="ios">NIP</ion-label>
-            <ion-input [type]="!this.showPassword ? 'password' : 'text'" name="enterNIP" ngModel enterNIP minlength="4"
+            <ion-input [type]="!showPassword ? 'password' : 'text'" name="enterNIP" ngModel enterNIP minlength="4"
               maxlength="4" required #enterNip="ngModel">
             </ion-input>
-            <ion-icon [name]="this.icon" color="dark" (click)="passwordVisibility()"></ion-icon>
+            <ion-icon [name]="icon" color="dark" (click)="passwordVisibility()"></ion-icon>
           </ion-item>
         </div>
 
         <div class="nip--options">
           <div class="nip--checkbox">
-            <label (click)="onAutoRenew()">
+            <label >
               <input type="checkbox" />
-              <ion-icon [name]="!this.autoRenew ? 'ios-square-outline' : 'ios-checkbox-outline'"></ion-icon>
+              <ion-icon [name]="iconCheck" (click)="onAutoRenew()"></ion-icon>
               <b>No volver a soliciar NIP</b>
             </label>
           </div>
