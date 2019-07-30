@@ -53,7 +53,6 @@ export class TripsPage implements OnInit {
   async ionViewDidEnter() {
     // si no hay NIP registrado, llamar modal para registro de NIP
     this.registeredNIP = await this.tripsService.hasNip();
-    console.log('registeredNIP', this.registeredNIP)
     if (!this.registeredNIP) {
       this.modalCtlr.create({ component: NipSetupComponent }).then(NipSetupComponent => { NipSetupComponent.present(); });
       // si hay NIP registrado y no se ha ingresado en la sesión actual, llamar modal para ingreso de NIP
@@ -112,7 +111,7 @@ export class TripsPage implements OnInit {
     await this.getFilters();
 
     await this.tripsService.getListTrips(pull, this.dateFrom, this.dateTo, this.token, this.car_id).subscribe((response) => {
-      console.log('loadTrips', response)
+      console.log('getListTrips', response)
       this.loading.dismiss();
       this.arrayTrips.push(...response.data.trips)
       if (response.data.total) {
@@ -134,7 +133,6 @@ export class TripsPage implements OnInit {
 
   loadMaps() {
     this.arrayTrips = this.arrayTrips.filter(trip => 'init_trip' in trip && 'end_trip' in trip);
-    console.log('arrayTrips', this.arrayTrips)
     for (let i = 0; this.arrayTrips.length > i; i++) {
       setTimeout(() => {
         this.map = new Map(`map-trip-${i + 1}`, { zoomControl: false }).setView([this.arrayTrips[i]['init_trip']['latitude'], this.arrayTrips[i]['init_trip']['longitude']], 13);

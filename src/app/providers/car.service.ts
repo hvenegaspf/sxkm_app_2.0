@@ -35,7 +35,7 @@ export class CarService {
     return new Promise(resolve => {
       this.http.get(`${URL}policy/${this.user_id}`, { headers: headers }).subscribe(
         (res: any) => {
-          resolve( res.response.data)
+          resolve( res.data)
         });
     })
   }
@@ -54,8 +54,8 @@ export class CarService {
     return new Promise(resolve => {
       this.http.get<responseCarDtcs>(`${URL}trip_dtcs/last_report/${this.car_id}`, { headers: headers }).subscribe(
         (response) => {
-          if (response.response.code === 200) {
-            resolve(response.response.data.dtc_codes_detected)
+          if (response.code === 200) {
+            resolve(response.data.dtc_codes_detected)
           }
         }
       );
