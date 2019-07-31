@@ -93,13 +93,18 @@ export class AddCardPage implements OnInit {
       angular_this.token_openpay = response.data.id;
       angular_this.addCard();
     }
+    var errorCallback =function (response){
+      angular_this.token_openpay = response.data.id;
+      angular_this.onPaymentFailed();
+    }
+
     OpenPay.token.create({
       "card_number": this.card.cardNumber,
       "holder_name": this.card.cardHolder,
       "expiration_year": this.card.cardExpiration_year,
       "expiration_month": this.card.cardExpiration_month,
       "cvv2": this.card.cardCvv
-    },sucess_callbak, this.errorCallback);
+    },sucess_callbak, errorCallback);
   }
 
   async addCard(){
@@ -122,14 +127,9 @@ export class AddCardPage implements OnInit {
     this.router.navigate(['cards']);
     this.dismissLoading()
   }
-
-  errorCallback(){
-    console.log('error')
-    this.dismissLoading()
-    this.onPaymentFailed()
-  }
-
+  
   onPaymentFailed() {
+    this.dismissLoading()
     this.showAlert = true;
   }
 

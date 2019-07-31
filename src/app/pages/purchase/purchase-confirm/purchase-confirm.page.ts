@@ -107,9 +107,8 @@ export class PurchaseConfirmPage implements OnInit {
         state: this.pay
       };
       this.router.navigate(['purchase-success'], navigationExtras);
-      this.loading.dismiss()
+      this.dismissLoading() 
     }else{
-      this.loading.dismiss()
       this.onPaymentFailed()
     }
     /* console.log(this.deviceIdHiddenFieldName) */
@@ -149,10 +148,9 @@ export class PurchaseConfirmPage implements OnInit {
         state: this.pay
       };
       this.router.navigate(['purchase-success'], navigationExtras);
-      this.loading.dismiss()
+      this.dismissLoading() 
     }else{
-      this.loading.dismiss()
-      this.onPaymentFailed
+      this.onPaymentFailed()
     }
   }
 
@@ -161,6 +159,7 @@ export class PurchaseConfirmPage implements OnInit {
   }
 
   onPaymentFailed() {
+    this.dismissLoading()    
     this.showAlert = true;
   }
 
@@ -173,6 +172,10 @@ export class PurchaseConfirmPage implements OnInit {
       message: message,
     });
     return this.loading.present();
+  }
+
+  async dismissLoading() {
+    await this.loading.dismiss();
   }
 
   setStorage(key: string, value: string) {
