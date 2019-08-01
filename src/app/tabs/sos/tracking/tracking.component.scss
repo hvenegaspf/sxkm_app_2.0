@@ -5,10 +5,10 @@ ion-content {
 
   &--map {
     width: 100%;
-    height: 86vh;
+    height: 100vh;
     background-color: grey;
   }
-  
+
   &--help {
     width: 100%;
     display: block;
@@ -17,7 +17,7 @@ ion-content {
     left: 0;
     right: 0;
     bottom: 0;
-    
+
     &-content {
       width: 100%;
       border-radius: var(--ion-radius-card);
