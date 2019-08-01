@@ -31,7 +31,20 @@
     }
   }
 
-  &--full { width: 100%; }
+  &--full {  
+    width: 100%;
+    position: relative;
+    .icon-camara{
+      display: inline-block;
+      padding: 0.5rem;
+      font-size: 1.3rem;
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0;
+      z-index: 9;
+      cursor: pointer;
+    } 
+  }
   &--half {
     width: 48%;
     position: relative;

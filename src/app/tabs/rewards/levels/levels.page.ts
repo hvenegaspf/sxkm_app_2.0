@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
+import { LoadingController, ToastController, Platform, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { PointsTransactionService } from '../../../providers/points-transaction.service';
 
@@ -10,30 +11,15 @@ import { PointsTransactionService } from '../../../providers/points-transaction.
 })
 export class LevelsPage implements OnInit {
 
-  uiColor: string = '#ffbb01';
+  uiColor: string;
+  current_level:any;
   params:any;
   token:any;
-  levels:any=[];
+  levels:any = [];
+  benefits:any = {};
   check:boolean = false;
-  level = [
-    {
-    level_name: 'Novato',
-    color: '#0cc1f9'
-    },
-    {
-      level_name: 'Guerrero',
-      color: '#ffbb01'
-    },
-    {
-    level_name: 'Rockstar',
-    color: '#2ec23b'
-    },
-    {
-    level_name: 'Leyenda',
-    color: '#5387d1'
-    },
-  ]
-  constructor(private route: ActivatedRoute, private router: Router, private storage: Storage, private points: PointsTransactionService){
+  constructor(private route: ActivatedRoute, private router: Router, private storage: Storage, private points: PointsTransactionService,
+              private navCtrl: NavController){
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.params = this.router.getCurrentNavigation().extras.state;
@@ -53,22 +39,20 @@ export class LevelsPage implements OnInit {
     this.levels = await this.points.getLevels(this.token)
     this.levels.forEach(element => {
       if(element.level == this.params.level_current){
-        console.log(element.level)
+        this.current_level = element
+        this.uiColor = this.current_level.color
         this.check = true;
       }
     });
   }
 
   changeLevel(level_checked){
-    if(level_checked == 'Novato'){
-      this.uiColor = '#0cc1f9';
-    }else if(level_checked == 'Guerrero'){
-      this.uiColor = '#ffbb01';
-    }else if(level_checked == 'Rockstar'){
-      this.uiColor = '#2ec23b';
-    }else if(level_checked == 'Leyenda'){
-      this.uiColor = '#5387d1';
-    }
+    this.current_level = level_checked
+    this.uiColor = level_checked.color
+  }
+
+  goBack(){
+    this.navCtrl.back()
   }
 
   setStorage(key: string, value: string) {

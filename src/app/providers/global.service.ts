@@ -52,14 +52,8 @@ export class GlobalService {
   }
 
   //Add card for payments
-  async addCard(data){
-    return new Promise(resolve =>{
-      this.http.post(`${URL}cards`,data).subscribe(
-        (res:any)=>{
-          resolve(res)
-        }
-      )
-    })
+  addCard(data){
+    return this.http.post(`${URL}cards`,data)
   }
 
   async deleteCard(id_card){
