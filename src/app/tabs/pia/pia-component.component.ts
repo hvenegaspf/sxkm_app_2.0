@@ -20,10 +20,10 @@ export class PiaComponent {
   private _CONTEXT : any;
   private _CANVAS  : any;
   dtc:any={};
-  state: any = "critical";
+  state: any = "prevent";
   
   constructor(public platform: Platform) {
-    /* Valores de control PIA */
+    /* Valores de contro PIA */
      //  platform.ready().then(() => {
       this.App.width = platform.width()
       this.App.height = platform.height()
@@ -63,12 +63,13 @@ export class PiaComponent {
 
   ionViewWillEnter() {
     this._CANVAS 	        = this.canvasEl.nativeElement;
-    this._CANVAS.width  	= 300;
-    this._CANVAS.height 	= 300;
+    this._CANVAS.width  	= 200;
+    this._CANVAS.height 	= 200;
     //this.init_dtc();
     //this.initialiseCanvas();
     this.initDtc();
     this.animate();
+    console.log('ionViewDidLoad'); 
   }
 
   initDtc(){
@@ -86,7 +87,7 @@ export class PiaComponent {
             x: (200 - this.dtc.diameter) / 2 + radius,
             y: (200 - this.dtc.diameter) / 2 + radius
         };
-        /* console.log("center" + this.dtc.center.y) */
+        console.log("center" + this.dtc.center.y)
         for (var j = 0; j < this.dtc.sides; j++) {
             var angle = this.dtc.dps * j,
                 radians = angle * Math.PI / 180;
