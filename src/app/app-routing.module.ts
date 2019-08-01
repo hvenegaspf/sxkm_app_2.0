@@ -8,6 +8,9 @@ const routes: Routes = [
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'password', loadChildren: './pages/login/password/password.module#PasswordPageModule' },
   { path: 'reset', loadChildren: './pages/login/reset/reset.module#ResetPageModule' },
+  // Notification pages
+  { path: 'notifications', loadChildren: './pages/notifications/notifications.module#NotificationsPageModule' },
+  { path: 'notification-detail', loadChildren: './pages/notifications/notification-detail/notification-detail.module#NotificationDetailPageModule' },
   // profile pages
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   { path: 'profile-edit', loadChildren: './pages/profile/profile-edit/profile-edit.module#ProfileEditPageModule' },
