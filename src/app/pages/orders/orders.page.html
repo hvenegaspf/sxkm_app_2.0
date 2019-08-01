@@ -8,29 +8,29 @@
 <ion-content>
   <div class="order--list">
 
-    <ion-item class="order--item" lines="none" mode="ios" routerLink="/order-detail">
+    <ion-item *ngFor="let acquisiotion of acquisiotions" class="order--item" lines="none" mode="ios" (click)="orderDetail(acquisiotion)">
       <div class="order--item-start">
         <img src="../../../assets/ui/order-recharge.png" />
         <div>
-          <b>Recarga 250 Kms</b>
-          <p>21/06/2019</p>
+          <b>Recarga {{acquisiotion.kilometers}} Kms</b>
+          <p>{{acquisiotion.date | date: 'd/MM/yyyy'}}</p>
         </div>
       </div>
       <div class="order--item-end">
-        <b>$140</b>
+        <b>{{acquisiotion.amount | currency}}</b>
       </div>
     </ion-item>
 
-    <ion-item class="order--item" lines="none" mode="ios" routerLink="/order-detail">
+    <ion-item *ngFor="let membership of memberships" class="order--item" lines="none" mode="ios" (click)="orderDetail(membership)">
       <div class="order--item-start">
         <img src="../../../assets/ui/order-subscription.png" />
         <div>
           <b>Suscripción</b>
-          <p>04/07/2019</p>
+          <p>{{membership.date | date: 'd/MM/yyyy'}}</p>
         </div>
       </div>
       <div class="order--item-end">
-        <b>$299</b>
+        <b>{{membership.amount | currency}}</b>
       </div>
     </ion-item>
 

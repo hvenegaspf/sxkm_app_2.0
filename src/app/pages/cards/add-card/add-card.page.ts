@@ -21,7 +21,8 @@ export class AddCardPage implements OnInit {
   loading:any;
   showAlert: boolean = false;
   token_openpay:any = "";
-
+  card_mumber:any;
+  
   constructor(private gobalService: GlobalService, private userService: UsersService, private navCtrl: NavController, private toastCtrl: ToastController,
               private loadingCtrl: LoadingController, private route: ActivatedRoute, private router: Router, private cardIO: CardIO) { }
 
@@ -34,33 +35,26 @@ export class AddCardPage implements OnInit {
   }
 
   camara(){
-    this.cardIO.canScan()
-    .then(
-      (res: boolean) => {
-        if(res){
-          let options = {
-            requireExpiry: true,
-            requireCVV: true,
-            requirePostalCode: false,
-            requireCardholderName: true,
-            scanExpiry:true,
-            useCardIOLogo:true
-          };
-          return new Promise(resolve => {
-            this.cardIO.scan(options)
-              .then(data => {
-                console.log(data)
-                /* this.card_number_re = data.cardNumber
-                this.exp_date_re = data.expiryYear + "-" + data.expiryMonth
-                this.cvc_re = data.cvv
-                this.card_name_re =  data.cardholderName
-                this.logForm() */
-              })
+    this.cardIO.canScan().then((res: boolean) => {
+      if(res){
+        let options = {
+          requireExpiry: true,
+          requireCVV: true,
+          requirePostalCode: false,
+          requireCardholderName: true,
+          scanExpiry:true,
+          useCardIOLogo:true
+        };
+        return new Promise(resolve => {
+          this.cardIO.scan(options)
+            .then(data => {
+              this.card_mumber = data.cardNumber
             })
-        }else{
-        }
+          })
+      }else{
+        alert('eroor')
       }
-    );
+    });
   }
 
   async getUser(){
@@ -99,13 +93,18 @@ export class AddCardPage implements OnInit {
       angular_this.token_openpay = response.data.id;
       angular_this.addCard();
     }
+    var errorCallback =function (response){
+      angular_this.token_openpay = response.data.id;
+      angular_this.onPaymentFailed();
+    }
+
     OpenPay.token.create({
       "card_number": this.card.cardNumber,
       "holder_name": this.card.cardHolder,
       "expiration_year": this.card.cardExpiration_year,
       "expiration_month": this.card.cardExpiration_month,
       "cvv2": this.card.cardCvv
-    },sucess_callbak, this.errorCallback);
+    },sucess_callbak, errorCallback);
   }
 
   async addCard(){
@@ -128,14 +127,9 @@ export class AddCardPage implements OnInit {
     this.router.navigate(['cards']);
     this.dismissLoading()
   }
-
-  errorCallback(){
-    console.log('error')
-    this.dismissLoading()
-    this.onPaymentFailed()
-  }
-
+  
   onPaymentFailed() {
+    this.dismissLoading()
     this.showAlert = true;
   }
 

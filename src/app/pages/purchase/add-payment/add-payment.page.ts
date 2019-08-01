@@ -68,7 +68,7 @@ export class AddPaymentPage implements OnInit {
       angular_this.addCard();
     }
     var errorCallback = function (){
-      angular_this.error();
+      angular_this.onPaymentFailed();
     }
     OpenPay.token.create({
       "card_number": this.card.cardNumber,
@@ -99,14 +99,9 @@ export class AddPaymentPage implements OnInit {
     this.router.navigate(['purchase-options']);
     this.loading.dismiss()
   }
-
-  error(){
-    console.log('error')
-    this.loading.dismiss()
-    this.onPaymentFailed()
-  }
-
+  
   onPaymentFailed() {
+    this.loading.dismiss()
     this.showAlert = true;
   }
 

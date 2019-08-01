@@ -79,6 +79,32 @@ export class PaymentsService {
     })
   }
 
+  async getListMemberships(){
+    await this.getStorage('car').then((res)=>{
+      this.policy_id = JSON.parse(res)
+      console.log(this.policy_id.policy_id)
+    })
+    return new Promise(resolve => {
+      this.http.get(`${URL}transactions/${this.policy_id.policy_id}/membership/paid`).subscribe(
+        (res: any) => {
+          resolve(res.data)
+        });
+    })
+  }
+
+  async getListAcquisiotions(){
+    await this.getStorage('car').then((res)=>{
+      this.policy_id = JSON.parse(res)
+      console.log(this.policy_id.policy_id)
+    })
+    return new Promise(resolve => {
+      this.http.get(`${URL}transactions/${this.policy_id.policy_id}/acquisition/paid`).subscribe(
+        (res: any) => {
+          resolve(res.data)
+        });
+    })
+  }
+
   async getStorage(key: string) {
     let valueStorage = await this.storage.get(key);
     return valueStorage;
