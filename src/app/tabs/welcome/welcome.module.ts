@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { WelcomePage } from './welcome.page';
 import { TrackingComponent } from '../sos/tracking/tracking.component';
+import { PiaComponent } from '../pia/pia-component.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [WelcomePage, TrackingComponent],
+  declarations: [WelcomePage, TrackingComponent, PiaComponent],
   entryComponents: [TrackingComponent]
 })
 export class WelcomePageModule {}
