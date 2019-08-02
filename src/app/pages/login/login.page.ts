@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { PasswordPage } from './password/password.page';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -11,8 +13,14 @@ import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 export class LoginPage implements OnInit {
   email:string;
   params:any;
-  constructor(private storage: Storage, private route: ActivatedRoute, private router: Router) {}
+  constructor(private storage: Storage, private route: ActivatedRoute, private router: Router,
+    private statusBar: StatusBar ) {}
 
+  ionViewWillEnter(){
+    this.statusBar.overlaysWebView(false);
+    this.statusBar.backgroundColorByHexString('#ffffff');
+  }
+    
   ngOnInit() {}
 
   onSubmit(form: NgForm) {

@@ -6,6 +6,8 @@ import { Events } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { CarService } from '../providers/car.service';
 import { OptionsComponent } from '../tabs/sos/options/options.component';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+
 
 @Component({
   selector: 'app-tabs',
@@ -23,11 +25,14 @@ export class TabsPage implements OnInit {
     private modalCtlr: ModalController,
     private actionSheetController: ActionSheetController,
     public events: Events, private storage: Storage,
-    public loadingCtlr: LoadingController, private carService: CarService
+    public loadingCtlr: LoadingController, private carService: CarService,
+    private statusBar: StatusBar
   ) { }
 
   ionViewWillEnter() {
     // let status bar overlay webview
+    this.statusBar.overlaysWebView(false);
+    this.statusBar.backgroundColorByHexString('#023B48');
     this.getStorage('car').then((res) => {
       this.car_select = JSON.parse(res);
       this.getCars()
