@@ -40,6 +40,7 @@ export class AppComponent {
 
       //Events notifications
       this.fcm.onNotification().subscribe(data => {
+        console.log('notification ', data)
         if (data.wasTapped) {
           this.navCtrl.navigateRoot('/status', { animated: true });
         } else {
