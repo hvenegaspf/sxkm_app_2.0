@@ -80,7 +80,12 @@
     margin-bottom: 1rem;
     div {
       width: 20%;
-      img { width: 100%; }
+      img { 
+        width: 100%; 
+        &.disabled {
+          opacity: 0.3;
+        }
+      }
       p {
         font-family: var(--ion-font-headline);
         font-size: 0.9rem;

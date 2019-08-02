@@ -1,6 +1,6 @@
 <ion-header mode="ios">
   <div class="header--page" [style.backgroundColor]="uiColor">
-    <a routerLink="/tabs/tabs/rewards" routerDirection="back">
+    <a (click)="goBack()">
       <ion-icon name="ios-arrow-back"></ion-icon>
     </a>
   </div>
@@ -9,7 +9,7 @@
 <ion-content>
 
   <ion-segment mode="md" [style.backgroundColor]="uiColor">
-    <ion-segment-button [checked]="check" *ngFor="let level of levels" value="level.level" mode="md" (click)="changeLevel(level.level)">
+    <ion-segment-button [checked]="check" *ngFor="let level of levels" value="level.level" mode="md" (click)="changeLevel(level)">
       {{level.level}}
     </ion-segment-button>
     <!-- <ion-segment-button checked value="Guerrero" mode="md" (click)="uiYellow()">
@@ -26,24 +26,27 @@
   <div class="levels--segment_overflow" [style.backgroundColor]="uiColor"></div>
 
   <div class="levels--header">
-    <img src="../../../../assets/demo/level-icon.png" />
-    <b [style.color]="uiColor">Nivel</b>
-    <p>7000 - 15000 Puntos</p>
+    <img *ngIf="current_level?.level == 'Novato'" src="../../../assets/ui/levels/Novato_On.svg" />
+    <img *ngIf="current_level?.level == 'Guerrero'" src="../../../assets/ui/levels/Piloto_On.svg" />
+    <img *ngIf="current_level?.level == 'Rockstar'" src="../../../assets/ui/levels/Conductor_On.svg" />
+    <img *ngIf="current_level?.level == 'Leyenda'" src="../../../assets/ui/levels/Veterano_On.svg" />
+    <b [style.color]="uiColor">{{current_level?.level}}</b>
+    <p>{{current_level?.init}} - {{current_level?.end}} Puntos</p>
   </div>
 
   <div class="levels--benefits">
 
-    <div>
+    <div *ngFor="let benefits of current_level?.benefits">
       <div>
         <span [style.backgroundColor]="uiColor"></span>
       </div>
       <div>
-        <b>Conductor designado</b>
-        <p>En caso de ebriedad</p>
+        <b>{{benefits?.title}}</b>
+        <p>{{benefits?.description}}</p>
       </div>
     </div>
 
-    <div>
+    <!-- <div>
       <div>
         <span [style.backgroundColor]="uiColor"></span>
       </div>
@@ -71,7 +74,7 @@
         <b>Acelerador de pérdida total</b>
         <p>50% en lugar del típico 70%</p>
       </div>
-    </div>
+    </div> -->
 
   </div>
 

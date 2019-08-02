@@ -22,6 +22,8 @@ export class RewardsPage implements OnInit {
   car:any;
   cars = [];
   levels: any;
+  current_level:any;
+  uiColor:string;
   constructor(private points: PointsTransactionService, private storage: Storage, public events: Events, private carService: CarService, private router: Router) {
     events.subscribe('car:selected', (car_selected) => {
       this.car_select = car_selected
@@ -31,24 +33,15 @@ export class RewardsPage implements OnInit {
   }
 
   ionViewWillEnter(){
-  }
-  
-  ngOnInit() {
     this.getCars();
     this.getLevels();
     this.getPointsTransaction();
   }
-
-  async getLevels(){
-    await this.getStorage('auth_token').then((res) => {
-      this.token = res
-    })
-    this.levels = await this.points.getLevels(this.token)
-    console.log(this.levels)
+  
+  ngOnInit() {
   }
 
   showLevel(level){
-    console.log(level)
     let navigationExtras: NavigationExtras = {
       state: {
         level_current: level
@@ -84,6 +77,21 @@ export class RewardsPage implements OnInit {
     this.fillProgressBar();
   }
 
+  async getLevels(){
+    await this.getStorage('auth_token').then((res) => {
+      this.token = res
+    })
+    this.levels = await this.points.getLevels(this.token)
+    console.log(this.levels)
+    this.levels.forEach(element => {
+      if(element.level == this.car_select.car.details.level_gamification){
+        this.uiColor = element.color
+        this.current_level = element
+        console.log(this.current_level)
+      }
+    });
+  }
+
   fillProgressBar(){
     this.levels.forEach((lvl) =>{
       if(this.reward_points >= lvl.init && this.reward_points <= lvl.end){
@@ -104,19 +112,19 @@ export class RewardsPage implements OnInit {
       this.arrayPointsTransactions = [];
     }
     await this.points.getPointsTransactions(pull, this.token, this.car_id).subscribe(
-      (data:any)=>{
-        console.log(data)
-        data.response.data.forEach((element)=>{
+      (res:any)=>{
+        console.log(res)
+        res.data.forEach((element)=>{
           this.levels.forEach((lvl) =>{
             if(element.latest_score >= lvl.init && element.latest_score <= lvl.end){
               element['level_name'] = lvl.level
             }
           })
         })
-        this.arrayPointsTransactions.push(...data.response.data)
+        this.arrayPointsTransactions.push(...res.data)
         if (event) {
           event.target.complete();
-          if (data.response.data.length === 0) {
+          if (res.data.length === 0) {
             this.enabled = false;
           }
         }

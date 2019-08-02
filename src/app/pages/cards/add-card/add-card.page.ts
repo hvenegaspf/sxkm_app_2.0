@@ -6,6 +6,7 @@ import { LoadingController, ToastController, Platform, NavController } from '@io
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { CardIO } from '@ionic-native/card-io/ngx';
 import { async } from '@angular/core/testing';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 declare var OpenPay;
 
 @Component({
@@ -16,6 +17,7 @@ declare var OpenPay;
 export class AddCardPage implements OnInit {
   deviceIdHiddenFieldName:any;
   showMessage: boolean = false;
+  scanReponse:any
   card:any;
   user:any;
   loading:any;
@@ -31,7 +33,6 @@ export class AddCardPage implements OnInit {
   
   ionViewWillEnter(){
     this.getUser()
-    this.camara()
   }
 
   camara(){
@@ -45,16 +46,36 @@ export class AddCardPage implements OnInit {
           scanExpiry:true,
           useCardIOLogo:true
         };
-        return new Promise(resolve => {
-          this.cardIO.scan(options)
-            .then(data => {
-              this.card_mumber = data.cardNumber
-            })
-          })
+        this.cardIO.scan(options).then(data =>{
+          this.card = data
+          this.scanComplete()
+        },
+        (error)=>{
+          console.log(error)
+        })
       }else{
-        alert('eroor')
+        this.onPaymentFailed()
       }
     });
+  }
+
+  scanComplete(){
+    this.presentLoading('Procesando');
+    console.log(this.card)
+    let monthString = ''
+    let yearString = ''
+    if (this.card.expiryMonth < 10) {
+      monthString = '0' + Number(this.card.expiryMonth);
+    } else {
+      monthString = String(this.card.expiryMonth);
+    }
+    yearString = String(this.card.expiryYear).slice(2,4)      
+    this.card.cardNumber = this.card.cardNumber
+    this.card.cardHolder = this.card.cardholderName
+    this.card.cardExpiration_year = yearString
+    this.card.cardExpiration_month = monthString
+    this.card.cardCvv = this.card.cvv
+    this.TokenOpenpay()
   }
 
   async getUser(){
@@ -84,11 +105,15 @@ export class AddCardPage implements OnInit {
     this.card = form.value
     this.card.cardExpiration_month = monthString
     this.card.cardExpiration_year = yearString
+    this.TokenOpenpay()
+  }
+
+  TokenOpenpay(){
+    let angular_this = this;
     OpenPay.setId('mdt4m9gkdvu9xzgjtjrk');
 ​    OpenPay.setApiKey('pk_3670bc7e899241ad87ceffb49757979c');
     OpenPay.setSandboxMode(true);
     this.deviceIdHiddenFieldName = OpenPay.deviceData.setup();
-    let angular_this = this;
     var sucess_callbak = function (response){
       angular_this.token_openpay = response.data.id;
       angular_this.addCard();
@@ -107,7 +132,7 @@ export class AddCardPage implements OnInit {
     },sucess_callbak, errorCallback);
   }
 
-  async addCard(){
+  addCard(){
     console.log(this.user)
     let json = {
       "user": {
@@ -123,9 +148,17 @@ export class AddCardPage implements OnInit {
         "device_session_id": this.deviceIdHiddenFieldName
       }
     }
-    this.card = await this.gobalService.addCard(json)
-    this.router.navigate(['cards']);
-    this.dismissLoading()
+    this.gobalService.addCard(json).subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.router.navigate(['cards']);
+        this.dismissLoading()
+      },
+      (error:any)=>{
+        console.log(error)
+        this.onPaymentFailed()
+      }
+    )
   }
   
   onPaymentFailed() {

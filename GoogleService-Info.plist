@@ -36,5 +36,7 @@
 	<string>1:63103858930:ios:448aa55b21d522bb</string>
 	<key>DATABASE_URL</key>
 	<string>https://sxkm-50551.firebaseio.com</string>
+	<key>NSCameraUsageDescription</key>
+	<string>To scan credit cards.</string>
 </dict>
 </plist>
