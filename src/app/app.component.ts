@@ -7,6 +7,7 @@ import { FCM } from '@ionic-native/fcm/ngx';
 import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { AuthService } from './providers/auth.service';
+import { UiService } from 'src/app/services/ui-service.service';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     private fcm: FCM,
     private navCtrl: NavController,
-    private storage: Storage
+    private storage: Storage,
+    private uiService: UiService
   ) {
     this.initializeApp();
   }
@@ -32,7 +34,7 @@ export class AppComponent {
       this.splashScreen.hide();
 
       this.fcm.getToken().then(token => {
-        console.log('obtiene token: ', token)
+        this.uiService.templateAlert('FCM_token: ', token)
         this.setStorage('FCM_token', token)
       });
 
