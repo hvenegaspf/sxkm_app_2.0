@@ -32,7 +32,7 @@ export class AppComponent {
       this.splashScreen.hide();
 
       this.fcm.getToken().then(token => {
-        /*  console.log('obtiene token: ', token) */
+        console.log('obtiene token: ', token)
         this.setStorage('FCM_token', token)
       });
 

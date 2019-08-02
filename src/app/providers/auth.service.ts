@@ -15,11 +15,23 @@ export class AuthService {
   };
   user:any;
   token:any;
+  FCMtoken = "";
+
   constructor(private http: HttpClient, private storage: Storage, private navCtrl: NavController) { }
 
   async login(data){
+    await this.getStorage('FCM_token').then((res)=>{
+      /* console.log('token dentro del getToken: ', res) */
+      this.FCMtoken = res
+    })
+    //Se manda vacio el token cuando se visualiza la app desde el navegador
+    if(this.FCMtoken === null){
+      this.FCMtoken = ""
+    }
+    /********************************************************************** */
     this.user = data
     this.user.entry_point = 'sxmk_app'
+    this.user.device_id = this.FCMtoken;
     return new Promise(resolve => {
       this.http.post(`${URL}sessions/login `, this.user, this.HEADERS).subscribe(
         (response:any) => {
