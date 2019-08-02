@@ -34,7 +34,7 @@ export class AppComponent {
       this.splashScreen.hide();
 
       this.fcm.getToken().then(token => {
-        this.uiService.templateAlert('FCM_token: ', token)
+        /* this.uiService.templateAlert('FCM_token: ' + token) */
         this.setStorage('FCM_token', token)
       });
 
