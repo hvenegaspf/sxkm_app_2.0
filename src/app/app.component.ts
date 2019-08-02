@@ -37,13 +37,13 @@ export class AppComponent {
       });
 
       //Events notifications
-      /* this.fcm.onNotification().subscribe(data => {
+      this.fcm.onNotification().subscribe(data => {
         if (data.wasTapped) {
-          this.navCtrl.navigateRoot('/notificaciones', { animated: true });
+          this.navCtrl.navigateRoot('/status', { animated: true });
         } else {
-          this.navCtrl.navigateRoot('/notificaciones', { animated: true });
+          this.navCtrl.navigateRoot('/status', { animated: true });
         }
-      }); */
+      });
       
     });
   }
