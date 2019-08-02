@@ -49,7 +49,7 @@ export class TripsService {
     });
     return new Promise(resolve => {
       /* console.log(`${URL}trip/details/${id_details}`) */
-      this.http.get<responseLastTrip>(`${URL}trip/details/${id_details}`, {headers:headers}).subscribe(
+      this.http.get<responseLastTrip>(`${URL}trips/details/${id_details}`, {headers:headers}).subscribe(
         (response) => {
           console.log('getTripDetails', response)
           if (response.code === 200) {
@@ -69,7 +69,7 @@ export class TripsService {
     return new Promise(resolve => {
       /* console.log(`${URL}driving_habits?from=${from}&to=${to}&car_id=${car_id}`) */
       console.log(`${URL}trips?from=2019-07-23&to=2019-07-29&car_id=${car_id}&page=${this.trip_page}`)
-      this.http.get<responseDrivingHabits>(`${URL}driving_habits?from=2019-07-23&to=2019-07-29&car_id=${car_id}`, {headers:headers}).subscribe(
+      this.http.get<responseDrivingHabits>(`${URL}trips/driving_habits?from=2019-07-23&to=2019-07-29&car_id=${car_id}`, {headers:headers}).subscribe(
         (response) => {
           if (response.code === 200) {
             resolve(response.data)
