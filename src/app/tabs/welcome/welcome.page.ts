@@ -68,8 +68,8 @@ export class WelcomePage implements OnInit {
 
     console.log('canvas');
     this._CANVAS = this.canvasEl.nativeElement;
-    this._CANVAS.width = 160;
-    this._CANVAS.height = 160;
+    this._CANVAS.width = 200;
+    this._CANVAS.height = 200;
     //this.init_dtc();
     //this.initialiseCanvas();
     this.initDtc();
