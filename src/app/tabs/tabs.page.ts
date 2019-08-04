@@ -19,6 +19,7 @@ export class TabsPage implements OnInit {
   cars: any = [];
   car_select: any;
   loading: any;
+  currentTab: any;
 
   constructor(
     private router: Router,
@@ -37,6 +38,7 @@ export class TabsPage implements OnInit {
       this.car_select = JSON.parse(res);
       this.getCars()
     })
+    this.currentTab = window.location.pathname === '/tabs/tabs/welcome' ? 'welcome' : '';
   }
 
   ngOnInit() { }
