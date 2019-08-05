@@ -16,7 +16,7 @@ import { PiaComponent } from './pia/pia-component.component';
     IonicModule,
     TabsRoutingModule,
   ],
-  declarations: [TabsPage, OptionsComponent, PiaComponent],
-  entryComponents: [OptionsComponent, PiaComponent]
+  declarations: [TabsPage, OptionsComponent],
+  entryComponents: [OptionsComponent]
 })
 export class TabsPageModule {}

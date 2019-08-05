@@ -20,7 +20,7 @@ export class PiaComponent {
   private _CONTEXT : any;
   private _CANVAS  : any;
   dtc:any={};
-  state: any = "prevent";
+  state: any = "critical";
   
   constructor(public platform: Platform) {
     /* Valores de contro PIA */
@@ -51,7 +51,7 @@ export class PiaComponent {
       this.dtc.ECU = 0;
       this.dtc.transmission = 0;
       this.dtc.rotation = 0;
-      this.dtc.vibration = 0;
+      this.dtc.vibration = 0.5;
       this.dtc.color = {
           r: 0,
           g: 0,
@@ -61,7 +61,8 @@ export class PiaComponent {
  }
   
 
-  ionViewWillEnter() {
+ ionViewDidEnter () {
+    console.log('canvas'); 
     this._CANVAS 	        = this.canvasEl.nativeElement;
     this._CANVAS.width  	= 200;
     this._CANVAS.height 	= 200;
@@ -69,7 +70,6 @@ export class PiaComponent {
     //this.initialiseCanvas();
     this.initDtc();
     this.animate();
-    console.log('ionViewDidLoad'); 
   }
 
   initDtc(){

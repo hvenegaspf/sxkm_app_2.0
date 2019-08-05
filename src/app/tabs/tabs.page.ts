@@ -7,6 +7,8 @@ import { Storage } from '@ionic/storage';
 import { CarService } from '../providers/car.service';
 import { OptionsComponent } from '../tabs/sos/options/options.component';
 import { GlobalService } from '../providers/global.service';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+
 
 @Component({
   selector: 'app-tabs',
@@ -21,6 +23,7 @@ export class TabsPage implements OnInit {
   cars: any = [];
   car_select: any;
   loading: any;
+  currentTab: any;
 
   constructor(
     private router: Router,
@@ -28,16 +31,20 @@ export class TabsPage implements OnInit {
     private actionSheetController: ActionSheetController,
     public events: Events, private storage: Storage,
     public loadingCtlr: LoadingController, private carService: CarService,
-    private globlaService: GlobalService
+    private globlaService: GlobalService,
+    private statusBar: StatusBar
   ) { }
 
   ionViewWillEnter() {
     // let status bar overlay webview
+    this.statusBar.overlaysWebView(false);
+    this.statusBar.backgroundColorByHexString('#023B48');
     this.getStorage('car').then((res) => {
       this.car_select = JSON.parse(res);
       this.getCars()
       this.getNextDueDate()
     })
+    this.currentTab = window.location.pathname === '/tabs/tabs/welcome' ? 'welcome' : '';
   }
 
   ngOnInit() { }

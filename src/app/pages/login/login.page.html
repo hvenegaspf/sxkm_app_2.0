@@ -21,9 +21,9 @@
           </ion-input>
         </ion-item>
       </div>
-      <div class="form--validation" *ngIf="email.touched && !email.valid">
+      <!-- <div class="form--validation" *ngIf="email.touched && !email.valid">
         <ion-text>Por favor verifica tu correo</ion-text>
-      </div>
+      </div> -->
       <div>
         <ion-button *ngIf="!email.valid" type="button" fill="solid" expand="full" shape="round" mode="ios" disabled>Siguiente</ion-button>
         <ion-button *ngIf="email.valid" type="submit" fill="solid" expand="full" shape="round" mode="ios">Siguiente</ion-button>

@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { CardIO } from '@ionic-native/card-io/ngx';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

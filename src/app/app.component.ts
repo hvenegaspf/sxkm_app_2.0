@@ -7,12 +7,16 @@ import { FCM } from '@ionic-native/fcm/ngx';
 import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { AuthService } from './providers/auth.service';
+import { UiService } from 'src/app/services/ui-service.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+
+  showAlert = false;
+
   constructor(
     private auth: AuthService,
     private platform: Platform,
@@ -20,7 +24,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     private fcm: FCM,
     private navCtrl: NavController,
-    private storage: Storage
+    private storage: Storage,
+    private uiService: UiService
   ) {
     this.initializeApp();
   }
@@ -32,19 +37,19 @@ export class AppComponent {
       this.splashScreen.hide();
 
       this.fcm.getToken().then(token => {
-        /*  console.log('obtiene token: ', token) */
+        /* this.uiService.templateAlert('FCM_token: ' + token) */
         this.setStorage('FCM_token', token)
       });
 
       //Events notifications
-      /* this.fcm.onNotification().subscribe(data => {
+      this.fcm.onNotification().subscribe(data => {
+        console.log('notification ', data)
         if (data.wasTapped) {
-          this.navCtrl.navigateRoot('/notificaciones', { animated: true });
+          this.navCtrl.navigateRoot('/status', { animated: true });
         } else {
-          this.navCtrl.navigateRoot('/notificaciones', { animated: true });
+          this.navCtrl.navigateRoot('/status', { animated: true });
         }
-      }); */
-      
+      });
     });
   }
 
@@ -54,6 +59,14 @@ export class AppComponent {
 
   setStorage(key: string, value: string) {
     this.storage.set(key, value);
+  }
+
+  showAlertModal() {
+    this.showAlert = true;
+  }
+
+  closeAlertModal() {
+    this.showAlert = false;
   }
 
   async getStorage(key: string) {
