@@ -14,6 +14,9 @@ import { UiService } from 'src/app/services/ui-service.service';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+
+  showAlert = false;
+
   constructor(
     private auth: AuthService,
     private platform: Platform,
@@ -47,7 +50,6 @@ export class AppComponent {
           this.navCtrl.navigateRoot('/status', { animated: true });
         }
       });
-      
     });
   }
 
@@ -57,6 +59,14 @@ export class AppComponent {
 
   setStorage(key: string, value: string) {
     this.storage.set(key, value);
+  }
+
+  showAlertModal() {
+    this.showAlert = true;
+  }
+
+  closeAlertModal() {
+    this.showAlert = false;
   }
 
   async getStorage(key: string) {
