@@ -82,13 +82,13 @@
             <p>Disponibles</p>
             <b>{{kms_status?.km_left}} km</b>
           </div>
-          <a (click)="Recharge()">
+          <a *ngIf="disabled != true" (click)="Recharge()">
             <span>Recargar</span>
             <ion-icon name="ios-arrow-forward"></ion-icon>
           </a>
         </div>
         <div class="widget--recharge-indicator">
-          <span style="width: 33%;"></span>
+          <span [style.width]="kms_porcent"></span>
         </div>
         <div class="widget--recharge-footer">
           <b>Recorrido</b>
@@ -105,7 +105,7 @@
             <ion-icon name="ios-arrow-forward"></ion-icon>
           </a>
         </div>
-        <p>{{dueDate?.data | date: 'd/MM/yy'}}</p>
+        <p>{{dueDate?.data | date: 'dd/MM/yy'}}</p>
       </div>
 
       <!-- LevelUp widget -->

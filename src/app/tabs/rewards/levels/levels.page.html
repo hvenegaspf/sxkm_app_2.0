@@ -27,9 +27,9 @@
 
   <div class="levels--header">
     <img *ngIf="current_level?.level == 'Novato'" src="../../../assets/ui/levels/Novato_On.svg" />
-    <img *ngIf="current_level?.level == 'Guerrero'" src="../../../assets/ui/levels/Piloto_On.svg" />
-    <img *ngIf="current_level?.level == 'Rockstar'" src="../../../assets/ui/levels/Conductor_On.svg" />
-    <img *ngIf="current_level?.level == 'Leyenda'" src="../../../assets/ui/levels/Veterano_On.svg" />
+    <img *ngIf="current_level?.level == 'Guerrero'" src="../../../assets/ui/levels/Conductor_On.svg" />
+    <img *ngIf="current_level?.level == 'Rockstar'" src="../../../assets/ui/levels/Veterano_On.svg" />
+    <img *ngIf="current_level?.level == 'Leyenda'" src="../../../assets/ui/levels/Piloto_On.svg" />
     <b [style.color]="uiColor">{{current_level?.level}}</b>
     <p>{{current_level?.init}} - {{current_level?.end}} Puntos</p>
   </div>

@@ -6,6 +6,7 @@ import { Events } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { CarService } from '../providers/car.service';
 import { OptionsComponent } from '../tabs/sos/options/options.component';
+import { GlobalService } from '../providers/global.service';
 
 @Component({
   selector: 'app-tabs',
@@ -13,6 +14,9 @@ import { OptionsComponent } from '../tabs/sos/options/options.component';
   styleUrls: ['./tabs.page.scss'],
 })
 export class TabsPage implements OnInit {
+  dueDate:any
+  actual_date:any;
+  disabled:boolean;
 
   cars: any = [];
   car_select: any;
@@ -23,7 +27,8 @@ export class TabsPage implements OnInit {
     private modalCtlr: ModalController,
     private actionSheetController: ActionSheetController,
     public events: Events, private storage: Storage,
-    public loadingCtlr: LoadingController, private carService: CarService
+    public loadingCtlr: LoadingController, private carService: CarService,
+    private globlaService: GlobalService
   ) { }
 
   ionViewWillEnter() {
@@ -31,6 +36,7 @@ export class TabsPage implements OnInit {
     this.getStorage('car').then((res) => {
       this.car_select = JSON.parse(res);
       this.getCars()
+      this.getNextDueDate()
     })
   }
 
@@ -61,6 +67,34 @@ export class TabsPage implements OnInit {
       }
     }
     console.log(this.car_select)
+  }
+
+  async getNextDueDate(){
+    let date = new Date();
+    var day = date.getDate()
+    var month = (date.getMonth()+1)
+    var year = date.getFullYear()
+    if (day < 10) {
+      var dayString = '0' + Number(day);
+    } else {
+      var dayString = String(day);
+    }
+    if (month < 10) {
+      var monthString = '0' + Number(month);
+    } else {
+      var monthString = String(month);
+    }
+    this.actual_date =  `${year}-${monthString}-${dayString}`
+    this.dueDate = await this.globlaService.getNextDueDate();
+    console.log(this.dueDate.data)
+    console.log(this.actual_date)
+    if(this.actual_date > this.dueDate){
+      console.log(true)
+      this.disabled = true
+    }else{
+      console.log(false)
+      this.disabled = false
+    }
   }
 
   /* async onClickSelector() {
