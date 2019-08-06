@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TrackingComponent } from '../sos/tracking/tracking.component';
-import { ModalController } from '@ionic/angular';
+import { ModalController, Events } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
 import { GlobalService } from '../../providers/global.service';
+import { CarService } from 'src/app/providers/car.service';
 import { Platform } from '@ionic/angular';
 import { TweenMax, Power2, TimelineLite, TweenLite } from "gsap/TweenMax";
 
@@ -13,8 +14,16 @@ import { TweenMax, Power2, TimelineLite, TweenLite } from "gsap/TweenMax";
 })
 
 export class WelcomePage implements OnInit {
-  kms_status: any;
-  dueDate: any
+
+  kms_status:any;
+  kms_porcent:any;
+  dueDate:any
+  actual_date:any;
+  disabled:boolean;
+
+  car_select:any;
+  car:any;
+  cars:any=[];
   @ViewChild('canvas') canvasEl: ElementRef;
   App: any = {};
   private _CONTEXT: any;
@@ -23,8 +32,8 @@ export class WelcomePage implements OnInit {
   //Status : healthy , prevent, critical
   state: any = "healthy";
 
-  constructor(private modalCtlr: ModalController, private router: Router, private globlaService: GlobalService, public platform: Platform) {
-    /* Valores de control PIA */
+  constructor(private modalCtlr: ModalController, private router: Router, private globlaService: GlobalService, public platform: Platform, private carService: CarService) {
+    /* Valores de contro PIA */
     //  platform.ready().then(() => {
     this.App.width = platform.width()
     this.App.height = platform.height()
@@ -62,6 +71,7 @@ export class WelcomePage implements OnInit {
   }
 
   ngOnInit() {
+    this.getCars()
     this.getKmStatus()
     this.getNextDueDate()
     this._CANVAS = this.canvasEl.nativeElement;
@@ -76,13 +86,60 @@ export class WelcomePage implements OnInit {
   ionViewWillEnter() {
   }
 
-  async getNextDueDate() {
+  /* async getNextDueDate() {
     this.dueDate = await this.globlaService.getNextDueDate();
-    /* console.log(this.dueDate) */
   }
+ */
+  async getCars() {
+    this.car = await this.carService.getCars()
+    if (this.car.length != 0) {
+      for (let cars of this.car) {
+        this.cars.push(cars)
+      }
+      if (this.car_select) {
+        for (let element of this.cars) {
+          if (element.car.details.id == this.car_select.car.details.id) {
+            this.car_select = element
+            /* this.setStorage('car', JSON.stringify(this.car_select))
+            this.setStorage('car_id', JSON.stringify(this.car_select.car.details.id)) */
+            break;
+          }
+        }
+      } else {
+        this.car_select = this.cars[0]
+        console.log(this.car_select)
+        /* this.setStorage('car', JSON.stringify(this.car_select))
+        this.setStorage('car_id', JSON.stringify(this.car_select.car.details.id)) */
+      }
+    } else {
+    }
+    this.getKmStatus()
+    this.getNextDueDate()
+  }
+
+  async getNextDueDate(){
+    let date = new Date();
+    var day = date.getDate()
+    var month = (date.getMonth()+1)
+    var year = date.getFullYear()
+    if (day < 10) {
+      var dayString = '0' + Number(day);
+    } else {
+      var dayString = String(day);
+    }
+    if (month < 10) {
+      var monthString = '0' + Number(month);
+    } else {
+      var monthString = String(month);
+    }
+    this.actual_date =  `${year}-${monthString}-${dayString}`
+  }
+
+  
 
   async getKmStatus() {
     this.kms_status = await this.globlaService.getKmStatus();
+    this.kms_porcent = (this.kms_status.used_km * 100)/this.kms_status.total_km + '%' 
   }
 
   paySubscription() {

@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 import { Store } from '../interfaces/store';
 import { STORES } from '../interfaces/stores';
 import { UsersService } from './users.service';
+import { PolicyPage } from '../tabs/policy/policy.page';
 
 const URL = environment.devPath;
 
@@ -13,7 +14,7 @@ const URL = environment.devPath;
   providedIn: 'root'
 })
 export class GlobalService {
-  policy_id:any;
+  policy:any;
   token:any;
   id_user:any
   user:any;
@@ -25,13 +26,13 @@ export class GlobalService {
 
   async getKmStatus(){
     await this.getStorage('car').then((res) => {
-      this.policy_id = JSON.parse(res)
+      this.policy = JSON.parse(res)
     })
     
     return new Promise(resolve => {
-      this.http.get(`${URL}acquisitions/${this.policy_id.policy_id}/km_status`).subscribe(
+      this.http.get(`${URL}acquisitions/${this.policy.policy_id}/km_status`).subscribe(
         (response:any) => {
-          console.log(response)
+          /* console.log(response) */
           resolve(response.data)
         });
     })
@@ -45,7 +46,7 @@ export class GlobalService {
     return new Promise(resolve => {
       this.http.get(`${URL}memberships/${this.id_user}/next_due_date`).subscribe(
         (response:any) => {
-          console.log(response)
+          /* console.log(response) */
           resolve(response)
         });
     })

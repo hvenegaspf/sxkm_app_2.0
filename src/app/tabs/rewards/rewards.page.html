@@ -6,9 +6,9 @@
     <div class="rewards--header">
       <div class="rewards--header-icon">
         <img *ngIf="car_select?.car.details.level_gamification == 'Novato'" src="../../../assets/ui/levels/Novato_On.svg" />
-        <img *ngIf="car_select?.car.details.level_gamification == 'Guerrero'" src="../../../assets/ui/levels/Piloto_On.svg" />
-        <img *ngIf="car_select?.car.details.level_gamification == 'Rockstar'" src="../../../assets/ui/levels/Conductor_On.svg" />
-        <img *ngIf="car_select?.car.details.level_gamification == 'Leyenda'" src="../../../assets/ui/levels/Veterano_On.svg" />
+        <img *ngIf="car_select?.car.details.level_gamification == 'Guerrero'" src="../../../assets/ui/levels/Conductor_On.svg" />
+        <img *ngIf="car_select?.car.details.level_gamification == 'Rockstar'" src="../../../assets/ui/levels/Veterano_On.svg" />
+        <img *ngIf="car_select?.car.details.level_gamification == 'Leyenda'" src="../../../assets/ui/levels/Piloto_On.svg" />
       </div>
       <div class="rewards--header-content">
 
@@ -40,22 +40,22 @@
       <div>
         <img class="{{car_select?.car.details.level_gamification == 'Novato' ? '' : 'disabled'}}" src="../../../assets/ui/levels/Novato_On.svg" />
         <!-- asignar color con clase color-[color] -->
-        <p class="{{car_select?.car.details.level_gamification == 'Novato' ? 'color--sky' : 'color--grey'">Novato</p>
+        <p class="{{current_level?.level === 'Novato' ? 'color--sky' : '' }}">Novato</p>
       </div>
       <div>
-        <img class="{{car_select?.car.details.level_gamification == 'Guerrero' ? '' : 'disabled'}}" src="../../../assets/ui/levels/Piloto_On.svg" />
+        <img class="{{car_select?.car.details.level_gamification == 'Guerrero' ? '' : 'disabled'}}" src="../../../assets/ui/levels/Conductor_On.svg" />
         <!-- asignar color con clase color-[color] -->
-        <p class="{{car_select?.car.details.level_gamification == 'Guerrero' ? 'color--yellow' : 'color--grey'">Guerrero</p>
+        <p class="{{current_level?.level == 'Guerrero' ? 'color--yellow' : '' }}">Guerrero</p>
       </div>
       <div>
-        <img class="{{car_select?.car.details.level_gamification == 'Rockstar' ? '' : 'disabled'}}" src="../../../assets/ui/levels/Conductor_On.svg" />
+        <img class="{{car_select?.car.details.level_gamification == 'Rockstar' ? '' : 'disabled'}}" src="../../../assets/ui/levels/Veterano_On.svg" />
         <!-- asignar color con clase color-[color] -->
-        <p class="{{car_select?.car.details.level_gamification == 'Rockstar' ? 'color--green' : 'color--grey'">Rockstar</p>
+        <p class="{{current_level?.level == 'Rockstar' ? 'color--green' : '' }}">Rockstar</p>
       </div>
       <div>
-        <img class="{{car_select?.car.details.level_gamification == 'Leyenda' ? '' : 'disabled'}}" src="../../../assets/ui/levels/Veterano_On.svg" />
+        <img class="{{car_select?.car.details.level_gamification == 'Leyenda' ? '' : 'disabled'}}" src="../../../assets/ui/levels/Piloto_On.svg" />
         <!-- asignar color con clase color-[color] -->
-        <p class="{{car_select?.car.details.level_gamification == 'Leyenda' ? 'color--blue' : 'color--grey'">Leyenda</p>
+        <p class="{{current_level?.level == 'Leyenda' ? 'color--blue' : '' }}">Leyenda</p>
       </div>
     </div>
     
