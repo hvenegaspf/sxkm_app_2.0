@@ -14,6 +14,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   templateUrl: './tabs.page.html',
   styleUrls: ['./tabs.page.scss'],
 })
+
 export class TabsPage implements OnInit {
 
   cars: any = [];
