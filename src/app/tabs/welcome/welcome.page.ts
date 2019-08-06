@@ -12,6 +12,7 @@ import { TweenMax, Power2, TimelineLite, TweenLite } from "gsap/TweenMax";
   templateUrl: './welcome.page.html',
   styleUrls: ['./welcome.page.scss'],
 })
+
 export class WelcomePage implements OnInit {
 
   kms_status:any;
@@ -28,7 +29,8 @@ export class WelcomePage implements OnInit {
   private _CONTEXT: any;
   private _CANVAS: any;
   dtc: any = {};
-  state: any = "prevent";
+  //Status : healthy , prevent, critical
+  state: any = "healthy";
 
   constructor(private modalCtlr: ModalController, private router: Router, private globlaService: GlobalService, public platform: Platform, private carService: CarService) {
     /* Valores de contro PIA */
@@ -59,7 +61,7 @@ export class WelcomePage implements OnInit {
     this.dtc.ECU = 0;
     this.dtc.transmission = 0;
     this.dtc.rotation = 0;
-    this.dtc.vibration = 1;
+    this.dtc.vibration = 0;
     this.dtc.color = {
       r: 0,
       g: 0,
@@ -70,13 +72,8 @@ export class WelcomePage implements OnInit {
 
   ngOnInit() {
     this.getCars()
-  }
-
-  ionViewWillEnter() {
     this.getKmStatus()
     this.getNextDueDate()
-
-    console.log('canvas');
     this._CANVAS = this.canvasEl.nativeElement;
     this._CANVAS.width = 200;
     this._CANVAS.height = 200;
@@ -86,7 +83,13 @@ export class WelcomePage implements OnInit {
     this.animate();
   }
 
+  ionViewWillEnter() {
+  }
 
+  /* async getNextDueDate() {
+    this.dueDate = await this.globlaService.getNextDueDate();
+  }
+ */
   async getCars() {
     this.car = await this.carService.getCars()
     if (this.car.length != 0) {
@@ -176,23 +179,22 @@ export class WelcomePage implements OnInit {
   }
 
   set_vertices() {
-    var radius = this.dtc.radius;
+    let radius = this.dtc.radius;
     this.dtc.points = [];
-    for (var i = 0; i < this.dtc.twists; i++) {
+    for (let i = 0; i < this.dtc.twists; i++) {
       radius += this.dtc.separation;
       this.dtc.diameter = radius * 2;
       this.dtc.center = {
         x: (200 - this.dtc.diameter) / 2 + radius,
         y: (200 - this.dtc.diameter) / 2 + radius
       };
-      console.log("center" + this.dtc.center.y)
-      for (var j = 0; j < this.dtc.sides; j++) {
-        var angle = this.dtc.dps * j,
+      for (let j = 0; j < this.dtc.sides; j++) {
+        let angle = this.dtc.dps * j,
           radians = angle * Math.PI / 180;
-        var deface = Math.random() * this.dtc.defaceFactor - (this.dtc.defaceFactor / 2);
-        var x = this.dtc.diameter * Math.cos(radians) + deface;
-        var y = this.dtc.diameter * Math.sin(radians) + deface;
-        var coords = {
+        let deface = Math.random() * this.dtc.defaceFactor - (this.dtc.defaceFactor / 2);
+        let x = this.dtc.diameter * Math.cos(radians) + deface;
+        let y = this.dtc.diameter * Math.sin(radians) + deface;
+        let coords = {
           rand: Math.random() * (this.dtc.vibration) - (this.dtc.vibration / 2),
           deface: deface,
           x: x,
