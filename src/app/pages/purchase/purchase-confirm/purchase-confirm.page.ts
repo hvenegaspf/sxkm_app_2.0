@@ -72,7 +72,7 @@ export class PurchaseConfirmPage implements OnInit {
     }
   }
 
-  async openpayCardPaySaved(type_payment){
+  openpayCardPaySaved(type_payment){
     let json = {
       "user": {
         "id": this.user.id,
@@ -100,21 +100,28 @@ export class PurchaseConfirmPage implements OnInit {
       json['payment']['amount'] = this.params.package.cost_by_package;
     }
     this.presentLoading('Procesando');
-    this.pay = await this.paymentService.payments(json)
-    if(this.pay){
-      this.pay.method_payment = this.params.pay_method
-      let navigationExtras: NavigationExtras = {
-        state: this.pay
-      };
-      this.router.navigate(['purchase-success'], navigationExtras);
-      this.dismissLoading() 
-    }else{
-      this.onPaymentFailed()
-    }
+    this.paymentService.payments(json).subscribe(
+      (data:any)=>{
+        this.pay = data
+        if(this.pay){
+          this.pay.method_payment = this.params.pay_method
+          let navigationExtras: NavigationExtras = {
+            state: this.pay
+          };
+          this.router.navigate(['purchase-success'], navigationExtras);
+          this.dismissLoading() 
+        }else{
+          this.onPaymentFailed()
+        }
+      },
+      (error:any)=>{
+        this.onPaymentFailed()
+      }
+    )
     /* console.log(this.deviceIdHiddenFieldName) */
   }
 
-  async payWithCash(type_payment){
+  payWithCash(type_payment){
     let json = {
       "user": {
         "id": this.user.id,
@@ -141,17 +148,25 @@ export class PurchaseConfirmPage implements OnInit {
     }
 
     this.presentLoading('Procesando');
-    this.pay = await this.paymentService.payments(json)
-    if(this.pay.code == 200){
-      this.pay.method_payment = this.params.pay_method
-      let navigationExtras: NavigationExtras = {
-        state: this.pay
-      };
-      this.router.navigate(['purchase-success'], navigationExtras);
-      this.dismissLoading() 
-    }else{
-      this.onPaymentFailed()
-    }
+    this.paymentService.payments(json)
+    this.paymentService.payments(json).subscribe(
+      (data:any)=>{
+        this.pay = data
+        if(this.pay){
+          this.pay.method_payment = this.params.pay_method
+          let navigationExtras: NavigationExtras = {
+            state: this.pay
+          };
+          this.router.navigate(['purchase-success'], navigationExtras);
+          this.dismissLoading() 
+        }else{
+          this.onPaymentFailed()
+        }
+      },
+      (error:any)=>{
+        this.onPaymentFailed()
+      }
+    )
   }
 
   onAutoRenew() {

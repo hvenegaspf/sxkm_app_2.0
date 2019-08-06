@@ -66,17 +66,12 @@ export class PaymentsService {
     })
   }
 
-  async payments(json){
+  payments(json){
     console.log(json)
     let HEADERS =  new HttpHeaders({
       'Content-Type': 'application/json'
     })
-    return new Promise(resolve => {
-      this.http.post(`${URL}payments`, json, {headers:HEADERS}).subscribe(
-        (res: any) => {
-          resolve(res)
-        });
-    })
+    return this.http.post(`${URL}payments`, json, {headers:HEADERS})
   }
 
   async getListMemberships(){

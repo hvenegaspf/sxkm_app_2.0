@@ -130,9 +130,17 @@ export class WelcomePage implements OnInit {
       var monthString = String(month);
     }
     this.actual_date =  `${year}-${monthString}-${dayString}`
+    this.dueDate = await this.globlaService.getNextDueDate();
+    console.log(this.dueDate.data)
+    console.log(this.actual_date)
+    if(this.actual_date > this.dueDate){
+      console.log(true)
+      this.disabled = true
+    }else{
+      console.log(false)
+      this.disabled = false
+    }
   }
-
-  
 
   async getKmStatus() {
     this.kms_status = await this.globlaService.getKmStatus();
