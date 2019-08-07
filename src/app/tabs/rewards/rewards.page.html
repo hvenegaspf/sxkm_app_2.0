@@ -102,17 +102,17 @@
 
         <div *ngIf="points?.level_gamification" class="rewards--activity-row">
           <div>
-            <img *ngIf="points.level_gamification == 'Novato'" src="../../../assets/ui/activity-level1.svg" />
-            <img *ngIf="points.level_gamification == 'Guerrero'" src="../../../assets/ui/activity-level2.svg" />
-            <img *ngIf="points.level_gamification == 'Rockstar'" src="../../../assets/ui/activity-level3.svg" />
-            <img *ngIf="points.level_gamification == 'Leyenda'" src="../../../assets/ui/activity-level4.svg" />
+            <img *ngIf="points.level_gamification.level == 'Novato'" src="../../../assets/ui/activity-level1.svg" />
+            <img *ngIf="points.level_gamification.level == 'Guerrero'" src="../../../assets/ui/activity-level2.svg" />
+            <img *ngIf="points.level_gamification.level == 'Rockstar'" src="../../../assets/ui/activity-level3.svg" />
+            <img *ngIf="points.level_gamification.level == 'Leyenda'" src="../../../assets/ui/activity-level4.svg" />
           </div>
           <div>
             <p></p>
           </div>
           <div>
-            <p>Subiste a nivel Guerrero</p>
-            <span>22 mayo 2019</span>
+            <p>Subiste a nivel {{points.level_gamification.level}}</p>
+            <span>{{points.created_at}}</span>
           </div>
         </div>
 

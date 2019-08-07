@@ -118,7 +118,7 @@ export class AddCardPage implements OnInit {
       angular_this.token_openpay = response.data.id;
       angular_this.addCard();
     }
-    var errorCallback =function (response){
+    var errorCallback = function (response){
       angular_this.token_openpay = response.data.id;
       angular_this.onPaymentFailed();
     }

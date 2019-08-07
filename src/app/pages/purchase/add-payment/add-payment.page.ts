@@ -102,6 +102,7 @@ export class AddPaymentPage implements OnInit {
     this.card = form.value
     this.card.cardExpiration_month = monthString
     this.card.cardExpiration_year = yearString
+    this.TokenOpenpay()
   }
 
   TokenOpenpay(){
