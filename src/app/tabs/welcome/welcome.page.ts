@@ -7,6 +7,7 @@ import { CarService } from 'src/app/providers/car.service';
 import { Platform } from '@ionic/angular';
 import { TweenMax, Power2, TimelineLite, TweenLite } from "gsap/TweenMax";
 
+
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.page.html',
@@ -20,7 +21,6 @@ export class WelcomePage implements OnInit {
   dueDate:any
   actual_date:any;
   disabled:boolean;
-
   car_select:any;
   car:any;
   cars:any=[];
@@ -29,10 +29,19 @@ export class WelcomePage implements OnInit {
   private _CONTEXT: any;
   private _CANVAS: any;
   dtc: any = {};
-  //Status : healthy , prevent, critical
-  state: any = "healthy";
+  //Status : success , warning, danger
+  state: any = "success";
+  list_notifications = [];
 
-  constructor(private modalCtlr: ModalController, private router: Router, private globlaService: GlobalService, public platform: Platform, private carService: CarService) {
+  constructor(private modalCtlr: ModalController, private router: Router, private globlaService: GlobalService,
+    public platform: Platform, private carService: CarService, public events: Events) {
+    events.subscribe('new:notification', (dataNotification) => {
+      this.list_notifications.push(dataNotification)
+      console.log('status: ' + dataNotification['status']);
+      this.state = dataNotification['status']
+      this.initDtc();
+      this.animate();
+    });
     /* Valores de contro PIA */
     //  platform.ready().then(() => {
     this.App.width = platform.width()
@@ -268,21 +277,21 @@ export class WelcomePage implements OnInit {
   setStatus(state) {
     var scope = this.dtc;
     switch (state) {
-      case "critical":
+      case "danger":
         var color = {
           r: 255,
           g: 0,
           b: 0
         };
         break;
-      case "healthy":
+      case "success":
         var color = {
           r: 13,
           g: 191,
           b: 13
         };
         break;
-      case "prevent":
+      case "warning":
         var color = {
           r: 255,
           g: 191,
@@ -307,7 +316,5 @@ export class WelcomePage implements OnInit {
       b: color.b
     });
   }
-
-
 
 }

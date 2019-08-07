@@ -6,6 +6,7 @@ import { FCM } from '@ionic-native/fcm/ngx';
 import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { AuthService } from './providers/auth.service';
+import { Events } from '@ionic/angular';
 import { UiService } from 'src/app/services/ui-service.service';
 
 @Component({
@@ -25,7 +26,7 @@ export class AppComponent {
     private fcm: FCM,
     private navCtrl: NavController,
     private storage: Storage,
-    private uiService: UiService
+    public events: Events
   ) {
     this.initializeApp();
   }
@@ -43,11 +44,12 @@ export class AppComponent {
 
       //Events notifications
       this.fcm.onNotification().subscribe(data => {
-        console.log('notification ', data)
+        /* console.log('notification: ' + JSON.stringify(data)) */
+        this.events.publish('new:notification', data);
         if (data.wasTapped) {
-          this.navCtrl.navigateRoot('/status', { animated: true });
+          this.navCtrl.navigateRoot('/tabs/tabs/welcome', { animated: true });
         } else {
-          this.navCtrl.navigateRoot('/status', { animated: true });
+          this.navCtrl.navigateRoot('/tabs/tabs/welcome', { animated: true });
         }
       });
     });

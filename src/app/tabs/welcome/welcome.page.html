@@ -9,32 +9,32 @@
           <div class="pia-component">
             <canvas class="canvas" #canvas width="200" height="200"></canvas>
           </div>
-          <!-- <video autoplay muted loop>
+        </div>
+        <!-- <video autoplay muted loop>
             <source src="../../../assets/demo/status-widget-ok.mp4" type="video/mp4">
           </video> -->
-          <!-- -->
-        </div>
-        <div class="welcome--header-label">
+        <!-- -->
+        <!-- <div class="welcome--header-label">
           <p class="color--green">Activado</p>
-        </div>
+        </div> -->
       </div>
     </div>
 
     <div class="welcome--widgets">
 
       <!-- Alert widget -->
-      <div class="widget--alert">
-        <div class="widget--alert-content" routerLink="/status">
+      <div *ngFor="let notification of list_notifications" class="{{notification.status}}">
+        <div class="content" routerLink="{{notification.path}}">
           <div>
-            <b>FALLA ENCONTRADA</b>
-            <p>Sistema de encendido</p>
+            <b>{{ notification.title }}</b>
+            <p>{{ notification.body }}</p>
           </div>
           <ion-icon name="ios-arrow-forward"></ion-icon>
         </div>
       </div>
 
       <!-- Green widget - Payment reference -->
-      <div class="widget--green">
+      <!-- <div class="widget--green">
         <div class="widget--green-content" routerLink="/purchase-reference">
           <div class="widget--green-time">
             <img src="../../../assets/ui/icon-kms.png" />
@@ -48,7 +48,7 @@
             <ion-icon name="ios-arrow-forward"></ion-icon>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Recharge widget -->
       <div class="widget widget--recharge">
@@ -84,7 +84,7 @@
       </div>
 
       <!-- LevelUp widget -->
-      <div class="widget widget--level">
+      <!-- <div class="widget widget--level">
         <a routerLink="/tabs/tabs/rewards">
           <div>
             <img src="../../../assets/demo/level-icon.png" />
@@ -92,7 +92,7 @@
           </div>
           <ion-icon name="ios-arrow-forward"></ion-icon>
         </a>
-      </div>
+      </div> -->
 
       <!-- Green widget - Help -->
       <!-- <div class="widget--green">
