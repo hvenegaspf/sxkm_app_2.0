@@ -51,6 +51,7 @@ export class PurchaseConfirmPage implements OnInit {
 
   async getUser(){
     this.user = await this.usersService.getUserById()
+    console.log(this.user)
   }
 
   goBack(){

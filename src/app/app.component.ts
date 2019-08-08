@@ -78,6 +78,7 @@ export class AppComponent {
   
   logout() {
     this.auth.logout();
+    this.showAlert = false;
   }
   
   showAlertModal() {
