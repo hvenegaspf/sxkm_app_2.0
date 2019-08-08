@@ -31,6 +31,42 @@
     }
   }
 
+  &--options {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    a, button {
+      font-family: var(--ion-font-headline);
+      font-size: 0.85rem;
+      color: var(--ion-color-green);
+    }
+  }
+
+  &--checkbox {
+    width: auto;
+    margin: 1rem 0;
+    font-family: var(--ion-font-headline);
+    font-size: 0.85rem;
+    color: var(--ion-color-medium-shade);
+    label {
+      width: auto;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    ion-icon {
+      margin-right: 4px;
+      font-size: 2rem;
+      float: left;
+    }
+    input {
+      display: none;
+    }
+  }
+
   &--full { width: 100%; }
   &--half {
     width: 48%;

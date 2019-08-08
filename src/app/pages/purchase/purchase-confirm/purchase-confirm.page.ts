@@ -24,10 +24,12 @@ export class PurchaseConfirmPage implements OnInit {
   card_saved_select:any;
 
   autoRenew: boolean = false;
+  iconCheck = 'ios-square-outline';
   showAlert: boolean = false;
 
   policy_id:any;
   user:any;
+  plan_id:any = null;
 
   constructor(public loadingCtrl: LoadingController,private route: ActivatedRoute, private router: Router, 
               private navCtrl: NavController, private storage: Storage, private usersService: UsersService, private paymentService: PaymentsService) { 
@@ -44,6 +46,7 @@ export class PurchaseConfirmPage implements OnInit {
       this.policy_id = JSON.parse(res)
     })
     this.getUser()
+    console.log(this.plan_id)
   }
 
   async getUser(){
@@ -93,7 +96,7 @@ export class PurchaseConfirmPage implements OnInit {
     if(type_payment == 'membership'){
       json['payment']['membership_cost'] = 299;
       json['payment']['amount'] = 299;
-      json['payment']['plan_id'] = 3;
+      json['payment']['plan_id'] = this.plan_id;
     }else if(type_payment == 'acquisition'){
       json['payment']['package_id'] = this.params.package.id;
       json['payment']['package_cost'] = this.params.package.cost_by_package;
@@ -171,6 +174,13 @@ export class PurchaseConfirmPage implements OnInit {
 
   onAutoRenew() {
     this.autoRenew = !this.autoRenew;
+    !this.autoRenew ? this.iconCheck = 'ios-square-outline' : this.iconCheck = 'ios-checkbox-outline';
+    if(this.autoRenew === true){
+      this.plan_id = 3
+    }else{
+      this.plan_id = null
+    }
+    console.log(this.plan_id)
   }
 
   onPaymentFailed() {

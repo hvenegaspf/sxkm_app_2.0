@@ -81,12 +81,23 @@
           </div>
         </div> -->
 
-        <div class="purchase-block-checkbox" *ngIf="params?.type_payment == 'membership' && params?.pay_method == 'Card'">
-          <label (click)="onAutoRenew()">
+        <!-- <div class="purchase-block-checkbox" *ngIf="params?.type_payment == 'membership' && params?.pay_method == 'Card'">
+          <label>
             <input type="checkbox" />
-            <ion-icon [name]="!this.autoRenew ? 'ios-square-outline' : 'ios-checkbox-outline'"></ion-icon>
+            <ion-icon [name]="iconCheck" click)="onAutoRenew()"></ion-icon>
             <b>Leyenda de renovación correspondiente al paquete seleccionado</b>
           </label>
+        </div> -->
+
+        <div class="add--options">
+          <div class="add--checkbox">
+            <label >
+              <input type="checkbox" />
+              <ion-icon [name]="iconCheck" (click)="onAutoRenew()"></ion-icon>
+              <b>Pago recurrente</b>
+            </label>
+          </div>
+          <!-- <a routerLink="/nip-reset">RECUPERAR NIP</a> -->
         </div>
 
       </div>
