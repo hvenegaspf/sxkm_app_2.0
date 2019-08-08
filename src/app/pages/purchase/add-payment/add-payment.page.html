@@ -11,53 +11,53 @@
 
 <ion-content>
   <div class="add--card">
-      <form class="add--form" #addCard="ngForm" (ngSubmit)="onSubmit(addCard)">
+    <form class="add--form" #addCard="ngForm" (ngSubmit)="onSubmit(addCard)">
 
-        <div class="add--full">
-          <ion-item class="add--input" mode="ios">
-            <ion-label position="floating" mode="ios">Nombre del titular</ion-label>
-            <ion-input maxlength="35" type="text" name="cardHolder" placeholder="Nombre en tarjeta" ngModel required #cardHolder="ngModel"></ion-input>
-          </ion-item>
+      <div class="add--full">
+        <ion-item class="add--input" mode="ios">
+          <ion-label position="floating" mode="ios">Nombre del titular</ion-label>
+          <ion-input maxlength="35" type="text" name="cardHolder" placeholder="Nombre en tarjeta" ngModel required #cardHolder="ngModel"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="add--full">
+        <ion-item class="add--input" mode="ios">
+          <ion-label position="floating" mode="ios">Número de tarjeta</ion-label>
+          <ion-input [ngClass]="{'has-error': !cardNumber.valid && (cardNumber.dirty || cardNumber.touched)}" pattern="^[1-9]\d{14}$|^[1-9]\d{15}$" maxlength="16" type="number" name="cardNumber" placeholder="**** **** **** ****" ngModel required #cardNumber="ngModel"></ion-input>
+          <!-- <img src="../../../../assets/payment/card-master.png" /> -->
+          <ion-icon class="icon-camara" name="camera"(click)="camara()"></ion-icon>
+        </ion-item>
+        <div *ngIf="cardNumber.errors && (cardNumber.dirty || cardNumber.touched)">
+          <small *ngIf="cardNumber.errors.pattern" style="color: red">tu numero de tarjeta debe ser 15 o 16 digitos numericos</small>
         </div>
+      </div>
 
-        <div class="add--full">
-          <ion-item class="add--input" mode="ios">
-            <ion-label position="floating" mode="ios">Número de tarjeta</ion-label>
-            <ion-input [ngClass]="{'has-error': !cardNumber.valid && (cardNumber.dirty || cardNumber.touched)}" pattern="^[1-9]\d{14}$|^[1-9]\d{15}$" maxlength="16" type="number" name="cardNumber" placeholder="**** **** **** ****" ngModel required #cardNumber="ngModel"></ion-input>
-            <!-- <img src="../../../../assets/payment/card-master.png" /> -->
-            <ion-icon class="icon-camara" name="camera"(click)="camara()"></ion-icon>
-          </ion-item>
-          <div *ngIf="cardNumber.errors && (cardNumber.dirty || cardNumber.touched)">
-            <small *ngIf="cardNumber.errors.pattern" style="color: red">tu numero de tarjeta debe ser 15 o 16 digitos numericos</small>
-          </div>
-        </div>
+      <div class="add--half">
+        <ion-item class="add--input" mode="ios">
+          <ion-label position="floating" mode="ios">Expiración</ion-label>
+          <ion-datetime name="cardDate" displayFormat="MM/YY" pickerFormat="YYYY-MM" min="2019" max="2034" placeholder="12 / 21" ngModel required #cardDate="ngModel">
+          </ion-datetime>
+        </ion-item>
+      </div>
 
-        <div class="add--half">
-          <ion-item class="add--input" mode="ios">
-            <ion-label position="floating" mode="ios">Expiración</ion-label>
-            <ion-datetime name="cardDate" displayFormat="MM/YY" pickerFormat="YYYY-MM" min="2019" max="2034" placeholder="12 / 21" ngModel required #cardDate="ngModel">
-            </ion-datetime>
-          </ion-item>
-        </div>
+      <div class="add--half">
+        <ion-item class="add--input" mode="ios">
+          <ion-label position="floating" mode="ios">CVV</ion-label>
+          <ion-input pattern="^[1-9]\d{2}$|^[1-9]\d{3}$" maxlength="4" type="password" inputmode="numeric" name="cardCvv" placeholder="***" ngModel required #cardCvv="ngModel"></ion-input>
+        </ion-item>
+        <ion-icon name="md-help-circle-outline" (click)="onClickHelp()"></ion-icon>
+      </div>
 
-        <div class="add--half">
-          <ion-item class="add--input" mode="ios">
-            <ion-label position="floating" mode="ios">CVV</ion-label>
-            <ion-input pattern="^[1-9]\d{2}$|^[1-9]\d{3}$" maxlength="4" type="password" inputmode="numeric" name="cardCvv" placeholder="***" ngModel required #cardCvv="ngModel"></ion-input>
-          </ion-item>
-          <ion-icon name="md-help-circle-outline" (click)="onClickHelp()"></ion-icon>
-        </div>
+      <div class="add--button add--full">
+        <ion-button *ngIf="!addCard.valid" color="primary" shape="round" fill="solid" type="button" disabled>Guardar</ion-button>
+        <ion-button *ngIf="addCard.valid" color="primary" shape="round" fill="solid" type="submit">Guardar</ion-button>
+      </div>
 
-        <div class="add--button add--full">
-          <ion-button *ngIf="!addCard.valid" color="primary" shape="round" fill="solid" type="button" disabled>Guardar</ion-button>
-          <ion-button *ngIf="addCard.valid" color="primary" shape="round" fill="solid" type="submit">Guardar</ion-button>
-        </div>
+      <!-- <div class="form--validation" *ngIf="cardHolder.touched && !cardHolder.valid">
+        <ion-text>Mensaje de error correspondiente</ion-text>
+      </div> -->
 
-        <!-- <div class="form--validation" *ngIf="cardHolder.touched && !cardHolder.valid">
-          <ion-text>Mensaje de error correspondiente</ion-text>
-        </div> -->
-
-      </form>
+    </form>
 
       <div *ngIf="showMessage" class="add--notification">
         <div class="add--notification-content">
@@ -70,6 +70,20 @@
           </div>
         </div>
       </div>
+
+    <!-- payment rejected alert -->
+    <div *ngIf="showAlert" class="reset--alert">
+      <div class="reset--alert-content">
+        <header>
+          <img src="../../../../assets/ui/icon-error-red.png" />
+          <p>Tarjeta no agregada</p>
+        </header>
+        <ion-text>Tu tarjeta no pudo ser agregada. intenta de nuevo.</ion-text>
+        <div>
+          <ion-button fill="solid" expand="full" shape="round" mode="ios" (click)="onCloseAlert()">OK</ion-button>
+        </div>
+      </div>
+    </div>
 
   </div>
 </ion-content>
