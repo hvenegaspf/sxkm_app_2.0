@@ -18,6 +18,7 @@ export class GlobalService {
   token:any;
   id_user:any
   user:any;
+  trip_page;
   constructor(private http: HttpClient, private storage: Storage, private userService: UsersService) { }
 
   getStores(): Observable<Store[]> {
@@ -66,6 +67,40 @@ export class GlobalService {
         }
       )
     })
+  }
+
+  //notification list
+  getListNotifications( pull: boolean = false, token, user_id ) {
+    this.token = token
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.token,
+      'company_id': '2'
+    });
+    if (pull) {
+      this.trip_page = 0;
+    }
+    this.trip_page++;
+    return this.http.get(`${URL}push_notifications/${user_id}?page=${this.trip_page}`, {headers:headers})
+  }
+
+
+  setNotificationSaw(push_id) {
+    this.getStorage('auth_token').then((res)=>{
+      this.token = res
+    })
+    this.getStorage('user_id').then((res)=>{
+      this.id_user = res
+    })
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json' ,
+      'Authorization': this.token,
+      'company_id': '2'
+    });
+    const BODY = {
+      "push_id": push_id
+    }
+    return this.http.put(`${URL}push_notifications/remove_notification_from_views`, BODY,{headers:headers});
   }
 
   setStorage(key: string, value: string) {

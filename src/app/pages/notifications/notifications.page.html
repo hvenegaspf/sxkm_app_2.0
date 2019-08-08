@@ -1,4 +1,4 @@
-<ion-header mode="ios">
+<!-- <ion-header mode="ios">
   <div class="header--page">
     <a routerLink="/tabs/tabs/">
       <ion-icon name="ios-arrow-back"></ion-icon>
@@ -15,9 +15,9 @@
       Borrar todo
     </ion-button>
   </div>
-</ion-header>
+</ion-header> -->
 
-<ion-content>
+<!-- <ion-content>
 
   <ion-list class="notification--list">
 
@@ -74,5 +74,65 @@
   <div class="notification--end">
     <ion-text>No hay más notificaciones</ion-text>
   </div>
+
+</ion-content>
+ -->
+
+ <ion-header mode="ios">
+  <div class="header--page">
+    <a routerLink="/tabs/tabs/">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </a>
+  </div>
+  <div class="delete-btn">
+    <ion-button
+      fill="clear"
+      size="small"
+      shape="round"
+      mode="ios"
+      (click)="presentAlertConfirm()">
+      <ion-icon src="../../../assets/ui/icon-trash.svg"></ion-icon>
+      Borrar todo
+    </ion-button>
+  </div>
+</ion-header>
+
+<ion-content>
+
+  <ion-list class="notification--list">
+    
+    <div class="alert-message" *ngIf="text_notifications">
+      <ion-text>No hay notificaciones.</ion-text>
+    </div>
+  
+    <div *ngIf="!text_notifications">
+     
+        <ion-item-sliding *ngFor="let notification of arrayNotifications; let i = index" lines="none">
+          <ion-item mode="ios" (click)="openModalDetailNotification(notification)">
+            <ion-label>
+              <b>{{ notification['title'] }}</b>
+              <p>{{ notification['body'] }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item-options>
+            <ion-item-option color="primary" (click)="onDelete(notification.id)">
+              <ion-icon src="/assets/ui/icon-trash.svg" slot="icon-only"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      
+    </div>
+    
+    <ion-infinite-scroll [disabled]="!enabled" threshold="50px"
+    (ionInfinite)="loadNotifications(false, $event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando notificaciones...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  
+</ion-list>
+<!-- esta leyenda está siempre presente después de la lista -->
+<!-- <div class="notificaciones--end">
+<ion-text>No hay más notificaciones</ion-text>
+</div>      -->             
 
 </ion-content>
