@@ -30,6 +30,7 @@
     "@ionic/storage": "^2.2.0",
     "card.io.cordova.mobilesdk": "2.1.0",
     "cordova-android": "8.0.0",
+    "cordova-ios": "5.0.1",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-fcm-with-dependecy-updated": "^2.4.0",
     "cordova-plugin-geolocation": "4.0.2",
