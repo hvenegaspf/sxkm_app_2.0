@@ -8,6 +8,7 @@ import { Storage } from '@ionic/storage';
 import { AuthService } from './providers/auth.service';
 import { Events } from '@ionic/angular';
 import { UiService } from 'src/app/services/ui-service.service';
+import { GlobalService } from './providers/global.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,12 @@ export class AppComponent {
 
   showAlert = false;
 
+  token;
+  user_id;
+  total_notification;
+
   constructor(
+    private globalService: GlobalService,
     private auth: AuthService,
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -29,6 +35,7 @@ export class AppComponent {
     public events: Events
   ) {
     this.initializeApp();
+    this.getNotifications(true);
   }
 
   initializeApp() {
@@ -55,20 +62,34 @@ export class AppComponent {
     });
   }
 
+  async getNotifications(pull:boolean = false, event?){
+    await this.getStorage('auth_token').then((res)=>{
+      this.token = res
+    })
+    await this.getStorage('user_id').then((res)=>{
+      this.user_id = Number(res)
+    })
+
+    await this.globalService.getListNotifications(pull, this.token, this.user_id).subscribe((response) => {
+      this.total_notification = response['data']['total_notification'];
+    })
+  }
+
+  
   logout() {
     this.auth.logout();
   }
-
-  setStorage(key: string, value: string) {
-    this.storage.set(key, value);
-  }
-
+  
   showAlertModal() {
     this.showAlert = true;
   }
-
+  
   closeAlertModal() {
     this.showAlert = false;
+  }
+  
+  setStorage(key: string, value: string) {
+    this.storage.set(key, value);
   }
 
   async getStorage(key: string) {

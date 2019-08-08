@@ -14,6 +14,10 @@ import { FormsModule } from '@angular/forms';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { CardIO } from '@ionic-native/card-io/ngx';
 
+// Import ng-circle-progress
+import { NgCircleProgressModule } from 'ng-circle-progress';
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +28,14 @@ import { CardIO } from '@ionic-native/card-io/ngx';
     IonicModule.forRoot(),
     AppRoutingModule,
     IonicStorageModule.forRoot(),
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 60,
+      outerStrokeWidth: 10,
+      innerStrokeWidth: 5,
+      showBackground: false,
+      startFromZero: false,
+    }),
     HttpClientModule
   ],
   providers: [

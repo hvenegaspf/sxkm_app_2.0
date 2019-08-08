@@ -26,15 +26,27 @@ export class TabsPage implements OnInit {
   loading: any;
   currentTab: any;
 
+  token;
+  user_id;
+  total_notification;
+
   constructor(
     private router: Router,
     private modalCtlr: ModalController,
     private actionSheetController: ActionSheetController,
     public events: Events, private storage: Storage,
     public loadingCtlr: LoadingController, private carService: CarService,
-    private globlaService: GlobalService,
+    private globalService: GlobalService,
     private statusBar: StatusBar
-  ) { }
+  ) { 
+    this.events.subscribe('notification:deleted', (total) => {
+      this.getNotifications(true);
+    });
+
+    this.events.subscribe('all_notification:all_deleted', (total) => {
+      this.getNotifications(true);
+    });
+  }
 
   ionViewWillEnter() {
     // let status bar overlay webview
@@ -44,6 +56,7 @@ export class TabsPage implements OnInit {
       this.car_select = JSON.parse(res);
       this.getCars()
       this.getNextDueDate()
+      this.getNotifications(true)
     })
     this.currentTab = window.location.pathname === '/tabs/tabs/welcome' ? 'welcome' : '';
   }
@@ -53,6 +66,8 @@ export class TabsPage implements OnInit {
   onClickSos() {
     this.modalCtlr.create({ component: OptionsComponent }).then(modal => { modal.present(); });
   }
+
+  
 
   async getCars() {
     this.cars = await this.carService.getCars()
@@ -77,6 +92,22 @@ export class TabsPage implements OnInit {
     console.log(this.car_select)
   }
 
+  async getNotifications(pull: boolean = false, event?) {
+    await this.getStorage('auth_token').then((res) => {
+      this.token = res
+    })
+    await this.getStorage('user_id').then((res) => {
+      this.user_id = Number(res)
+    })
+
+    await this.globalService.getListNotifications(pull, this.token, this.user_id).subscribe((response) => {
+      console.log(response)
+      this.total_notification = response['data']['total_notification'];
+      this.events.publish('total:total', this.total_notification);
+    })
+  }
+
+
   async getNextDueDate(){
     let date = new Date();
     var day = date.getDate()
@@ -93,7 +124,7 @@ export class TabsPage implements OnInit {
       var monthString = String(month);
     }
     this.actual_date =  `${year}-${monthString}-${dayString}`
-    this.dueDate = await this.globlaService.getNextDueDate();
+    this.dueDate = await this.globalService.getNextDueDate();
     console.log(this.dueDate.data)
     console.log(this.actual_date)
     if(this.actual_date > this.dueDate){

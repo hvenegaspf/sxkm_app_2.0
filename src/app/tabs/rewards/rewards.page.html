@@ -5,16 +5,21 @@
     
     <div class="rewards--header">
       <div class="rewards--header-icon">
-        <img *ngIf="car_select?.car.details.level_gamification == 'Novato'" src="../../../assets/ui/levels/Novato_On.svg" />
-        <img *ngIf="car_select?.car.details.level_gamification == 'Guerrero'" src="../../../assets/ui/levels/Conductor_On.svg" />
-        <img *ngIf="car_select?.car.details.level_gamification == 'Rockstar'" src="../../../assets/ui/levels/Veterano_On.svg" />
-        <img *ngIf="car_select?.car.details.level_gamification == 'Leyenda'" src="../../../assets/ui/levels/Piloto_On.svg" />
+        <img *ngIf="current_level?.level == 'Novato'" src="../../../assets/ui/levels/Novato_On.svg" />
+        <img *ngIf="current_level?.level == 'Guerrero'" src="../../../assets/ui/levels/Conductor_On.svg" />
+        <img *ngIf="current_level?.level == 'Rockstar'" src="../../../assets/ui/levels/Veterano_On.svg" />
+        <img *ngIf="current_level?.level == 'Leyenda'" src="../../../assets/ui/levels/Piloto_On.svg" />
       </div>
       <div class="rewards--header-content">
 
         <!-- asignar color con clase color-[color] -->
-        <h2 class="color--sky">{{current_level?.level}}</h2>
-
+        <h2 class="" [ngClass]="{
+          'color--sky':current_level?.level === 'Novato',
+          'color--yellow':current_level?.level === 'Guerrero',
+          'color--blue':current_level?.level === 'Rockstar',
+          'color--green':current_level?.level === 'Leyenda'
+        }">{{current_level?.level}}</h2>
+        
         <div class="rewards--header-info">
           <div class="rewards--header-points">
             <div class="rewards--header-points_svg">
@@ -26,7 +31,7 @@
                 yellow: #ffbb01 #FFEFC3
                 green: #2ec23b #E6FDE8
               -->
-              <circle-progress [percent]="100" [title]="3" [titleColor]="'#ffbb01'" [outerStrokeColor]="'#ffbb01'" [backgroundColor]="'#FFEFC3'"></circle-progress>
+              <circle-progress [percent]="reward_percent" [title]="current_level?.no_level" [titleColor]="uiColor" [outerStrokeColor]="uiColor" [backgroundColor]="'#FFEFC3'" [animation]="true" [animationDuration]="300" [lazy]="false"></circle-progress>
             </div>
             <p>{{car_select?.car.details.reward_points}} Puntos</p>
           </div>
@@ -38,22 +43,22 @@
     
     <div class="rewards--levels">
       <div>
-        <img class="{{car_select?.car.details.level_gamification == 'Novato' ? '' : 'disabled'}}" src="../../../assets/ui/levels/Novato_On.svg" />
+        <img class="{{current_level?.level == 'Novato' ? '' : 'disabled'}}" src="../../../assets/ui/levels/Novato_On.svg" />
         <!-- asignar color con clase color-[color] -->
         <p class="{{current_level?.level === 'Novato' ? 'color--sky' : '' }}">Novato</p>
       </div>
       <div>
-        <img class="{{car_select?.car.details.level_gamification == 'Guerrero' ? '' : 'disabled'}}" src="../../../assets/ui/levels/Conductor_On.svg" />
+        <img class="{{current_level?.level == 'Guerrero' ? '' : 'disabled'}}" src="../../../assets/ui/levels/Conductor_On.svg" />
         <!-- asignar color con clase color-[color] -->
         <p class="{{current_level?.level == 'Guerrero' ? 'color--yellow' : '' }}">Guerrero</p>
       </div>
       <div>
-        <img class="{{car_select?.car.details.level_gamification == 'Rockstar' ? '' : 'disabled'}}" src="../../../assets/ui/levels/Veterano_On.svg" />
+        <img class="{{current_level?.level == 'Rockstar' ? '' : 'disabled'}}" src="../../../assets/ui/levels/Veterano_On.svg" />
         <!-- asignar color con clase color-[color] -->
         <p class="{{current_level?.level == 'Rockstar' ? 'color--green' : '' }}">Rockstar</p>
       </div>
       <div>
-        <img class="{{car_select?.car.details.level_gamification == 'Leyenda' ? '' : 'disabled'}}" src="../../../assets/ui/levels/Piloto_On.svg" />
+        <img class="{{current_level?.level == 'Leyenda' ? '' : 'disabled'}}" src="../../../assets/ui/levels/Piloto_On.svg" />
         <!-- asignar color con clase color-[color] -->
         <p class="{{current_level?.level == 'Leyenda' ? 'color--blue' : '' }}">Leyenda</p>
       </div>
