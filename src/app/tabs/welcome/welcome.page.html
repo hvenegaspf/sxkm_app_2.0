@@ -22,34 +22,6 @@
 
     <div class="welcome--widgets">
 
-      <!-- Alert widget -->
-      <div *ngFor="let notification of list_notifications" class="{{notification.status}}">
-        <div class="content" routerLink="{{notification.path}}">
-          <div>
-            <b>{{ notification.title }}</b>
-            <p>{{ notification.body }}</p>
-          </div>
-          <ion-icon name="ios-arrow-forward"></ion-icon>
-        </div>
-      </div>
-
-      <!-- Green widget - Payment reference -->
-      <!-- <div class="widget--green">
-        <div class="widget--green-content" routerLink="/purchase-reference">
-          <div class="widget--green-time">
-            <img src="../../../assets/ui/icon-kms.png" />
-            <p>250 Km</p>
-          </div>
-          <div class="widget--green-info">
-            <div>
-              <b>Vigencia - 09/09/2019</b>
-              <p>Referencia de pago</p>
-            </div>
-            <ion-icon name="ios-arrow-forward"></ion-icon>
-          </div>
-        </div>
-      </div> -->
-
       <!-- Recharge widget -->
       <div class="widget widget--recharge">
         <div class="widget--recharge-header">
@@ -82,6 +54,45 @@
         </div>
         <p>{{dueDate?.data | date: 'dd/MM/yyyy'}}</p>
       </div>
+
+      <!-- Alert widget -->
+      <div *ngFor="let notification of list_notifications" class="{{notification.status}}">
+        <ion-item-sliding>
+          <ion-item class="content" routerLink="{{notification.path}}">
+            <b>{{ notification.title }}</b>
+            <p>{{ notification.body }}</p>
+          </ion-item>
+
+          <ion-item-options side="left">
+            <button ion-button color="danger" (click)="deleteNotification(item)">
+              Eliminar
+            </button>
+          </ion-item-options>
+          <ion-item-options side="right">
+            <button ion-button color="warning" (click)="changeStatus(item)">
+              Desactivar
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </div>
+
+      <!-- Green widget - Payment reference -->
+      <!-- <div class="widget--green">
+        <div class="widget--green-content" routerLink="/purchase-reference">
+          <div class="widget--green-time">
+            <img src="../../../assets/ui/icon-kms.png" />
+            <p>250 Km</p>
+          </div>
+          <div class="widget--green-info">
+            <div>
+              <b>Vigencia - 09/09/2019</b>
+              <p>Referencia de pago</p>
+            </div>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+          </div>
+        </div>
+      </div> -->
+
 
       <!-- LevelUp widget -->
       <!-- <div class="widget widget--level">
