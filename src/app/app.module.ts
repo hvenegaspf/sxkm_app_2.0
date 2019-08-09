@@ -16,7 +16,7 @@ import { CardIO } from '@ionic-native/card-io/ngx';
 
 // Import ng-circle-progress
 import { NgCircleProgressModule } from 'ng-circle-progress';
-
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 
 @NgModule({
@@ -43,7 +43,8 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     SplashScreen,
     FCM,
     CardIO,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Geolocation,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
   ],
   bootstrap: [AppComponent]
 })
