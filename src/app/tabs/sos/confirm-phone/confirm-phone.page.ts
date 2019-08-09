@@ -34,7 +34,8 @@ export class ConfirmPhonePage implements OnInit {
 
   }
   
-  ngOnInit() {
+  async ngOnInit() {
+    await this.getCurrentPosition();
   }
  
   getCurrentPosition(){
@@ -47,7 +48,6 @@ export class ConfirmPhonePage implements OnInit {
   }
 
   async createSinister( phone ){
-    await this.getCurrentPosition();
     await this.getStorage('auth_token').then((res) => {
       this.token = res
     })

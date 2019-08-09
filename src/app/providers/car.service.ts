@@ -75,7 +75,6 @@ export class CarService {
   }
 
   createSinister(data, token) {
-    /* console.log(data) */
     this.token = token
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
