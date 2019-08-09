@@ -24,7 +24,6 @@ export class TabsPage implements OnInit {
   cars: any = [];
   car_select: any;
   loading: any;
-  currentTab: any;
 
   token;
   user_id;
@@ -38,7 +37,7 @@ export class TabsPage implements OnInit {
     public loadingCtlr: LoadingController, private carService: CarService,
     private globalService: GlobalService,
     private statusBar: StatusBar
-  ) { 
+  ) {
     this.events.subscribe('notification:deleted', (total) => {
       this.getNotifications(true);
     });
@@ -58,7 +57,6 @@ export class TabsPage implements OnInit {
       this.getNextDueDate()
       this.getNotifications(true)
     })
-    this.currentTab = window.location.pathname === '/tabs/tabs/welcome' ? 'welcome' : '';
   }
 
   ngOnInit() { }
@@ -67,7 +65,6 @@ export class TabsPage implements OnInit {
     this.modalCtlr.create({ component: OptionsComponent }).then(modal => { modal.present(); });
   }
 
-  
 
   async getCars() {
     this.cars = await this.carService.getCars()
@@ -103,6 +100,7 @@ export class TabsPage implements OnInit {
     await this.globalService.getListNotifications(pull, this.token, this.user_id).subscribe((response) => {
       console.log(response)
       this.total_notification = response['data']['total_notification'];
+      console.log(this.total_notification)
       this.events.publish('total:total', this.total_notification);
     })
   }

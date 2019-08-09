@@ -116,7 +116,8 @@
           <img src="../../../../assets/ui/icon-error-red.png" />
           <p>Pago rechazado</p>
         </header>
-        <ion-text>Tu transacción no pudo ser procesada. intenta de nuevo.</ion-text>
+        <ion-text *ngIf="pay.data.status == 'fail'">{{pay.data.error_description}}.</ion-text>
+        <ion-text *ngIf="error_pay">Tu transacción no pudo ser procesada. intenta de nuevo.</ion-text>
         <div>
           <ion-button fill="solid" expand="full" shape="round" mode="ios" (click)="onCloseAlert()">OK</ion-button>
         </div>

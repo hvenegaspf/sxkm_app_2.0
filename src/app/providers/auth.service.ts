@@ -35,7 +35,7 @@ export class AuthService {
     return new Promise(resolve => {
       this.http.post(`${URL}sessions/login `, this.user, this.HEADERS).subscribe(
         (response:any) => {
-          console.log(response)
+          console.log('user',response)
           if (response.code === 200) {
             this.setStorage('auth_token', response.data.token);
             this.setStorage('user_id', JSON.stringify(response.data.user_id));

@@ -17,6 +17,7 @@ export class PurchaseConfirmPage implements OnInit {
   //params route
   params:any;
   pay:any;
+  error_pay:any;
 
   loading:any;
   loading_window:any;
@@ -51,6 +52,7 @@ export class PurchaseConfirmPage implements OnInit {
 
   async getUser(){
     this.user = await this.usersService.getUserById()
+    console.log(this.user)
   }
 
   goBack(){
@@ -106,7 +108,8 @@ export class PurchaseConfirmPage implements OnInit {
     this.paymentService.payments(json).subscribe(
       (data:any)=>{
         this.pay = data
-        if(this.pay){
+        console.log(this.pay)
+        if(this.pay.data.status == 'paid'){
           this.pay.method_payment = this.params.pay_method
           let navigationExtras: NavigationExtras = {
             state: this.pay
@@ -118,6 +121,7 @@ export class PurchaseConfirmPage implements OnInit {
         }
       },
       (error:any)=>{
+        this.error_pay = error;
         this.onPaymentFailed()
       }
     )
