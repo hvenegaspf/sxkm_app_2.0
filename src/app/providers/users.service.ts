@@ -64,6 +64,29 @@ export class UsersService {
     )
   }
 
+  async updateAvatar(image){
+    await this.getStorage('user_id').then((res) => {
+      this.user_id = Number(res)
+    })
+    await this.getStorage('auth_token').then((res)=>{
+      this.token = res
+    })
+    let headers = new HttpHeaders({ 
+      'Content-Type': 'application/json' ,
+      'Authorization': this.token,
+      'company_id': '2'
+    });
+    return new Promise(
+      resolve=>{
+        this.http.put(`${URL}users/${this.user_id}`, image, {headers:headers}).subscribe(
+          (response: any)=>{
+            resolve(response)
+          }
+        )
+      }
+    )
+  }
+
   async updateUser(body){
     await this.getStorage('user_id').then((res) => {
       this.user_id = Number(res)
