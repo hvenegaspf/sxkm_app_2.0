@@ -9,16 +9,15 @@ ion-fab-button {
   img { box-shadow: var(--ion-box-shadow); }
 }
 
-ion-header {
-  width: 100%;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background-color: var(--ion-color-secondary);
-  &.welcome { background-color: white; }
-}
+// ion-header {
+//   width: 100%;
+//   display: flex;
+//   flex-flow: row nowrap;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 1rem;
+//   background-color: var(--ion-color-secondary);
+// }
 
 ion-tab-bar {
   --background: var(--ion-color-secondary);
@@ -34,17 +33,6 @@ ion-tab-button {
 .tab-selected {
   opacity: 0.3;
   transition: all 0.3s linear;
-}
-
-.tabs {
-  &--bg {
-    height: 2.6rem;
-    background-color: var(--ion-color-secondary);
-  }
-  &--translate {
-    animation: fadeInFromBottom 0.3s ease;
-    transform: translateY(-2.6rem);
-  }
 }
 
 
