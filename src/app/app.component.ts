@@ -72,6 +72,7 @@ export class AppComponent {
 
     await this.globalService.getListNotifications(pull, this.token, this.user_id).subscribe((response) => {
       this.total_notification = response['data']['total_notification'];
+      console.log(this.total_notification)
     })
   }
 

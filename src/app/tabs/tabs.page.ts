@@ -103,6 +103,7 @@ export class TabsPage implements OnInit {
     await this.globalService.getListNotifications(pull, this.token, this.user_id).subscribe((response) => {
       console.log(response)
       this.total_notification = response['data']['total_notification'];
+      console.log(this.total_notification)
       this.events.publish('total:total', this.total_notification);
     })
   }
