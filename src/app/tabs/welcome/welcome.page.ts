@@ -80,9 +80,6 @@ export class WelcomePage implements OnInit {
   }
 
   ngOnInit() {
-    this.getCars()
-    this.getKmStatus()
-    this.getNextDueDate()
     this._CANVAS = this.canvasEl.nativeElement;
     this._CANVAS.width = 200;
     this._CANVAS.height = 200;
@@ -91,8 +88,11 @@ export class WelcomePage implements OnInit {
     this.initDtc();
     this.animate();
   }
-
+  
   ionViewWillEnter() {
+    this.getCars()
+    this.getKmStatus()
+    this.getNextDueDate()
   }
 
   /* async getNextDueDate() {
@@ -143,13 +143,9 @@ export class WelcomePage implements OnInit {
     }
     this.actual_date =  `${year}-${monthString}-${dayString}`
     this.dueDate = await this.globlaService.getNextDueDate();
-    console.log(this.dueDate.data)
-    console.log(this.actual_date)
     if(this.actual_date > this.dueDate){
-      console.log(true)
       this.disabled = true
     }else{
-      console.log(false)
       this.disabled = false
     }
   }

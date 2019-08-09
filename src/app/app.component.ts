@@ -9,6 +9,7 @@ import { AuthService } from './providers/auth.service';
 import { Events } from '@ionic/angular';
 import { UiService } from 'src/app/services/ui-service.service';
 import { GlobalService } from './providers/global.service';
+import { UsersService } from './providers/users.service';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +17,9 @@ import { GlobalService } from './providers/global.service';
 })
 
 export class AppComponent {
-
+  user:any;
   showAlert = false;
+  avatar:any;
 
   token;
   user_id;
@@ -32,10 +34,20 @@ export class AppComponent {
     private fcm: FCM,
     private navCtrl: NavController,
     private storage: Storage,
-    public events: Events
+    public events: Events,
+    private usersService: UsersService
   ) {
+    events.subscribe('image', (avatar) => {
+      this.avatar = avatar
+      this.getUser()
+    });
     this.initializeApp();
     this.getNotifications(true);
+    this.getUser()
+  }
+
+  async getUser(){
+    this.user = await this.usersService.getUserById()
   }
 
   initializeApp() {
@@ -72,7 +84,6 @@ export class AppComponent {
 
     await this.globalService.getListNotifications(pull, this.token, this.user_id).subscribe((response) => {
       this.total_notification = response['data']['total_notification'];
-      console.log(this.total_notification)
     })
   }
 

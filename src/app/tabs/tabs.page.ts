@@ -8,6 +8,7 @@ import { CarService } from '../providers/car.service';
 import { OptionsComponent } from '../tabs/sos/options/options.component';
 import { GlobalService } from '../providers/global.service';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { UsersService } from '../providers/users.service';
 
 
 @Component({
@@ -21,9 +22,11 @@ export class TabsPage implements OnInit {
   actual_date:any;
   disabled:boolean;
 
+  user:any;
   cars: any = [];
   car_select: any;
   loading: any;
+  avatar:any;
 
   token;
   user_id;
@@ -36,8 +39,15 @@ export class TabsPage implements OnInit {
     public events: Events, private storage: Storage,
     public loadingCtlr: LoadingController, private carService: CarService,
     private globalService: GlobalService,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private usersService: UsersService
+ 
   ) {
+    events.subscribe('image', (avatar) => {
+      this.avatar = avatar
+      this.getUser()
+    });
+    
     this.events.subscribe('notification:deleted', (total) => {
       this.getNotifications(true);
     });
@@ -56,10 +66,15 @@ export class TabsPage implements OnInit {
       this.getCars()
       this.getNextDueDate()
       this.getNotifications(true)
+      this.getUser()
     })
   }
 
   ngOnInit() { }
+
+  async getUser(){
+    this.user = await this.usersService.getUserById()
+  }
 
   onClickSos() {
     this.modalCtlr.create({ component: OptionsComponent }).then(modal => { modal.present(); });

@@ -11,10 +11,18 @@
   <div class="profile--header">
     <div class="profile--avatar">
       <div class="profile--avatar-img">
-        <img src="../../../assets/demo/avatar.jpg" />
+        <img src="{{user?.avatar_img}}" />
       </div>
       <label class="profile--upload">
-        <input type="file" accept="image/png, image/jpeg" />
+        <input
+        mode="ios"
+        fill="clear"
+        shape="round"
+        color="dark"
+        size="small"
+        type="file" 
+        accept="image/png, image/jpeg" 
+        (change)="onAddAvatar($event)"/>
         <div>
           <ion-icon name="ios-camera"></ion-icon>
         </div>
@@ -49,7 +57,7 @@
     <div class="profile--field">
       <b>Teléfono</b>
       <div>
-        <p>{{ user?.acl_role.company.telephone}}</p>
+        <p>{{ user?.cellphone}}</p>
       </div>
     </div>
 

@@ -36,7 +36,7 @@ export class ProfileEditPage implements OnInit {
           'name': [ this.data['name'] ],
           'lastname_one': [ this.data['lastname_one'] ],  
           'lastname_two': [ this.data['lastname_two'] ],
-          'telephone': [ {value:  this.data['acl_role']['company']['telephone'], disabled: true} ],
+          'telephone': [ {value:  this.data['cellphone'], disabled: true} ],
           'email': [ {value:  this.data['email'], disabled: true} ]
         })
       }
