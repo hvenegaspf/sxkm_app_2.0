@@ -1,7 +1,10 @@
 // floating action
 ion-fab {
-  bottom: 3.6rem;
   right: 1.4rem;
+  bottom: 3.6rem;
+  @media screen and (min-device-height: 811px) {
+    bottom: 11vh;
+  }
 }
 ion-fab-button {
   background-color: transparent !important;
