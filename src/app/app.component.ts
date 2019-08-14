@@ -37,6 +37,9 @@ export class AppComponent {
     public events: Events,
     private usersService: UsersService
   ) {
+    this.events.subscribe('notification:deleted', (total) => {
+      this.getNotifications(true);
+    });
     events.subscribe('image', (avatar) => {
       this.avatar = avatar
       this.getUser()

@@ -28,6 +28,7 @@ export class RewardsPage implements OnInit {
     events.subscribe('car:selected', (car_selected) => {
       this.car_select = car_selected
       this.getCars();
+      this.getLevels();
       this.getPointsTransaction(true)
     });
   }

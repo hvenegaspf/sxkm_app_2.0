@@ -35,6 +35,12 @@ export class WelcomePage implements OnInit {
 
   constructor(private modalCtlr: ModalController, private router: Router, private globlaService: GlobalService,
     public platform: Platform, private carService: CarService, public events: Events) {
+    events.subscribe('car:selected', (car_selected) => {
+      this.car_select = car_selected
+      this.getCars();
+      this.getKmStatus()
+      this.getNextDueDate()
+    });
     events.subscribe('new:notification', (dataNotification) => {
       this.list_notifications.push(dataNotification)
       console.log('status: ' + dataNotification['status']);
