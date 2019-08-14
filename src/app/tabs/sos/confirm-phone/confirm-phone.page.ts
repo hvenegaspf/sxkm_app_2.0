@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CarService } from 'src/app/providers/car.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Storage } from '@ionic/storage';
+import { Sim } from '@ionic-native/sim/ngx';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class ConfirmPhonePage implements OnInit {
   sos_type;
 
   constructor( public formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router,
-    private geolocation: Geolocation, private storage: Storage, private carService: CarService ) {
+    private geolocation: Geolocation, private storage: Storage, private carService: CarService,
+    private sim: Sim ) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.data = this.router.getCurrentNavigation().extras.state.sos_type;
@@ -32,6 +34,22 @@ export class ConfirmPhonePage implements OnInit {
       }
     });
 
+  }
+
+  ionViewWillEnter(){
+    this.sim.getSimInfo().then(
+      (info) => console.log('Sim info: ', info),
+      (err) => console.log('Unable to get sim info: ', err)
+    );
+    
+    this.sim.hasReadPermission().then(
+      (info) => console.log('Has permission: ', info)
+    );
+    
+    this.sim.requestReadPermission().then(
+      () => console.log('Permission granted'),
+      () => console.log('Permission denied')
+    );
   }
   
   async ngOnInit() {

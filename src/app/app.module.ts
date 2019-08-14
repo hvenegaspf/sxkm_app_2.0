@@ -17,6 +17,7 @@ import { CardIO } from '@ionic-native/card-io/ngx';
 // Import ng-circle-progress
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Sim } from '@ionic-native/sim/ngx';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     FCM,
     CardIO,
     Geolocation,
+    Sim,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
   ],
   bootstrap: [AppComponent]
