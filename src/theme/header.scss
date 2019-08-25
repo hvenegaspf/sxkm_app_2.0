@@ -109,8 +109,9 @@
     right: -0.5rem;
   }
   &--selector {
-    a { color: white; }
-    &.white a { color: var(--ion-color-dark); }
+    ion-select, select {
+      color: white;
+    }
     ion-icon {
       margin-left: 8px;
       vertical-align: bottom;
@@ -127,3 +128,4 @@
   }
 
 }
+

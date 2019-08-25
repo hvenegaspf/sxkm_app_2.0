@@ -1,4 +1,5 @@
-<ion-header mode="ios" class="tabs--header">
+<ion-header mode="ios" [ngClass]="tabStyle" >
+  <!-- [ngClass]="{this.isHome ? 'tabs--header-white' : 'tabs--header'}" -->
   <!-- menu toggle -->
   <ion-menu-toggle auto-hide="false">
     <div class="header--tabs">
@@ -11,17 +12,17 @@
 
   <!-- car selector -->
   <div class="header--selector">
+    <!--
     <a>
-      <!-- <span (click)="onClickSelector()">Mini Cooper</span>
-      <ion-icon name="ios-arrow-down"></ion-icon> -->
-
-      <ion-select placeholder="Seleccciona un auto" cancelText="Cerrar" interface="action-sheet"
-        [(ngModel)]="car_select" (ionChange)="changeCar()">
-        <ion-select-option *ngFor="let car of cars" [value]="car">{{car?.car.details.maker_name}}
-          {{car?.car.details.description}}</ion-select-option>
-      </ion-select>
-
+      <span (click)="onClickSelector()">Mini Cooper</span>
+      <ion-icon name="ios-arrow-down"></ion-icon>
     </a>
+    -->
+    <ion-select placeholder="Seleccciona un auto" cancelText="Cerrar" interface="action-sheet"
+      [(ngModel)]="car_select" (ionChange)="changeCar()" [ngStyle]="{color: selectorStyle}">
+      <ion-select-option *ngFor="let car of cars" [value]="car">{{car?.car.details.maker_name}}
+        {{car?.car.details.description}}</ion-select-option>
+    </ion-select>
   </div>
 
   <!-- car status -->
@@ -48,27 +49,27 @@
   <ion-tabs>
     <ion-tab-bar slot="bottom" mode="ios">
 
-      <ion-tab-button tab="welcome">
+      <ion-tab-button tab="welcome" (click)="tabWhite()">
         <img src="../../assets/ui/tabs-auto.png" />
         <ion-label>Mi Auto</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button [disabled]="disabled" tab="trips">
+      <ion-tab-button [disabled]="disabled" tab="trips" (click)="tabDark()">
         <img src="../../assets/ui/tabs-viajes.png" />
         <ion-label>Viajes</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button [disabled]="disabled" tab="habits">
+      <ion-tab-button [disabled]="disabled" tab="habits" (click)="tabDark()">
         <img src="../../assets/ui/tabs-habitos.png" />
         <ion-label>Hábitos</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button [disabled]="disabled" tab="rewards">
+      <ion-tab-button [disabled]="disabled" tab="rewards" (click)="tabDark()">
         <img src="../../assets/ui/tabs-rewards.png" />
         <ion-label>Rewards</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button [disabled]="disabled" tab="policy">
+      <ion-tab-button [disabled]="disabled" tab="policy" (click)="tabDark()">
         <img src="../../assets/ui/tabs-poliza.png" />
         <ion-label>Póliza</ion-label>
       </ion-tab-button>

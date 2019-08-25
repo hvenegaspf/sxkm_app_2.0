@@ -32,6 +32,10 @@ export class TabsPage implements OnInit {
   user_id;
   total_notification;
 
+  // UI
+  tabStyle: string;
+  selectorStyle: string;
+
   constructor(
     private router: Router,
     private modalCtlr: ModalController,
@@ -41,13 +45,13 @@ export class TabsPage implements OnInit {
     private globalService: GlobalService,
     private statusBar: StatusBar,
     private usersService: UsersService
- 
+
   ) {
     events.subscribe('image', (avatar) => {
       this.avatar = avatar
       this.getUser()
     });
-    
+
     this.events.subscribe('notification:deleted', (total) => {
       this.getNotifications(true);
     });
@@ -70,7 +74,20 @@ export class TabsPage implements OnInit {
     })
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.tabStyle = 'tabs--header-white';
+    this.selectorStyle = '#023B48';
+  }
+
+  // UI
+  tabWhite() {
+    this.tabStyle = 'tabs--header-white';
+    this.selectorStyle = '#023B48';
+  }
+  tabDark() {
+    this.tabStyle = 'tabs--header';
+    this.selectorStyle = '#FFFFFF';
+  }
 
   async getUser(){
     this.user = await this.usersService.getUserById()
