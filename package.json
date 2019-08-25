@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "^7.2.2",
     "@angular/router": "^7.2.2",
     "@ionic-native/card-io": "^5.10.0",
-    "@ionic-native/core": "^5.10.0",
+    "@ionic-native/core": "^5.12.0",
     "@ionic-native/fcm": "^5.10.0",
     "@ionic-native/geolocation": "^5.11.0",
     "@ionic-native/sim": "^5.12.0",
