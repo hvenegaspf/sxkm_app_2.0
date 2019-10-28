@@ -13,7 +13,7 @@ const URL = environment.devPath;
 @Injectable({
   providedIn: 'root'
 })
-  
+
 export class TripsService {
   car_id: any;
   details_id = '';
@@ -32,18 +32,18 @@ export class TripsService {
     });
     if (pull) {
       this.trip_page = 0;
-    }
+    } 
     this.trip_page++;
     /* console.log(`${URL}trips?from=${from}&to=${to}&car_id=${car_id}&page=${this.trip_page}`) */
-    console.log(`${URL}trips?from=2019-07-23&to=2019-07-29&car_id=${car_id}&page=${this.trip_page}`)
-    return this.http.get<responseListTrips>(`${URL}trips?from=2019-07-23&to=2019-07-29&car_id=${car_id}&page=${this.trip_page}`, { headers: headers })
+    console.log(`${URL}trips?from=${from}&to=${to}&car_id=${car_id}&page=${this.trip_page}`)
+    return this.http.get<responseListTrips>(`${URL}trips?from=${from}&to=${to}&car_id=${car_id}&page=${this.trip_page}`, { headers: headers })
   }
 
   async getTripDetails (id_details) {
     await this.getStorage('auth_token').then((res)=>{
       this.token = res
     })
-    let headers = new HttpHeaders({ 
+    let headers = new HttpHeaders({
       'Content-Type': 'application/json' ,
       'Authorization': this.token
     });
@@ -61,14 +61,14 @@ export class TripsService {
   }
 
   getDrivingHabits(from, to, token, car_id) {
-    this.token = token 
-    let headers = new HttpHeaders({ 
+    this.token = token
+    let headers = new HttpHeaders({
       'Content-Type': 'application/json' ,
       'Authorization': token
     });
     return new Promise(resolve => {
       /* console.log(`${URL}driving_habits?from=${from}&to=${to}&car_id=${car_id}`) */
-      console.log(`${URL}trips?from=2019-07-23&to=2019-07-29&car_id=${car_id}&page=${this.trip_page}`)
+      console.log(`${URL}trips?from=${from}&to=${to}&car_id=${car_id}&page=${this.trip_page}`)
       this.http.get<responseDrivingHabits>(`${URL}trips/driving_habits?from=2019-07-23&to=2019-07-29&car_id=${car_id}`, {headers:headers}).subscribe(
         (response) => {
           if (response.code === 200) {

@@ -98,5 +98,5 @@
     <plugin name="card.io.cordova.mobilesdk" spec="2.1.0" />
     <allow-navigation href="http://192.168.15.68:8101" sessionid="44b1217b" />
     <allow-navigation href="http://192.168.15.68:8100" sessionid="3c1cb67b" />
-    <engine name="android" spec="8.0.0" />
+    <engine name="android" spec="~8.0.0" />
 </widget>
